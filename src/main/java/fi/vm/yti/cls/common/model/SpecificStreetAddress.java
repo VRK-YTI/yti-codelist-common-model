@@ -10,6 +10,8 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(value = "SpecificStreetAddress", description = "StreetAddress model that represents data for a street address with a specific street number.")
 public class SpecificStreetAddress extends StreetAddress {
 
+    private static final long serialVersionUID = 1L;
+
     private Integer m_number;
 
     private String m_character;

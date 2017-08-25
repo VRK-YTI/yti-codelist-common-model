@@ -24,6 +24,8 @@ import java.io.Serializable;
 @ApiModel(value = "Registeritem", description = "RegisterItem model that represents data for one single generic registeritem.")
 public class RegisterItem  extends AbstractCommonCode implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     private String m_register;
 
     private Register m_parentRegister;

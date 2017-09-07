@@ -21,7 +21,6 @@ import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 import java.util.Date;
 
-
 /**
  * Object model that represents a street address number entity.
  */
@@ -35,259 +34,214 @@ public class StreetNumber implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String m_id;
-
-    private String m_source;
-
-    private Date m_created;
-
-    private Date m_modified;
-
-    private String m_uri;
-
-    private PostalCode m_postalCode;
-
-    private StreetAddress m_streetAddress;
-
-    private boolean m_isEven;
-
-    private Integer m_startNumber;
-
-    private String m_startCharacter;
-
-    private Integer m_startNumberEnd;
-
-    private String m_startCharacterEnd;
-
-    private String m_endCharacter;
-
-    private Integer m_endNumber;
-
-    private String m_endCharacterEnd;
-
-    private Integer m_endNumberEnd;
-
-    private String m_status;
-
-
-    public StreetNumber() {
-
-    }
-
-
+    private String id;
+    private String source;
+    private Date created;
+    private Date modified;
+    private String uri;
+    private PostalCode postalCode;
+    private StreetAddress streetAddress;
+    private boolean isEven;
+    private Integer startNumber;
+    private String startCharacter;
+    private Integer startNumberEnd;
+    private String startCharacterEnd;
+    private String endCharacter;
+    private Integer endNumber;
+    private String endCharacterEnd;
+    private Integer endNumberEnd;
+    private String status;
+    
+    public StreetNumber() {}
+    
     @Id
     @Column(name = "id", unique = true)
     public String getId() {
-        return m_id;
+        return id;
     }
-
     public void setId(final String id) {
-        m_id = id;
+        this.id = id;
     }
-
-
+    
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created")
     public Date getCreated() {
-
-        if (m_created != null) {
-            return new Date(m_created.getTime());
+        if (created != null) {
+            return new Date(created.getTime());
         }
         return null;
-
     }
 
     public void setCreated(final Date created) {
-
         if (created != null) {
-            m_created = new Date(created.getTime());
+            this.created = new Date(created.getTime());
         } else {
-            m_created = null;
+            this.created = null;
         }
-
     }
-
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modified")
     public Date getModified() {
-
-        if (m_modified != null) {
-            return new Date(m_modified.getTime());
+        if (modified != null) {
+            return new Date(modified.getTime());
         }
         return null;
-
     }
 
     public void setModified(final Date modified) {
-
         if (modified != null) {
-            m_modified = new Date(modified.getTime());
+            this.modified = new Date(modified.getTime());
         } else {
-            m_modified = null;
+            this.modified = null;
         }
-
     }
-
 
     @Column(name = "source")
     public String getSource() {
-        return m_source;
+        return source;
     }
 
     public void setSource(final String source) {
-        m_source = source;
+        this.source = source;
     }
-
 
     @Column(name = "uri")
     public String getUri() {
-        return m_uri;
+        return uri;
     }
 
     public void setUri(final String uri) {
-        m_uri = uri;
+        this.uri = uri;
     }
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "streetaddress_id", nullable = true)
     public StreetAddress getStreetAddress() {
-        return m_streetAddress;
+        return streetAddress;
     }
 
     public void setStreetAddress(final StreetAddress streetAddress) {
-        m_streetAddress = streetAddress;
+        this.streetAddress = streetAddress;
     }
-
 
     @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH})
     @JoinColumn(name = "postalcode_id")
     public PostalCode getPostalCode() {
-        return m_postalCode;
+        return postalCode;
     }
 
     public void setPostalCode(final PostalCode postalCode) {
-        m_postalCode = postalCode;
+        this.postalCode = postalCode;
     }
-
 
     @Column(name = "iseven")
     public boolean getIsEven() {
-        return m_isEven;
+        return isEven;
     }
 
     public void setIsEven(final boolean isEven) {
-        m_isEven = isEven;
+        this.isEven = isEven;
     }
-
 
     @Column(name = "startnumber")
     public Integer getStartNumber() {
-        return m_startNumber;
+        return startNumber;
     }
 
     public void setStartNumber(final Integer startNumber) {
-        m_startNumber = startNumber;
+        this.startNumber = startNumber;
     }
-
 
     @Column(name = "endnumber")
     public Integer getEndNumber() {
-        return m_endNumber;
+        return endNumber;
     }
 
     public void setEndNumber(final Integer endNumber) {
-        m_endNumber = endNumber;
+        this.endNumber = endNumber;
     }
 
     @Column(name = "startnumberend")
     public Integer getStartNumberEnd() {
-        return m_startNumberEnd;
+        return startNumberEnd;
     }
 
     public void setStartNumberEnd(final Integer startNumberEnd) {
-        m_startNumberEnd = startNumberEnd;
+        this.startNumberEnd = startNumberEnd;
     }
-
 
     @Column(name = "endnumberend")
     public Integer getEndNumberEnd() {
-        return m_endNumberEnd;
+        return endNumberEnd;
     }
 
     public void setEndNumberEnd(final Integer endNumberEnd) {
-        m_endNumberEnd = endNumberEnd;
+        this.endNumberEnd = endNumberEnd;
     }
-
 
     @Column(name = "startcharacter")
     public String getStartCharacter() {
-        return m_startCharacter;
+        return startCharacter;
     }
 
     public void setStartCharacter(final String startCharacter) {
-        m_startCharacter = startCharacter;
+        this.startCharacter = startCharacter;
     }
-
 
     @Column(name = "endcharacter")
     public String getEndCharacter() {
-        return m_endCharacter;
+        return endCharacter;
     }
 
     public void setEndCharacter(final String endCharacter) {
-        m_endCharacter = endCharacter;
+        this.endCharacter = endCharacter;
     }
-
 
     @Column(name = "startcharacterend")
     public String getStartCharacterEnd() {
-        return m_startCharacterEnd;
+        return startCharacterEnd;
     }
 
     public void setStartCharacterEnd(final String startCharacterEnd) {
-        m_startCharacterEnd = startCharacterEnd;
+        this.startCharacterEnd = startCharacterEnd;
     }
-
 
     @Column(name = "endcharacterend")
     public String getEndCharacterEnd() {
-        return m_endCharacterEnd;
+        return endCharacterEnd;
     }
 
     public void setEndCharacterEnd(final String endCharacterEnd) {
-        m_endCharacterEnd = endCharacterEnd;
+        this.endCharacterEnd = endCharacterEnd;
     }
-
 
     @Column(name = "status")
     public String getStatus() {
-        return m_status;
+        return status;
     }
 
     public void setStatus(final String status) {
-        m_status = status;
+        this.status = status;
     }
 
-
     public boolean hasNumber(final int number) {
-        if (number % 2 == 0 && m_isEven || number % 2 != 0 && !m_isEven) {
+        if (number % 2 == 0 && isEven || number % 2 != 0 && !isEven) {
             // End number with ending
-            if (m_endNumberEnd != null && number >= m_startNumber && number <= m_endNumberEnd) {
+            if (endNumberEnd != null && number >= startNumber && number <= endNumberEnd) {
                 return true;
             // End number
-            } else if (m_endNumber != null && number >= m_startNumber && number <= m_endNumber) {
+            } else if (endNumber != null && number >= startNumber && number <= endNumber) {
                 return true;
             // Start number with ending
-            } else if (m_startNumberEnd != null && number >= m_startNumber && number <= m_startNumberEnd) {
+            } else if (startNumberEnd != null && number >= startNumber && number <= startNumberEnd) {
                 return true;
             // Start number
-            } else if (number == m_startNumber) {
+            } else if (number == startNumber) {
                 return true;
             }
         }

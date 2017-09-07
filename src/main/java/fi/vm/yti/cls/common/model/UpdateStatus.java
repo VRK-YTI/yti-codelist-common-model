@@ -12,140 +12,114 @@ import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
 
-
 @Entity
 @Table(name = "updatestatus")
 public class UpdateStatus implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String m_id;
+    private String id;
+    private String status;
+    private String dataType;
+    private String source;
+    private String version;
+    private String nextVersion;
+    private Date created;
+    private Date modified;
 
-    private String m_status;
-
-    private String m_dataType;
-
-    private String m_source;
-
-    private String m_version;
-
-    private String m_nextVersion;
-
-    private Date m_created;
-
-    private Date m_modified;
-
-
-    public UpdateStatus() {
-
-    }
-
+    public UpdateStatus() {}
 
     @Id
     @Column(name = "id")
     public String getId() {
-        return m_id;
+        return id;
     }
 
     public void setId(final String id) {
-        m_id = id;
+        this.id = id;
     }
-
 
     @Column(name = "status")
     public String getStatus() {
-        return m_status;
+        return status;
     }
 
     public void setStatus(final String status) {
-        m_status = status;
+        this.status = status;
     }
-
 
     @Column(name = "datatype")
     public String getDataType() {
-        return m_dataType;
+        return dataType;
     }
 
     public void setDataType(final String dataType) {
-        m_dataType = dataType;
+        this.dataType = dataType;
     }
-
 
     @Column(name = "version")
     public String getVersion() {
-        return m_version;
+        return version;
     }
 
     public void setVersion(final String version) {
-        m_version = version;
+        this.version = version;
     }
-
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern ="yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created")
     public Date getCreated() {
-
-        if (m_created != null) {
-            return new Date(m_created.getTime());
+        if (created != null) {
+            return new Date(created.getTime());
         }
         return null;
-
     }
 
     public void setCreated(final Date created) {
-
         if (created != null) {
-            m_created = new Date(created.getTime());
+            this.created = new Date(created.getTime());
         } else {
-            m_created = null;
+            this.created = null;
         }
-
     }
-
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern ="yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modified")
     public Date getModified() {
-
-        if (m_modified != null) {
-            return new Date(m_modified.getTime());
+        if (modified != null) {
+            return new Date(modified.getTime());
         }
         return null;
-
     }
 
     public void setModified(final Date modified) {
-
         if (modified != null) {
-            m_modified = new Date(modified.getTime());
+            this.modified = new Date(modified.getTime());
         } else {
-            m_modified = null;
+            this.modified = null;
         }
-
     }
-
 
     @Column(name = "source")
     public String getSource() {
-        return m_source;
+        return source;
     }
 
     public void setSource(final String source) {
-        m_source = source;
+        this.source = source;
     }
-
 
     @Column(name = "nextversion")
     public String getNextVersion() {
-        return m_nextVersion;
+        return nextVersion;
     }
 
     public void setNextVersion(final String nextVersion) {
-        m_nextVersion = nextVersion;
+        this.nextVersion = nextVersion;
     }
+
 }

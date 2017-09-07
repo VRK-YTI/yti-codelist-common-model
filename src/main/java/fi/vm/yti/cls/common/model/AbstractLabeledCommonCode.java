@@ -8,96 +8,72 @@ import javax.persistence.Transient;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class AbstractLabeledCommonCode extends AbstractCommonCode {
 
-    private String m_prefLabelFi;
-
-    private String m_prefLabelSe;
-
-    private String m_prefLabelEn;
-
-    private Map<String, String> m_prefLabels;
-
+    private String prefLabelFi;
+    private String prefLabelSe;
+    private String prefLabelEn;
+    private Map<String, String> prefLabels;
 
     public AbstractLabeledCommonCode() {
-
-        m_prefLabels = new HashMap<>();
-
+        prefLabels = new HashMap<>();
     }
-
 
     @JsonIgnore
     @Column(name = "preflabel_fi")
     public String getPrefLabelFi() {
-        return m_prefLabelFi;
+        return prefLabelFi;
     }
 
     public void setPrefLabelFi(final String prefLabelFi) {
 
         addPrefLabel("fi", prefLabelFi);
-        m_prefLabelFi = prefLabelFi;
+        this.prefLabelFi = prefLabelFi;
 
     }
-
 
     @JsonIgnore
     @Column(name = "preflabel_se")
     public String getPrefLabelSe() {
-        return m_prefLabelSe;
+        return prefLabelSe;
     }
 
     public void setPrefLabelSe(final String prefLabelSe) {
-
         addPrefLabel("se", prefLabelSe);
-        m_prefLabelSe = prefLabelSe;
-
+        this.prefLabelSe = prefLabelSe;
     }
-
 
     @JsonIgnore
     @Column(name = "preflabel_en")
     public String getPrefLabelEn() {
-        return m_prefLabelEn;
+        return prefLabelEn;
     }
 
     public void setPrefLabelEn(final String prefLabelEn) {
-
         addPrefLabel("en", prefLabelEn);
-        m_prefLabelEn = prefLabelEn;
-
+        this.prefLabelEn = prefLabelEn;
     }
 
     @JsonProperty
     @Transient
     public Map<String, String> getPrefLabels() {
-
-        return m_prefLabels;
-
+        return prefLabels;
     }
 
     public String getPrefLabel(final String language) {
-
-        String prefLabel = m_prefLabels.get(language);
-
+        String prefLabel = prefLabels.get(language);
         if (prefLabel == null) {
-            prefLabel = m_prefLabels.get("en");
+            prefLabel = prefLabels.get("en");
         }
-
         return prefLabel;
     }
 
-
     private void addPrefLabel(final String language, final String name) {
-
         if (language != null && name != null && !name.isEmpty()) {
-            m_prefLabels.put(language, name);
-
+            prefLabels.put(language, name);
         } else if (language != null && name == null) {
-            m_prefLabels.remove(language);
+            prefLabels.remove(language);
         }
-
     }
-
 
 }

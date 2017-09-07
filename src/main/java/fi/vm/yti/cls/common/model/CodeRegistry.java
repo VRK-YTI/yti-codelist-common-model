@@ -20,7 +20,6 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-
 /**
  * Object model that represents a single code registry.
  */
@@ -36,19 +35,17 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String m_definition;
-
-    private Map<String, String> m_prefLabels;
+    private String definition;
+    private Map<String, String> prefLabels;
 
     @Column(name = "definition")
     public String getDefinition() {
-        return m_definition;
+        return definition;
     }
 
     public void setDefinition(final String definition) {
-        m_definition = definition;
+        this.definition = definition;
     }
-
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "coderegistry_preflabel", joinColumns = @JoinColumn(name = "coderegistry_id", referencedColumnName = "id"))
@@ -56,47 +53,34 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
     @Column(name = "preflabel")
     @OrderColumn
     public Map<String, String> getPrefLabels() {
-
-        if (m_prefLabels == null) {
-            m_prefLabels = new HashMap<>();
+        if (prefLabels == null) {
+            prefLabels = new HashMap<>();
         }
-
-        return m_prefLabels;
-
+        return prefLabels;
     }
 
     public void setPrefLabels(final Map<String, String> prefLabels) {
-
-        m_prefLabels = prefLabels;
-
+        this.prefLabels = prefLabels;
     }
 
     public String getPrefLabel(final String language) {
-
-        String prefLabel = m_prefLabels.get(language);
-
+        String prefLabel = prefLabels.get(language);
         if (prefLabel == null) {
-            prefLabel = m_prefLabels.get("en");
+            prefLabel = prefLabels.get("en");
         }
-
         return prefLabel;
     }
 
     public void setPrefLabel(final String language, final String name) {
-
-        if (m_prefLabels == null) {
-            m_prefLabels = new HashMap<>();
+        if (prefLabels == null) {
+            prefLabels = new HashMap<>();
         }
-
         if (language != null && name != null && !name.isEmpty()) {
-            m_prefLabels.put(language, name);
-
+            prefLabels.put(language, name);
         } else if (language != null && name == null) {
-            m_prefLabels.remove(language);
+            prefLabels.remove(language);
         }
-
-        setPrefLabels(m_prefLabels);
-
+        setPrefLabels(prefLabels);
     }
 
 }

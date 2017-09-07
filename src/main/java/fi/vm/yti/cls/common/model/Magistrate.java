@@ -9,7 +9,6 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 
-
 /**
  * Object model that represents a magistrate entity.
  */
@@ -23,20 +22,17 @@ public class Magistrate extends AbstractLabeledCommonCode implements Serializabl
 
     private static final long serialVersionUID = 1L;
 
-
-    public Magistrate() {
-    }
-
+    public Magistrate() {}
 
     public String toString() {
         return "(" +
-                "m_codeValue: " + getCodeValue() + ", " +
-                "m_uri: " + getUri() + ", " +
-                "m_source: " + getSource() + ", " +
-                "m_status: " + getStatus() + ", " +
-                "m_created: " + getCreated() + ", " +
-                "m_modified: " + getModified() + ", " +
-                "m_prefLabels: " + getPrefLabels() + ")";
+                "codeValue: " + getCodeValue() + ", " +
+                "uri: " + getUri() + ", " +
+                "source: " + getSource() + ", " +
+                "status: " + getStatus() + ", " +
+                "created: " + getCreated() + ", " +
+                "modified: " + getModified() + ", " +
+                "prefLabels: " + getPrefLabels() + ")";
     }
 
 }

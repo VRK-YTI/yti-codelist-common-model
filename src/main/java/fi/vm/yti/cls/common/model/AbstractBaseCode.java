@@ -10,163 +10,132 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
 
-
 /**
  * Abstract common base class for object models in CLS domain.
  */
 @MappedSuperclass
 public class AbstractBaseCode {
 
-    private String m_id;
-
-    private String m_source;
-
-    private Date m_created;
-
-    private Date m_modified;
-
-    private Date m_startDate;
-
-    private Date m_endDate;
-
-    private String m_uri;
-
-    private String m_status;
-
+    private String id;
+    private String source;
+    private Date created;
+    private Date modified;
+    private Date startDate;
+    private Date endDate;
+    private String uri;
+    private String status;
 
     @Id
     @Column(name = "id", unique = true)
     public String getId() {
-        return m_id;
+        return id;
     }
 
     public void setId(final String id) {
-        m_id = id;
+        this.id = id;
     }
-
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created")
     public Date getCreated() {
-
-        if (m_created != null) {
-            return new Date(m_created.getTime());
+        if (created != null) {
+            return new Date(created.getTime());
         }
         return null;
-
     }
 
     public void setCreated(final Date created) {
-
         if (created != null) {
-            m_created = new Date(created.getTime());
+            this.created = new Date(created.getTime());
         } else {
-            m_created = null;
+            this.created = null;
         }
-
     }
-
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "startdate")
     public Date getStartDate() {
-        if (m_startDate != null) {
-            return new Date(m_startDate.getTime());
+        if (startDate != null) {
+            return new Date(startDate.getTime());
         }
         return null;
-
     }
 
     public void setStartDate(final Date startDate) {
-
         if (startDate != null) {
-            m_startDate = new Date(startDate.getTime());
+            this.startDate = new Date(startDate.getTime());
         } else {
-            m_startDate = null;
+            this.startDate = null;
         }
-
     }
-
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "enddate")
     public Date getEndDate() {
-
-        if (m_endDate != null) {
-            return new Date(m_endDate.getTime());
+        if (endDate != null) {
+            return new Date(endDate.getTime());
         }
         return null;
-
     }
 
     public void setEndDate(final Date endDate) {
-
         if (endDate != null) {
-            m_endDate = new Date(endDate.getTime());
+            this.endDate = new Date(endDate.getTime());
         } else {
-            m_endDate = null;
+            this.endDate = null;
         }
-
     }
-
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modified")
     public Date getModified() {
-
-        if (m_modified != null) {
-            return new Date(m_modified.getTime());
+        if (modified != null) {
+            return new Date(modified.getTime());
         }
         return null;
-
     }
 
     public void setModified(final Date modified) {
-
         if (modified != null) {
-            m_modified = new Date(modified.getTime());
+            this.modified = new Date(modified.getTime());
         } else {
-            m_modified = null;
+            this.modified = null;
         }
-
     }
-
 
     @Column(name = "source")
     public String getSource() {
-        return m_source;
+        return source;
     }
 
     public void setSource(final String source) {
-        m_source = source;
+        this.source = source;
     }
-
 
     @Column(name = "uri")
     public String getUri() {
-        return m_uri;
+        return uri;
     }
 
     public void setUri(final String uri) {
-        m_uri = uri;
+        this.uri = uri;
     }
-
 
     @Column(name = "status")
     public String getStatus() {
-        return m_status;
+        return status;
     }
 
     public void setStatus(final String status) {
-        m_status = status;
+        this.status = status;
     }
 
 }

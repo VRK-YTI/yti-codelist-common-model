@@ -20,7 +20,6 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-
 /**
  * Object model that represents a single code scheme.
  */
@@ -35,25 +34,16 @@ public class CodeScheme extends AbstractCommonCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String m_version;
-
-    private String m_type;
-
-    private String m_changeNote;
-
-    private String m_description;
-
-    private String m_definition;
-
-    private Map<String, String> m_prefLabels;
-
-    private CodeRegistry m_codeRegistry;
-
+    private String version;
+    private String type;
+    private String changeNote;
+    private String description;
+    private String definition;
+    private Map<String, String> prefLabels;
+    private CodeRegistry codeRegistry;
 
     public CodeScheme() {
-
-        m_prefLabels = new HashMap<>();
-
+        prefLabels = new HashMap<>();
     }
 
     public CodeScheme(final String codeValue,
@@ -61,76 +51,68 @@ public class CodeScheme extends AbstractCommonCode implements Serializable {
                       final String version,
                       final String type,
                       final String status) {
-
         super.setCodeValue(codeValue);
         super.setUri(url);
         super.setStatus(status);
-        m_version = version;
-        m_type = type;
-        m_prefLabels = new HashMap<>();
-
+        this.version = version;
+        this.type = type;
+        prefLabels = new HashMap<>();
     }
 
     @Column(name = "version")
     public String getVersion() {
-        return m_version;
+        return version;
     }
 
     public void setVersion(final String version) {
-        m_version = version;
+        this.version = version;
     }
-
 
     @Column(name = "type")
     public String getType() {
-        return m_type;
+        return type;
     }
 
     public void setType(final String type) {
-        m_type = type;
+        this.type = type;
     }
-
 
     @Column(name = "definition")
     public String getDefinition() {
-        return m_definition;
+        return definition;
     }
 
     public void setDefinition(final String definition) {
-        m_definition = definition;
+        this.definition = definition;
     }
-
 
     @Column(name = "description")
     public String getDescription() {
-        return m_description;
+        return description;
     }
 
     public void setDescription(final String description) {
-        m_description = description;
+        this.description = description;
     }
-
 
     @Column(name = "changenote")
     public String getChangeNote() {
-        return m_changeNote;
+        return changeNote;
     }
 
     public void setChangeNote(final String changeNote) {
-        m_changeNote = changeNote;
+        this.changeNote = changeNote;
     }
-
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "coderegistry_id", nullable = false, insertable = false, updatable = true)
     public CodeRegistry getCodeRegistry() {
-        return m_codeRegistry;
+        return codeRegistry;
     }
 
     public void setCodeRegistry(final CodeRegistry codeRegistry) {
-        m_codeRegistry = codeRegistry;
+        this.codeRegistry = codeRegistry;
     }
-
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "codescheme_preflabel", joinColumns = @JoinColumn(name = "codescheme_id", referencedColumnName = "id"))
@@ -138,43 +120,31 @@ public class CodeScheme extends AbstractCommonCode implements Serializable {
     @Column(name = "preflabel")
     @OrderColumn
     public Map<String, String> getPrefLabels() {
-
-        return m_prefLabels;
-
+        return prefLabels;
     }
 
     public void setPrefLabels(final Map<String, String> prefLabels) {
-
-        m_prefLabels = prefLabels;
-
+        this.prefLabels = prefLabels;
     }
 
     public String getPrefLabel(final String language) {
-
-        String prefLabel = m_prefLabels.get(language);
-
+        String prefLabel = prefLabels.get(language);
         if (prefLabel == null) {
-            prefLabel = m_prefLabels.get("en");
+            prefLabel = prefLabels.get("en");
         }
-
         return prefLabel;
     }
 
     public void setPrefLabel(final String language, final String name) {
-
-        if (m_prefLabels == null) {
-            m_prefLabels = new HashMap<>();
+        if (prefLabels == null) {
+            prefLabels = new HashMap<>();
         }
-
         if (language != null && name != null && !name.isEmpty()) {
-            m_prefLabels.put(language, name);
-
+            prefLabels.put(language, name);
         } else if (language != null && name == null) {
-            m_prefLabels.remove(language);
+            prefLabels.remove(language);
         }
-
-        setPrefLabels(m_prefLabels);
-
+        setPrefLabels(prefLabels);
     }
 
 }

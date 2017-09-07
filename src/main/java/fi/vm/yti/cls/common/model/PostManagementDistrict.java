@@ -18,7 +18,6 @@ import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 import java.util.List;
 
-
 /**
  * Object model that represents a postmanagementdistrict entity.
  */
@@ -36,34 +35,30 @@ public class PostManagementDistrict extends AbstractLabeledCommonCode implements
 
     private static final long serialVersionUID = 1L;
 
-    private List<PostalCode> m_postalCodes;
+    private List<PostalCode> postalCodes;
 
-
-    public PostManagementDistrict() {
-    }
-
+    public PostManagementDistrict() {}
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "postmanagementdistrict_id", nullable = true)
     public List<PostalCode> getPostalCodes() {
-        return m_postalCodes;
+        return postalCodes;
     }
 
     public void setPostalCodes(final List<PostalCode> postalCodes) {
-        m_postalCodes = postalCodes;
+        this.postalCodes = postalCodes;
     }
-
 
     public String toString() {
         return "(" +
-                "m_codeValue: " + getCodeValue() + ", " +
-                "m_url: " + getUri() + ", " +
-                "m_source: " + getSource() + ", " +
-                "m_status: " + getStatus() + ", " +
-                "m_status: " + getStatus() + ", " +
-                "m_created: " + getCreated() + ", " +
-                "m_modified: " + getModified() + ", " +
-                "m_prefLabels: " + getPrefLabels() + ")";
+                "codeValue: " + getCodeValue() + ", " +
+                "url: " + getUri() + ", " +
+                "source: " + getSource() + ", " +
+                "status: " + getStatus() + ", " +
+                "status: " + getStatus() + ", " +
+                "created: " + getCreated() + ", " +
+                "modified: " + getModified() + ", " +
+                "prefLabels: " + getPrefLabels() + ")";
     }
 
 }

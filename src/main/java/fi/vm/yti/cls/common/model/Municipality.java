@@ -23,7 +23,6 @@ import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 import java.util.Set;
 
-
 /**
  * Object model that represents a municipality entity.
  */
@@ -40,128 +39,110 @@ public class Municipality extends AbstractLabeledCommonCode implements Serializa
 
     private static final long serialVersionUID = 1L;
 
-    private String m_type;
+    private String type;
+    private Set<String> languages;
+    private Magistrate magistrate;
+    private HealthCareDistrict healthCareDistrict;
+    private Region region;
+    private MagistrateServiceUnit magistrateServiceUnit;
+    private ElectoralDistrict electoralDistrict;
+    private BusinessServiceSubRegion businessServiceSubRegion;
 
-    private Set<String> m_languages;
-
-    private Magistrate m_magistrate;
-
-    private HealthCareDistrict m_healthCareDistrict;
-
-    private Region m_region;
-
-    private MagistrateServiceUnit m_magistrateServiceUnit;
-
-    private ElectoralDistrict m_electoralDistrict;
-
-    private BusinessServiceSubRegion m_businessServiceSubRegion;
-
-
-    public Municipality() {
-    }
-
+    public Municipality() {}
 
     @Column(name = "type")
     public String getType() {
-        return m_type;
+        return type;
     }
 
     public void setType(final String type) {
-        m_type = type;
+        this.type = type;
     }
-
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "municipality_language", joinColumns = @JoinColumn(name = "municipality_id"))
     @Column(name = "language")
     @OrderColumn
     public Set<String> getLanguages() {
-        return m_languages;
+        return languages;
     }
 
     public void setLanguages(final Set<String> languages) {
-        m_languages = languages;
+        this.languages = languages;
     }
-
 
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinColumn(name = "magistrate_id")
     public Magistrate getMagistrate() {
-        return m_magistrate;
+        return magistrate;
     }
 
     public void setMagistrate(final Magistrate magistrate) {
-        m_magistrate = magistrate;
+        this.magistrate = magistrate;
     }
-
 
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinColumn(name = "region_id")
     public Region getRegion() {
-        return m_region;
+        return region;
     }
 
     public void setRegion(final Region region) {
-        m_region = region;
+        this.region = region;
     }
-
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "electoraldistrict_id", nullable = true, insertable = false, updatable = false)
     public ElectoralDistrict getElectoralDistrict() {
-        return m_electoralDistrict;
+        return electoralDistrict;
     }
 
     public void setElectoralDistrict(final ElectoralDistrict electoralDistrict) {
-        m_electoralDistrict = electoralDistrict;
+        this.electoralDistrict = electoralDistrict;
     }
-
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "magistrateserviceunit_id", nullable = true, insertable = false, updatable = false)
     public MagistrateServiceUnit getMagistrateServiceUnit() {
-        return m_magistrateServiceUnit;
+        return magistrateServiceUnit;
     }
 
     public void setMagistrateServiceUnit(final MagistrateServiceUnit magistrateServiceUnit) {
-        m_magistrateServiceUnit = magistrateServiceUnit;
+        this.magistrateServiceUnit = magistrateServiceUnit;
     }
-
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "healthcaredistrict_id", nullable = true, insertable = false, updatable = false)
     public HealthCareDistrict getHealthCareDistrict() {
-        return m_healthCareDistrict;
+        return healthCareDistrict;
     }
 
     public void setHealthCareDistrict(final HealthCareDistrict healthCareDistrict) {
-        m_healthCareDistrict = healthCareDistrict;
+        this.healthCareDistrict = healthCareDistrict;
     }
-
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "businessservicesubregion_id", nullable = true, insertable = false, updatable = false)
     public BusinessServiceSubRegion getBusinessServiceSubRegion() {
-        return m_businessServiceSubRegion;
+        return businessServiceSubRegion;
     }
 
     public void setBusinessServiceSubRegion(final BusinessServiceSubRegion businessServiceSubRegion) {
-        m_businessServiceSubRegion = businessServiceSubRegion;
+        this.businessServiceSubRegion = businessServiceSubRegion;
     }
-
 
     @Override
     public String toString() {
         return "(" +
-                "m_uri: " + getUri() + ", " +
-                "m_codeValue: " + getCodeValue() + ", " +
-                "m_source: " + getSource() + ", " +
-                "m_status: " + getStatus() + ", " +
-                "m_created: " + getCreated() + ", " +
-                "m_modified: " + getModified() + ", " +
-                "m_type: " + m_type + ", " +
-                "m_languages: " + getLanguages() + ", " +
-                "m_prefLabels: " + getPrefLabels() + ")";
+                "uri: " + getUri() + ", " +
+                "codeValue: " + getCodeValue() + ", " +
+                "source: " + getSource() + ", " +
+                "status: " + getStatus() + ", " +
+                "created: " + getCreated() + ", " +
+                "modified: " + getModified() + ", " +
+                "type: " + type + ", " +
+                "languages: " + getLanguages() + ", " +
+                "prefLabels: " + getPrefLabels() + ")";
     }
 
 }

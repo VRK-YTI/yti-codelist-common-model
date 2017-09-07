@@ -9,7 +9,6 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 
-
 /**
  * Object model that represents a region entity.
  */
@@ -23,19 +22,16 @@ public class Region extends AbstractLabeledCommonCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-
-    public Region() {
-    }
-
+    public Region() {}
 
     public String toString() {
         return "(" +
-                "m_codeValue: " + getCodeValue() + ", " +
-                "m_uri: " + getUri() + ", " +
-                "m_source: " + getSource() + ", " +
-                "m_created: " + getCreated() + ", " +
-                "m_modified: " + getModified() + ", " +
-                "m_prefLabels: " + getPrefLabels() + ")";
+                "codeValue: " + getCodeValue() + ", " +
+                "uri: " + getUri() + ", " +
+                "source: " + getSource() + ", " +
+                "created: " + getCreated() + ", " +
+                "modified: " + getModified() + ", " +
+                "prefLabels: " + getPrefLabels() + ")";
     }
 
 }

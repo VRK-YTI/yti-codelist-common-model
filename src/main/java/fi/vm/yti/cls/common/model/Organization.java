@@ -5,48 +5,39 @@ import io.swagger.annotations.ApiModel;
 
 import javax.xml.bind.annotation.XmlType;
 
-
 @XmlType(propOrder = { "name", "email", "telephone" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "Organization", description = "Organization model that represents data for one single region.")
 public class Organization {
 
-    private String m_name;
+    private String name;
+    private String email;
+    private String telephone;
 
-    private String m_email;
-
-    private String m_telephone;
-
-
-    public Organization() {
-
-    }
-
+    public Organization() {}
 
     public String getName() {
-        return m_name;
+        return name;
     }
 
     public void setName(final String name) {
-        m_name = name;
+        this.name = name;
     }
 
-
     public String getEmail() {
-        return m_email;
+        return email;
     }
 
     public void setEmail(final String email) {
-        m_email = email;
+        this.email = email;
     }
 
-
     public String getTelephone() {
-        return m_telephone;
+        return telephone;
     }
 
     public void setTelephone(final String telephone) {
-        m_telephone = telephone;
+        this.telephone = telephone;
     }
 
 }

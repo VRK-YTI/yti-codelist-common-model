@@ -18,7 +18,6 @@ import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 import java.util.List;
 
-
 /**
  * Object model that represents an electoral district entity.
  */
@@ -36,33 +35,29 @@ public class ElectoralDistrict extends AbstractLabeledCommonCode implements Seri
 
     private static final long serialVersionUID = 1L;
 
-    private List<Municipality> m_municipalities;
+    private List<Municipality> municipalities;
 
-
-    public ElectoralDistrict() {
-    }
-
+    public ElectoralDistrict() {}
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "electoraldistrict_id", nullable = true)
     public List<Municipality> getMunicipalities() {
-        return m_municipalities;
+        return municipalities;
     }
 
     public void setMunicipalities(final List<Municipality> municipalities) {
-        m_municipalities = municipalities;
+        this.municipalities = municipalities;
     }
-
 
     public String toString() {
         return "(" +
-                "m_codeValue: " + getCodeValue() + ", " +
-                "m_url: " + getUri() + ", " +
-                "m_source: " + getSource() + ", " +
-                "m_status: " + getStatus() + ", " +
-                "m_created: " + getCreated() + ", " +
-                "m_modified: " + getModified() + ", " +
-                "m_prefLabels: " + getPrefLabels() + ")";
+                "codeValue: " + getCodeValue() + ", " +
+                "url: " + getUri() + ", " +
+                "source: " + getSource() + ", " +
+                "status: " + getStatus() + ", " +
+                "created: " + getCreated() + ", " +
+                "modified: " + getModified() + ", " +
+                "prefLabels: " + getPrefLabels() + ")";
     }
 
 }

@@ -10,7 +10,6 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 
-
 /**
  * Object model that represents a business id entity.
  */
@@ -24,46 +23,41 @@ public class BusinessId extends AbstractLabeledCommonCode implements Serializabl
 
     private static final long serialVersionUID = 1L;
 
-    private String m_companyForm;
-
-    private String m_detailsUri;
-
+    private String companyForm;
+    private String detailsUri;
 
     public BusinessId() {
     }
 
-
     @Column(name = "companyform")
     public String getCompanyForm() {
-        return m_companyForm;
+        return companyForm;
     }
 
     public void setCompanyForm(final String companyForm) {
-        this.m_companyForm = companyForm;
+        this.companyForm = companyForm;
     }
-
 
     @Column(name = "detailsuri")
     public String getDetailsUri() {
-        return m_detailsUri;
+        return detailsUri;
     }
 
     public void setDetailsUri(final String detailsUri) {
-        m_detailsUri = detailsUri;
+        this.detailsUri = detailsUri;
     }
-
 
     public String toString() {
         return "(" +
-                "m_code: " + getCodeValue() + ", " +
-                "m_uri: " + getUri() + ", " +
-                "m_detailsUri: " + getDetailsUri() + ", " +
-                "m_source: " + getSource() + ", " +
-                "m_status: " + getStatus() + ", " +
-                "m_created: " + getCreated() + ", " +
-                "m_modified: " + getModified() + ", " +
-                "m_prefLabels: " + getPrefLabels() + ", " +
-                "m_companyForm: " + getCompanyForm() + ")";
+                "code: " + getCodeValue() + ", " +
+                "uri: " + getUri() + ", " +
+                "detailsUri: " + getDetailsUri() + ", " +
+                "source: " + getSource() + ", " +
+                "status: " + getStatus() + ", " +
+                "created: " + getCreated() + ", " +
+                "modified: " + getModified() + ", " +
+                "prefLabels: " + getPrefLabels() + ", " +
+                "companyForm: " + getCompanyForm() + ")";
     }
 
 }

@@ -17,142 +17,120 @@ public class Meta {
 
     private static final Logger LOG = LoggerFactory.getLogger(Meta.class);
 
-    private Integer m_code;
+    private Integer code;
+    private String message;
+    private CodeScheme register;
+    private Integer pageSize;
+    private Integer from;
+    private Integer resultCount;
+    private Integer totalResults;
+    private Date after;
+    private String afterResourceUrl;
+    private String nextPage;
 
-    private String m_message;
-
-    private CodeScheme m_register;
-
-    private Integer m_pageSize;
-
-    private Integer m_from;
-
-    private Integer m_resultCount;
-
-    private Integer m_totalResults;
-
-    private Date m_after;
-
-    private String m_afterResourceUrl;
-
-    private String m_nextPage;
-
-    public Meta() {
-
-    }
+    public Meta() {}
 
     public Meta(final Integer code,
                 final Integer pageSize,
                 final Integer from,
                 final String after) {
-
-        m_code = code;
-
-        m_pageSize = pageSize;
-
-        m_from = from;
-
-        m_after = parseAfterFromString(after);
-
+        this.code = code;
+        this.pageSize = pageSize;
+        this.from = from;
+        this.after = parseAfterFromString(after);
     }
 
-
     public Integer getCode() {
-        return m_code;
+        return code;
     }
 
     public void setCode(final Integer code) {
-        m_code = code;
+        this.code = code;
     }
 
     public String getMessage() {
-        return m_message;
+        return message;
     }
 
     public void setMessage(final String message) {
-        m_message = message;
+        this.message = message;
     }
 
     public Integer getPageSize() {
-        return m_pageSize;
+        return pageSize;
     }
 
     public void setPageSize(final Integer pageSize) {
-        m_pageSize = pageSize;
+        this.pageSize = pageSize;
     }
 
     public Integer getFrom() {
-        return m_from;
+        return from;
     }
 
     public void setFrom(final Integer from) {
-        m_from = from;
+        this.from = from;
     }
 
     public Integer getResultCount() {
-        return m_resultCount;
+        return resultCount;
     }
 
     public void setResultCount(final Integer resultCount) {
-        m_resultCount = resultCount;
+        this.resultCount = resultCount;
     }
 
     public Integer getTotalResults() {
-        return m_totalResults;
+        return totalResults;
     }
 
     public void setTotalResults(final Integer totalResults) {
-        m_totalResults = totalResults;
+        this.totalResults = totalResults;
     }
 
     public Date getAfter() {
-
-        if (m_after != null) {
-            return new Date(m_after.getTime());
+        if (after != null) {
+            return new Date(after.getTime());
         }
         return null;
-
     }
 
     public void setAfter(final Date after) {
-
         if (after != null) {
-            m_after = new Date(after.getTime());
+            this.after = new Date(after.getTime());
         } else {
-            m_after = null;
+            this.after = null;
         }
-
     }
 
     public String getAfterResourceUrl() {
-        return m_afterResourceUrl;
+        return afterResourceUrl;
     }
 
     public void setAfterResourceUrl(final String afterResourceUrl) {
-        m_afterResourceUrl = afterResourceUrl;
+        this.afterResourceUrl = afterResourceUrl;
     }
 
 
     public String getNextPage() {
-        return m_nextPage;
+        return nextPage;
     }
 
     public void setNextPage(final String nextPage) {
-        m_nextPage = nextPage;
+        this.nextPage = nextPage;
     }
 
 
     public CodeScheme getRegister() {
-        return m_register;
+        return register;
     }
 
     public void setRegister(final CodeScheme register) {
-        m_register = register;
+        this.register = register;
     }
 
 
     public Date parseAfterFromString(final String after) {
-
         if (after != null) {
             final ISO8601DateFormat dateFormat = new ISO8601DateFormat();
             try {
@@ -161,9 +139,7 @@ public class Meta {
                 LOG.error("Parsing date from string failed: " + e.getMessage());
             }
         }
-
         return null;
-
     }
 
 }

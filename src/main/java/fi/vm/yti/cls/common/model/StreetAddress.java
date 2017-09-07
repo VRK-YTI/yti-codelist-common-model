@@ -19,7 +19,6 @@ import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 import java.util.List;
 
-
 /**
  * Object model that represents a street address entity.
  */
@@ -71,45 +70,38 @@ public class StreetAddress extends AbstractLabeledCommonCode implements Serializ
 
     private static final long serialVersionUID = 1L;
 
-    private Municipality m_municipality;
+    private Municipality municipality;
+    private List<StreetNumber> streetNumbers;
 
-    private List<StreetNumber> m_streetNumbers;
-
-
-    public StreetAddress() {
-
-    }
-
+    public StreetAddress() {}
 
     @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinColumn(name = "municipality_id")
     public Municipality getMunicipality() {
-        return m_municipality;
+        return municipality;
     }
 
     public void setMunicipality(final Municipality municipality) {
-        m_municipality = municipality;
+        this.municipality = municipality;
     }
-
 
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "streetAddress")
     public List<StreetNumber> getStreetNumbers() {
-        return m_streetNumbers;
+        return streetNumbers;
     }
 
     public void setStreetNumbers(final List<StreetNumber> streetNumbers) {
-        m_streetNumbers = streetNumbers;
+        this.streetNumbers = streetNumbers;
     }
-
 
     public String toString() {
         return "(" +
-                "m_uri: " + getUri() + ", " +
-                "m_source: " + getSource() + ", " +
-                "m_status: " + getStatus() + ", " +
-                "m_created: " + getCreated() + ", " +
-                "m_modified: " + getModified() + ", " +
-                "m_prefLabels: " + getPrefLabels() + ")";
+                "uri: " + getUri() + ", " +
+                "source: " + getSource() + ", " +
+                "status: " + getStatus() + ", " +
+                "created: " + getCreated() + ", " +
+                "modified: " + getModified() + ", " +
+                "prefLabels: " + getPrefLabels() + ")";
     }
 
 }

@@ -18,7 +18,6 @@ import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 import java.util.List;
 
-
 /**
  * Object model that represents a business service subregion entity.
  */
@@ -36,33 +35,30 @@ public class BusinessServiceSubRegion extends AbstractLabeledCommonCode implemen
 
     private static final long serialVersionUID = 1L;
 
-    private List<Municipality> m_municipalities;
-
+    private List<Municipality> municipalities;
 
     public BusinessServiceSubRegion() {
     }
 
-
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "businessservicesubregion_id", nullable = true)
     public List<Municipality> getMunicipalities() {
-        return m_municipalities;
+        return municipalities;
     }
 
     public void setMunicipalities(final List<Municipality> municipalities) {
-        m_municipalities = municipalities;
+        this.municipalities = municipalities;
     }
-
 
     public String toString() {
         return "(" +
-                "m_codeValue: " + getCodeValue() + ", " +
-                "m_uri: " + getUri() + ", " +
-                "m_source: " + getSource() + ", " +
-                "m_status: " + getStatus() + ", " +
-                "m_created: " + getCreated() + ", " +
-                "m_modified: " + getModified() + ", " +
-                "m_prefLabels: " + getPrefLabels() + ")";
+                "codeValue: " + getCodeValue() + ", " +
+                "uri: " + getUri() + ", " +
+                "source: " + getSource() + ", " +
+                "status: " + getStatus() + ", " +
+                "created: " + getCreated() + ", " +
+                "modified: " + getModified() + ", " +
+                "prefLabels: " + getPrefLabels() + ")";
     }
 
 }

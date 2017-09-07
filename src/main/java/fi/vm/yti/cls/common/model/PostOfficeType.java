@@ -1,6 +1,5 @@
 package fi.vm.yti.cls.common.model;
 
-
 /**
  * Enumeration for postoffice types.
  */
@@ -15,29 +14,24 @@ public enum PostOfficeType {
     NOUTOPISTE(6, "Noutopiste"),
     TEKNINEN(7, "Tekninen postinumero");
 
-    private final int m_value;
+    private final int value;
 
-    private final String m_name;
-
+    private final String name;
 
     PostOfficeType(final int value, final String name) {
-        m_value = value;
-        m_name = name;
+        this.value = value;
+        this.name = name;
     }
-
 
     public int getValue() {
-        return m_value;
+        return value;
     }
-
 
     public String getName() {
-        return m_name;
+        return name;
     }
 
-
     static final PostOfficeType TYPES[] = values();
-
 
     public static PostOfficeType valueOf(final int value) {
         if (value >= 0 && value < TYPES.length) {

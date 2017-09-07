@@ -19,7 +19,6 @@ import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 import java.util.List;
 
-
 /**
  * Object model that represents a healthcare district entity.
  */
@@ -37,60 +36,52 @@ public class HealthCareDistrict extends AbstractLabeledCommonCode implements Ser
 
     private static final long serialVersionUID = 1L;
 
-    private String m_specialAreaOfResponsibility;
+    private String specialAreaOfResponsibility;
+    private String abbreviation;
+    private List<Municipality> municipalities;
 
-    private String m_abbreviation;
-
-    private List<Municipality> m_municipalities;
-
-
-    public HealthCareDistrict() {
-    }
-
+    public HealthCareDistrict() {}
 
     @Column(name = "specialareaofresponsibility")
     public String getSpecialAreaOfResponsibility() {
-        return m_specialAreaOfResponsibility;
+        return specialAreaOfResponsibility;
     }
 
     public void setSpecialAreaOfResponsibility(final String specialAreaOfResponsibility) {
-        m_specialAreaOfResponsibility = specialAreaOfResponsibility;
+        this.specialAreaOfResponsibility = specialAreaOfResponsibility;
     }
-
 
     @Column(name = "abbreviation")
     public String getAbbreviation() {
-        return m_abbreviation;
+        return abbreviation;
     }
 
     public void setAbbreviation(final String abbreviation) {
-        m_abbreviation = abbreviation;
+        this.abbreviation = abbreviation;
     }
-
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "healthcaredistrict_id", nullable = true)
     public List<Municipality> getMunicipalities() {
-        return m_municipalities;
+        return municipalities;
     }
 
     public void setMunicipalities(final List<Municipality> municipalities) {
-        m_municipalities = municipalities;
+        this.municipalities = municipalities;
     }
-
 
     @Override
     public String toString() {
         return "(" +
-                "m_codeValue: " + getCodeValue() + ", " +
-                "m_uri: " + getUri() + ", " +
-                "m_source: " + getSource() + ", " +
-                "m_status: " + getStatus() + ", " +
-                "m_created: " + getCreated() + ", " +
-                "m_modified: " + getModified() + ", " +
-                "m_specialAreaOfResponsibility: " + getSpecialAreaOfResponsibility() + ", " +
-                "m_prefLabels: " + getPrefLabels() + ", " +
-                "m_abbreviation: " + getAbbreviation() + ")";
+                "codeValue: " + getCodeValue() + ", " +
+                "uri: " + getUri() + ", " +
+                "source: " + getSource() + ", " +
+                "status: " + getStatus() + ", " +
+                "created: " + getCreated() + ", " +
+                "modified: " + getModified() + ", " +
+                "specialAreaOfResponsibility: " + getSpecialAreaOfResponsibility() + ", " +
+                "prefLabels: " + getPrefLabels() + ", " +
+                "abbreviation: " + getAbbreviation() + ")";
     }
 
 }

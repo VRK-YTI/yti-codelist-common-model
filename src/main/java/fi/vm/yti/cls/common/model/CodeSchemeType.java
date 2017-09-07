@@ -1,33 +1,26 @@
 package fi.vm.yti.cls.common.model;
 
-
 public enum CodeSchemeType {
 
     CODELIST("CodeList", "Generic codelist."),
     CODELIST_CUSTOM("Custom CodeList", "Custom codelist.");
 
-    private String m_name;
+    private String name;
 
-    private String m_description;
-
+    private String description;
 
     CodeSchemeType(final String name,
                    final String description) {
-
-        m_name = name;
-
-        m_description = description;
-
+        this.name = name;
+        this.description = description;
     }
-
 
     public String getDescription() {
-        return m_description;
+        return description;
     }
 
-
     public String getName() {
-        return m_name;
+        return name;
     }
 
 }

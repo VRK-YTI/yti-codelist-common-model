@@ -25,13 +25,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-
 /**
  * Object model that represents a postal code entity.
  */
 @Entity
 @JsonFilter("postalCode")
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "codeValue", scope = PostalCode.class)
 @Table(name ="postalcode")
 @Proxy(lazy = false)
 @XmlRootElement
@@ -43,197 +41,161 @@ public class PostalCode extends AbstractLabeledCommonCode implements Serializabl
 
     private static final long serialVersionUID = 1L;
 
-    private Integer m_typeCode;
-
-    private String m_typeName;
-
-    private String m_nameAbbrFinnish;
-
-    private String m_nameAbbrSwedish;
-
-    private String m_nameAbbrEnglish;
-
-    private Date m_runDate;
-
-    private Date m_validDate;
-
-    private Municipality m_municipality;
-
-    private PostManagementDistrict m_postManagementDistrict;
-
-    private Map<String, String> m_abbreviations;
-
+    private Integer typeCode;
+    private String typeName;
+    private String nameAbbrFinnish;
+    private String nameAbbrSwedish;
+    private String nameAbbrEnglish;
+    private Date runDate;
+    private Date validDate;
+    private Municipality municipality;
+    private PostManagementDistrict postManagementDistrict;
+    private Map<String, String> abbreviations;
 
     public PostalCode() {
-
-        m_abbreviations = new HashMap<>();
-
+        abbreviations = new HashMap<>();
     }
-
 
     @XmlTransient
     @Transient
     public Date getRunDate() {
-
-        if (m_runDate != null) {
-            return new Date(m_runDate.getTime());
+        if (runDate != null) {
+            return new Date(runDate.getTime());
         }
         return null;
-
     }
 
     public void setRunDate(final Date runDate) {
-
         if (runDate != null) {
-            m_runDate = new Date(runDate.getTime());
+            this.runDate = new Date(runDate.getTime());
         }
-        m_runDate = null;
-
+        this.runDate = null;
     }
-
 
     @XmlTransient
     @Transient
     public Date getValidDate() {
-
-        if (m_validDate != null) {
-            return new Date(m_validDate.getTime());
+        if (validDate != null) {
+            return new Date(validDate.getTime());
         }
         return null;
-
     }
 
     public void setValidDate(final Date validDate) {
-
         if (validDate != null) {
-            m_validDate = new Date(validDate.getTime());
+            this.validDate = new Date(validDate.getTime());
         }
-        m_validDate = null;
-
+        this.validDate = null;
     }
-
 
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinColumn(name = "municipality_id")
     public Municipality getMunicipality() {
-        return m_municipality;
+        return municipality;
     }
 
     public void setMunicipality(final Municipality municipality) {
-        m_municipality = municipality;
+        this.municipality = municipality;
     }
-
 
     @Column(name = "typecode")
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     public Integer getTypeCode() {
-        return m_typeCode;
+        return typeCode;
     }
 
     public void setTypeCode(final Integer typeCode) {
-        m_typeCode = typeCode;
+        this.typeCode = typeCode;
     }
-
 
     @Column(name = "typename")
     public String getTypeName() {
-        return m_typeName;
+        return typeName;
     }
 
     public void setTypeName(final String typeName) {
-        m_typeName = typeName;
+        this.typeName = typeName;
     }
-
 
     @JsonIgnore
     @Column(name = "nameabbr_fi")
     public String getNameAbbrFinnish() {
-        return m_nameAbbrFinnish;
+        return nameAbbrFinnish;
     }
 
     public void setNameAbbrFinnish(final String nameAbbrFinnish) {
 
         addAbbreviation("fi", nameAbbrFinnish);
-        m_nameAbbrFinnish = nameAbbrFinnish;
+        this.nameAbbrFinnish = nameAbbrFinnish;
 
     }
-
 
     @JsonIgnore
     @Column(name = "nameabbr_se")
     public String getNameAbbrSwedish() {
-        return m_nameAbbrSwedish;
+        return nameAbbrSwedish;
     }
 
     public void setNameAbbrSwedish(final String nameAbbrSwedish) {
 
         addAbbreviation("se", nameAbbrSwedish);
-        m_nameAbbrSwedish = nameAbbrSwedish;
+        this.nameAbbrSwedish = nameAbbrSwedish;
 
     }
-
 
     @JsonIgnore
     @Column(name = "nameabbr_en")
     public String getNameAbbrEnglish() {
-        return m_nameAbbrEnglish;
+        return nameAbbrEnglish;
     }
 
     public void setNameAbbrEnglish(final String nameAbbrEnglish) {
-
         addAbbreviation("en", nameAbbrEnglish);
-        m_nameAbbrEnglish = nameAbbrEnglish;
-
+        this.nameAbbrEnglish = nameAbbrEnglish;
     }
-
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "postmanagementdistrict_id", nullable = true, insertable = false, updatable = false)
     public PostManagementDistrict getPostManagementDistrict() {
-        return m_postManagementDistrict;
+        return postManagementDistrict;
     }
 
     public void setPostManagementDistrict(final PostManagementDistrict postManagementDistrict) {
-        m_postManagementDistrict = postManagementDistrict;
+        this.postManagementDistrict = postManagementDistrict;
     }
-
 
     @JsonProperty
     @Transient
     public Map<String, String> getAbbreviations() {
 
-        return m_abbreviations;
+        return abbreviations;
 
     }
-
 
     private void addAbbreviation(final String language, final String abbreviation) {
-
         if (language != null && abbreviation != null && !abbreviation.isEmpty()) {
-            m_abbreviations.put(language, abbreviation);
+            abbreviations.put(language, abbreviation);
 
         } else if (language != null && abbreviation == null) {
-            m_abbreviations.remove(language);
+            abbreviations.remove(language);
         }
-
     }
-
 
     @Override
     public String toString() {
         return "(" +
-                "m_codeValue: " + getCodeValue() + ", " +
-                "m_uri: " + getUri() + ", " +
-                "m_source: " + getSource() + ", " +
-                "m_status: " + getStatus() + ", " +
-                "m_created: " + getCreated() + ", " +
-                "m_modified: " + getModified() + ", " +
-                "m_runDate: " + m_runDate + ", " +
-                "m_validDate: " + m_validDate + ", " +
-                "m_typeCode: " + m_typeCode + ", " +
-                "m_typeName: '" + m_typeName + ", " +
-                "m_prefLabels: '" + getPrefLabels() + ", " +
-                "m_abbreviations: '" + getAbbreviations() + ")";
+                "codeValue: " + getCodeValue() + ", " +
+                "uri: " + getUri() + ", " +
+                "source: " + getSource() + ", " +
+                "status: " + getStatus() + ", " +
+                "created: " + getCreated() + ", " +
+                "modified: " + getModified() + ", " +
+                "runDate: " + runDate + ", " +
+                "validDate: " + validDate + ", " +
+                "typeCode: " + typeCode + ", " +
+                "typeName: '" + typeName + ", " +
+                "prefLabels: '" + getPrefLabels() + ", " +
+                "abbreviations: '" + getAbbreviations() + ")";
     }
 
 }

@@ -1,6 +1,5 @@
 package fi.vm.yti.cls.common.model;
 
-
 /**
  * These are ISO 19135-1 spec status codes for registry status.
  *
@@ -14,29 +13,21 @@ public enum Status {
     RETIRED("Retired", "A decision has been made that the item is no longer recommended for use. It has not been superseded by another item."),
     SUBMITTED("Submitted", "The item has been entered into the register, but the control body has not accepted the proposal to add it.");
 
-
-    private String m_name;
-
-    private String m_description;
-
+    private String name;
+    private String description;
 
     Status(final String name,
            final String description) {
-
-        m_name = name;
-
-        m_description = description;
-
+        this.name = name;
+        this.description = description;
     }
-
 
     public String getDescription() {
-        return m_description;
+        return description;
     }
 
-
     public String getName() {
-        return m_name;
+        return name;
     }
 
 }

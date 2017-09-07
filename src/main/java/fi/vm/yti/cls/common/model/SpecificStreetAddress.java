@@ -5,7 +5,8 @@ import io.swagger.annotations.ApiModel;
 
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder = { "url", "id", "source", "status", "created", "modified", "names", "number", "character", "postalCode" })
+
+@XmlType(propOrder = { "uri", "id", "source", "status", "created", "modified", "prefLabels", "number", "character", "postalCode" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "SpecificStreetAddress", description = "StreetAddress model that represents data for a street address with a specific street number.")
 public class SpecificStreetAddress extends StreetAddress {
@@ -25,10 +26,10 @@ public class SpecificStreetAddress extends StreetAddress {
 
     public SpecificStreetAddress(final StreetAddress streetAddress) {
 
-        final String nameFinnish = streetAddress.getNames().get("fi");
-        final String nameSwedish = streetAddress.getNames().get("se");
-        setNameFinnish(nameFinnish);
-        setNameSwedish(nameSwedish);
+        final String nameFinnish = streetAddress.getPrefLabels().get("fi");
+        final String nameSwedish = streetAddress.getPrefLabels().get("se");
+        setPrefLabelFi(nameFinnish);
+        setPrefLabelSe(nameSwedish);
         setCreated(streetAddress.getCreated());
         setModified(streetAddress.getModified());
         setMunicipality(streetAddress.getMunicipality());

@@ -1,7 +1,7 @@
 package fi.vm.yti.cls.common.model;
 
 
-public enum RegisterType {
+public enum CodeSchemeType {
 
     CODELIST("CodeList", "Generic codelist."),
     CODELIST_CUSTOM("Custom CodeList", "Custom codelist.");
@@ -11,8 +11,8 @@ public enum RegisterType {
     private String m_description;
 
 
-    RegisterType(final String name,
-                 final String description) {
+    CodeSchemeType(final String name,
+                   final String description) {
 
         m_name = name;
 

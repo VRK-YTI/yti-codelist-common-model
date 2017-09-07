@@ -24,30 +24,19 @@ public class AbstractBaseCode {
 
     private String m_id;
 
-    private String m_nameFinnish;
-
-    private String m_nameSwedish;
-
-    private String m_nameEnglish;
-
     private String m_source;
 
     private Date m_created;
 
     private Date m_modified;
 
-    private String m_url;
+    private Date m_startDate;
 
-    private Map<String, String> m_names;
+    private Date m_endDate;
+
+    private String m_uri;
 
     private String m_status;
-
-
-    public AbstractBaseCode() {
-
-        m_names = new HashMap<>();
-
-    }
 
 
     @Id
@@ -58,48 +47,6 @@ public class AbstractBaseCode {
 
     public void setId(final String id) {
         m_id = id;
-    }
-
-
-    @JsonIgnore
-    @Column(name = "name_fi")
-    public String getNameFinnish() {
-        return m_nameFinnish;
-    }
-
-    public void setNameFinnish(final String nameFinnish) {
-
-        addName("fi", nameFinnish);
-        m_nameFinnish = nameFinnish;
-
-    }
-
-
-    @JsonIgnore
-    @Column(name = "name_se")
-    public String getNameSwedish() {
-        return m_nameSwedish;
-    }
-
-    public void setNameSwedish(final String nameSwedish) {
-
-        addName("se", nameSwedish);
-        m_nameSwedish = nameSwedish;
-
-    }
-
-
-    @JsonIgnore
-    @Column(name = "name_en")
-    public String getNameEnglish() {
-        return m_nameEnglish;
-    }
-
-    public void setNameEnglish(final String nameEnglish) {
-
-        addName("en", nameEnglish);
-        m_nameEnglish = nameEnglish;
-
     }
 
 
@@ -122,6 +69,53 @@ public class AbstractBaseCode {
             m_created = new Date(created.getTime());
         } else {
             m_created = null;
+        }
+
+    }
+
+
+    @ApiModelProperty(dataType = "dateTime")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "startdate")
+    public Date getStartDate() {
+        if (m_startDate != null) {
+            return new Date(m_startDate.getTime());
+        }
+        return null;
+
+    }
+
+    public void setStartDate(final Date startDate) {
+
+        if (startDate != null) {
+            m_startDate = new Date(startDate.getTime());
+        } else {
+            m_startDate = null;
+        }
+
+    }
+
+
+    @ApiModelProperty(dataType = "dateTime")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "enddate")
+    public Date getEndDate() {
+
+        if (m_endDate != null) {
+            return new Date(m_endDate.getTime());
+        }
+        return null;
+
+    }
+
+    public void setEndDate(final Date endDate) {
+
+        if (endDate != null) {
+            m_endDate = new Date(endDate.getTime());
+        } else {
+            m_endDate = null;
         }
 
     }
@@ -161,13 +155,13 @@ public class AbstractBaseCode {
     }
 
 
-    @Column(name = "url")
-    public String getUrl() {
-        return m_url;
+    @Column(name = "uri")
+    public String getUri() {
+        return m_uri;
     }
 
-    public void setUrl(final String url) {
-        m_url = url;
+    public void setUri(final String uri) {
+        m_uri = uri;
     }
 
 
@@ -178,27 +172,6 @@ public class AbstractBaseCode {
 
     public void setStatus(final String status) {
         m_status = status;
-    }
-
-
-    @JsonProperty
-    @Transient
-    public Map<String, String> getNames() {
-
-        return m_names;
-
-    }
-
-
-    private void addName(final String language, final String name) {
-
-        if (language != null && name != null && !name.isEmpty()) {
-            m_names.put(language, name);
-
-        } else if (language != null && name == null) {
-            m_names.remove(language);
-        }
-
     }
 
 }

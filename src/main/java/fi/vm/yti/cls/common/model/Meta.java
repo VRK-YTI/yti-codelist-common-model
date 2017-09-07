@@ -21,7 +21,7 @@ public class Meta {
 
     private String m_message;
 
-    private Register m_register;
+    private CodeScheme m_register;
 
     private Integer m_pageSize;
 
@@ -142,11 +142,11 @@ public class Meta {
     }
 
 
-    public Register getRegister() {
+    public CodeScheme getRegister() {
         return m_register;
     }
 
-    public void setRegister(final Register register) {
+    public void setRegister(final CodeScheme register) {
         m_register = register;
     }
 

@@ -16,10 +16,10 @@ import java.io.Serializable;
 @Entity
 @JsonFilter("region")
 @Table(name = "region")
-@XmlType(propOrder = { "code", "url", "id", "source", "status", "created", "modified", "names" })
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "created", "modified", "prefLabels" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "Region", description = "Region model that represents data for one single region.")
-public class Region extends AbstractCommonCode implements Serializable {
+public class Region extends AbstractLabeledCommonCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -30,12 +30,12 @@ public class Region extends AbstractCommonCode implements Serializable {
 
     public String toString() {
         return "(" +
-                "m_code: " + getCode() + ", " +
-                "m_url: " + getUrl() + ", " +
+                "m_codeValue: " + getCodeValue() + ", " +
+                "m_uri: " + getUri() + ", " +
                 "m_source: " + getSource() + ", " +
                 "m_created: " + getCreated() + ", " +
                 "m_modified: " + getModified() + ", " +
-                "m_names: " + getNames() + ")";
+                "m_prefLabels: " + getPrefLabels() + ")";
     }
 
 }

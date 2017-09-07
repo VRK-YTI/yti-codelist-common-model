@@ -25,15 +25,15 @@ import java.util.List;
  */
 @Entity
 @JsonFilter("healthCareDistrict")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "code", scope = HealthCareDistrict.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "codeValue", scope = HealthCareDistrict.class)
 @Table(name = "healthcaredistrict")
 @Proxy(lazy = false)
 @XmlRootElement
-@XmlType(propOrder = { "code", "url", "id", "source", "status", "created", "modified", "names", "specialAreaOfResponsibility", "abbreviation", "municipalities"})
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "created", "modified", "prefLabels", "specialAreaOfResponsibility", "abbreviation", "municipalities"})
 @JsonIgnoreProperties(value = { "municipalities" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "HealthCareDistrict", description = "HealthCareDistrict model that represents data for one single healthcaredistrict.")
-public class HealthCareDistrict extends AbstractCommonCode implements Serializable {
+public class HealthCareDistrict extends AbstractLabeledCommonCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -82,14 +82,14 @@ public class HealthCareDistrict extends AbstractCommonCode implements Serializab
     @Override
     public String toString() {
         return "(" +
-                "m_code: " + getCode() + ", " +
-                "m_url: " + getUrl() + ", " +
+                "m_codeValue: " + getCodeValue() + ", " +
+                "m_uri: " + getUri() + ", " +
                 "m_source: " + getSource() + ", " +
                 "m_status: " + getStatus() + ", " +
                 "m_created: " + getCreated() + ", " +
                 "m_modified: " + getModified() + ", " +
                 "m_specialAreaOfResponsibility: " + getSpecialAreaOfResponsibility() + ", " +
-                "m_names: " + getNames() + ", " +
+                "m_prefLabels: " + getPrefLabels() + ", " +
                 "m_abbreviation: " + getAbbreviation() + ")";
     }
 

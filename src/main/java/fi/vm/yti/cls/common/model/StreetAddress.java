@@ -28,7 +28,7 @@ import java.util.List;
 @Table(name = "streetaddress")
 @NamedEntityGraph(name = "streetAddressListing",
         attributeNodes = {
-            @NamedAttributeNode(value = "url"),
+            @NamedAttributeNode(value = "uri"),
             @NamedAttributeNode(value = "municipality", subgraph = "municipality"),
             @NamedAttributeNode(value = "streetNumbers", subgraph = "streetNumbers")
         },
@@ -36,7 +36,7 @@ import java.util.List;
             @NamedSubgraph(name = "streetNumbers",
                     type = StreetNumber.class,
                     attributeNodes = {
-                            @NamedAttributeNode("url"),
+                            @NamedAttributeNode("uri"),
                             @NamedAttributeNode(value = "postalCode", subgraph = "postalCode"),
                             @NamedAttributeNode(value = "streetAddress", subgraph = "streetAddress")
                     }
@@ -44,7 +44,7 @@ import java.util.List;
             @NamedSubgraph(name = "municipality",
                     type = Municipality.class,
                     attributeNodes = {
-                            @NamedAttributeNode("url")
+                            @NamedAttributeNode("uri")
                     }
             )
         },
@@ -52,22 +52,22 @@ import java.util.List;
                 @NamedSubgraph(name = "postalCode",
                         type = PostalCode.class,
                         attributeNodes = {
-                                @NamedAttributeNode("url")
+                                @NamedAttributeNode("uri")
                         }
                 ),
                 @NamedSubgraph(name = "streetAddress",
                         type = StreetAddress.class,
                         attributeNodes = {
-                                @NamedAttributeNode("url")
+                                @NamedAttributeNode("uri")
                         }
                 )
         }
 )
-@XmlType(propOrder = { "url", "id", "source", "status", "created", "modified", "names", "municipality", "streetNumbers" })
+@XmlType(propOrder = { "uri", "id", "source", "status", "created", "modified", "prefLabels", "municipality", "streetNumbers" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonIgnoreProperties(value = { "code" })
 @ApiModel(value = "StreetAddress", description = "StreetAddress model that represents data for one single streetaddress.")
-public class StreetAddress extends AbstractBaseCode implements Serializable {
+public class StreetAddress extends AbstractLabeledCommonCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -104,12 +104,12 @@ public class StreetAddress extends AbstractBaseCode implements Serializable {
 
     public String toString() {
         return "(" +
-                "m_url: " + getUrl() + ", " +
+                "m_uri: " + getUri() + ", " +
                 "m_source: " + getSource() + ", " +
                 "m_status: " + getStatus() + ", " +
                 "m_created: " + getCreated() + ", " +
                 "m_modified: " + getModified() + ", " +
-                "m_names: " + getNames() + ")";
+                "m_prefLabels: " + getPrefLabels() + ")";
     }
 
 }

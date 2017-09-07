@@ -31,15 +31,15 @@ import java.util.Map;
  */
 @Entity
 @JsonFilter("postalCode")
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "code", scope = PostalCode.class)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "codeValue", scope = PostalCode.class)
 @Table(name ="postalcode")
 @Proxy(lazy = false)
 @XmlRootElement
-@XmlType(propOrder = { "code", "url", "id", "source", "status", "created", "modified", "names", "abbreviations", "typeCode", "typeName", "postManagementDistrict", "municipality"})
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "created", "modified", "prefLabels", "abbreviations", "typeCode", "typeName", "postManagementDistrict", "municipality"})
 @JsonIgnoreProperties(value = { "validDate", "runDate" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "PostalCode", description = "PostalCode model that represents data for one single postal code.")
-public class PostalCode extends AbstractCommonCode implements Serializable {
+public class PostalCode extends AbstractLabeledCommonCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -222,8 +222,8 @@ public class PostalCode extends AbstractCommonCode implements Serializable {
     @Override
     public String toString() {
         return "(" +
-                "m_code: " + getCode() + ", " +
-                "m_url: " + getUrl() + ", " +
+                "m_codeValue: " + getCodeValue() + ", " +
+                "m_uri: " + getUri() + ", " +
                 "m_source: " + getSource() + ", " +
                 "m_status: " + getStatus() + ", " +
                 "m_created: " + getCreated() + ", " +
@@ -232,7 +232,7 @@ public class PostalCode extends AbstractCommonCode implements Serializable {
                 "m_validDate: " + m_validDate + ", " +
                 "m_typeCode: " + m_typeCode + ", " +
                 "m_typeName: '" + m_typeName + ", " +
-                "m_names: '" + getNames() + ", " +
+                "m_prefLabels: '" + getPrefLabels() + ", " +
                 "m_abbreviations: '" + getAbbreviations() + ")";
     }
 

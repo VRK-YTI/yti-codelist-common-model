@@ -29,14 +29,14 @@ import java.util.Set;
  */
 @Entity
 @JsonFilter("municipality")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "code", scope = Municipality.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "codeValue", scope = Municipality.class)
 @Table(name = "municipality")
 @Proxy(lazy = false)
 @XmlRootElement
-@XmlType(propOrder = { "code", "url", "id", "source", "created", "modified", "names", "type", "languages", "magistrate", "region", "healthCareDistrict", "electoralDistrict", "magistrateServiceUnit", "businessServiceSubRegion" })
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "created", "modified", "prefLabels", "type", "languages", "magistrate", "region", "healthCareDistrict", "electoralDistrict", "magistrateServiceUnit", "businessServiceSubRegion" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "Municipality", description = "Municipality model that represents data for one single municipality.")
-public class Municipality extends AbstractCommonCode implements Serializable {
+public class Municipality extends AbstractLabeledCommonCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -153,15 +153,15 @@ public class Municipality extends AbstractCommonCode implements Serializable {
     @Override
     public String toString() {
         return "(" +
-                "m_url: " + getUrl() + ", " +
-                "m_code: " + getCode() + ", " +
+                "m_uri: " + getUri() + ", " +
+                "m_codeValue: " + getCodeValue() + ", " +
                 "m_source: " + getSource() + ", " +
                 "m_status: " + getStatus() + ", " +
                 "m_created: " + getCreated() + ", " +
                 "m_modified: " + getModified() + ", " +
                 "m_type: " + m_type + ", " +
                 "m_languages: " + getLanguages() + ", " +
-                "m_names: " + getNames() + ")";
+                "m_prefLabels: " + getPrefLabels() + ")";
     }
 
 }

@@ -25,14 +25,14 @@ import java.util.List;
 @Entity
 @JsonFilter("businessServiceSubRegion")
 @Table(name = "businessservicesubregion")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "code", scope = BusinessServiceSubRegion.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "codeValue", scope = BusinessServiceSubRegion.class)
 @Proxy(lazy = false)
 @XmlRootElement
-@XmlType(propOrder = { "code", "url", "id", "source", "status", "created", "modified", "names", "municipalities" })
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "created", "modified", "prefLabels", "municipalities" })
 @JsonIgnoreProperties(value = { "municipalities" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "BusinessServiceSubRegion", description = "BusinessServiceSubRegion model that represents data for one single businessservice-subregion.")
-public class BusinessServiceSubRegion extends AbstractCommonCode implements Serializable {
+public class BusinessServiceSubRegion extends AbstractLabeledCommonCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -56,13 +56,13 @@ public class BusinessServiceSubRegion extends AbstractCommonCode implements Seri
 
     public String toString() {
         return "(" +
-                "m_code: " + getCode() + ", " +
-                "m_url: " + getUrl() + ", " +
+                "m_codeValue: " + getCodeValue() + ", " +
+                "m_uri: " + getUri() + ", " +
                 "m_source: " + getSource() + ", " +
                 "m_status: " + getStatus() + ", " +
                 "m_created: " + getCreated() + ", " +
                 "m_modified: " + getModified() + ", " +
-                "m_names: " + getNames() + ")";
+                "m_prefLabels: " + getPrefLabels() + ")";
     }
 
 }

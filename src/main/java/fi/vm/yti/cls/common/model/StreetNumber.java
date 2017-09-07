@@ -28,7 +28,7 @@ import java.util.Date;
 @Entity
 @JsonFilter("streetNumber")
 @Table(name = "streetnumber")
-@XmlType(propOrder = { "url", "id", "source", "status", "created", "modified", "postalCode", "streetAddress", "isEven", "startNumber", "startCharacter", "startNumberEnd", "startCharacterEnd", "endNumber", "endCharacter", "endNumberEnd", "endCharacterEnd" })
+@XmlType(propOrder = { "uri", "id", "source", "status", "created", "modified", "postalCode", "streetAddress", "isEven", "startNumber", "startCharacter", "startNumberEnd", "startCharacterEnd", "endNumber", "endCharacter", "endNumberEnd", "endCharacterEnd" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "StreetNumber", description = "StreetNumber model that represents data for specific streetnumbering.")
 public class StreetNumber implements Serializable {
@@ -43,7 +43,7 @@ public class StreetNumber implements Serializable {
 
     private Date m_modified;
 
-    private String m_url;
+    private String m_uri;
 
     private PostalCode m_postalCode;
 
@@ -144,13 +144,13 @@ public class StreetNumber implements Serializable {
     }
 
 
-    @Column(name = "url")
-    public String getUrl() {
-        return m_url;
+    @Column(name = "uri")
+    public String getUri() {
+        return m_uri;
     }
 
-    public void setUrl(final String url) {
-        m_url = url;
+    public void setUri(final String uri) {
+        m_uri = uri;
     }
 
 

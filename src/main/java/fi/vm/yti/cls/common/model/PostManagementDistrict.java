@@ -25,14 +25,14 @@ import java.util.List;
 @Entity
 @JsonFilter("postManagementDistrict")
 @Table(name ="postmanagementdistrict")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "code", scope = PostManagementDistrict.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "codeValue", scope = PostManagementDistrict.class)
 @Proxy(lazy = false)
 @XmlRootElement
-@XmlType(propOrder = { "code", "url", "id", "source", "status", "created", "modified", "names", "postalCodes"})
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "created", "modified", "prefLabels", "postalCodes"})
 @JsonIgnoreProperties(value = { "postalCodes" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "PostManagementDistrict", description = "PostManagementDistrict model that represents data for one single post management district.")
-public class PostManagementDistrict extends AbstractCommonCode implements Serializable {
+public class PostManagementDistrict extends AbstractLabeledCommonCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -56,14 +56,14 @@ public class PostManagementDistrict extends AbstractCommonCode implements Serial
 
     public String toString() {
         return "(" +
-                "m_code: " + getCode() + ", " +
-                "m_url: " + getUrl() + ", " +
+                "m_codeValue: " + getCodeValue() + ", " +
+                "m_url: " + getUri() + ", " +
                 "m_source: " + getSource() + ", " +
                 "m_status: " + getStatus() + ", " +
                 "m_status: " + getStatus() + ", " +
                 "m_created: " + getCreated() + ", " +
                 "m_modified: " + getModified() + ", " +
-                "m_names: " + getNames() + ")";
+                "m_prefLabels: " + getPrefLabels() + ")";
     }
 
 }

@@ -5,7 +5,7 @@
     <groupId>fi.vm.yti.cls</groupId>
     <artifactId>cls-common-model</artifactId>
     <packaging>jar</packaging>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.2-SNAPSHOT</version>
     <name>cls-common-model</name>
     <description>Common data model classes for CLS (Code List Service)</description>
 

@@ -17,16 +17,16 @@ import java.io.Serializable;
 @Entity
 @JsonFilter("businessId")
 @Table(name = "businessid")
-@XmlType(propOrder = { "code", "url", "detailsUrl", "id", "source", "status", "created", "modified", "names", "companyForm" })
+@XmlType(propOrder = { "codeValue", "uri", "detailsUri", "id", "source", "status", "created", "modified", "prefLabels", "companyForm" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "BusinessId", description = "BusinessId model that represents data for one single businessId.")
-public class BusinessId extends AbstractCommonCode implements Serializable {
+public class BusinessId extends AbstractLabeledCommonCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private String m_companyForm;
 
-    private String m_detailsUrl;
+    private String m_detailsUri;
 
 
     public BusinessId() {
@@ -43,26 +43,26 @@ public class BusinessId extends AbstractCommonCode implements Serializable {
     }
 
 
-    @Column(name = "detailsurl")
-    public String getDetailsUrl() {
-        return m_detailsUrl;
+    @Column(name = "detailsuri")
+    public String getDetailsUri() {
+        return m_detailsUri;
     }
 
-    public void setDetailsUrl(final String detailsUrl) {
-        m_detailsUrl = detailsUrl;
+    public void setDetailsUri(final String detailsUri) {
+        m_detailsUri = detailsUri;
     }
 
 
     public String toString() {
         return "(" +
-                "m_code: " + getCode() + ", " +
-                "m_url: " + getUrl() + ", " +
-                "m_detailsUrl: " + getDetailsUrl() + ", " +
+                "m_code: " + getCodeValue() + ", " +
+                "m_uri: " + getUri() + ", " +
+                "m_detailsUri: " + getDetailsUri() + ", " +
                 "m_source: " + getSource() + ", " +
                 "m_status: " + getStatus() + ", " +
                 "m_created: " + getCreated() + ", " +
                 "m_modified: " + getModified() + ", " +
-                "m_names: " + getNames() + ", " +
+                "m_prefLabels: " + getPrefLabels() + ", " +
                 "m_companyForm: " + getCompanyForm() + ")";
     }
 

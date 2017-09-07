@@ -3,26 +3,27 @@ package fi.vm.yti.cls.common.model;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
+
 /**
- * Abstract common base class for object models in CLS domain.
+ * Abstract common codevalue based entity class for object models in CLS domain.
  */
 @MappedSuperclass
 abstract class AbstractCommonCode extends AbstractBaseCode {
 
-    private String m_code;
+    private String m_codeValue;
 
 
     public AbstractCommonCode() {
     }
 
 
-    @Column(name = "code", unique = true)
-    public String getCode() {
-        return m_code;
+    @Column(name = "codevalue")
+    public String getCodeValue() {
+        return m_codeValue;
     }
 
-    public void setCode(final String code) {
-        m_code = code;
+    public void setCodeValue(final String codeValue) {
+        m_codeValue = codeValue;
     }
 
 }

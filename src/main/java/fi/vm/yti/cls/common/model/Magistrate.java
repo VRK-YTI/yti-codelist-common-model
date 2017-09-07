@@ -16,10 +16,10 @@ import java.io.Serializable;
 @Entity
 @JsonFilter("magistrate")
 @Table(name ="magistrate")
-@XmlType(propOrder = { "code", "url", "id", "source", "status", "created", "modified", "names" })
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "created", "modified", "prefLabels" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "Magistrate", description = "Magistrate model that represents data for one single magistrate.")
-public class Magistrate extends AbstractCommonCode implements Serializable {
+public class Magistrate extends AbstractLabeledCommonCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -30,13 +30,13 @@ public class Magistrate extends AbstractCommonCode implements Serializable {
 
     public String toString() {
         return "(" +
-                "m_code: " + getCode() + ", " +
-                "m_url: " + getUrl() + ", " +
+                "m_codeValue: " + getCodeValue() + ", " +
+                "m_uri: " + getUri() + ", " +
                 "m_source: " + getSource() + ", " +
                 "m_status: " + getStatus() + ", " +
                 "m_created: " + getCreated() + ", " +
                 "m_modified: " + getModified() + ", " +
-                "m_names: " + getNames() + ")";
+                "m_prefLabels: " + getPrefLabels() + ")";
     }
 
 }

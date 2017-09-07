@@ -24,15 +24,15 @@ import java.util.List;
  */
 @Entity
 @JsonFilter("magistrateServiceUnit")
-@JsonIdentityInfo( generator = ObjectIdGenerators.PropertyGenerator.class, property = "code", scope = MagistrateServiceUnit.class)
+@JsonIdentityInfo( generator = ObjectIdGenerators.PropertyGenerator.class, property = "codeValue", scope = MagistrateServiceUnit.class)
 @Table(name = "magistrateserviceunit")
 @Proxy(lazy = false)
 @XmlRootElement
-@XmlType(propOrder = { "code", "url", "id", "source", "status", "created", "modified", "names", "municipalities"})
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "created", "modified", "prefLabels", "municipalities"})
 @JsonIgnoreProperties(value = { "municipalities" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "MagistrateServiceUnit", description = "MagistrateServiceUnit model that represents data for one single magistrate service unit.")
-public class MagistrateServiceUnit extends AbstractCommonCode implements Serializable {
+public class MagistrateServiceUnit extends AbstractLabeledCommonCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -56,13 +56,13 @@ public class MagistrateServiceUnit extends AbstractCommonCode implements Seriali
 
     public String toString() {
         return "(" +
-                "m_code: " + getCode() + ", " +
-                "m_url: " + getUrl() + ", " +
+                "m_codeValue: " + getCodeValue() + ", " +
+                "m_uri: " + getUri() + ", " +
                 "m_source: " + getSource() + ", " +
                 "m_status: " + getStatus() + ", " +
                 "m_created: " + getCreated() + ", " +
                 "m_modified: " + getModified() + ", " +
-                "m_names: " + getNames() + ")";
+                "m_prefLabels: " + getPrefLabels() + ")";
     }
 
 }

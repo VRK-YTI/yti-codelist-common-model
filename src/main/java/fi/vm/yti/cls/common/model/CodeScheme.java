@@ -105,7 +105,7 @@ public class CodeScheme extends AbstractCommonCode implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "coderegistry_id", nullable = false, insertable = false, updatable = true)
+    @JoinColumn(name = "coderegistry_id", nullable = false, insertable = true, updatable = false)
     public CodeRegistry getCodeRegistry() {
         return codeRegistry;
     }

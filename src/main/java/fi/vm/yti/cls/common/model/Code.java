@@ -79,7 +79,7 @@ public class Code extends AbstractCommonCode implements Serializable {
         return shortName;
     }
 
-    public void setShortName(final String definition) {
+    public void setShortName(final String shortName) {
         this.shortName = shortName;
     }
 

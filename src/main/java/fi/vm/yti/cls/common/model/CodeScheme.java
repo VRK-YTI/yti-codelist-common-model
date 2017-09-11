@@ -27,7 +27,7 @@ import java.util.Map;
 @JsonFilter("codeScheme")
 @Table(name = "codescheme")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "prefLabels", "startDate", "endDate", "created", "modified", "status", "type", "version", "uri", "description", "definition", "changeNote" })
+@XmlType(propOrder = { "id", "codeValue", "prefLabels", "startDate", "endDate", "modified", "status", "type", "version", "uri", "description", "definition", "changeNote" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "CodeScheme", description = "CodeScheme model that represents data for one single codescheme.")
 public class CodeScheme extends AbstractCommonCode implements Serializable {

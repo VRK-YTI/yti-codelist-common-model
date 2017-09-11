@@ -62,7 +62,7 @@ import java.util.List;
                 )
         }
 )
-@XmlType(propOrder = { "uri", "id", "source", "status", "created", "modified", "prefLabels", "municipality", "streetNumbers" })
+@XmlType(propOrder = { "uri", "id", "source", "status", "modified", "prefLabels", "municipality", "streetNumbers" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonIgnoreProperties(value = { "code" })
 @ApiModel(value = "StreetAddress", description = "StreetAddress model that represents data for one single streetaddress.")
@@ -99,7 +99,6 @@ public class StreetAddress extends AbstractLabeledCommonCode implements Serializ
                 "uri: " + getUri() + ", " +
                 "source: " + getSource() + ", " +
                 "status: " + getStatus() + ", " +
-                "created: " + getCreated() + ", " +
                 "modified: " + getModified() + ", " +
                 "prefLabels: " + getPrefLabels() + ")";
     }

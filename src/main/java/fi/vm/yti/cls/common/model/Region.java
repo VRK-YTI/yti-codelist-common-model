@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Entity
 @JsonFilter("region")
 @Table(name = "region")
-@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "created", "modified", "prefLabels" })
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "modified", "prefLabels" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "Region", description = "Region model that represents data for one single region.")
 public class Region extends AbstractLabeledCommonCode implements Serializable {
@@ -29,7 +29,6 @@ public class Region extends AbstractLabeledCommonCode implements Serializable {
                 "codeValue: " + getCodeValue() + ", " +
                 "uri: " + getUri() + ", " +
                 "source: " + getSource() + ", " +
-                "created: " + getCreated() + ", " +
                 "modified: " + getModified() + ", " +
                 "prefLabels: " + getPrefLabels() + ")";
     }

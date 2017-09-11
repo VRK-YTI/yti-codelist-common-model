@@ -27,7 +27,7 @@ import java.util.List;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "codeValue", scope = ElectoralDistrict.class)
 @Proxy(lazy = false)
 @XmlRootElement
-@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "created", "modified", "prefLabels", "municipalities" })
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "modified", "prefLabels", "municipalities" })
 @JsonIgnoreProperties(value = { "municipalities" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "ElectoralDistrict", description = "ElectoralDistrict model that represents data for one single electoraldistrict.")
@@ -55,7 +55,6 @@ public class ElectoralDistrict extends AbstractLabeledCommonCode implements Seri
                 "url: " + getUri() + ", " +
                 "source: " + getSource() + ", " +
                 "status: " + getStatus() + ", " +
-                "created: " + getCreated() + ", " +
                 "modified: " + getModified() + ", " +
                 "prefLabels: " + getPrefLabels() + ")";
     }

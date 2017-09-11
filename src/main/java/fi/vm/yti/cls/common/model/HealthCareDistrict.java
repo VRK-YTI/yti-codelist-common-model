@@ -28,7 +28,7 @@ import java.util.List;
 @Table(name = "healthcaredistrict")
 @Proxy(lazy = false)
 @XmlRootElement
-@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "created", "modified", "prefLabels", "specialAreaOfResponsibility", "abbreviation", "municipalities"})
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "modified", "prefLabels", "specialAreaOfResponsibility", "abbreviation", "municipalities"})
 @JsonIgnoreProperties(value = { "municipalities" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "HealthCareDistrict", description = "HealthCareDistrict model that represents data for one single healthcaredistrict.")
@@ -77,7 +77,6 @@ public class HealthCareDistrict extends AbstractLabeledCommonCode implements Ser
                 "uri: " + getUri() + ", " +
                 "source: " + getSource() + ", " +
                 "status: " + getStatus() + ", " +
-                "created: " + getCreated() + ", " +
                 "modified: " + getModified() + ", " +
                 "specialAreaOfResponsibility: " + getSpecialAreaOfResponsibility() + ", " +
                 "prefLabels: " + getPrefLabels() + ", " +

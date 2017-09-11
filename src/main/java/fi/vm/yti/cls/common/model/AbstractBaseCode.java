@@ -18,7 +18,6 @@ public class AbstractBaseCode {
 
     private String id;
     private String source;
-    private Date created;
     private Date modified;
     private Date startDate;
     private Date endDate;
@@ -33,25 +32,6 @@ public class AbstractBaseCode {
 
     public void setId(final String id) {
         this.id = id;
-    }
-
-    @ApiModelProperty(dataType = "dateTime")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created")
-    public Date getCreated() {
-        if (created != null) {
-            return new Date(created.getTime());
-        }
-        return null;
-    }
-
-    public void setCreated(final Date created) {
-        if (created != null) {
-            this.created = new Date(created.getTime());
-        } else {
-            this.created = null;
-        }
     }
 
     @ApiModelProperty(dataType = "dateTime")

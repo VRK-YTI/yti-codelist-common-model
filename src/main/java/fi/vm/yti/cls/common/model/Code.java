@@ -29,7 +29,7 @@ import java.util.Map;
 @Table(name = "code")
 @Proxy(lazy = false)
 @XmlRootElement
-@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "startDate", "endDate", "created", "modified", "prefLabels", "shortName", "description", "definition", "codeScheme" })
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "startDate", "endDate", "modified", "prefLabels", "shortName", "description", "definition", "codeScheme" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "Code", description = "Code model that represents data for one single generic registeritem.")
 public class Code extends AbstractCommonCode implements Serializable {

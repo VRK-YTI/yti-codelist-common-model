@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Entity
 @JsonFilter("magistrate")
 @Table(name ="magistrate")
-@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "created", "modified", "prefLabels" })
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "modified", "prefLabels" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "Magistrate", description = "Magistrate model that represents data for one single magistrate.")
 public class Magistrate extends AbstractLabeledCommonCode implements Serializable {
@@ -30,7 +30,6 @@ public class Magistrate extends AbstractLabeledCommonCode implements Serializabl
                 "uri: " + getUri() + ", " +
                 "source: " + getSource() + ", " +
                 "status: " + getStatus() + ", " +
-                "created: " + getCreated() + ", " +
                 "modified: " + getModified() + ", " +
                 "prefLabels: " + getPrefLabels() + ")";
     }

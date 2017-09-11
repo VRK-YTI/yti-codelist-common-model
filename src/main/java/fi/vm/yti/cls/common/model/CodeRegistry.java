@@ -27,7 +27,7 @@ import java.util.Map;
 @JsonFilter("codeRegistry")
 @Table(name = "coderegistry")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "prefLabels", "startDate", "endDate", "created", "modified", "status", "uri", "definition" })
+@XmlType(propOrder = { "id", "codeValue", "prefLabels", "startDate", "endDate", "modified", "status", "uri", "definition" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonIgnoreProperties("prefLabel")
 @ApiModel(value = "CodeRegistry", description = "CodeRegistry model that represents data for one single registry.")

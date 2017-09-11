@@ -24,7 +24,6 @@ public class UpdateStatus implements Serializable {
     private String source;
     private String version;
     private String nextVersion;
-    private Date created;
     private Date modified;
 
     public UpdateStatus() {}
@@ -64,25 +63,6 @@ public class UpdateStatus implements Serializable {
 
     public void setVersion(final String version) {
         this.version = version;
-    }
-
-    @ApiModelProperty(dataType = "dateTime")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern ="yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created")
-    public Date getCreated() {
-        if (created != null) {
-            return new Date(created.getTime());
-        }
-        return null;
-    }
-
-    public void setCreated(final Date created) {
-        if (created != null) {
-            this.created = new Date(created.getTime());
-        } else {
-            this.created = null;
-        }
     }
 
     @ApiModelProperty(dataType = "dateTime")

@@ -27,7 +27,7 @@ import java.util.List;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "codeValue", scope = PostManagementDistrict.class)
 @Proxy(lazy = false)
 @XmlRootElement
-@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "created", "modified", "prefLabels", "postalCodes"})
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "modified", "prefLabels", "postalCodes"})
 @JsonIgnoreProperties(value = { "postalCodes" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "PostManagementDistrict", description = "PostManagementDistrict model that represents data for one single post management district.")
@@ -56,7 +56,6 @@ public class PostManagementDistrict extends AbstractLabeledCommonCode implements
                 "source: " + getSource() + ", " +
                 "status: " + getStatus() + ", " +
                 "status: " + getStatus() + ", " +
-                "created: " + getCreated() + ", " +
                 "modified: " + getModified() + ", " +
                 "prefLabels: " + getPrefLabels() + ")";
     }

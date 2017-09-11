@@ -27,7 +27,7 @@ import java.util.Date;
 @Entity
 @JsonFilter("streetNumber")
 @Table(name = "streetnumber")
-@XmlType(propOrder = { "uri", "id", "source", "status", "created", "modified", "postalCode", "streetAddress", "isEven", "startNumber", "startCharacter", "startNumberEnd", "startCharacterEnd", "endNumber", "endCharacter", "endNumberEnd", "endCharacterEnd" })
+@XmlType(propOrder = { "uri", "id", "source", "status", "modified", "postalCode", "streetAddress", "isEven", "startNumber", "startCharacter", "startNumberEnd", "startCharacterEnd", "endNumber", "endCharacter", "endNumberEnd", "endCharacterEnd" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "StreetNumber", description = "StreetNumber model that represents data for specific streetnumbering.")
 public class StreetNumber implements Serializable {
@@ -36,7 +36,6 @@ public class StreetNumber implements Serializable {
 
     private String id;
     private String source;
-    private Date created;
     private Date modified;
     private String uri;
     private PostalCode postalCode;
@@ -63,25 +62,6 @@ public class StreetNumber implements Serializable {
         this.id = id;
     }
     
-    @ApiModelProperty(dataType = "dateTime")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created")
-    public Date getCreated() {
-        if (created != null) {
-            return new Date(created.getTime());
-        }
-        return null;
-    }
-
-    public void setCreated(final Date created) {
-        if (created != null) {
-            this.created = new Date(created.getTime());
-        } else {
-            this.created = null;
-        }
-    }
-
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
     @Temporal(TemporalType.TIMESTAMP)

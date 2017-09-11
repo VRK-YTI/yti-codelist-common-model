@@ -27,7 +27,7 @@ import java.util.List;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "codeValue", scope = BusinessServiceSubRegion.class)
 @Proxy(lazy = false)
 @XmlRootElement
-@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "created", "modified", "prefLabels", "municipalities" })
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "modified", "prefLabels", "municipalities" })
 @JsonIgnoreProperties(value = { "municipalities" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "BusinessServiceSubRegion", description = "BusinessServiceSubRegion model that represents data for one single businessservice-subregion.")
@@ -56,7 +56,6 @@ public class BusinessServiceSubRegion extends AbstractLabeledCommonCode implemen
                 "uri: " + getUri() + ", " +
                 "source: " + getSource() + ", " +
                 "status: " + getStatus() + ", " +
-                "created: " + getCreated() + ", " +
                 "modified: " + getModified() + ", " +
                 "prefLabels: " + getPrefLabels() + ")";
     }

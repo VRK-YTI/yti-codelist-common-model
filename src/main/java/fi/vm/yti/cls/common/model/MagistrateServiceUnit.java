@@ -27,7 +27,7 @@ import java.util.List;
 @Table(name = "magistrateserviceunit")
 @Proxy(lazy = false)
 @XmlRootElement
-@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "created", "modified", "prefLabels", "municipalities"})
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "modified", "prefLabels", "municipalities"})
 @JsonIgnoreProperties(value = { "municipalities" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "MagistrateServiceUnit", description = "MagistrateServiceUnit model that represents data for one single magistrate service unit.")
@@ -55,7 +55,6 @@ public class MagistrateServiceUnit extends AbstractLabeledCommonCode implements 
                 "uri: " + getUri() + ", " +
                 "source: " + getSource() + ", " +
                 "status: " + getStatus() + ", " +
-                "created: " + getCreated() + ", " +
                 "modified: " + getModified() + ", " +
                 "prefLabels: " + getPrefLabels() + ")";
     }

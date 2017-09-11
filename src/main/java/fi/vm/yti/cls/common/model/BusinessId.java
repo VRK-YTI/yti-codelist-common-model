@@ -16,7 +16,7 @@ import java.io.Serializable;
 @Entity
 @JsonFilter("businessId")
 @Table(name = "businessid")
-@XmlType(propOrder = { "codeValue", "uri", "detailsUri", "id", "source", "status", "created", "modified", "prefLabels", "companyForm" })
+@XmlType(propOrder = { "codeValue", "uri", "detailsUri", "id", "source", "status", "modified", "prefLabels", "companyForm" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "BusinessId", description = "BusinessId model that represents data for one single businessId.")
 public class BusinessId extends AbstractLabeledCommonCode implements Serializable {
@@ -54,7 +54,6 @@ public class BusinessId extends AbstractLabeledCommonCode implements Serializabl
                 "detailsUri: " + getDetailsUri() + ", " +
                 "source: " + getSource() + ", " +
                 "status: " + getStatus() + ", " +
-                "created: " + getCreated() + ", " +
                 "modified: " + getModified() + ", " +
                 "prefLabels: " + getPrefLabels() + ", " +
                 "companyForm: " + getCompanyForm() + ")";

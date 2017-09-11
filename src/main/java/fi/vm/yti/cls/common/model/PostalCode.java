@@ -33,7 +33,7 @@ import java.util.Map;
 @Table(name ="postalcode")
 @Proxy(lazy = false)
 @XmlRootElement
-@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "created", "modified", "prefLabels", "abbreviations", "typeCode", "typeName", "postManagementDistrict", "municipality"})
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "modified", "prefLabels", "abbreviations", "typeCode", "typeName", "postManagementDistrict", "municipality"})
 @JsonIgnoreProperties(value = { "validDate", "runDate" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "PostalCode", description = "PostalCode model that represents data for one single postal code.")
@@ -188,7 +188,6 @@ public class PostalCode extends AbstractLabeledCommonCode implements Serializabl
                 "uri: " + getUri() + ", " +
                 "source: " + getSource() + ", " +
                 "status: " + getStatus() + ", " +
-                "created: " + getCreated() + ", " +
                 "modified: " + getModified() + ", " +
                 "runDate: " + runDate + ", " +
                 "validDate: " + validDate + ", " +

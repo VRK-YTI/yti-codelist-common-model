@@ -32,7 +32,7 @@ import java.util.Set;
 @Table(name = "municipality")
 @Proxy(lazy = false)
 @XmlRootElement
-@XmlType(propOrder = { "codeValue", "uri", "id", "source", "created", "modified", "prefLabels", "type", "languages", "magistrate", "region", "healthCareDistrict", "electoralDistrict", "magistrateServiceUnit", "businessServiceSubRegion" })
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "modified", "prefLabels", "type", "languages", "magistrate", "region", "healthCareDistrict", "electoralDistrict", "magistrateServiceUnit", "businessServiceSubRegion" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "Municipality", description = "Municipality model that represents data for one single municipality.")
 public class Municipality extends AbstractLabeledCommonCode implements Serializable {
@@ -138,7 +138,6 @@ public class Municipality extends AbstractLabeledCommonCode implements Serializa
                 "codeValue: " + getCodeValue() + ", " +
                 "source: " + getSource() + ", " +
                 "status: " + getStatus() + ", " +
-                "created: " + getCreated() + ", " +
                 "modified: " + getModified() + ", " +
                 "type: " + type + ", " +
                 "languages: " + getLanguages() + ", " +

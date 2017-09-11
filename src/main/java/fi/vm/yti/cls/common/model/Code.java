@@ -29,7 +29,7 @@ import java.util.Map;
 @Table(name = "code")
 @Proxy(lazy = false)
 @XmlRootElement
-@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "startDate", "endDate", "created", "modified", "prefLabels", "description", "definition", "codeScheme" })
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "startDate", "endDate", "created", "modified", "prefLabels", "shortName", "description", "definition", "codeScheme" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "Code", description = "Code model that represents data for one single generic registeritem.")
 public class Code extends AbstractCommonCode implements Serializable {
@@ -39,6 +39,7 @@ public class Code extends AbstractCommonCode implements Serializable {
     private CodeScheme codeSheme;
     private String description;
     private String definition;
+    private String shortName;
     private Map<String, String> prefLabels;
 
     public Code() {
@@ -71,6 +72,15 @@ public class Code extends AbstractCommonCode implements Serializable {
 
     public void setDefinition(final String definition) {
         this.definition = definition;
+    }
+
+    @Column(name = "shortName")
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(final String definition) {
+        this.shortName = shortName;
     }
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)

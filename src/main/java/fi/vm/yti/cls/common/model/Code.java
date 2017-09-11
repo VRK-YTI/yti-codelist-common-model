@@ -74,7 +74,7 @@ public class Code extends AbstractCommonCode implements Serializable {
         this.definition = definition;
     }
 
-    @Column(name = "shortName")
+    @Column(name = "shortname")
     public String getShortName() {
         return shortName;
     }

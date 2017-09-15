@@ -29,7 +29,7 @@ import java.util.Map;
 @Table(name = "code")
 @Proxy(lazy = false)
 @XmlRootElement
-@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "startDate", "endDate", "modified", "prefLabels", "shortName", "description", "definition", "codeScheme" })
+@XmlType(propOrder = { "codeValue", "uri", "id", "source", "status", "startDate", "endDate", "modified", "prefLabels", "descriptions", "definitions", "codeScheme", "shortName" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "Code", description = "Code model that represents data for one single generic registeritem.")
 public class Code extends AbstractCommonCode implements Serializable {
@@ -37,10 +37,10 @@ public class Code extends AbstractCommonCode implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private CodeScheme codeSheme;
-    private String description;
-    private String definition;
     private String shortName;
     private Map<String, String> prefLabels;
+    private Map<String, String> descriptions;
+    private Map<String, String> definitions;
 
     public Code() {
         prefLabels = new HashMap<>();
@@ -54,24 +54,6 @@ public class Code extends AbstractCommonCode implements Serializable {
 
     public void setCodeScheme(final CodeScheme codeScheme) {
         this.codeSheme = codeScheme;
-    }
-
-    @Column(name = "description")
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(final String description) {
-        this.description = description;
-    }
-
-    @Column(name = "definition")
-    public String getDefinition() {
-        return definition;
-    }
-
-    public void setDefinition(final String definition) {
-        this.definition = definition;
     }
 
     @Column(name = "shortname")
@@ -104,16 +86,88 @@ public class Code extends AbstractCommonCode implements Serializable {
         return prefLabel;
     }
 
-    public void setPrefLabel(final String language, final String name) {
+    public void setPrefLabel(final String language, final String prefLabel) {
         if (prefLabels == null) {
             prefLabels = new HashMap<>();
         }
-        if (language != null && name != null && !name.isEmpty()) {
-            prefLabels.put(language, name);
-        } else if (language != null && name == null) {
+        if (language != null && prefLabel != null && !prefLabel.isEmpty()) {
+            prefLabels.put(language, prefLabel);
+        } else if (language != null && prefLabel == null) {
             prefLabels.remove(language);
         }
         setPrefLabels(prefLabels);
+    }
+
+    @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "code_definition", joinColumns = @JoinColumn(name = "code_id", referencedColumnName = "id"))
+    @MapKeyColumn(name = "language")
+    @Column(name = "definition")
+    @OrderColumn
+    public Map<String, String> getDefinitions() {
+        if (definitions == null) {
+            definitions = new HashMap<>();
+        }
+        return definitions;
+    }
+
+    public void setDefinitions(final Map<String, String> definitions) {
+        this.definitions = definitions;
+    }
+
+    public String getDefinition(final String language) {
+        String definition = definitions.get(language);
+        if (definition == null) {
+            definition = definitions.get("en");
+        }
+        return definition;
+    }
+
+    public void setDefinition(final String language, final String definition) {
+        if (definitions == null) {
+            definitions = new HashMap<>();
+        }
+        if (language != null && definition != null && !definition.isEmpty()) {
+            definitions.put(language, definition);
+        } else if (language != null && definition == null) {
+            definitions.remove(language);
+        }
+        setPrefLabels(definitions);
+    }
+
+    @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "code_description", joinColumns = @JoinColumn(name = "code_id", referencedColumnName = "id"))
+    @MapKeyColumn(name = "language")
+    @Column(name = "description")
+    @OrderColumn
+    public Map<String, String> getDescriptions() {
+        if (descriptions == null) {
+            descriptions = new HashMap<>();
+        }
+        return descriptions;
+    }
+
+    public void setDescriptions(final Map<String, String> descriptions) {
+        this.definitions = descriptions;
+    }
+
+    public String getDescription(final String language) {
+        String description = descriptions.get(language);
+        if (description == null) {
+            description = descriptions.get("en");
+        }
+        return description;
+    }
+
+    public void setDescription(final String language, final String description) {
+        if (descriptions == null) {
+            descriptions = new HashMap<>();
+        }
+        if (language != null && description != null && !description.isEmpty()) {
+            descriptions.put(language, description);
+        } else if (language != null && description == null) {
+            descriptions.remove(language);
+        }
+        setPrefLabels(descriptions);
     }
 
 }

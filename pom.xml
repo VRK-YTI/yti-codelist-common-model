@@ -5,7 +5,7 @@
     <groupId>fi.vm.yti.cls</groupId>
     <artifactId>cls-common-model</artifactId>
     <packaging>jar</packaging>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.3-SNAPSHOT</version>
     <name>cls-common-model</name>
     <description>Common data model classes for CLS (Code List Service)</description>
 
@@ -97,7 +97,7 @@
                 </configuration>
             </plugin>
 
-            <plugin>
+            <!--plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
                 <version>1.4.5</version>
@@ -112,7 +112,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin-->
 
         </plugins>
     </build>

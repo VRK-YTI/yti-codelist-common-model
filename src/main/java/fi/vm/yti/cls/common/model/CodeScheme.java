@@ -27,7 +27,7 @@ import java.util.Map;
 @JsonFilter("codeScheme")
 @Table(name = "codescheme")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "prefLabels", "startDate", "endDate", "modified", "status", "type", "version", "uri", "description", "definition", "changeNote" })
+@XmlType(propOrder = { "id", "codeValue", "prefLabels", "definitions", "descriptions", "changeNotes", "startDate", "endDate", "modified", "status", "version", "uri" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "CodeScheme", description = "CodeScheme model that represents data for one single codescheme.")
 public class CodeScheme extends AbstractCommonCode implements Serializable {
@@ -35,11 +35,10 @@ public class CodeScheme extends AbstractCommonCode implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String version;
-    private String type;
-    private String changeNote;
-    private String description;
-    private String definition;
     private Map<String, String> prefLabels;
+    private Map<String, String> definitions;
+    private Map<String, String> descriptions;
+    private Map<String, String> changeNotes;
     private CodeRegistry codeRegistry;
 
     public CodeScheme() {
@@ -49,13 +48,11 @@ public class CodeScheme extends AbstractCommonCode implements Serializable {
     public CodeScheme(final String codeValue,
                       final String url,
                       final String version,
-                      final String type,
                       final String status) {
         super.setCodeValue(codeValue);
         super.setUri(url);
         super.setStatus(status);
         this.version = version;
-        this.type = type;
         prefLabels = new HashMap<>();
     }
 
@@ -66,42 +63,6 @@ public class CodeScheme extends AbstractCommonCode implements Serializable {
 
     public void setVersion(final String version) {
         this.version = version;
-    }
-
-    @Column(name = "type")
-    public String getType() {
-        return type;
-    }
-
-    public void setType(final String type) {
-        this.type = type;
-    }
-
-    @Column(name = "definition")
-    public String getDefinition() {
-        return definition;
-    }
-
-    public void setDefinition(final String definition) {
-        this.definition = definition;
-    }
-
-    @Column(name = "description")
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(final String description) {
-        this.description = description;
-    }
-
-    @Column(name = "changenote")
-    public String getChangeNote() {
-        return changeNote;
-    }
-
-    public void setChangeNote(final String changeNote) {
-        this.changeNote = changeNote;
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -135,16 +96,124 @@ public class CodeScheme extends AbstractCommonCode implements Serializable {
         return prefLabel;
     }
 
-    public void setPrefLabel(final String language, final String name) {
+    public void setPrefLabel(final String language, final String prefLabel) {
         if (prefLabels == null) {
             prefLabels = new HashMap<>();
         }
-        if (language != null && name != null && !name.isEmpty()) {
-            prefLabels.put(language, name);
-        } else if (language != null && name == null) {
+        if (language != null && prefLabel != null && !prefLabel.isEmpty()) {
+            prefLabels.put(language, prefLabel);
+        } else if (language != null && prefLabel == null) {
             prefLabels.remove(language);
         }
         setPrefLabels(prefLabels);
+    }
+
+    @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "codescheme_definition", joinColumns = @JoinColumn(name = "codescheme_id", referencedColumnName = "id"))
+    @MapKeyColumn(name = "language")
+    @Column(name = "definition")
+    @OrderColumn
+    public Map<String, String> getDefinitions() {
+        if (definitions == null) {
+            definitions = new HashMap<>();
+        }
+        return definitions;
+    }
+
+    public void setDefinitions(final Map<String, String> definitions) {
+        this.definitions = definitions;
+    }
+
+    public String getDefinition(final String language) {
+        String definition = definitions.get(language);
+        if (definition == null) {
+            definition = definitions.get("en");
+        }
+        return definition;
+    }
+
+    public void setDefinition(final String language, final String definition) {
+        if (definitions == null) {
+            definitions = new HashMap<>();
+        }
+        if (language != null && definition != null && !definition.isEmpty()) {
+            definitions.put(language, definition);
+        } else if (language != null && definition == null) {
+            definitions.remove(language);
+        }
+        setPrefLabels(definitions);
+    }
+
+    @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "codescheme_description", joinColumns = @JoinColumn(name = "codescheme_id", referencedColumnName = "id"))
+    @MapKeyColumn(name = "language")
+    @Column(name = "description")
+    @OrderColumn
+    public Map<String, String> getDescriptions() {
+        if (descriptions == null) {
+            descriptions = new HashMap<>();
+        }
+        return descriptions;
+    }
+
+    public void setDescriptions(final Map<String, String> descriptions) {
+        this.descriptions = descriptions;
+    }
+
+    public String getDescription(final String language) {
+        String description = descriptions.get(language);
+        if (description == null) {
+            description = descriptions.get("en");
+        }
+        return description;
+    }
+
+    public void setDescription(final String language, final String description) {
+        if (descriptions == null) {
+            descriptions = new HashMap<>();
+        }
+        if (language != null && description != null && !description.isEmpty()) {
+            descriptions.put(language, description);
+        } else if (language != null && description == null) {
+            descriptions.remove(language);
+        }
+        setPrefLabels(descriptions);
+    }
+
+    @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "codescheme_changenote", joinColumns = @JoinColumn(name = "codescheme_id", referencedColumnName = "id"))
+    @MapKeyColumn(name = "language")
+    @Column(name = "changenote")
+    @OrderColumn
+    public Map<String, String> getChangeNotes() {
+        if (changeNotes == null) {
+            changeNotes = new HashMap<>();
+        }
+        return changeNotes;
+    }
+
+    public void setChangeNotes(final Map<String, String> changeNotes) {
+        this.changeNotes = changeNotes;
+    }
+
+    public String getChangeNote(final String language) {
+        String changeNote = changeNotes.get(language);
+        if (changeNote == null) {
+            changeNote = changeNotes.get("en");
+        }
+        return changeNote;
+    }
+
+    public void setChangeNote(final String language, final String changeNote) {
+        if (changeNotes == null) {
+            changeNotes = new HashMap<>();
+        }
+        if (language != null && changeNote != null && !changeNote.isEmpty()) {
+            changeNotes.put(language, changeNote);
+        } else if (language != null && changeNote == null) {
+            changeNotes.remove(language);
+        }
+        setPrefLabels(changeNotes);
     }
 
 }

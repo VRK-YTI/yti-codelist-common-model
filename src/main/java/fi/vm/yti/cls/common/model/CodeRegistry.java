@@ -1,7 +1,6 @@
 package fi.vm.yti.cls.common.model;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
 
@@ -27,25 +26,15 @@ import java.util.Map;
 @JsonFilter("codeRegistry")
 @Table(name = "coderegistry")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "prefLabels", "startDate", "endDate", "modified", "status", "uri", "definition" })
+@XmlType(propOrder = { "id", "codeValue", "prefLabels", "definitions", "startDate", "endDate", "modified", "status", "uri" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-@JsonIgnoreProperties("prefLabel")
 @ApiModel(value = "CodeRegistry", description = "CodeRegistry model that represents data for one single registry.")
 public class CodeRegistry extends AbstractCommonCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String definition;
     private Map<String, String> prefLabels;
-
-    @Column(name = "definition")
-    public String getDefinition() {
-        return definition;
-    }
-
-    public void setDefinition(final String definition) {
-        this.definition = definition;
-    }
+    private Map<String, String> definitions;
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "coderegistry_preflabel", joinColumns = @JoinColumn(name = "coderegistry_id", referencedColumnName = "id"))
@@ -81,6 +70,42 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
             prefLabels.remove(language);
         }
         setPrefLabels(prefLabels);
+    }
+
+    @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "coderegistry_definition", joinColumns = @JoinColumn(name = "coderegistry_id", referencedColumnName = "id"))
+    @MapKeyColumn(name = "language")
+    @Column(name = "definition")
+    @OrderColumn
+    public Map<String, String> getDefinitions() {
+        if (definitions == null) {
+            definitions = new HashMap<>();
+        }
+        return definitions;
+    }
+
+    public void setDefinitions(final Map<String, String> definitions) {
+        this.definitions = definitions;
+    }
+
+    public String getDefinition(final String language) {
+        String definition = definitions.get(language);
+        if (definition == null) {
+            definition = definitions.get("en");
+        }
+        return definition;
+    }
+
+    public void setDefinition(final String language, final String name) {
+        if (definitions == null) {
+            definitions = new HashMap<>();
+        }
+        if (language != null && name != null && !name.isEmpty()) {
+            definitions.put(language, name);
+        } else if (language != null && name == null) {
+            definitions.remove(language);
+        }
+        setPrefLabels(definitions);
     }
 
 }

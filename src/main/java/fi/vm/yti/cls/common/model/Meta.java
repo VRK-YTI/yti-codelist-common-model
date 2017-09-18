@@ -1,14 +1,17 @@
 package fi.vm.yti.cls.common.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
-import io.swagger.annotations.ApiModel;
+import java.text.ParseException;
+import java.util.Date;
+
+import javax.xml.bind.annotation.XmlType;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.xml.bind.annotation.XmlType;
-import java.text.ParseException;
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
+
+import io.swagger.annotations.ApiModel;
 
 @XmlType(propOrder = { "code", "message", "register", "pageSize", "from", "resultCount", "totalResults", "after", "afterResourceUrl", "nextPage" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)

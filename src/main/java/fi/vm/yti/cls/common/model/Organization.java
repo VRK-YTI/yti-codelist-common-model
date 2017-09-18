@@ -1,9 +1,10 @@
 package fi.vm.yti.cls.common.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import io.swagger.annotations.ApiModel;
-
 import javax.xml.bind.annotation.XmlType;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import io.swagger.annotations.ApiModel;
 
 @XmlType(propOrder = { "name", "email", "telephone" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)

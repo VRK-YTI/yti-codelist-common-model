@@ -19,20 +19,7 @@ public class ApiConstants {
 
     public static final String ELASTIC_TYPE_CODESCHEME = "codescheme";
 
-    public static final String ELASTIC_TYPE_CODE = "code";
-
-//    public static final String ELASTIC_INDEX_CODEREGISTRIES = "coderegistries";
-//
-//    public static final String ELASTIC_INDEX_CODESCHEMES = "codeschemes";
-//
-//    public static final String ELASTIC_INDEX_CODES = "codes";
-//
-//    public static final String ELASTIC_TYPE_CODEREGISTRY = "coderegistry";
-//
-//    public static final String ELASTIC_TYPE_CODESCHEME = "codescheme";
-//
-//    public static final String ELASTIC_TYPE_CODE = "code";    
-    
+    public static final String ELASTIC_TYPE_CODE = "code"; 
     
     public static final String API_VERSION = "v1";
 
@@ -57,5 +44,7 @@ public class ApiConstants {
     public static final String DEFAULT_CODEREGISTRY_NAME_PREFIX = "testregistry";
     
     public static final String DEFAULT_CODESCHEME_NAME = "testscheme";
+
+    public static final String FILTER_NAME_CODEREGISTRY = "codeRegistry";
 
 }

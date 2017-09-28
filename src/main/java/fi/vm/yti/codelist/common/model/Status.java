@@ -1,4 +1,4 @@
-package fi.vm.yti.cls.common.model;
+package fi.vm.yti.codelist.common.model;
 
 /**
  * These are ISO 19135-1 spec status codes for registry status.

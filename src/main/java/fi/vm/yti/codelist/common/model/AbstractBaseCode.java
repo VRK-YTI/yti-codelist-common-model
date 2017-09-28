@@ -1,4 +1,4 @@
-package fi.vm.yti.cls.common.model;
+package fi.vm.yti.codelist.common.model;
 
 import java.util.Date;
 

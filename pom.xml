@@ -2,17 +2,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>fi.vm.yti.cls</groupId>
-    <artifactId>cls-common-model</artifactId>
+
+    <groupId>fi.vm.yti.codelist</groupId>
+    <artifactId>yti-codelist-common-model</artifactId>
     <packaging>jar</packaging>
-    <version>0.3-SNAPSHOT</version>
-    <name>cls-common-model</name>
-    <description>Common data model classes for CLS (Code List Service)</description>
+    <version>0.1-SNAPSHOT</version>
+    <name>yti-codelist-common-model</name>
+    <description>Common data model classes for YTI CodeList services</description>
 
     <licenses>
         <license>
             <name>European Union Public Licence 1.2</name>
-            <url>https://github.com/vrk-yti/cls-common-model/blob/master/LICENSE</url>
+            <url>https://github.com/vrk-yti/yti-codelist-common-model/blob/master/LICENSE</url>
             <distribution>repo</distribution>
         </license>
     </licenses>

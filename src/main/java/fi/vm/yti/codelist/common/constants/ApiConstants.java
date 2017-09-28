@@ -1,4 +1,4 @@
-package fi.vm.yti.cls.common.constants;
+package fi.vm.yti.codelist.common.constants;
 
 public class ApiConstants {
     public static final String SOURCE_INTERNAL = "internal";

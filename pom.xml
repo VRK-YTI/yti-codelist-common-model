@@ -70,6 +70,11 @@
                     <groupId>javax.ws.rs</groupId>
                     <artifactId>jsr311-api</artifactId>
                 </exclusion>
+                <!-- OWASP -->
+                <exclusion>
+                    <groupId>javax.validation</groupId>
+                    <artifactId>validation-api</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
 
@@ -78,6 +83,13 @@
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>annotations</artifactId>
             <version>3.0.1</version>
+        </dependency>
+
+        <!-- Version upgrade deps due to OWASP -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.0.Final</version>
         </dependency>
 
     </dependencies>
@@ -101,10 +113,11 @@
             <!--plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
-                <version>1.4.5</version>
+                <version>${dependency-check-maven.version}</version>
                 <configuration>
-                    <skipProvidedScope>true</skipProvidedScope>
-                    <skipRuntimeScope>true</skipRuntimeScope>
+                    <autoUpdate>false</autoUpdate>
+                    <dataDirectory>${env.OWASP_DATA_DIR}</dataDirectory>
+                    <format>ALL</format>
                 </configuration>
                 <executions>
                     <execution>
@@ -123,6 +136,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>1.8</java.version>
         <swagger.version>1.5.15</swagger.version>
+        <dependency-check-maven.version>2.1.1</dependency-check-maven.version>
     </properties>
 
 </project>

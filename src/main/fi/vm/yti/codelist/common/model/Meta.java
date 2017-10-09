@@ -133,7 +133,7 @@ public class Meta {
     }
 
 
-    public Date parseAfterFromString(final String after) {
+    public static Date parseAfterFromString(final String after) {
         if (after != null) {
             final ISO8601DateFormat dateFormat = new ISO8601DateFormat();
             try {

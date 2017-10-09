@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import io.swagger.annotations.ApiModel;
+import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 /**
  * Object model that represents a single code scheme.
@@ -32,7 +33,7 @@ import io.swagger.annotations.ApiModel;
 @XmlType(propOrder = { "id", "codeValue", "prefLabels", "definitions", "descriptions", "changeNotes", "startDate", "endDate", "modified", "status", "version", "uri" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "CodeScheme", description = "CodeScheme model that represents data for one single codescheme.")
-public class CodeScheme extends AbstractCommonCode implements Serializable {
+public class CodeScheme extends AbstractHistoricalCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -93,7 +94,7 @@ public class CodeScheme extends AbstractCommonCode implements Serializable {
     public String getPrefLabel(final String language) {
         String prefLabel = prefLabels.get(language);
         if (prefLabel == null) {
-            prefLabel = prefLabels.get("en");
+            prefLabel = prefLabels.get(LANGUAGE_CODE_EN);
         }
         return prefLabel;
     }
@@ -129,7 +130,7 @@ public class CodeScheme extends AbstractCommonCode implements Serializable {
     public String getDefinition(final String language) {
         String definition = definitions.get(language);
         if (definition == null) {
-            definition = definitions.get("en");
+            definition = definitions.get(LANGUAGE_CODE_EN);
         }
         return definition;
     }
@@ -143,7 +144,7 @@ public class CodeScheme extends AbstractCommonCode implements Serializable {
         } else if (language != null && definition == null) {
             definitions.remove(language);
         }
-        setPrefLabels(definitions);
+        setDefinitions(definitions);
     }
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
@@ -165,7 +166,7 @@ public class CodeScheme extends AbstractCommonCode implements Serializable {
     public String getDescription(final String language) {
         String description = descriptions.get(language);
         if (description == null) {
-            description = descriptions.get("en");
+            description = descriptions.get(LANGUAGE_CODE_EN);
         }
         return description;
     }
@@ -179,7 +180,7 @@ public class CodeScheme extends AbstractCommonCode implements Serializable {
         } else if (language != null && description == null) {
             descriptions.remove(language);
         }
-        setPrefLabels(descriptions);
+        setDescriptions(descriptions);
     }
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
@@ -201,7 +202,7 @@ public class CodeScheme extends AbstractCommonCode implements Serializable {
     public String getChangeNote(final String language) {
         String changeNote = changeNotes.get(language);
         if (changeNote == null) {
-            changeNote = changeNotes.get("en");
+            changeNote = changeNotes.get(LANGUAGE_CODE_EN);
         }
         return changeNote;
     }
@@ -215,7 +216,7 @@ public class CodeScheme extends AbstractCommonCode implements Serializable {
         } else if (language != null && changeNote == null) {
             changeNotes.remove(language);
         }
-        setPrefLabels(changeNotes);
+        setChangeNotes(changeNotes);
     }
 
 }

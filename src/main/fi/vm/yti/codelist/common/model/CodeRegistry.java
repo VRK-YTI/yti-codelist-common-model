@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import io.swagger.annotations.ApiModel;
+import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 /**
  * Object model that represents a single code registry.
@@ -28,7 +29,7 @@ import io.swagger.annotations.ApiModel;
 @JsonFilter("codeRegistry")
 @Table(name = "coderegistry")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "prefLabels", "definitions", "startDate", "endDate", "modified", "status", "uri" })
+@XmlType(propOrder = { "id", "codeValue", "prefLabels", "definitions", "modified", "uri" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "CodeRegistry", description = "CodeRegistry model that represents data for one single registry.")
 public class CodeRegistry extends AbstractCommonCode implements Serializable {
@@ -57,7 +58,7 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
     public String getPrefLabel(final String language) {
         String prefLabel = prefLabels.get(language);
         if (prefLabel == null) {
-            prefLabel = prefLabels.get("en");
+            prefLabel = prefLabels.get(LANGUAGE_CODE_EN);
         }
         return prefLabel;
     }
@@ -93,7 +94,7 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
     public String getDefinition(final String language) {
         String definition = definitions.get(language);
         if (definition == null) {
-            definition = definitions.get("en");
+            definition = definitions.get(LANGUAGE_CODE_EN);
         }
         return definition;
     }
@@ -107,7 +108,6 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
         } else if (language != null && name == null) {
             definitions.remove(language);
         }
-        setPrefLabels(definitions);
+        setDefinitions(definitions);
     }
-
 }

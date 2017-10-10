@@ -19,8 +19,8 @@ public class ApiConstants {
     public static final String ELASTIC_TYPE_CODE = "code";
 
     public static final String API_VERSION = "v1";
-    public static final String API_CONTEXT_PATH_INTAKE = "/";
-    public static final String API_CONTEXT_PATH_RESTAPI = "";
+    public static final String API_CONTEXT_PATH_INTAKE = "/codelist-intake";
+    public static final String API_CONTEXT_PATH_RESTAPI = "/codelist-api";
 
     public static final String API_BASE_PATH = "/api";
     public static final String API_PATH_VERSION_V1 = "/v1";

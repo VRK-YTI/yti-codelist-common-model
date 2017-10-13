@@ -45,16 +45,16 @@ public class ApiConstants {
     public static final String CSV_HEADER_STATUS = "STATUS";
     public static final String CSV_HEADER_VERSION = "VERSION";
     public static final String CSV_HEADER_PREFLABEL_FI = "PREFLABEL_FI";
-    public static final String CSV_HEADER_PREFLABEL_SE = "PREFLABEL_SE";
+    public static final String CSV_HEADER_PREFLABEL_SV = "PREFLABEL_SV";
     public static final String CSV_HEADER_PREFLABEL_EN = "PREFLABEL_EN";
     public static final String CSV_HEADER_DEFINITION_FI = "DEFINITION_FI";
-    public static final String CSV_HEADER_DEFINITION_SE = "DEFINITION_SE";
+    public static final String CSV_HEADER_DEFINITION_SV = "DEFINITION_SV";
     public static final String CSV_HEADER_DEFINITION_EN = "DEFINITION_EN";
     public static final String CSV_HEADER_DESCRIPTION_FI = "DESCRIPTION_FI";
-    public static final String CSV_HEADER_DESCRIPTION_SE = "DESCRIPTION_SE";
+    public static final String CSV_HEADER_DESCRIPTION_SV = "DESCRIPTION_SV";
     public static final String CSV_HEADER_DESCRIPTION_EN = "DESCRIPTION_EN";
     public static final String CSV_HEADER_CHANGENOTE_FI = "CHANGENOTE_FI";
-    public static final String CSV_HEADER_CHANGENOTE_SE = "CHANGENOTE_SE";
+    public static final String CSV_HEADER_CHANGENOTE_SV = "CHANGENOTE_SV";
     public static final String CSV_HEADER_CHANGENOTE_EN = "CHANGENOTE_EN";
     public static final String CSV_HEADER_SHORTNAME = "SHORTNAME";
     public static final String CSV_HEADER_STARTDATE = "STARTDATE";
@@ -63,6 +63,6 @@ public class ApiConstants {
     public static final String FORMAT_JSON = "json";
     public static final String FORMAT_CSV = "csv";
     public static final String LANGUAGE_CODE_FI = "fi";
-    public static final String LANGUAGE_CODE_SE = "se";
+    public static final String LANGUAGE_CODE_SV = "sv";
     public static final String LANGUAGE_CODE_EN = "en";
 }

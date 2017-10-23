@@ -26,7 +26,7 @@
 
     <dependencies>
 
-        <!-- Spring Boot starter JPA -->
+        <!-- Spring Boot starters -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -92,6 +92,12 @@
             <version>2.0.0.Final</version>
         </dependency>
 
+        <!-- Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -110,14 +116,17 @@
                 </configuration>
             </plugin>
 
+            <!-- This plugin is kept here to help OWASP local testing,
+                 but should not be committed to repository uncommented. -->
             <!--plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
-                <version>${dependency-check-maven.version}</version>
+                <version>1.4.5</version>
                 <configuration>
                     <autoUpdate>false</autoUpdate>
                     <dataDirectory>${env.OWASP_DATA_DIR}</dataDirectory>
-                    <format>ALL</format>
+                    <skipProvidedScope>true</skipProvidedScope>
+                    <skipRuntimeScope>true</skipRuntimeScope>
                 </configuration>
                 <executions>
                     <execution>

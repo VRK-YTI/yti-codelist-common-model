@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 
 import io.swagger.annotations.ApiModel;
 
-@XmlType(propOrder = { "code", "message", "register", "pageSize", "from", "resultCount", "totalResults", "after", "afterResourceUrl", "nextPage" })
+@XmlType(propOrder = {"code", "message", "register", "pageSize", "from", "resultCount", "totalResults", "after", "afterResourceUrl", "nextPage"})
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "Meta", description = "Meta information model for API responses.")
 public class Meta {
@@ -31,7 +31,8 @@ public class Meta {
     private String afterResourceUrl;
     private String nextPage;
 
-    public Meta() {}
+    public Meta() {
+    }
 
     public Meta(final Integer code,
                 final Integer pageSize,
@@ -114,7 +115,6 @@ public class Meta {
         this.afterResourceUrl = afterResourceUrl;
     }
 
-
     public String getNextPage() {
         return nextPage;
     }
@@ -123,7 +123,6 @@ public class Meta {
         this.nextPage = nextPage;
     }
 
-
     public CodeScheme getRegister() {
         return register;
     }
@@ -131,7 +130,6 @@ public class Meta {
     public void setRegister(final CodeScheme register) {
         this.register = register;
     }
-
 
     public static Date parseAfterFromString(final String after) {
         if (after != null) {

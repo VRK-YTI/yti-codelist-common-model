@@ -28,7 +28,8 @@ public class UpdateStatus implements Serializable {
     private String nextVersion;
     private Date modified;
 
-    public UpdateStatus() {}
+    public UpdateStatus() {
+    }
 
     @Id
     @Column(name = "id")
@@ -68,7 +69,7 @@ public class UpdateStatus implements Serializable {
     }
 
     @ApiModelProperty(dataType = "dateTime")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern ="yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modified")
     public Date getModified() {

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import io.swagger.annotations.ApiModel;
 
-@XmlType(propOrder = { "name", "email", "telephone" })
+@XmlType(propOrder = {"name", "email", "telephone"})
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "Organization", description = "Organization model that represents data for one single region.")
 public class Organization {
@@ -15,7 +15,8 @@ public class Organization {
     private String email;
     private String telephone;
 
-    public Organization() {}
+    public Organization() {
+    }
 
     public String getName() {
         return name;

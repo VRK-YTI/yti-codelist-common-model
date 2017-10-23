@@ -11,7 +11,8 @@ abstract class AbstractCommonCode extends AbstractBaseCode {
 
     private String codeValue;
 
-    public AbstractCommonCode() {}
+    public AbstractCommonCode() {
+    }
 
     @Column(name = "codevalue")
     public String getCodeValue() {

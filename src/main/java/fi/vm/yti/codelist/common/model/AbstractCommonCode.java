@@ -22,5 +22,4 @@ abstract class AbstractCommonCode extends AbstractBaseCode {
     public void setCodeValue(final String codeValue) {
         this.codeValue = codeValue;
     }
-
 }

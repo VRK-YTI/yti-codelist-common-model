@@ -3,21 +3,23 @@ package fi.vm.yti.codelist.common.model;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
-import org.hibernate.annotations.Proxy;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -31,7 +33,6 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @Entity
 @JsonFilter("code")
 @Table(name = "code")
-@Proxy(lazy = false)
 @XmlRootElement
 @XmlType(propOrder = {"codeValue", "uri", "id", "source", "status", "startDate", "endDate", "modified", "prefLabels", "descriptions", "definitions", "codeScheme", "shortName"})
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -45,6 +46,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
     private Map<String, String> prefLabels;
     private Map<String, String> descriptions;
     private Map<String, String> definitions;
+    private Set<ExternalReference> externalReferences;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "codescheme_id", nullable = false, insertable = true, updatable = false)
@@ -170,4 +172,17 @@ public class Code extends AbstractHistoricalCode implements Serializable {
         setDescriptions(descriptions);
     }
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "code_externalreference",
+        joinColumns = {
+            @JoinColumn(name = "code_id", referencedColumnName = "id", nullable = false, updatable = false)},
+        inverseJoinColumns = {
+            @JoinColumn(name = "externalreference_id", referencedColumnName = "id", nullable = false, updatable = false)})
+    public Set<ExternalReference> getExternalReferences() {
+        return this.externalReferences;
+    }
+
+    public void setExternalReferences(Set<ExternalReference> externalReferences) {
+        this.externalReferences = externalReferences;
+    }
 }

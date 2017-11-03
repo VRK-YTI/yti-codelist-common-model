@@ -41,5 +41,4 @@ public class Organization {
     public void setTelephone(final String telephone) {
         this.telephone = telephone;
     }
-
 }

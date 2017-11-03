@@ -3,13 +3,17 @@ package fi.vm.yti.codelist.common.model;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OrderColumn;
@@ -43,6 +47,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     private Map<String, String> descriptions;
     private Map<String, String> changeNotes;
     private CodeRegistry codeRegistry;
+    private Set<ExternalReference> externalReferences;
 
     public CodeScheme() {
         prefLabels = new HashMap<>();
@@ -219,4 +224,17 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
         setChangeNotes(changeNotes);
     }
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "codescheme_externalreference",
+        joinColumns = {
+            @JoinColumn(name = "codescheme_id", referencedColumnName = "id", nullable = false, updatable = false)},
+        inverseJoinColumns = {
+            @JoinColumn(name = "externalreference_id", referencedColumnName = "id", nullable = false, updatable = false)})
+    public Set<ExternalReference> getExternalReferences() {
+        return this.externalReferences;
+    }
+
+    public void setExternalReferences(Set<ExternalReference> externalReferences) {
+        this.externalReferences = externalReferences;
+    }
 }

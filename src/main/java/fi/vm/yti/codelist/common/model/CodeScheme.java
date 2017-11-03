@@ -234,7 +234,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
         return this.externalReferences;
     }
 
-    public void setExternalReferences(Set<ExternalReference> externalReferences) {
+    public void setExternalReferences(final Set<ExternalReference> externalReferences) {
         this.externalReferences = externalReferences;
     }
 }

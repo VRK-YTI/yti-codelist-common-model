@@ -15,9 +15,6 @@ public class Organization {
     private String email;
     private String telephone;
 
-    public Organization() {
-    }
-
     public String getName() {
         return name;
     }

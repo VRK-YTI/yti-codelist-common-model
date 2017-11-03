@@ -52,7 +52,7 @@ public class PropertyType implements Serializable {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(final String id) {
         this.id = id;
     }
 
@@ -61,7 +61,7 @@ public class PropertyType implements Serializable {
         return notation;
     }
 
-    public void setNotation(String notation) {
+    public void setNotation(final String notation) {
         this.notation = notation;
     }
 

@@ -28,9 +28,6 @@ public class UpdateStatus implements Serializable {
     private String nextVersion;
     private Date modified;
 
-    public UpdateStatus() {
-    }
-
     @Id
     @Column(name = "id")
     public String getId() {

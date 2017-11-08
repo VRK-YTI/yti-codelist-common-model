@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -32,7 +33,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("externalReference")
 @Table(name = "externalreference")
 @XmlRootElement
-@XmlType(propOrder = {"uri", "titles", "descriptions"})
+@XmlType(propOrder = {"url", "titles", "descriptions"})
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonIgnoreProperties({"id"})
 @ApiModel(value = "ExternalReference", description = "ExternalReference model that represents data for either CodeScheme or Code related external link.")
@@ -40,8 +41,8 @@ public class ExternalReference implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String id;
-    private String uri;
+    private UUID id;
+    private String url;
     private Map<String, String> titles;
     private Map<String, String> descriptions;
     private Set<CodeScheme> codeSchemes;
@@ -51,21 +52,21 @@ public class ExternalReference implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "id", unique = true, nullable = false)
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(final String id) {
+    public void setId(final UUID id) {
         this.id = id;
     }
 
-    @Column(name = "uri")
-    public String getUri() {
-        return uri;
+    @Column(name = "url")
+    public String getUrl() {
+        return url;
     }
 
-    public void setUri(final String uri) {
-        this.uri = uri;
+    public void setUrl(final String url) {
+        this.url = url;
     }
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)

@@ -2,6 +2,7 @@ package fi.vm.yti.codelist.common.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ public class UpdateStatus implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String id;
+    private UUID id;
     private String status;
     private String dataType;
     private String source;
@@ -30,11 +31,11 @@ public class UpdateStatus implements Serializable {
 
     @Id
     @Column(name = "id")
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(final String id) {
+    public void setId(final UUID id) {
         this.id = id;
     }
 

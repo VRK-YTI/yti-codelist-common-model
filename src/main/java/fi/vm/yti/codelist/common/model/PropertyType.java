@@ -1,9 +1,9 @@
 package fi.vm.yti.codelist.common.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -15,54 +15,59 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @Entity
 @JsonFilter("propertyType")
 @Table(name = "propertytype")
 @XmlRootElement
-@XmlType(propOrder = {"id", "uri", "notation", "prefLabels", "definitions"})
+@XmlType(propOrder = {"id", "uri", "localName", "type", "prefLabels", "definitions"})
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-@ApiModel(value = "PropertyType", description = "PropertyType model for linking data.")
+@ApiModel(value = "PropertyType", description = "PropertyType model for data relation typing.")
 public class PropertyType implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String id;
+    private UUID id;
     private String uri;
-    private String notation;
+    private String localName;
+    private String type;
     private Map<String, String> prefLabels;
     private Map<String, String> definitions;
-    private Date modified;
 
     @Id
     @Column(name = "id")
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(final String id) {
+    public void setId(final UUID id) {
         this.id = id;
     }
 
-    @Column(name = "notation")
-    public String getNotation() {
-        return notation;
+    @Column(name = "localname")
+    public String getLocalName() {
+        return localName;
     }
 
-    public void setNotation(final String notation) {
-        this.notation = notation;
+    public void setLocalName(final String localName) {
+        this.localName = localName;
+    }
+
+    @Column(name = "type")
+    public String getType() {
+        return type;
+    }
+
+    public void setType(final String type) {
+        this.type = type;
     }
 
     @Column(name = "uri")
@@ -144,24 +149,5 @@ public class PropertyType implements Serializable {
             definitions.remove(language);
         }
         setDefinitions(definitions);
-    }
-
-    @ApiModelProperty(dataType = "dateTime")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "modified")
-    public Date getModified() {
-        if (modified != null) {
-            return new Date(modified.getTime());
-        }
-        return null;
-    }
-
-    public void setModified(final Date modified) {
-        if (modified != null) {
-            this.modified = new Date(modified.getTime());
-        } else {
-            this.modified = null;
-        }
     }
 }

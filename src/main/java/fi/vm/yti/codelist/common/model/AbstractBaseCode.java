@@ -1,6 +1,7 @@
 package fi.vm.yti.codelist.common.model;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -18,18 +19,17 @@ import io.swagger.annotations.ApiModelProperty;
 @MappedSuperclass
 public class AbstractBaseCode {
 
-    private String id;
-    private String source;
+    private UUID id;
     private Date modified;
     private String uri;
 
     @Id
     @Column(name = "id", unique = true)
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(final String id) {
+    public void setId(final UUID id) {
         this.id = id;
     }
 
@@ -50,15 +50,6 @@ public class AbstractBaseCode {
         } else {
             this.modified = null;
         }
-    }
-
-    @Column(name = "source")
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(final String source) {
-        this.source = source;
     }
 
     @Column(name = "uri")

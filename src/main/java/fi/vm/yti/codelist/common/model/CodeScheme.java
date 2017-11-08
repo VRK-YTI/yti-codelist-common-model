@@ -34,7 +34,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("codeScheme")
 @Table(name = "codescheme")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "prefLabels", "definitions", "descriptions", "changeNotes", "startDate", "endDate", "modified", "status", "version", "uri"})
+@XmlType(propOrder = {"id", "codeValue", "prefLabels", "definitions", "descriptions", "changeNotes", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "license", "uri"})
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "CodeScheme", description = "CodeScheme model that represents data for one single codescheme.")
 public class CodeScheme extends AbstractHistoricalCode implements Serializable {
@@ -42,6 +42,10 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String version;
+    private String source;
+    private String legalBase;
+    private String governancePolicy;
+    private String license;
     private Map<String, String> prefLabels;
     private Map<String, String> definitions;
     private Map<String, String> descriptions;
@@ -71,6 +75,42 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
 
     public void setVersion(final String version) {
         this.version = version;
+    }
+
+    @Column(name = "source")
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(final String source) {
+        this.source = source;
+    }
+
+    @Column(name = "legalbase")
+    public String getLegalBase() {
+        return legalBase;
+    }
+
+    public void setLegalBase(final String legalBase) {
+        this.legalBase = legalBase;
+    }
+
+    @Column(name = "governancepolicy")
+    public String getGovernancePolicy() {
+        return governancePolicy;
+    }
+
+    public void setGovernancePolicy(final String governancePolicy) {
+        this.governancePolicy = governancePolicy;
+    }
+
+    @Column(name = "license")
+    public String getLicense() {
+        return license;
+    }
+
+    public void setLicense(final String license) {
+        this.license = license;
     }
 
     @ManyToOne(fetch = FetchType.EAGER)

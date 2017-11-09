@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -34,7 +35,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("codeScheme")
 @Table(name = "codescheme")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "prefLabels", "definitions", "descriptions", "changeNotes", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "license", "uri"})
+@XmlType(propOrder = {"id", "codeValue", "codes", "prefLabels", "definitions", "descriptions", "changeNotes", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "license", "serviceClassifications", "uri"})
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "CodeScheme", description = "CodeScheme model that represents data for one single codescheme.")
 public class CodeScheme extends AbstractHistoricalCode implements Serializable {
@@ -50,7 +51,9 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     private Map<String, String> definitions;
     private Map<String, String> descriptions;
     private Map<String, String> changeNotes;
+    private Map<String, String> codes;
     private CodeRegistry codeRegistry;
+    private Set<Code> serviceClassifications;
     private Set<ExternalReference> externalReferences;
 
     public CodeScheme() {
@@ -66,6 +69,13 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
         super.setStatus(status);
         this.version = version;
         prefLabels = new HashMap<>();
+    }
+
+    @Transient
+    public Map<String, String> getCodes() {
+        codes = new HashMap<>();
+        codes.put("uri", this.getUri() + "codes/");
+        return codes;
     }
 
     @Column(name = "version")
@@ -276,5 +286,19 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
 
     public void setExternalReferences(final Set<ExternalReference> externalReferences) {
         this.externalReferences = externalReferences;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "service_codescheme_code",
+        joinColumns = {
+            @JoinColumn(name = "codescheme_id", referencedColumnName = "id", nullable = false, updatable = false)},
+        inverseJoinColumns = {
+            @JoinColumn(name = "code_id", referencedColumnName = "id", nullable = false, updatable = false)})
+    public Set<Code> getServiceClassifications() {
+        return serviceClassifications;
+    }
+
+    public void setServiceClassifications(final Set<Code> serviceClassifications) {
+        this.serviceClassifications = serviceClassifications;
     }
 }

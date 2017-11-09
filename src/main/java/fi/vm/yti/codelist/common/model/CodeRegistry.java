@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -29,7 +30,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("codeRegistry")
 @Table(name = "coderegistry")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "prefLabels", "definitions", "modified", "uri"})
+@XmlType(propOrder = {"id", "codeValue", "prefLabels", "definitions", "modified", "uri", "codeSchemes"})
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "CodeRegistry", description = "CodeRegistry model that represents data for one single registry.")
 public class CodeRegistry extends AbstractCommonCode implements Serializable {
@@ -38,6 +39,14 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
 
     private Map<String, String> prefLabels;
     private Map<String, String> definitions;
+    private Map<String, String> codeSchemes;
+
+    @Transient
+    public Map<String, String> getCodeSchemes() {
+        codeSchemes = new HashMap<>();
+        codeSchemes.put("uri", this.getUri() + "codeschemes/");
+        return codeSchemes;
+    }
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "coderegistry_preflabel", joinColumns = @JoinColumn(name = "coderegistry_id", referencedColumnName = "id"))

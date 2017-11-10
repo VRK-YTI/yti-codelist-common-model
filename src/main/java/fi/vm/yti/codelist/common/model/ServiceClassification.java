@@ -10,6 +10,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ServiceClassification extends Code {
 
+    private static final long serialVersionUID = 1L;
+
     public ServiceClassification() {
     }
 

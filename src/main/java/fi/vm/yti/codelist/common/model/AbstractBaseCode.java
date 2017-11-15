@@ -17,21 +17,10 @@ import io.swagger.annotations.ApiModelProperty;
  * Abstract common base class for object models in CLS domain.
  */
 @MappedSuperclass
-public class AbstractBaseCode {
+public class AbstractBaseCode extends AbstractIdentifyableCode {
 
-    private UUID id;
     private Date modified;
     private String uri;
-
-    @Id
-    @Column(name = "id", unique = true)
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(final UUID id) {
-        this.id = id;
-    }
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")

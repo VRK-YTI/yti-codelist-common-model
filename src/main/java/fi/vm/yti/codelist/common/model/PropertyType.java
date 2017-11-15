@@ -31,26 +31,15 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @XmlType(propOrder = {"id", "uri", "localName", "type", "prefLabels", "definitions"})
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "PropertyType", description = "PropertyType model for data relation typing.")
-public class PropertyType implements Serializable {
+public class PropertyType extends AbstractIdentifyableCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private UUID id;
     private String uri;
     private String localName;
     private String type;
     private Map<String, String> prefLabels;
     private Map<String, String> definitions;
-
-    @Id
-    @Column(name = "id")
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(final UUID id) {
-        this.id = id;
-    }
 
     @Column(name = "localname")
     public String getLocalName() {

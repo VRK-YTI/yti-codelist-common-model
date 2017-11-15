@@ -33,32 +33,20 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("externalReference")
 @Table(name = "externalreference")
 @XmlRootElement
-@XmlType(propOrder = {"url", "titles", "descriptions"})
+@XmlType(propOrder = {"id", "url", "titles", "descriptions"})
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonIgnoreProperties({"id"})
 @ApiModel(value = "ExternalReference", description = "ExternalReference model that represents data for either CodeScheme or Code related external link.")
-public class ExternalReference implements Serializable {
+public class ExternalReference extends AbstractIdentifyableCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private UUID id;
     private String url;
     private Map<String, String> titles;
     private Map<String, String> descriptions;
     private Set<CodeScheme> codeSchemes;
     private Set<Code> codes;
     private PropertyType propertyType;
-
-    @Id
-    @GeneratedValue
-    @Column(name = "id", unique = true, nullable = false)
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(final UUID id) {
-        this.id = id;
-    }
 
     @Column(name = "url")
     public String getUrl() {

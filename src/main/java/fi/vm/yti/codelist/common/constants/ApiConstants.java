@@ -19,7 +19,7 @@ public class ApiConstants {
     public static final String FILTER_NAME_CODE = "code";
     public static final String FILTER_NAME_PROPERTYTYPE = "propertyType";
     public static final String FILTER_NAME_EXTERNALREFERENCE = "externalReference";
-    public static final String FILTER_NAME_SERVICECLASSIFICATION = "serviceClassification";
+    public static final String FILTER_NAME_DATACLASSIFICATION = "dataClassification";
 
     public static final String FIELD_NAME_URI = "uri";
 
@@ -42,7 +42,7 @@ public class ApiConstants {
     public static final String API_PATH_VERSION_V1 = "/v1";
     public static final String API_PATH_CODEREGISTRIES = "/coderegistries";
     public static final String API_PATH_CODESCHEMES = "/codeschemes";
-    public static final String API_PATH_SERVICECLASSIFICATIONS = "/serviceclassifications";
+    public static final String API_PATH_DATACLASSIFICATIONS = "/dataclassifications";
     public static final String API_PATH_EXTERNALREFERENCES = "/externalreferences";
     public static final String API_PATH_PROPERTYTYPES = "/propertytypes";
     public static final String API_PATH_CODES = "/codes";
@@ -63,7 +63,7 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_CODEVALUE = "CODEVALUE";
     public static final String CONTENT_HEADER_STATUS = "STATUS";
     public static final String CONTENT_HEADER_VERSION = "VERSION";
-    public static final String CONTENT_HEADER_SERVICE = "SERVICE";
+    public static final String CONTENT_HEADER_CLASSIFICATION = "CLASSIFICATION";
     public static final String CONTENT_HEADER_LOCALNAME = "LOCALNAME";
     public static final String CONTENT_HEADER_TYPE = "TYPE";
     public static final String CONTENT_HEADER_LEGALBASE = "LEGALBASE";

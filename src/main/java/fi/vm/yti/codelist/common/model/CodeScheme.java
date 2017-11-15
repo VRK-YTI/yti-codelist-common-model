@@ -35,7 +35,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("codeScheme")
 @Table(name = "codescheme")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "codes", "prefLabels", "definitions", "descriptions", "changeNotes", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "license", "serviceClassifications", "uri"})
+@XmlType(propOrder = {"id", "codeValue", "codes", "prefLabels", "definitions", "descriptions", "changeNotes", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "license", "dataClassifications", "uri"})
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "CodeScheme", description = "CodeScheme model that represents data for one single codescheme.")
 public class CodeScheme extends AbstractHistoricalCode implements Serializable {
@@ -53,7 +53,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     private Map<String, String> changeNotes;
     private Map<String, String> codes;
     private CodeRegistry codeRegistry;
-    private Set<Code> serviceClassifications;
+    private Set<Code> dataClassifications;
     private Set<ExternalReference> externalReferences;
 
     public CodeScheme() {
@@ -294,11 +294,11 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
             @JoinColumn(name = "codescheme_id", referencedColumnName = "id", nullable = false, updatable = false)},
         inverseJoinColumns = {
             @JoinColumn(name = "code_id", referencedColumnName = "id", nullable = false, updatable = false)})
-    public Set<Code> getServiceClassifications() {
-        return serviceClassifications;
+    public Set<Code> getDataClassifications() {
+        return dataClassifications;
     }
 
-    public void setServiceClassifications(final Set<Code> serviceClassifications) {
-        this.serviceClassifications = serviceClassifications;
+    public void setDataClassifications(final Set<Code> dataClassifications) {
+        this.dataClassifications = dataClassifications;
     }
 }

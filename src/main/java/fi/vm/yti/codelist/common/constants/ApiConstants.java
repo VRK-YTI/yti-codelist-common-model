@@ -67,6 +67,7 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_LOCALNAME = "LOCALNAME";
     public static final String CONTENT_HEADER_TYPE = "TYPE";
     public static final String CONTENT_HEADER_PROPERTYURI = "PROPERTYURI";
+    public static final String CONTENT_HEADER_CONTEXT = "CONTEXT";
     public static final String CONTENT_HEADER_LEGALBASE = "LEGALBASE";
     public static final String CONTENT_HEADER_GOVERNANCEPOLICY = "GOVERNANCEPOLICY";
     public static final String CONTENT_HEADER_LICENSE = "LICENSE";

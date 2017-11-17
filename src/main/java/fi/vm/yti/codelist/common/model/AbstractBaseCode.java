@@ -1,10 +1,7 @@
 package fi.vm.yti.codelist.common.model;
 
 import java.util.Date;
-import java.util.UUID;
-
 import javax.persistence.Column;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;

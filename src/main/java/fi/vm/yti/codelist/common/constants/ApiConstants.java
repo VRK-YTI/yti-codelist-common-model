@@ -40,6 +40,7 @@ public class ApiConstants {
 
     public static final String API_BASE_PATH = "/api";
     public static final String API_PATH_VERSION_V1 = "/v1";
+    public static final String API_PATH_AUTHENTICATED_USER = "/authenticated-user";
     public static final String API_PATH_CODEREGISTRIES = "/coderegistries";
     public static final String API_PATH_CODESCHEMES = "/codeschemes";
     public static final String API_PATH_DATACLASSIFICATIONS = "/dataclassifications";

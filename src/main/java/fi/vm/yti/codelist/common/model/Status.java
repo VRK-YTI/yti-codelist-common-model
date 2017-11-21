@@ -11,6 +11,7 @@ public enum Status {
     VALID("Valid", "The item has been accepted, is recommended for use, and has not been superseded or retired."),
     SUPERSEDED("Superseded", "The item has been superseded by another item and is no longer recommended for use."),
     RETIRED("Retired", "A decision has been made that the item is no longer recommended for use. It has not been superseded by another item."),
+    DRAFT("Dreft", "A draft state item."),
     SUBMITTED("Submitted", "The item has been entered into the register, but the control body has not accepted the proposal to add it.");
 
     private String name;

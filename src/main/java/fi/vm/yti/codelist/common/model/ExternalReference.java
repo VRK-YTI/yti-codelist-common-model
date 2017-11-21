@@ -29,7 +29,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("externalReference")
 @Table(name = "externalreference")
 @XmlRootElement
-@XmlType(propOrder = {"id", "uri", "url", "titles", "descriptions"})
+@XmlType(propOrder = {"id", "uri", "url", "titles", "descriptions", "parentCodeScheme"})
 @ApiModel(value = "ExternalReference", description = "ExternalReference model that represents data for either CodeScheme or Code related external link.")
 public class ExternalReference extends AbstractBaseCode implements Serializable {
 
@@ -41,6 +41,7 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
     private Set<CodeScheme> codeSchemes;
     private Set<Code> codes;
     private PropertyType propertyType;
+    private CodeScheme parentCodeScheme;
 
     @Column(name = "url")
     public String getUrl() {
@@ -154,5 +155,16 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
 
     public void setPropertyType(final PropertyType propertyType) {
         this.propertyType = propertyType;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parentcodescheme_id", nullable = false, insertable = true, updatable = false)
+    @JsonView(Views.ExtendedExternalReference.class)
+    public CodeScheme getParentCodeScheme() {
+        return parentCodeScheme;
+    }
+
+    public void setParentCodeScheme(final CodeScheme codeScheme) {
+        this.parentCodeScheme = codeScheme;
     }
 }

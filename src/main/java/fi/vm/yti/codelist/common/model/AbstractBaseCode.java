@@ -1,12 +1,14 @@
 package fi.vm.yti.codelist.common.model;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import io.swagger.annotations.ApiModelProperty;
 
@@ -23,6 +25,7 @@ public class AbstractBaseCode extends AbstractIdentifyableCode {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modified")
+    @JsonView(Views.Normal.class)
     public Date getModified() {
         if (modified != null) {
             return new Date(modified.getTime());
@@ -39,6 +42,7 @@ public class AbstractBaseCode extends AbstractIdentifyableCode {
     }
 
     @Column(name = "uri")
+    @JsonView(Views.Normal.class)
     public String getUri() {
         return uri;
     }

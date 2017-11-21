@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import io.swagger.annotations.ApiModel;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
@@ -31,7 +31,6 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @Table(name = "coderegistry")
 @XmlRootElement
 @XmlType(propOrder = {"id", "codeValue", "prefLabels", "definitions", "modified", "uri", "codeSchemes"})
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "CodeRegistry", description = "CodeRegistry model that represents data for one single registry.")
 public class CodeRegistry extends AbstractCommonCode implements Serializable {
 
@@ -42,6 +41,7 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
     private Map<String, String> codeSchemes;
 
     @Transient
+    @JsonView(Views.Normal.class)
     public Map<String, String> getCodeSchemes() {
         codeSchemes = new HashMap<>();
         codeSchemes.put("uri", this.getUri() + "codeschemes/");
@@ -53,6 +53,7 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
     @MapKeyColumn(name = "language")
     @Column(name = "preflabel")
     @OrderColumn
+    @JsonView(Views.Normal.class)
     public Map<String, String> getPrefLabels() {
         if (prefLabels == null) {
             prefLabels = new HashMap<>();
@@ -89,6 +90,7 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
     @MapKeyColumn(name = "language")
     @Column(name = "definition")
     @OrderColumn
+    @JsonView(Views.Normal.class)
     public Map<String, String> getDefinitions() {
         if (definitions == null) {
             definitions = new HashMap<>();

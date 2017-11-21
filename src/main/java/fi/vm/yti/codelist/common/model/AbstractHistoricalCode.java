@@ -8,6 +8,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import io.swagger.annotations.ApiModelProperty;
 
@@ -22,6 +23,7 @@ public class AbstractHistoricalCode extends AbstractCommonCode {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "startdate")
+    @JsonView(Views.Normal.class)
     public Date getStartDate() {
         if (startDate != null) {
             return new Date(startDate.getTime());
@@ -41,6 +43,7 @@ public class AbstractHistoricalCode extends AbstractCommonCode {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "enddate")
+    @JsonView(Views.Normal.class)
     public Date getEndDate() {
         if (endDate != null) {
             return new Date(endDate.getTime());
@@ -57,6 +60,7 @@ public class AbstractHistoricalCode extends AbstractCommonCode {
     }
 
     @Column(name = "status")
+    @JsonView(Views.Normal.class)
     public String getStatus() {
         return status;
     }

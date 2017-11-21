@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import io.swagger.annotations.ApiModel;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
@@ -35,8 +35,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("codeScheme")
 @Table(name = "codescheme")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "codes", "prefLabels", "definitions", "descriptions", "changeNotes", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "license", "dataClassifications", "uri"})
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@XmlType(propOrder = {"id", "codeValue", "codes", "prefLabels", "definitions", "descriptions", "changeNotes", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "license", "dataClassifications", "externalReferences", "uri"})
 @ApiModel(value = "CodeScheme", description = "CodeScheme model that represents data for one single codescheme.")
 public class CodeScheme extends AbstractHistoricalCode implements Serializable {
 
@@ -72,6 +71,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     }
 
     @Transient
+    @JsonView(Views.Normal.class)
     public Map<String, String> getCodes() {
         codes = new HashMap<>();
         codes.put("uri", this.getUri() + "codes/");
@@ -79,6 +79,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     }
 
     @Column(name = "version")
+    @JsonView(Views.Normal.class)
     public String getVersion() {
         return version;
     }
@@ -88,6 +89,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     }
 
     @Column(name = "source")
+    @JsonView(Views.Normal.class)
     public String getSource() {
         return source;
     }
@@ -97,6 +99,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     }
 
     @Column(name = "legalbase")
+    @JsonView(Views.Normal.class)
     public String getLegalBase() {
         return legalBase;
     }
@@ -106,6 +109,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     }
 
     @Column(name = "governancepolicy")
+    @JsonView(Views.Normal.class)
     public String getGovernancePolicy() {
         return governancePolicy;
     }
@@ -115,6 +119,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     }
 
     @Column(name = "license")
+    @JsonView(Views.Normal.class)
     public String getLicense() {
         return license;
     }
@@ -125,6 +130,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "coderegistry_id", nullable = false, insertable = true, updatable = false)
+    @JsonView(Views.Normal.class)
     public CodeRegistry getCodeRegistry() {
         return codeRegistry;
     }
@@ -138,6 +144,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     @MapKeyColumn(name = "language")
     @Column(name = "preflabel")
     @OrderColumn
+    @JsonView(Views.Normal.class)
     public Map<String, String> getPrefLabels() {
         return prefLabels;
     }
@@ -171,6 +178,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     @MapKeyColumn(name = "language")
     @Column(name = "definition")
     @OrderColumn
+    @JsonView(Views.Normal.class)
     public Map<String, String> getDefinitions() {
         if (definitions == null) {
             definitions = new HashMap<>();
@@ -207,6 +215,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     @MapKeyColumn(name = "language")
     @Column(name = "description")
     @OrderColumn
+    @JsonView(Views.Normal.class)
     public Map<String, String> getDescriptions() {
         if (descriptions == null) {
             descriptions = new HashMap<>();
@@ -243,6 +252,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     @MapKeyColumn(name = "language")
     @Column(name = "changenote")
     @OrderColumn
+    @JsonView(Views.Normal.class)
     public Map<String, String> getChangeNotes() {
         if (changeNotes == null) {
             changeNotes = new HashMap<>();
@@ -280,6 +290,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
             @JoinColumn(name = "codescheme_id", referencedColumnName = "id", nullable = false, updatable = false)},
         inverseJoinColumns = {
             @JoinColumn(name = "externalreference_id", referencedColumnName = "id", nullable = false, updatable = false)})
+    @JsonView(Views.ExtendedCodeScheme.class)
     public Set<ExternalReference> getExternalReferences() {
         return this.externalReferences;
     }
@@ -294,6 +305,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
             @JoinColumn(name = "codescheme_id", referencedColumnName = "id", nullable = false, updatable = false)},
         inverseJoinColumns = {
             @JoinColumn(name = "code_id", referencedColumnName = "id", nullable = false, updatable = false)})
+    @JsonView(Views.Normal.class)
     public Set<Code> getDataClassifications() {
         return dataClassifications;
     }

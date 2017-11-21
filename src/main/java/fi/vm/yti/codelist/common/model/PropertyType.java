@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import io.swagger.annotations.ApiModel;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
@@ -27,7 +27,6 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @Table(name = "propertytype")
 @XmlRootElement
 @XmlType(propOrder = {"id", "uri", "context", "propertyUri", "localName", "type", "prefLabels", "definitions"})
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "PropertyType", description = "PropertyType model for data relation typing.")
 public class PropertyType extends AbstractIdentifyableCode implements Serializable {
 
@@ -42,6 +41,7 @@ public class PropertyType extends AbstractIdentifyableCode implements Serializab
     private Map<String, String> definitions;
 
     @Column(name = "localname")
+    @JsonView(Views.Normal.class)
     public String getLocalName() {
         return localName;
     }
@@ -51,6 +51,7 @@ public class PropertyType extends AbstractIdentifyableCode implements Serializab
     }
 
     @Column(name = "context")
+    @JsonView(Views.Normal.class)
     public String getContext() {
         return context;
     }
@@ -60,6 +61,7 @@ public class PropertyType extends AbstractIdentifyableCode implements Serializab
     }
 
     @Column(name = "type")
+    @JsonView(Views.Normal.class)
     public String getType() {
         return type;
     }
@@ -69,6 +71,7 @@ public class PropertyType extends AbstractIdentifyableCode implements Serializab
     }
 
     @Column(name = "uri")
+    @JsonView(Views.Normal.class)
     public String getUri() {
         return uri;
     }
@@ -78,6 +81,7 @@ public class PropertyType extends AbstractIdentifyableCode implements Serializab
     }
 
     @Column(name = "propertyuri")
+    @JsonView(Views.Normal.class)
     public String getPropertyUri() {
         return propertyUri;
     }
@@ -91,6 +95,7 @@ public class PropertyType extends AbstractIdentifyableCode implements Serializab
     @MapKeyColumn(name = "language")
     @Column(name = "preflabel")
     @OrderColumn
+    @JsonView(Views.Normal.class)
     public Map<String, String> getPrefLabels() {
         if (prefLabels == null) {
             prefLabels = new HashMap<>();
@@ -127,6 +132,7 @@ public class PropertyType extends AbstractIdentifyableCode implements Serializab
     @MapKeyColumn(name = "language")
     @Column(name = "definition")
     @OrderColumn
+    @JsonView(Views.Normal.class)
     public Map<String, String> getDefinitions() {
         if (definitions == null) {
             definitions = new HashMap<>();

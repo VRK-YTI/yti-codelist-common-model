@@ -20,8 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import io.swagger.annotations.ApiModel;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
@@ -30,11 +29,9 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("externalReference")
 @Table(name = "externalreference")
 @XmlRootElement
-@XmlType(propOrder = {"id", "url", "titles", "descriptions"})
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
-@JsonIgnoreProperties({"id"})
+@XmlType(propOrder = {"id", "uri", "url", "titles", "descriptions"})
 @ApiModel(value = "ExternalReference", description = "ExternalReference model that represents data for either CodeScheme or Code related external link.")
-public class ExternalReference extends AbstractIdentifyableCode implements Serializable {
+public class ExternalReference extends AbstractBaseCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -59,6 +56,7 @@ public class ExternalReference extends AbstractIdentifyableCode implements Seria
     @MapKeyColumn(name = "language")
     @Column(name = "title")
     @OrderColumn
+    @JsonView(Views.Normal.class)
     public Map<String, String> getTitles() {
         if (titles == null) {
             titles = new HashMap<>();
@@ -95,6 +93,7 @@ public class ExternalReference extends AbstractIdentifyableCode implements Seria
     @MapKeyColumn(name = "language")
     @Column(name = "description")
     @OrderColumn
+    @JsonView(Views.Normal.class)
     public Map<String, String> getDescriptions() {
         if (descriptions == null) {
             descriptions = new HashMap<>();
@@ -127,6 +126,7 @@ public class ExternalReference extends AbstractIdentifyableCode implements Seria
     }
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "externalReferences")
+    @JsonView(Views.Normal.class)
     public Set<CodeScheme> getCodeSchemes() {
         return this.codeSchemes;
     }
@@ -136,6 +136,7 @@ public class ExternalReference extends AbstractIdentifyableCode implements Seria
     }
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "externalReferences")
+    @JsonView(Views.Normal.class)
     public Set<Code> getCodes() {
         return this.codes;
     }
@@ -146,6 +147,7 @@ public class ExternalReference extends AbstractIdentifyableCode implements Seria
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "propertytype_id", nullable = false, insertable = true, updatable = true)
+    @JsonView(Views.Normal.class)
     public PropertyType getPropertyType() {
         return propertyType;
     }

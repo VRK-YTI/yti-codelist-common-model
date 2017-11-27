@@ -59,6 +59,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
     }
 
     @Column(name = "shortname")
+    @JsonView(Views.Normal.class)
     public String getShortName() {
         return shortName;
     }

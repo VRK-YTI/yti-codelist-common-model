@@ -35,7 +35,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("codeScheme")
 @Table(name = "codescheme")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "codes", "prefLabels", "definitions", "descriptions", "changeNotes", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "license", "dataClassifications", "externalReferences", "uri"})
+@XmlType(propOrder = {"id", "codeValue", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "license", "dataClassifications", "externalReferences", "uri"})
 @ApiModel(value = "CodeScheme", description = "CodeScheme model that represents data for one single codescheme.")
 public class CodeScheme extends AbstractHistoricalCode implements Serializable {
 
@@ -46,17 +46,17 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     private String legalBase;
     private String governancePolicy;
     private String license;
-    private Map<String, String> prefLabels;
-    private Map<String, String> definitions;
-    private Map<String, String> descriptions;
-    private Map<String, String> changeNotes;
+    private Map<String, String> prefLabel;
+    private Map<String, String> definition;
+    private Map<String, String> description;
+    private Map<String, String> changeNote;
     private Map<String, String> codes;
     private CodeRegistry codeRegistry;
     private Set<Code> dataClassifications;
     private Set<ExternalReference> externalReferences;
 
     public CodeScheme() {
-        prefLabels = new HashMap<>();
+        prefLabel = new HashMap<>();
     }
 
     public CodeScheme(final String codeValue,
@@ -67,7 +67,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
         super.setUri(url);
         super.setStatus(status);
         this.version = version;
-        prefLabels = new HashMap<>();
+        prefLabel = new HashMap<>();
     }
 
     @Transient
@@ -145,32 +145,32 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     @Column(name = "preflabel")
     @OrderColumn
     @JsonView(Views.Normal.class)
-    public Map<String, String> getPrefLabels() {
-        return prefLabels;
+    public Map<String, String> getPrefLabel() {
+        return prefLabel;
     }
 
-    public void setPrefLabels(final Map<String, String> prefLabels) {
-        this.prefLabels = prefLabels;
+    public void setPrefLabel(final Map<String, String> prefLabel) {
+        this.prefLabel = prefLabel;
     }
 
     public String getPrefLabel(final String language) {
-        String prefLabel = prefLabels.get(language);
+        String prefLabel = this.prefLabel.get(language);
         if (prefLabel == null) {
-            prefLabel = prefLabels.get(LANGUAGE_CODE_EN);
+            prefLabel = this.prefLabel.get(LANGUAGE_CODE_EN);
         }
         return prefLabel;
     }
 
     public void setPrefLabel(final String language, final String prefLabel) {
-        if (prefLabels == null) {
-            prefLabels = new HashMap<>();
+        if (this.prefLabel == null) {
+            this.prefLabel = new HashMap<>();
         }
         if (language != null && prefLabel != null && !prefLabel.isEmpty()) {
-            prefLabels.put(language, prefLabel);
+            this.prefLabel.put(language, prefLabel);
         } else if (language != null && prefLabel == null) {
-            prefLabels.remove(language);
+            this.prefLabel.remove(language);
         }
-        setPrefLabels(prefLabels);
+        setPrefLabel(this.prefLabel);
     }
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
@@ -179,35 +179,35 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     @Column(name = "definition")
     @OrderColumn
     @JsonView(Views.Normal.class)
-    public Map<String, String> getDefinitions() {
-        if (definitions == null) {
-            definitions = new HashMap<>();
+    public Map<String, String> getDefinition() {
+        if (definition == null) {
+            definition = new HashMap<>();
         }
-        return definitions;
+        return definition;
     }
 
-    public void setDefinitions(final Map<String, String> definitions) {
-        this.definitions = definitions;
+    public void setDefinition(final Map<String, String> definition) {
+        this.definition = definition;
     }
 
     public String getDefinition(final String language) {
-        String definition = definitions.get(language);
+        String definition = this.definition.get(language);
         if (definition == null) {
-            definition = definitions.get(LANGUAGE_CODE_EN);
+            definition = this.definition.get(LANGUAGE_CODE_EN);
         }
         return definition;
     }
 
     public void setDefinition(final String language, final String definition) {
-        if (definitions == null) {
-            definitions = new HashMap<>();
+        if (this.definition == null) {
+            this.definition = new HashMap<>();
         }
         if (language != null && definition != null && !definition.isEmpty()) {
-            definitions.put(language, definition);
+            this.definition.put(language, definition);
         } else if (language != null && definition == null) {
-            definitions.remove(language);
+            this.definition.remove(language);
         }
-        setDefinitions(definitions);
+        setDefinition(this.definition);
     }
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
@@ -216,35 +216,35 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     @Column(name = "description")
     @OrderColumn
     @JsonView(Views.Normal.class)
-    public Map<String, String> getDescriptions() {
-        if (descriptions == null) {
-            descriptions = new HashMap<>();
+    public Map<String, String> getDescription() {
+        if (description == null) {
+            description = new HashMap<>();
         }
-        return descriptions;
+        return description;
     }
 
-    public void setDescriptions(final Map<String, String> descriptions) {
-        this.descriptions = descriptions;
+    public void setDescription(final Map<String, String> description) {
+        this.description = description;
     }
 
     public String getDescription(final String language) {
-        String description = descriptions.get(language);
+        String description = this.description.get(language);
         if (description == null) {
-            description = descriptions.get(LANGUAGE_CODE_EN);
+            description = this.description.get(LANGUAGE_CODE_EN);
         }
         return description;
     }
 
     public void setDescription(final String language, final String description) {
-        if (descriptions == null) {
-            descriptions = new HashMap<>();
+        if (this.description == null) {
+            this.description = new HashMap<>();
         }
         if (language != null && description != null && !description.isEmpty()) {
-            descriptions.put(language, description);
+            this.description.put(language, description);
         } else if (language != null && description == null) {
-            descriptions.remove(language);
+            this.description.remove(language);
         }
-        setDescriptions(descriptions);
+        setDescription(this.description);
     }
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
@@ -253,35 +253,35 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     @Column(name = "changenote")
     @OrderColumn
     @JsonView(Views.Normal.class)
-    public Map<String, String> getChangeNotes() {
-        if (changeNotes == null) {
-            changeNotes = new HashMap<>();
+    public Map<String, String> getChangeNote() {
+        if (changeNote == null) {
+            changeNote = new HashMap<>();
         }
-        return changeNotes;
+        return changeNote;
     }
 
-    public void setChangeNotes(final Map<String, String> changeNotes) {
-        this.changeNotes = changeNotes;
+    public void setChangeNote(final Map<String, String> changeNote) {
+        this.changeNote = changeNote;
     }
 
     public String getChangeNote(final String language) {
-        String changeNote = changeNotes.get(language);
+        String changeNote = this.changeNote.get(language);
         if (changeNote == null) {
-            changeNote = changeNotes.get(LANGUAGE_CODE_EN);
+            changeNote = this.changeNote.get(LANGUAGE_CODE_EN);
         }
         return changeNote;
     }
 
     public void setChangeNote(final String language, final String changeNote) {
-        if (changeNotes == null) {
-            changeNotes = new HashMap<>();
+        if (this.changeNote == null) {
+            this.changeNote = new HashMap<>();
         }
         if (language != null && changeNote != null && !changeNote.isEmpty()) {
-            changeNotes.put(language, changeNote);
+            this.changeNote.put(language, changeNote);
         } else if (language != null && changeNote == null) {
-            changeNotes.remove(language);
+            this.changeNote.remove(language);
         }
-        setChangeNotes(changeNotes);
+        setChangeNote(this.changeNote);
     }
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

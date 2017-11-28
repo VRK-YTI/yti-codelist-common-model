@@ -30,14 +30,14 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("codeRegistry")
 @Table(name = "coderegistry")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "prefLabels", "definitions", "modified", "uri", "codeSchemes"})
+@XmlType(propOrder = {"id", "codeValue", "prefLabel", "definition", "modified", "uri", "codeSchemes"})
 @ApiModel(value = "CodeRegistry", description = "CodeRegistry model that represents data for one single registry.")
 public class CodeRegistry extends AbstractCommonCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Map<String, String> prefLabels;
-    private Map<String, String> definitions;
+    private Map<String, String> prefLabel;
+    private Map<String, String> definition;
     private Map<String, String> codeSchemes;
 
     @Transient
@@ -54,35 +54,35 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
     @Column(name = "preflabel")
     @OrderColumn
     @JsonView(Views.Normal.class)
-    public Map<String, String> getPrefLabels() {
-        if (prefLabels == null) {
-            prefLabels = new HashMap<>();
+    public Map<String, String> getPrefLabel() {
+        if (prefLabel == null) {
+            prefLabel = new HashMap<>();
         }
-        return prefLabels;
+        return prefLabel;
     }
 
-    public void setPrefLabels(final Map<String, String> prefLabels) {
-        this.prefLabels = prefLabels;
+    public void setPrefLabel(final Map<String, String> prefLabel) {
+        this.prefLabel = prefLabel;
     }
 
     public String getPrefLabel(final String language) {
-        String prefLabel = prefLabels.get(language);
+        String prefLabel = this.prefLabel.get(language);
         if (prefLabel == null) {
-            prefLabel = prefLabels.get(LANGUAGE_CODE_EN);
+            prefLabel = this.prefLabel.get(LANGUAGE_CODE_EN);
         }
         return prefLabel;
     }
 
     public void setPrefLabel(final String language, final String name) {
-        if (prefLabels == null) {
-            prefLabels = new HashMap<>();
+        if (prefLabel == null) {
+            prefLabel = new HashMap<>();
         }
         if (language != null && name != null && !name.isEmpty()) {
-            prefLabels.put(language, name);
+            prefLabel.put(language, name);
         } else if (language != null && name == null) {
-            prefLabels.remove(language);
+            prefLabel.remove(language);
         }
-        setPrefLabels(prefLabels);
+        setPrefLabel(prefLabel);
     }
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
@@ -91,34 +91,34 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
     @Column(name = "definition")
     @OrderColumn
     @JsonView(Views.Normal.class)
-    public Map<String, String> getDefinitions() {
-        if (definitions == null) {
-            definitions = new HashMap<>();
+    public Map<String, String> getDefinition() {
+        if (definition == null) {
+            definition = new HashMap<>();
         }
-        return definitions;
+        return definition;
     }
 
-    public void setDefinitions(final Map<String, String> definitions) {
-        this.definitions = definitions;
+    public void setDefinition(final Map<String, String> definition) {
+        this.definition = definition;
     }
 
     public String getDefinition(final String language) {
-        String definition = definitions.get(language);
+        String definition = this.definition.get(language);
         if (definition == null) {
-            definition = definitions.get(LANGUAGE_CODE_EN);
+            definition = this.definition.get(LANGUAGE_CODE_EN);
         }
         return definition;
     }
 
     public void setDefinition(final String language, final String name) {
-        if (definitions == null) {
-            definitions = new HashMap<>();
+        if (definition == null) {
+            definition = new HashMap<>();
         }
         if (language != null && name != null && !name.isEmpty()) {
-            definitions.put(language, name);
+            definition.put(language, name);
         } else if (language != null && name == null) {
-            definitions.remove(language);
+            definition.remove(language);
         }
-        setDefinitions(definitions);
+        setDefinition(definition);
     }
 }

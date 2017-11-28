@@ -21,7 +21,7 @@ public class DataClassification extends Code {
         super.setStatus(code.getStatus());
         super.setCodeScheme(code.getCodeScheme());
         super.setCodeValue(code.getCodeValue());
-        super.setPrefLabels(code.getPrefLabels());
+        super.setPrefLabel(code.getPrefLabel());
         setCount(count);
     }
 

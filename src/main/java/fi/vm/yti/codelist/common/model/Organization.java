@@ -23,13 +23,13 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @Entity
 @JsonFilter("organization")
 @Table(name = "organization")
-@XmlType(propOrder = {"id", "url", "prefLabels", "descriptions"})
+@XmlType(propOrder = {"id", "url", "prefLabel", "description"})
 @ApiModel(value = "Organization", description = "Organization model that represents data for one single organization.")
 public class Organization extends AbstractIdentifyableCode {
 
     private String url;
-    private Map<String, String> prefLabels;
-    private Map<String, String> descriptions;
+    private Map<String, String> prefLabel;
+    private Map<String, String> description;
 
     @Column(name = "url")
     @JsonView(Views.Normal.class)
@@ -47,32 +47,32 @@ public class Organization extends AbstractIdentifyableCode {
     @Column(name = "preflabel")
     @OrderColumn
     @JsonView(Views.Normal.class)
-    public Map<String, String> getPrefLabels() {
-        return prefLabels;
+    public Map<String, String> getPrefLabel() {
+        return prefLabel;
     }
 
-    public void setPrefLabels(final Map<String, String> prefLabels) {
-        this.prefLabels = prefLabels;
+    public void setPrefLabel(final Map<String, String> prefLabel) {
+        this.prefLabel = prefLabel;
     }
 
     public String getPrefLabel(final String language) {
-        String prefLabel = prefLabels.get(language);
+        String prefLabel = this.prefLabel.get(language);
         if (prefLabel == null) {
-            prefLabel = prefLabels.get(LANGUAGE_CODE_EN);
+            prefLabel = this.prefLabel.get(LANGUAGE_CODE_EN);
         }
         return prefLabel;
     }
 
     public void setPrefLabel(final String language, final String prefLabel) {
-        if (prefLabels == null) {
-            prefLabels = new HashMap<>();
+        if (this.prefLabel == null) {
+            this.prefLabel = new HashMap<>();
         }
         if (language != null && prefLabel != null && !prefLabel.isEmpty()) {
-            prefLabels.put(language, prefLabel);
+            this.prefLabel.put(language, prefLabel);
         } else if (language != null && prefLabel == null) {
-            prefLabels.remove(language);
+            this.prefLabel.remove(language);
         }
-        setPrefLabels(prefLabels);
+        setPrefLabel(this.prefLabel);
     }
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
@@ -81,34 +81,34 @@ public class Organization extends AbstractIdentifyableCode {
     @Column(name = "description")
     @OrderColumn
     @JsonView(Views.Normal.class)
-    public Map<String, String> getDescriptions() {
-        if (descriptions == null) {
-            descriptions = new HashMap<>();
+    public Map<String, String> getDescription() {
+        if (description == null) {
+            description = new HashMap<>();
         }
-        return descriptions;
+        return description;
     }
 
-    public void setDescriptions(final Map<String, String> descriptions) {
-        this.descriptions = descriptions;
+    public void setDescription(final Map<String, String> description) {
+        this.description = description;
     }
 
     public String getDescription(final String language) {
-        String description = descriptions.get(language);
+        String description = this.description.get(language);
         if (description == null) {
-            description = descriptions.get(LANGUAGE_CODE_EN);
+            description = this.description.get(LANGUAGE_CODE_EN);
         }
         return description;
     }
 
     public void setDescription(final String language, final String description) {
-        if (descriptions == null) {
-            descriptions = new HashMap<>();
+        if (this.description == null) {
+            this.description = new HashMap<>();
         }
         if (language != null && description != null && !description.isEmpty()) {
-            descriptions.put(language, description);
+            this.description.put(language, description);
         } else if (language != null && description == null) {
-            descriptions.remove(language);
+            this.description.remove(language);
         }
-        setDescriptions(descriptions);
+        setDescription(this.description);
     }
 }

@@ -29,15 +29,15 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("externalReference")
 @Table(name = "externalreference")
 @XmlRootElement
-@XmlType(propOrder = {"id", "uri", "url", "titles", "descriptions", "parentCodeScheme"})
+@XmlType(propOrder = {"id", "uri", "url", "title", "description", "parentCodeScheme"})
 @ApiModel(value = "ExternalReference", description = "ExternalReference model that represents data for either CodeScheme or Code related external link.")
 public class ExternalReference extends AbstractBaseCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private String url;
-    private Map<String, String> titles;
-    private Map<String, String> descriptions;
+    private Map<String, String> title;
+    private Map<String, String> description;
     private Set<CodeScheme> codeSchemes;
     private Set<Code> codes;
     private PropertyType propertyType;
@@ -58,35 +58,35 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
     @Column(name = "title")
     @OrderColumn
     @JsonView(Views.Normal.class)
-    public Map<String, String> getTitles() {
-        if (titles == null) {
-            titles = new HashMap<>();
+    public Map<String, String> getTitle() {
+        if (title == null) {
+            title = new HashMap<>();
         }
-        return titles;
+        return title;
     }
 
-    public void setTitles(final Map<String, String> titles) {
-        this.titles = titles;
+    public void setTitle(final Map<String, String> title) {
+        this.title = title;
     }
 
     public String getTitle(final String language) {
-        String title = titles.get(language);
+        String title = this.title.get(language);
         if (title == null) {
-            title = titles.get(LANGUAGE_CODE_EN);
+            title = this.title.get(LANGUAGE_CODE_EN);
         }
         return title;
     }
 
     public void setTitle(final String language, final String name) {
-        if (titles == null) {
-            titles = new HashMap<>();
+        if (title == null) {
+            title = new HashMap<>();
         }
         if (language != null && name != null && !name.isEmpty()) {
-            titles.put(language, name);
+            title.put(language, name);
         } else if (language != null && name == null) {
-            titles.remove(language);
+            title.remove(language);
         }
-        setTitles(titles);
+        setTitle(title);
     }
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
@@ -95,35 +95,35 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
     @Column(name = "description")
     @OrderColumn
     @JsonView(Views.Normal.class)
-    public Map<String, String> getDescriptions() {
-        if (descriptions == null) {
-            descriptions = new HashMap<>();
+    public Map<String, String> getDescription() {
+        if (description == null) {
+            description = new HashMap<>();
         }
-        return descriptions;
+        return description;
     }
 
-    public void setDescriptions(final Map<String, String> descriptions) {
-        this.descriptions = descriptions;
+    public void setDescription(final Map<String, String> description) {
+        this.description = description;
     }
 
     public String getDescription(final String language) {
-        String description = descriptions.get(language);
+        String description = this.description.get(language);
         if (description == null) {
-            description = descriptions.get(LANGUAGE_CODE_EN);
+            description = this.description.get(LANGUAGE_CODE_EN);
         }
         return description;
     }
 
     public void setDescription(final String language, final String name) {
-        if (descriptions == null) {
-            descriptions = new HashMap<>();
+        if (description == null) {
+            description = new HashMap<>();
         }
         if (language != null && name != null && !name.isEmpty()) {
-            descriptions.put(language, name);
+            description.put(language, name);
         } else if (language != null && name == null) {
-            descriptions.remove(language);
+            description.remove(language);
         }
-        setDescriptions(descriptions);
+        setDescription(description);
     }
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "externalReferences")

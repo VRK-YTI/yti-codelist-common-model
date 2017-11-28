@@ -23,6 +23,7 @@ public class ApiConstants {
     public static final String FILTER_NAME_ORGANIZATION = "organization";
 
     public static final String FIELD_NAME_URI = "uri";
+    public static final String FIELD_NAME_ID = "id";
 
     public static final String ELASTIC_INDEX_CODEREGISTRY = "coderegistry";
     public static final String ELASTIC_INDEX_CODESCHEME = "codescheme";

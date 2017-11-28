@@ -2,13 +2,17 @@ package fi.vm.yti.codelist.common.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
@@ -23,13 +27,14 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @Entity
 @JsonFilter("organization")
 @Table(name = "organization")
-@XmlType(propOrder = {"id", "url", "prefLabel", "description"})
+@XmlType(propOrder = {"id", "url", "prefLabel", "description", "codeRegistries"})
 @ApiModel(value = "Organization", description = "Organization model that represents data for one single organization.")
 public class Organization extends AbstractIdentifyableCode {
 
     private String url;
     private Map<String, String> prefLabel;
     private Map<String, String> description;
+    private Set<CodeRegistry> codeRegistries;
 
     @Column(name = "url")
     @JsonView(Views.Normal.class)
@@ -110,5 +115,16 @@ public class Organization extends AbstractIdentifyableCode {
             this.description.remove(language);
         }
         setDescription(this.description);
+    }
+
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "organizations")
+    @JsonView(Views.ExtendedOrganization.class)
+    public Set<CodeRegistry> getCodeRegistries() {
+        return codeRegistries;
+    }
+
+    public void setCodeRegistries(final Set<CodeRegistry> codeRegistries) {
+        this.codeRegistries = codeRegistries;
     }
 }

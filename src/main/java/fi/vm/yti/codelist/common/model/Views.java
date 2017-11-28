@@ -9,4 +9,6 @@ public class Views {
     public static class ExtendedExternalReference extends Normal{};
 
     public static class ExtendedCodeScheme extends Normal{};
+
+    public static class ExtendedOrganization extends Normal{};
 }

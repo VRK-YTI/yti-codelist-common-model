@@ -3,13 +3,17 @@ package fi.vm.yti.codelist.common.model;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
@@ -30,7 +34,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("codeRegistry")
 @Table(name = "coderegistry")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "prefLabel", "definition", "modified", "uri", "codeSchemes"})
+@XmlType(propOrder = {"id", "codeValue", "prefLabel", "definition", "modified", "uri", "codeSchemes", "organizations"})
 @ApiModel(value = "CodeRegistry", description = "CodeRegistry model that represents data for one single registry.")
 public class CodeRegistry extends AbstractCommonCode implements Serializable {
 
@@ -39,6 +43,7 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
     private Map<String, String> prefLabel;
     private Map<String, String> definition;
     private Map<String, String> codeSchemes;
+    private Set<Organization> organizations;
 
     @Transient
     @JsonView(Views.Normal.class)
@@ -120,5 +125,20 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
             definition.remove(language);
         }
         setDefinition(definition);
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "coderegistry_organization",
+        joinColumns = {
+            @JoinColumn(name = "coderegistry_id", referencedColumnName = "id", nullable = false, updatable = false)},
+        inverseJoinColumns = {
+            @JoinColumn(name = "organization_id", referencedColumnName = "id", nullable = false, updatable = false)})
+    @JsonView(Views.Normal.class)
+    public Set<Organization> getOrganizations() {
+        return organizations;
+    }
+
+    public void setOrganizations(final Set<Organization> organizations) {
+        this.organizations = organizations;
     }
 }

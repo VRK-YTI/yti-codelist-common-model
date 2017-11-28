@@ -20,6 +20,7 @@ public class ApiConstants {
     public static final String FILTER_NAME_PROPERTYTYPE = "propertyType";
     public static final String FILTER_NAME_EXTERNALREFERENCE = "externalReference";
     public static final String FILTER_NAME_DATACLASSIFICATION = "dataClassification";
+    public static final String FILTER_NAME_ORGANIZATION = "organization";
 
     public static final String FIELD_NAME_URI = "uri";
 
@@ -46,6 +47,7 @@ public class ApiConstants {
     public static final String API_PATH_DATACLASSIFICATIONS = "/dataclassifications";
     public static final String API_PATH_EXTERNALREFERENCES = "/externalreferences";
     public static final String API_PATH_PROPERTYTYPES = "/propertytypes";
+    public static final String API_PATH_ORGANIZATIONS = "/organizations";
     public static final String API_PATH_CODES = "/codes";
     public static final String API_PATH_PING = "/ping";
     public static final String API_PATH_VERSION = "/version";

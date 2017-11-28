@@ -6,17 +6,23 @@ import java.util.Map;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OrderColumn;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlType;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import io.swagger.annotations.ApiModel;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
+@Entity
+@JsonFilter("organization")
+@Table(name = "organization")
 @XmlType(propOrder = {"id", "url", "prefLabels", "descriptions"})
 @ApiModel(value = "Organization", description = "Organization model that represents data for one single organization.")
 public class Organization extends AbstractIdentifyableCode {

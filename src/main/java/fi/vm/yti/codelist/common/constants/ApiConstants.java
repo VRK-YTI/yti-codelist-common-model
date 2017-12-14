@@ -47,6 +47,8 @@ public class ApiConstants {
     public static final String API_PATH_CODESCHEMES = "/codeschemes";
     public static final String API_PATH_DATACLASSIFICATIONS = "/dataclassifications";
     public static final String API_PATH_EXTERNALREFERENCES = "/externalreferences";
+    public static final String API_PATH_IMPERSONABLE_USERS = "/fakeableUsers";
+    
     public static final String API_PATH_PROPERTYTYPES = "/propertytypes";
     public static final String API_PATH_ORGANIZATIONS = "/organizations";
     public static final String API_PATH_CODES = "/codes";
@@ -94,4 +96,6 @@ public class ApiConstants {
     public static final String LANGUAGE_CODE_FI = "fi";
     public static final String LANGUAGE_CODE_SV = "sv";
     public static final String LANGUAGE_CODE_EN = "en";
+    public static final String GROUPMANAGEMENT_PUBLIC_API = "/public-api";
+    public static final String GROUPMANAGEMENT_USERS = "/users";
 }

@@ -20,8 +20,8 @@ public class AbstractHistoricalCode extends AbstractCommonCode {
     private String status;
 
     @ApiModelProperty(dataType = "dateTime")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
-    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     @Column(name = "startdate")
     @JsonView(Views.Normal.class)
     public Date getStartDate() {
@@ -40,8 +40,8 @@ public class AbstractHistoricalCode extends AbstractCommonCode {
     }
 
     @ApiModelProperty(dataType = "dateTime")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
-    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     @Column(name = "enddate")
     @JsonView(Views.Normal.class)
     public Date getEndDate() {

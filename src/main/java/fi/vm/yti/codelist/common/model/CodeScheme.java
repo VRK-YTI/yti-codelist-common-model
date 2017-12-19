@@ -305,7 +305,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
             @JoinColumn(name = "codescheme_id", referencedColumnName = "id", nullable = false, updatable = false)},
         inverseJoinColumns = {
             @JoinColumn(name = "code_id", referencedColumnName = "id", nullable = false, updatable = false)})
-    @JsonView(Views.Normal.class)
+    @JsonView(Views.ExtendedCodeScheme.class)
     public Set<Code> getDataClassifications() {
         return dataClassifications;
     }

@@ -49,7 +49,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "codescheme_id", nullable = false, insertable = true, updatable = false)
-    @JsonView(Views.Normal.class)
+    @JsonView(Views.ExtendedCode.class)
     public CodeScheme getCodeScheme() {
         return codeSheme;
     }

@@ -13,6 +13,7 @@ public class ApiConstants {
     public static final String DATA_CODESCHEMES = "codeschemes";
     public static final String DATA_CODES = "codes";
     public static final String DATA_PROPERTYTYPES = "propertytypes";
+    public static final String DATA_EXTERNALREFERENCES = "externalreferences";
 
     public static final String FILTER_NAME_CODEREGISTRY = "codeRegistry";
     public static final String FILTER_NAME_CODESCHEME = "codeScheme";
@@ -66,6 +67,7 @@ public class ApiConstants {
     public static final String EXCEL_SHEET_EXTERNALREFERENCES = "ExternalReferences";
 
     public static final String CONTENT_HEADER_ID = "ID";
+    public static final String CONTENT_HEADER_URL = "URL";
     public static final String CONTENT_HEADER_CODEVALUE = "CODEVALUE";
     public static final String CONTENT_HEADER_STATUS = "STATUS";
     public static final String CONTENT_HEADER_VERSION = "VERSION";
@@ -73,6 +75,7 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_LOCALNAME = "LOCALNAME";
     public static final String CONTENT_HEADER_TYPE = "TYPE";
     public static final String CONTENT_HEADER_PROPERTYURI = "PROPERTYURI";
+    public static final String CONTENT_HEADER_PROPERTYTYPE = "PROPERTYTYPE";
     public static final String CONTENT_HEADER_CONTEXT = "CONTEXT";
     public static final String CONTENT_HEADER_LEGALBASE = "LEGALBASE";
     public static final String CONTENT_HEADER_GOVERNANCEPOLICY = "GOVERNANCEPOLICY";

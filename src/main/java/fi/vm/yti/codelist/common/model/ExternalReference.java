@@ -137,7 +137,7 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
     }
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "externalReferences")
-    @JsonView(Views.Normal.class)
+    @JsonView(Views.ExtendedExternalReference.class)
     public Set<Code> getCodes() {
         return this.codes;
     }

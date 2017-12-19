@@ -34,7 +34,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("code")
 @Table(name = "code")
 @XmlRootElement
-@XmlType(propOrder = {"codeValue", "uri", "id", "status", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName"})
+@XmlType(propOrder = {"codeValue", "uri", "id", "status", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences"})
 @ApiModel(value = "Code", description = "Code model that represents data for one single generic registeritem.")
 public class Code extends AbstractHistoricalCode implements Serializable {
 
@@ -182,7 +182,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
             @JoinColumn(name = "code_id", referencedColumnName = "id", nullable = false, updatable = false)},
         inverseJoinColumns = {
             @JoinColumn(name = "externalreference_id", referencedColumnName = "id", nullable = false, updatable = false)})
-    @JsonView(Views.Extended.class)
+    @JsonView(Views.ExtendedCode.class)
     public Set<ExternalReference> getExternalReferences() {
         return this.externalReferences;
     }

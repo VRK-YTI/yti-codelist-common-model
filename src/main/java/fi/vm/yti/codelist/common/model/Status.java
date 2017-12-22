@@ -1,7 +1,7 @@
 package fi.vm.yti.codelist.common.model;
 
 /**
- * These are ISO 19135-1 spec status codes for registry status. Service with an added service specific draft status.
+ * These are ISO 19135-1 spec status codes with added service specific draft and suggested statuses.
  *
  * @see <a href="http://inspire.ec.europa.eu/registry/status">http://inspire.ec.europa.eu/registry/status</a>
  */
@@ -12,7 +12,8 @@ public enum Status {
     SUPERSEDED,
     RETIRED,
     DRAFT,
-    SUBMITTED;
+    SUBMITTED,
+    SUGGESTED;
 
     Status() {
     }

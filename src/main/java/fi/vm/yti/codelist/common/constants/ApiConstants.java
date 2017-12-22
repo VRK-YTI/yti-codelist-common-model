@@ -50,7 +50,10 @@ public class ApiConstants {
     public static final String API_PATH_DATACLASSIFICATIONS = "/dataclassifications";
     public static final String API_PATH_EXTERNALREFERENCES = "/externalreferences";
     public static final String API_PATH_IMPERSONABLE_USERS = "/fakeableUsers";
-    
+    public static final String API_PATH_GROUPMANAGEMENT = "/groupmanagement";
+    public static final String API_PATH_REQUEST = "/request";
+    public static final String API_PATH_REQUESTS = "/requests";
+
     public static final String API_PATH_PROPERTYTYPES = "/propertytypes";
     public static final String API_PATH_ORGANIZATIONS = "/organizations";
     public static final String API_PATH_CODES = "/codes";

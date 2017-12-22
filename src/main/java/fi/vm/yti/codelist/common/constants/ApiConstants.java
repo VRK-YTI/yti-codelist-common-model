@@ -93,6 +93,7 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_SHORTNAME = "SHORTNAME";
     public static final String CONTENT_HEADER_STARTDATE = "STARTDATE";
     public static final String CONTENT_HEADER_ENDDATE = "ENDDATE";
+    public static final String CONTENT_HEADER_PARENTCODESCHEMEID = "PARENTCODESCHEMEID";
 
     public static final String FORMAT_JSON = "json";
     public static final String FORMAT_CSV = "csv";

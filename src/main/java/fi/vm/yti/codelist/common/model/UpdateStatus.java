@@ -26,7 +26,7 @@ public class UpdateStatus implements Serializable {
     private String dataType;
     private String source;
     private String version;
-    private String nextVersion;
+    private String identifier;
     private Date modified;
 
     @Id
@@ -94,13 +94,12 @@ public class UpdateStatus implements Serializable {
         this.source = source;
     }
 
-    @Column(name = "nextversion")
-    public String getNextVersion() {
-        return nextVersion;
+    @Column(name = "identifier")
+    public String getIdentifier() {
+        return identifier;
     }
 
-    public void setNextVersion(final String nextVersion) {
-        this.nextVersion = nextVersion;
+    public void setIdentifier(final String identifier) {
+        this.identifier = identifier;
     }
-
 }

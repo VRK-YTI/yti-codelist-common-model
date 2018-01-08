@@ -10,7 +10,7 @@ Common model classes for CLS (Code List Service) services.
 ##### Model
 Shared Models used by CLS IN / OUT services.
 
-## Prerequisities
+## Prerequisites
 
 ##### Building
 - Java 8+

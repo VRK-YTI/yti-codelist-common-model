@@ -91,6 +91,7 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_DESCRIPTION_PREFIX = "DESCRIPTION_";
     public static final String CONTENT_HEADER_CHANGENOTE_PREFIX = "CHANGENOTE_";
     public static final String CONTENT_HEADER_SHORTNAME = "SHORTNAME";
+    public static final String CONTENT_HEADER_HIERARCHYLEVEL = "HIERARCHYLEVEL";
     public static final String CONTENT_HEADER_STARTDATE = "STARTDATE";
     public static final String CONTENT_HEADER_ENDDATE = "ENDDATE";
     public static final String CONTENT_HEADER_PARENTCODESCHEMEID = "PARENTCODESCHEMEID";

@@ -34,7 +34,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("code")
 @Table(name = "code")
 @XmlRootElement
-@XmlType(propOrder = {"codeValue", "uri", "id", "status", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences"})
+@XmlType(propOrder = {"codeValue", "uri", "id", "status", "hierarchyLevel", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences"})
 @ApiModel(value = "Code", description = "Code model that represents data for one single generic registeritem.")
 public class Code extends AbstractHistoricalCode implements Serializable {
 
@@ -42,6 +42,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
 
     private CodeScheme codeSheme;
     private String shortName;
+    private String hierarchyLevel;
     private Map<String, String> prefLabel;
     private Map<String, String> description;
     private Map<String, String> definition;
@@ -59,6 +60,16 @@ public class Code extends AbstractHistoricalCode implements Serializable {
     }
 
     @Column(name = "shortname")
+    @JsonView(Views.Normal.class)
+    public String getHierarchyLevel() {
+        return hierarchyLevel;
+    }
+
+    public void setHierarchyLevel(final String hierarchyLevel) {
+        this.hierarchyLevel = hierarchyLevel;
+    }
+
+    @Column(name = "hierarchylevel")
     @JsonView(Views.Normal.class)
     public String getShortName() {
         return shortName;

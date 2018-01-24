@@ -7,13 +7,13 @@ package fi.vm.yti.codelist.common.model;
  */
 public enum Status {
 
-    INVALID,
+    DRAFT,
+    SUBMITTED,
+    SUGGESTED,
     VALID,
     SUPERSEDED,
     RETIRED,
-    DRAFT,
-    SUBMITTED,
-    SUGGESTED;
+    INVALID;
 
     Status() {
     }

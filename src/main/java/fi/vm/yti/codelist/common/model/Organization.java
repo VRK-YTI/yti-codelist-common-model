@@ -1,5 +1,6 @@
 package fi.vm.yti.codelist.common.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -27,7 +28,9 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @Table(name = "organization")
 @XmlType(propOrder = {"id", "url", "prefLabel", "description", "codeRegistries"})
 @ApiModel(value = "Organization", description = "Organization model that represents data for one single organization.")
-public class Organization extends AbstractIdentifyableCode {
+public class Organization extends AbstractIdentifyableCode implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String url;
     private Map<String, String> prefLabel;

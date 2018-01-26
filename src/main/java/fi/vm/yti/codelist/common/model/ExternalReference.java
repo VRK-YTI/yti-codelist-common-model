@@ -80,11 +80,11 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
     }
 
     public String getTitle(final String language) {
-        String title = this.title.get(language);
-        if (title == null) {
-            title = this.title.get(LANGUAGE_CODE_EN);
+        String titleValue = this.title.get(language);
+        if (titleValue == null) {
+            titleValue = this.title.get(LANGUAGE_CODE_EN);
         }
-        return title;
+        return titleValue;
     }
 
     public void setTitle(final String language, final String name) {
@@ -117,11 +117,11 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
     }
 
     public String getDescription(final String language) {
-        String description = this.description.get(language);
-        if (description == null) {
-            description = this.description.get(LANGUAGE_CODE_EN);
+        String descriptionValue = this.description.get(language);
+        if (descriptionValue == null) {
+            descriptionValue = this.description.get(LANGUAGE_CODE_EN);
         }
-        return description;
+        return descriptionValue;
     }
 
     public void setDescription(final String language, final String name) {

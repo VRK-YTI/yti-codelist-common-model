@@ -62,11 +62,11 @@ public class Organization extends AbstractIdentifyableCode implements Serializab
     }
 
     public String getPrefLabel(final String language) {
-        String prefLabel = this.prefLabel.get(language);
-        if (prefLabel == null) {
-            prefLabel = this.prefLabel.get(LANGUAGE_CODE_EN);
+        String prefLabelValue = this.prefLabel.get(language);
+        if (prefLabelValue == null) {
+            prefLabelValue = this.prefLabel.get(LANGUAGE_CODE_EN);
         }
-        return prefLabel;
+        return prefLabelValue;
     }
 
     public void setPrefLabel(final String language, final String prefLabel) {
@@ -99,11 +99,11 @@ public class Organization extends AbstractIdentifyableCode implements Serializab
     }
 
     public String getDescription(final String language) {
-        String description = this.description.get(language);
-        if (description == null) {
-            description = this.description.get(LANGUAGE_CODE_EN);
+        String descriptionValue = this.description.get(language);
+        if (descriptionValue == null) {
+            descriptionValue = this.description.get(LANGUAGE_CODE_EN);
         }
-        return description;
+        return descriptionValue;
     }
 
     public void setDescription(final String language, final String description) {

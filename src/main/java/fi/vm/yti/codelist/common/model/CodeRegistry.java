@@ -71,11 +71,11 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
     }
 
     public String getPrefLabel(final String language) {
-        String prefLabel = this.prefLabel.get(language);
-        if (prefLabel == null) {
-            prefLabel = this.prefLabel.get(LANGUAGE_CODE_EN);
+        String prefLabelValue = this.prefLabel.get(language);
+        if (prefLabelValue == null) {
+            prefLabelValue = this.prefLabel.get(LANGUAGE_CODE_EN);
         }
-        return prefLabel;
+        return prefLabelValue;
     }
 
     public void setPrefLabel(final String language, final String name) {
@@ -108,11 +108,11 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
     }
 
     public String getDefinition(final String language) {
-        String definition = this.definition.get(language);
-        if (definition == null) {
-            definition = this.definition.get(LANGUAGE_CODE_EN);
+        String definitionValue = this.definition.get(language);
+        if (definitionValue == null) {
+            definitionValue = this.definition.get(LANGUAGE_CODE_EN);
         }
-        return definition;
+        return definitionValue;
     }
 
     public void setDefinition(final String language, final String name) {

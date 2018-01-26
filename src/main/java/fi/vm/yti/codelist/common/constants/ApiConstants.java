@@ -43,6 +43,9 @@ public class ApiConstants {
 
     public static final String API_BASE_PATH = "/api";
     public static final String API_PATH_VERSION_V1 = "/v1";
+    public static final String API_PATH_ADMIN = "/admin";
+    public static final String API_PATH_REINDEX = "/reindex";
+    public static final String API_PATH_REWRITEURIS = "/rewriteuris";
     public static final String API_PATH_AUTHENTICATED_USER = "/authenticated-user";
     public static final String API_PATH_CONFIGURATION = "/configuration";
     public static final String API_PATH_CODEREGISTRIES = "/coderegistries";

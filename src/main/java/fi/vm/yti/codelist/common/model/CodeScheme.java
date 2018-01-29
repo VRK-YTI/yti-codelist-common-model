@@ -287,9 +287,9 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "codescheme_externalreference",
         joinColumns = {
-            @JoinColumn(name = "codescheme_id", referencedColumnName = "id", nullable = false, updatable = false)},
+            @JoinColumn(name = "codescheme_id", referencedColumnName = "id", nullable = false)},
         inverseJoinColumns = {
-            @JoinColumn(name = "externalreference_id", referencedColumnName = "id", nullable = false, updatable = false)})
+            @JoinColumn(name = "externalreference_id", referencedColumnName = "id", nullable = false)})
     @JsonView(Views.ExtendedCodeScheme.class)
     public Set<ExternalReference> getExternalReferences() {
         return this.externalReferences;

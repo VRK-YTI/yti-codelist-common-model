@@ -72,7 +72,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
         this.codeSheme = codeScheme;
     }
 
-    @Column(name = "shortname")
+    @Column(name = "hierarchylevel")
     @JsonRawValue
     @JsonView(Views.Normal.class)
     public String getHierarchyLevel() {
@@ -83,7 +83,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
         this.hierarchyLevel = hierarchyLevel;
     }
 
-    @Column(name = "hierarchylevel")
+    @Column(name = "shortname")
     @JsonRawValue
     @JsonView(Views.Normal.class)
     public String getShortName() {

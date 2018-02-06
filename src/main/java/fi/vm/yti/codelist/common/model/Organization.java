@@ -18,7 +18,6 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import io.swagger.annotations.ApiModel;
@@ -53,7 +52,6 @@ public class Organization extends AbstractIdentifyableCode implements Serializab
     @MapKeyColumn(name = "language")
     @Column(name = "preflabel")
     @OrderColumn
-    @JsonRawValue
     @JsonView(Views.Normal.class)
     public Map<String, String> getPrefLabel() {
         return prefLabel;
@@ -88,7 +86,6 @@ public class Organization extends AbstractIdentifyableCode implements Serializab
     @MapKeyColumn(name = "language")
     @Column(name = "description")
     @OrderColumn
-    @JsonRawValue
     @JsonView(Views.Normal.class)
     public Map<String, String> getDescription() {
         if (description == null) {

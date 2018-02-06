@@ -20,7 +20,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import io.swagger.annotations.ApiModel;
@@ -68,7 +67,6 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
     @MapKeyColumn(name = "language")
     @Column(name = "title")
     @OrderColumn
-    @JsonRawValue
     @JsonView(Views.Normal.class)
     public Map<String, String> getTitle() {
         if (title == null) {
@@ -106,7 +104,6 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
     @MapKeyColumn(name = "language")
     @Column(name = "description")
     @OrderColumn
-    @JsonRawValue
     @JsonView(Views.Normal.class)
     public Map<String, String> getDescription() {
         if (description == null) {

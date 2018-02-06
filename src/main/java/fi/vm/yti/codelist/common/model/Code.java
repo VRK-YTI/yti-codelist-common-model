@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import io.swagger.annotations.ApiModel;
@@ -72,6 +73,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
     }
 
     @Column(name = "shortname")
+    @JsonRawValue
     @JsonView(Views.Normal.class)
     public String getHierarchyLevel() {
         return hierarchyLevel;
@@ -82,6 +84,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
     }
 
     @Column(name = "hierarchylevel")
+    @JsonRawValue
     @JsonView(Views.Normal.class)
     public String getShortName() {
         return shortName;
@@ -96,6 +99,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
     @MapKeyColumn(name = "language")
     @Column(name = "preflabel")
     @OrderColumn
+    @JsonRawValue
     @JsonView(Views.Normal.class)
     public Map<String, String> getPrefLabel() {
         return prefLabel;
@@ -130,6 +134,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
     @MapKeyColumn(name = "language")
     @Column(name = "definition")
     @OrderColumn
+    @JsonRawValue
     @JsonView(Views.Normal.class)
     public Map<String, String> getDefinition() {
         if (definition == null) {
@@ -167,6 +172,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
     @MapKeyColumn(name = "language")
     @Column(name = "description")
     @OrderColumn
+    @JsonRawValue
     @JsonView(Views.Normal.class)
     public Map<String, String> getDescription() {
         if (description == null) {

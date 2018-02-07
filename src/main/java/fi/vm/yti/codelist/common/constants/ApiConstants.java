@@ -78,6 +78,7 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_URL = "URL";
     public static final String CONTENT_HEADER_CODEVALUE = "CODEVALUE";
     public static final String CONTENT_HEADER_STATUS = "STATUS";
+    public static final String CONTENT_HEADER_BROADER = "BROADER";
     public static final String CONTENT_HEADER_VERSION = "VERSION";
     public static final String CONTENT_HEADER_CLASSIFICATION = "CLASSIFICATION";
     public static final String CONTENT_HEADER_LOCALNAME = "LOCALNAME";

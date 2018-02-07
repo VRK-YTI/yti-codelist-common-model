@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
@@ -34,7 +35,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("code")
 @Table(name = "code")
 @XmlRootElement
-@XmlType(propOrder = {"codeValue", "uri", "id", "status", "hierarchyLevel", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences"})
+@XmlType(propOrder = {"codeValue", "uri", "id", "status", "hierarchyLevel", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCodeId"})
 @ApiModel(value = "Code", description = "Code model that represents data for one single generic registeritem.")
 public class Code extends AbstractHistoricalCode implements Serializable {
 
@@ -47,6 +48,17 @@ public class Code extends AbstractHistoricalCode implements Serializable {
     private Map<String, String> description;
     private Map<String, String> definition;
     private Set<ExternalReference> externalReferences;
+    private UUID broaderCodeId;
+
+    @Column(name = "broadercode_id")
+    @JsonView(Views.Normal.class)
+    public UUID getBroaderCodeId() {
+        return broaderCodeId;
+    }
+
+    public void setBroaderCodeId(final UUID broaderCodeId) {
+        this.broaderCodeId = broaderCodeId;
+    }
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "codescheme_id", nullable = false, insertable = true, updatable = false)
@@ -59,7 +71,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
         this.codeSheme = codeScheme;
     }
 
-    @Column(name = "shortname")
+    @Column(name = "hierarchylevel")
     @JsonView(Views.Normal.class)
     public String getHierarchyLevel() {
         return hierarchyLevel;
@@ -69,7 +81,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
         this.hierarchyLevel = hierarchyLevel;
     }
 
-    @Column(name = "hierarchylevel")
+    @Column(name = "shortname")
     @JsonView(Views.Normal.class)
     public String getShortName() {
         return shortName;

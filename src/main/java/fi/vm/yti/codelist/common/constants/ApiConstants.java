@@ -88,7 +88,6 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_CONTEXT = "CONTEXT";
     public static final String CONTENT_HEADER_LEGALBASE = "LEGALBASE";
     public static final String CONTENT_HEADER_GOVERNANCEPOLICY = "GOVERNANCEPOLICY";
-    public static final String CONTENT_HEADER_LICENSE = "LICENSE";
     public static final String CONTENT_HEADER_SOURCE = "SOURCE";
     public static final String CONTENT_HEADER_TITLE_PREFIX = "TITLE_";
     public static final String CONTENT_HEADER_PREFLABEL_PREFIX = "PREFLABEL_";

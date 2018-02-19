@@ -35,7 +35,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("codeScheme")
 @Table(name = "codescheme")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "license", "dataClassifications", "externalReferences", "uri"})
+@XmlType(propOrder = {"id", "codeValue", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "externalReferences", "uri"})
 @ApiModel(value = "CodeScheme", description = "CodeScheme model that represents data for one single codescheme.")
 public class CodeScheme extends AbstractHistoricalCode implements Serializable {
 
@@ -45,7 +45,6 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     private String source;
     private String legalBase;
     private String governancePolicy;
-    private String license;
     private Map<String, String> prefLabel;
     private Map<String, String> definition;
     private Map<String, String> description;
@@ -116,16 +115,6 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
 
     public void setGovernancePolicy(final String governancePolicy) {
         this.governancePolicy = governancePolicy;
-    }
-
-    @Column(name = "license")
-    @JsonView(Views.Normal.class)
-    public String getLicense() {
-        return license;
-    }
-
-    public void setLicense(final String license) {
-        this.license = license;
     }
 
     @ManyToOne(fetch = FetchType.EAGER)

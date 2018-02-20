@@ -26,13 +26,14 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @Entity
 @JsonFilter("organization")
 @Table(name = "organization")
-@XmlType(propOrder = {"id", "url", "prefLabel", "description", "codeRegistries"})
+@XmlType(propOrder = {"id", "url", "prefLabel", "description", "codeRegistries", "removed"})
 @ApiModel(value = "Organization", description = "Organization model that represents data for one single organization.")
 public class Organization extends AbstractIdentifyableCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private String url;
+    private Boolean removed;
     private Map<String, String> prefLabel;
     private Map<String, String> description;
     private Set<CodeRegistry> codeRegistries;
@@ -43,8 +44,18 @@ public class Organization extends AbstractIdentifyableCode implements Serializab
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(final String url) {
         this.url = url;
+    }
+
+    @Column(name = "removed")
+    @JsonView(Views.Normal.class)
+    public Boolean getRemoved() {
+        return removed;
+    }
+
+    public void setRemoved(final Boolean removed) {
+        this.removed = removed;
     }
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)

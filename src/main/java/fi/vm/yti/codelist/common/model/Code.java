@@ -43,7 +43,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
 
     private CodeScheme codeSheme;
     private String shortName;
-    private String hierarchyLevel;
+    private Integer hierarchyLevel;
     private Map<String, String> prefLabel;
     private Map<String, String> description;
     private Map<String, String> definition;
@@ -73,11 +73,11 @@ public class Code extends AbstractHistoricalCode implements Serializable {
 
     @Column(name = "hierarchylevel")
     @JsonView(Views.Normal.class)
-    public String getHierarchyLevel() {
+    public Integer getHierarchyLevel() {
         return hierarchyLevel;
     }
 
-    public void setHierarchyLevel(final String hierarchyLevel) {
+    public void setHierarchyLevel(final Integer hierarchyLevel) {
         this.hierarchyLevel = hierarchyLevel;
     }
 

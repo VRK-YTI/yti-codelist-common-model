@@ -168,7 +168,7 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "parentcodescheme_id", nullable = false, insertable = true, updatable = false)
+    @JoinColumn(name = "parentcodescheme_id", nullable = true, insertable = true, updatable = false)
     @JsonView(Views.ExtendedExternalReference.class)
     public CodeScheme getParentCodeScheme() {
         return parentCodeScheme;

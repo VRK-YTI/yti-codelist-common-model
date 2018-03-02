@@ -30,6 +30,7 @@ public class Meta {
     private Date after;
     private String afterResourceUrl;
     private String nextPage;
+    private String entityIdentifier;
 
     public Meta() {
     }
@@ -42,6 +43,18 @@ public class Meta {
         this.pageSize = pageSize;
         this.from = from;
         this.after = parseAfterFromString(after);
+    }
+
+    public Meta(final Integer code,
+                final Integer pageSize,
+                final Integer from,
+                final String after,
+                final String entityIdentifier) {
+        this.code = code;
+        this.pageSize = pageSize;
+        this.from = from;
+        this.after = parseAfterFromString(after);
+        this.entityIdentifier = entityIdentifier;
     }
 
     public Integer getCode() {
@@ -143,4 +156,11 @@ public class Meta {
         return null;
     }
 
+    public String getEntityIdentifier() {
+        return entityIdentifier;
+    }
+
+    public void setEntityIdentifier(String entityIdentifier) {
+        this.entityIdentifier = entityIdentifier;
+    }
 }

@@ -64,7 +64,7 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "externalreference_title", joinColumns = @JoinColumn(name = "externalreference_id", referencedColumnName = "id"))
-    @MapKeyColumn(name = "language")
+    @MapKeyColumn(name = "language", nullable = true)
     @Column(name = "title")
     @OrderColumn
     @JsonView(Views.Normal.class)
@@ -80,20 +80,20 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
     }
 
     public String getTitle(final String language) {
-        String titleValue = this.title.get(language);
-        if (titleValue == null) {
-            titleValue = this.title.get(LANGUAGE_CODE_EN);
+        String value = this.title.get(language);
+        if (value == null) {
+            value = this.title.get(LANGUAGE_CODE_EN);
         }
-        return titleValue;
+        return value;
     }
 
-    public void setTitle(final String language, final String name) {
+    public void setTitle(final String language, final String value) {
         if (title == null) {
             title = new HashMap<>();
         }
-        if (language != null && name != null && !name.isEmpty()) {
-            title.put(language, name);
-        } else if (language != null && name == null) {
+        if (language != null && value != null && !value.isEmpty()) {
+            title.put(language, value);
+        } else if (language != null) {
             title.remove(language);
         }
         setTitle(title);
@@ -101,7 +101,7 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "externalreference_description", joinColumns = @JoinColumn(name = "externalreference_id", referencedColumnName = "id"))
-    @MapKeyColumn(name = "language")
+    @MapKeyColumn(name = "language", nullable = true)
     @Column(name = "description")
     @OrderColumn
     @JsonView(Views.Normal.class)
@@ -117,20 +117,20 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
     }
 
     public String getDescription(final String language) {
-        String descriptionValue = this.description.get(language);
-        if (descriptionValue == null) {
-            descriptionValue = this.description.get(LANGUAGE_CODE_EN);
+        String value = this.description.get(language);
+        if (value == null) {
+            value = this.description.get(LANGUAGE_CODE_EN);
         }
-        return descriptionValue;
+        return value;
     }
 
-    public void setDescription(final String language, final String name) {
+    public void setDescription(final String language, final String value) {
         if (description == null) {
             description = new HashMap<>();
         }
-        if (language != null && name != null && !name.isEmpty()) {
-            description.put(language, name);
-        } else if (language != null && name == null) {
+        if (language != null && value != null && !value.isEmpty()) {
+            description.put(language, value);
+        } else if (language != null) {
             description.remove(language);
         }
         setDescription(description);

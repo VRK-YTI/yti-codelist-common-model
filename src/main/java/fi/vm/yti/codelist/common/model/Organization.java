@@ -60,7 +60,7 @@ public class Organization extends AbstractIdentifyableCode implements Serializab
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "organization_preflabel", joinColumns = @JoinColumn(name = "organization_id", referencedColumnName = "id"))
-    @MapKeyColumn(name = "language")
+    @MapKeyColumn(name = "language", nullable = true)
     @Column(name = "preflabel")
     @OrderColumn
     @JsonView(Views.Normal.class)
@@ -80,13 +80,13 @@ public class Organization extends AbstractIdentifyableCode implements Serializab
         return prefLabelValue;
     }
 
-    public void setPrefLabel(final String language, final String prefLabel) {
+    public void setPrefLabel(final String language, final String value) {
         if (this.prefLabel == null) {
             this.prefLabel = new HashMap<>();
         }
-        if (language != null && prefLabel != null && !prefLabel.isEmpty()) {
-            this.prefLabel.put(language, prefLabel);
-        } else if (language != null && prefLabel == null) {
+        if (language != null && value != null && !value.isEmpty()) {
+            this.prefLabel.put(language, value);
+        } else if (language != null) {
             this.prefLabel.remove(language);
         }
         setPrefLabel(this.prefLabel);
@@ -94,7 +94,7 @@ public class Organization extends AbstractIdentifyableCode implements Serializab
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "organization_description", joinColumns = @JoinColumn(name = "organization_id", referencedColumnName = "id"))
-    @MapKeyColumn(name = "language")
+    @MapKeyColumn(name = "language", nullable = true)
     @Column(name = "description")
     @OrderColumn
     @JsonView(Views.Normal.class)
@@ -117,13 +117,13 @@ public class Organization extends AbstractIdentifyableCode implements Serializab
         return descriptionValue;
     }
 
-    public void setDescription(final String language, final String description) {
+    public void setDescription(final String language, final String value) {
         if (this.description == null) {
             this.description = new HashMap<>();
         }
-        if (language != null && description != null && !description.isEmpty()) {
-            this.description.put(language, description);
-        } else if (language != null && description == null) {
+        if (language != null && value != null && !value.isEmpty()) {
+            this.description.put(language, value);
+        } else if (language != null) {
             this.description.remove(language);
         }
         setDescription(this.description);

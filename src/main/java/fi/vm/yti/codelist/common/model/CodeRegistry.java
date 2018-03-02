@@ -55,7 +55,7 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "coderegistry_preflabel", joinColumns = @JoinColumn(name = "coderegistry_id", referencedColumnName = "id"))
-    @MapKeyColumn(name = "language")
+    @MapKeyColumn(name = "language", nullable = true)
     @Column(name = "preflabel")
     @OrderColumn
     @JsonView(Views.Normal.class)
@@ -78,13 +78,13 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
         return prefLabelValue;
     }
 
-    public void setPrefLabel(final String language, final String name) {
+    public void setPrefLabel(final String language, final String value) {
         if (prefLabel == null) {
             prefLabel = new HashMap<>();
         }
-        if (language != null && name != null && !name.isEmpty()) {
-            prefLabel.put(language, name);
-        } else if (language != null && name == null) {
+        if (language != null && value != null && !value.isEmpty()) {
+            prefLabel.put(language, value);
+        } else if (language != null) {
             prefLabel.remove(language);
         }
         setPrefLabel(prefLabel);
@@ -92,7 +92,7 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "coderegistry_definition", joinColumns = @JoinColumn(name = "coderegistry_id", referencedColumnName = "id"))
-    @MapKeyColumn(name = "language")
+    @MapKeyColumn(name = "language", nullable = true)
     @Column(name = "definition")
     @OrderColumn
     @JsonView(Views.Normal.class)
@@ -115,13 +115,13 @@ public class CodeRegistry extends AbstractCommonCode implements Serializable {
         return definitionValue;
     }
 
-    public void setDefinition(final String language, final String name) {
+    public void setDefinition(final String language, final String value) {
         if (definition == null) {
             definition = new HashMap<>();
         }
-        if (language != null && name != null && !name.isEmpty()) {
-            definition.put(language, name);
-        } else if (language != null && name == null) {
+        if (language != null && value != null && !value.isEmpty()) {
+            definition.put(language, value);
+        } else if (language != null) {
             definition.remove(language);
         }
         setDefinition(definition);

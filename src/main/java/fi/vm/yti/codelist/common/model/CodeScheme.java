@@ -130,7 +130,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "codescheme_preflabel", joinColumns = @JoinColumn(name = "codescheme_id", referencedColumnName = "id"))
-    @MapKeyColumn(name = "language")
+    @MapKeyColumn(name = "language", nullable = true)
     @Column(name = "preflabel")
     @OrderColumn
     @JsonView(Views.Normal.class)
@@ -150,13 +150,13 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
         return prefLabelValue;
     }
 
-    public void setPrefLabel(final String language, final String prefLabel) {
+    public void setPrefLabel(final String language, final String value) {
         if (this.prefLabel == null) {
             this.prefLabel = new HashMap<>();
         }
-        if (language != null && prefLabel != null && !prefLabel.isEmpty()) {
-            this.prefLabel.put(language, prefLabel);
-        } else if (language != null && prefLabel == null) {
+        if (language != null && value != null && !value.isEmpty()) {
+            this.prefLabel.put(language, value);
+        } else if (language != null) {
             this.prefLabel.remove(language);
         }
         setPrefLabel(this.prefLabel);
@@ -164,7 +164,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "codescheme_definition", joinColumns = @JoinColumn(name = "codescheme_id", referencedColumnName = "id"))
-    @MapKeyColumn(name = "language")
+    @MapKeyColumn(name = "language", nullable = true)
     @Column(name = "definition")
     @OrderColumn
     @JsonView(Views.Normal.class)
@@ -187,13 +187,13 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
         return definitionValue;
     }
 
-    public void setDefinition(final String language, final String definition) {
+    public void setDefinition(final String language, final String value) {
         if (this.definition == null) {
             this.definition = new HashMap<>();
         }
-        if (language != null && definition != null && !definition.isEmpty()) {
-            this.definition.put(language, definition);
-        } else if (language != null && definition == null) {
+        if (language != null && value != null && !value.isEmpty()) {
+            this.definition.put(language, value);
+        } else if (language != null) {
             this.definition.remove(language);
         }
         setDefinition(this.definition);
@@ -201,7 +201,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "codescheme_description", joinColumns = @JoinColumn(name = "codescheme_id", referencedColumnName = "id"))
-    @MapKeyColumn(name = "language")
+    @MapKeyColumn(name = "language", nullable = true)
     @Column(name = "description")
     @OrderColumn
     @JsonView(Views.Normal.class)
@@ -224,13 +224,13 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
         return descriptionValue;
     }
 
-    public void setDescription(final String language, final String description) {
+    public void setDescription(final String language, final String value) {
         if (this.description == null) {
             this.description = new HashMap<>();
         }
-        if (language != null && description != null && !description.isEmpty()) {
-            this.description.put(language, description);
-        } else if (language != null && description == null) {
+        if (language != null && value != null && !value.isEmpty()) {
+            this.description.put(language, value);
+        } else if (language != null) {
             this.description.remove(language);
         }
         setDescription(this.description);
@@ -238,7 +238,7 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "codescheme_changenote", joinColumns = @JoinColumn(name = "codescheme_id", referencedColumnName = "id"))
-    @MapKeyColumn(name = "language")
+    @MapKeyColumn(name = "language", nullable = true)
     @Column(name = "changenote")
     @OrderColumn
     @JsonView(Views.Normal.class)
@@ -261,13 +261,13 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
         return changeNoteValue;
     }
 
-    public void setChangeNote(final String language, final String changeNote) {
+    public void setChangeNote(final String language, final String value) {
         if (this.changeNote == null) {
             this.changeNote = new HashMap<>();
         }
-        if (language != null && changeNote != null && !changeNote.isEmpty()) {
-            this.changeNote.put(language, changeNote);
-        } else if (language != null && changeNote == null) {
+        if (language != null && value != null && !value.isEmpty()) {
+            this.changeNote.put(language, value);
+        } else if (language != null) {
             this.changeNote.remove(language);
         }
         setChangeNote(this.changeNote);

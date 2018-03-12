@@ -5,9 +5,6 @@ import javax.persistence.MappedSuperclass;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-/**
- * Abstract common codevalue based entity class for object models in CLS domain.
- */
 @MappedSuperclass
 abstract class AbstractCommonCode extends AbstractBaseCode {
 

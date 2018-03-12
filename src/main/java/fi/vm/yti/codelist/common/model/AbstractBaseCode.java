@@ -12,9 +12,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import io.swagger.annotations.ApiModelProperty;
 
-/**
- * Abstract common base class for object models in CLS domain.
- */
 @MappedSuperclass
 public class AbstractBaseCode extends AbstractIdentifyableCode {
 

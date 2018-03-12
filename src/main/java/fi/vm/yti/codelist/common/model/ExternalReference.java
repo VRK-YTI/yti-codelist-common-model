@@ -136,7 +136,7 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
         setDescription(description);
     }
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "externalReferences")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "externalReferences")
     @JsonView(Views.ExtendedExternalReference.class)
     public Set<CodeScheme> getCodeSchemes() {
         return this.codeSchemes;
@@ -146,7 +146,7 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
         this.codeSchemes = codeSchemes;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "externalReferences")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "externalReferences")
     @JsonView(Views.ExtendedExternalReference.class)
     public Set<Code> getCodes() {
         return this.codes;
@@ -167,7 +167,7 @@ public class ExternalReference extends AbstractBaseCode implements Serializable 
         this.propertyType = propertyType;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parentcodescheme_id", nullable = true, insertable = true, updatable = false)
     @JsonView(Views.ExtendedExternalReference.class)
     public CodeScheme getParentCodeScheme() {

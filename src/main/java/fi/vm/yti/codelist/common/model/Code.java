@@ -63,7 +63,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
         this.broaderCodeId = broaderCodeId;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "codescheme_id", nullable = false, insertable = true, updatable = false)
     @JsonView(Views.ExtendedCode.class)
     public CodeScheme getCodeScheme() {
@@ -202,7 +202,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
         setDescription(this.description);
     }
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "code_externalreference",
         joinColumns = {
             @JoinColumn(name = "code_id", referencedColumnName = "id", nullable = false, updatable = false)},

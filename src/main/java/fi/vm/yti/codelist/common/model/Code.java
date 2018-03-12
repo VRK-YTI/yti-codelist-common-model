@@ -49,6 +49,9 @@ public class Code extends AbstractHistoricalCode implements Serializable {
     private Map<String, String> definition;
     private Set<ExternalReference> externalReferences;
     private UUID broaderCodeId;
+    private Integer flatOrder;
+    private Integer hierarchicalOrder;
+
 
     @Column(name = "broadercode_id")
     @JsonView(Views.Normal.class)
@@ -212,5 +215,25 @@ public class Code extends AbstractHistoricalCode implements Serializable {
 
     public void setExternalReferences(final Set<ExternalReference> externalReferences) {
         this.externalReferences = externalReferences;
+    }
+
+    @Column(name = "flatOrder")
+    @JsonView(Views.Normal.class)
+    public Integer getFlatOrder() {
+        return flatOrder;
+    }
+
+    public void setFlatOrder(final Integer flatOrder) {
+        this.flatOrder = flatOrder;
+    }
+
+    @Column(name = "hierarchicalOrder")
+    @JsonView(Views.Normal.class)
+    public Integer getHierarchicalOrder() {
+        return hierarchicalOrder;
+    }
+
+    public void setHierarchicalOrder(final Integer hierarchicalOrder) {
+        this.hierarchicalOrder = hierarchicalOrder;
     }
 }

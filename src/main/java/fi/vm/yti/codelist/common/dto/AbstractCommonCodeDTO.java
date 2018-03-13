@@ -1,17 +1,12 @@
-package fi.vm.yti.codelist.common.model;
+package fi.vm.yti.codelist.common.dto;
 
-import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
 @MappedSuperclass
-abstract class AbstractCommonCode extends AbstractBaseCode {
+abstract class AbstractCommonCodeDTO extends AbstractBaseCodeDTO {
 
     private String codeValue;
 
-    @Column(name = "codevalue")
-    @JsonView(Views.Normal.class)
     public String getCodeValue() {
         return codeValue;
     }

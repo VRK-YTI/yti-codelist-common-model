@@ -50,7 +50,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
     private Set<ExternalReference> externalReferences;
     private UUID broaderCodeId;
     private Integer flatOrder;
-    private Integer hierarchicalOrder;
+    private Integer childOrder;
 
 
     @Column(name = "broadercode_id")
@@ -217,7 +217,7 @@ public class Code extends AbstractHistoricalCode implements Serializable {
         this.externalReferences = externalReferences;
     }
 
-    @Column(name = "flatOrder")
+    @Column(name = "flatorder")
     @JsonView(Views.Normal.class)
     public Integer getFlatOrder() {
         return flatOrder;
@@ -227,13 +227,13 @@ public class Code extends AbstractHistoricalCode implements Serializable {
         this.flatOrder = flatOrder;
     }
 
-    @Column(name = "hierarchicalOrder")
+    @Column(name = "childorder")
     @JsonView(Views.Normal.class)
-    public Integer getHierarchicalOrder() {
-        return hierarchicalOrder;
+    public Integer getChildOrder() {
+        return childOrder;
     }
 
-    public void setHierarchicalOrder(final Integer hierarchicalOrder) {
-        this.hierarchicalOrder = hierarchicalOrder;
+    public void setChildOrder(final Integer childOrder) {
+        this.childOrder = childOrder;
     }
 }

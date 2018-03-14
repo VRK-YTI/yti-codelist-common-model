@@ -35,6 +35,8 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
     private Map<String, String> definition;
     private Set<ExternalReferenceDTO> externalReferences;
     private UUID broaderCodeId;
+    private Integer flatOrder;
+    private Integer childOrder;
 
     @JsonView(Views.Normal.class)
     public UUID getBroaderCodeId() {
@@ -163,6 +165,23 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
             this.description.remove(language);
         }
         setDescription(this.description);
+    }
+
+    @JsonView(Views.Normal.class)
+    public Integer getFlatOrder() {
+        return flatOrder;
+    }
+
+    public void setFlatOrder(final Integer flatOrder) {
+        this.flatOrder = flatOrder;
+    }
+
+    public Integer getChildOrder() {
+        return childOrder;
+    }
+
+    public void setChildOrder(final Integer childOrder) {
+        this.childOrder = childOrder;
     }
 
     @JsonView(Views.ExtendedCode.class)

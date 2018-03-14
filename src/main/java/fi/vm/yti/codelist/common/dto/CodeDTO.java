@@ -16,9 +16,6 @@ import fi.vm.yti.codelist.common.model.Views;
 import io.swagger.annotations.ApiModel;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
-/**
- * Object model that represents a single code.
- */
 @JsonFilter("code")
 @XmlRootElement
 @XmlType(propOrder = {"codeValue", "uri", "id", "status", "hierarchyLevel", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCodeId"})

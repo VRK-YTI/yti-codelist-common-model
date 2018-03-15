@@ -52,11 +52,10 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
         prefLabel = new HashMap<>();
     }
 
-    @Transient
     @JsonView(Views.Normal.class)
     public Map<String, String> getCodes() {
         codes = new HashMap<>();
-        codes.put("uri", this.getUri() + "codes/");
+        codes.put("url", this.getUrl() + "codes/");
         return codes;
     }
 

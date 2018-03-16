@@ -2,6 +2,9 @@ package fi.vm.yti.codelist.common.model;
 
 public class Views {
 
+    private Views() {
+    }
+
     public static class Normal{};
 
     public static class Extended extends Normal{};

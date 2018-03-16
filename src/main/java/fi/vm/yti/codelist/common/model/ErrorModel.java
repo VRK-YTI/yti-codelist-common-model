@@ -1,6 +1,10 @@
 package fi.vm.yti.codelist.common.model;
 
-public class ErrorModel {
+import java.io.Serializable;
+
+public class ErrorModel implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private int httpStatusCode;
     private String message;

@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -18,7 +17,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeScheme")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "externalReferences", "uri"})
+@XmlType(propOrder = {"id", "codeValue", "uri", "url", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "externalReferences"})
 @ApiModel(value = "CodeScheme DTO", description = "CodeScheme model that represents data for one single codescheme.")
 public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
@@ -52,11 +51,10 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
         prefLabel = new HashMap<>();
     }
 
-    @Transient
     @JsonView(Views.Normal.class)
     public Map<String, String> getCodes() {
         codes = new HashMap<>();
-        codes.put("uri", this.getUri() + "codes/");
+        codes.put("url", this.getUrl() + "codes/");
         return codes;
     }
 

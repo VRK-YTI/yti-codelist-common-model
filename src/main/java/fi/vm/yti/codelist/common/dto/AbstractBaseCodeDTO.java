@@ -17,6 +17,7 @@ public class AbstractBaseCodeDTO extends AbstractIdentifyableCodeDTO {
 
     private Date modified;
     private String uri;
+    private String url;
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
@@ -44,5 +45,14 @@ public class AbstractBaseCodeDTO extends AbstractIdentifyableCodeDTO {
 
     public void setUri(final String uri) {
         this.uri = uri;
+    }
+
+    @JsonView(Views.Normal.class)
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(final String url) {
+        this.url = url;
     }
 }

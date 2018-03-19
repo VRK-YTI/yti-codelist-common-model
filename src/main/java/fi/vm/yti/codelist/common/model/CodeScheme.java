@@ -18,7 +18,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -35,7 +34,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("codeScheme")
 @Table(name = "codescheme")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "externalReferences", "uri"})
+@XmlType(propOrder = {"id", "codeValue", "uri", "url", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "externalReferences"})
 @ApiModel(value = "CodeScheme", description = "CodeScheme model that represents data for one single codescheme.")
 public class CodeScheme extends AbstractHistoricalCode implements Serializable {
 
@@ -49,7 +48,6 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
     private Map<String, String> definition;
     private Map<String, String> description;
     private Map<String, String> changeNote;
-    private Map<String, String> codes;
     private CodeRegistry codeRegistry;
     private Set<Code> dataClassifications;
     private Set<ExternalReference> externalReferences;
@@ -67,14 +65,6 @@ public class CodeScheme extends AbstractHistoricalCode implements Serializable {
         super.setStatus(status);
         this.version = version;
         prefLabel = new HashMap<>();
-    }
-
-    @Transient
-    @JsonView(Views.Normal.class)
-    public Map<String, String> getCodes() {
-        codes = new HashMap<>();
-        codes.put("uri", this.getUri() + "codes/");
-        return codes;
     }
 
     @Column(name = "version")

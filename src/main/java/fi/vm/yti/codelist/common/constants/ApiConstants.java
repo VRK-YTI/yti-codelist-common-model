@@ -24,6 +24,7 @@ public class ApiConstants {
     public static final String FILTER_NAME_ORGANIZATION = "organization";
 
     public static final String FIELD_NAME_URI = "uri";
+    public static final String FIELD_NAME_URL = "url";
     public static final String FIELD_NAME_ID = "id";
 
     public static final String ELASTIC_INDEX_CODEREGISTRY = "coderegistry";
@@ -46,7 +47,7 @@ public class ApiConstants {
     public static final String API_PATH_ADMIN = "/admin";
     public static final String API_PATH_REINDEX = "/reindex";
     public static final String API_PATH_RELOAD = "/reload";
-    public static final String API_PATH_REWRITEURIS = "/rewriteuris";
+    public static final String API_PATH_REWRITEADDRESSES = "/rewriteaddresses";
     public static final String API_PATH_AUTHENTICATED_USER = "/authenticated-user";
     public static final String API_PATH_CONFIGURATION = "/configuration";
     public static final String API_PATH_CODEREGISTRIES = "/coderegistries";

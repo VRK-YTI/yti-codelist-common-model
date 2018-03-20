@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -28,7 +27,6 @@ public class CodeRegistryDTO extends AbstractCommonCodeDTO implements Serializab
     private Map<String, String> codeSchemes;
     private Set<OrganizationDTO> organizations;
 
-    @Transient
     @JsonView(Views.Normal.class)
     public Map<String, String> getCodeSchemes() {
         codeSchemes = new HashMap<>();

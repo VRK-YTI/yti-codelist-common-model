@@ -18,7 +18,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("code")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "uri", "url", "status", "hierarchyLevel", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCodeId"})
+@XmlType(propOrder = {"id", "codeValue", "uri", "url", "status", "flatOrder", "childOrder", "hierarchyLevel", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCodeId"})
 @ApiModel(value = "Code", description = "Code model that represents data for one single code.")
 public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
@@ -173,6 +173,7 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
         this.flatOrder = flatOrder;
     }
 
+    @JsonView(Views.Normal.class)
     public Integer getChildOrder() {
         return childOrder;
     }

@@ -32,7 +32,7 @@ public class CodeRegistryDTO extends AbstractCommonCodeDTO implements Serializab
     @JsonView(Views.Normal.class)
     public Map<String, String> getCodeSchemes() {
         codeSchemes = new HashMap<>();
-        codeSchemes.put("uri", this.getUri() + "codeschemes/");
+        codeSchemes.put("url", this.getUrl() + "codeschemes/");
         return codeSchemes;
     }
 

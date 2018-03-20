@@ -4,8 +4,6 @@ import javax.persistence.MappedSuperclass;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import fi.vm.yti.codelist.common.model.Views;
-
 @MappedSuperclass
 abstract class AbstractCommonCodeDTO extends AbstractBaseCodeDTO {
 

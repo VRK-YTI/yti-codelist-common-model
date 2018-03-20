@@ -6,6 +6,7 @@ import java.util.GregorianCalendar;
 
 import org.junit.Test;
 
+import fi.vm.yti.codelist.common.dto.Meta;
 import static org.junit.Assert.assertEquals;
 
 public class MetaTest {

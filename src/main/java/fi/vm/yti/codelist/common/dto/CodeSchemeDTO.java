@@ -16,7 +16,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeScheme")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "uri", "url", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "externalReferences"})
+@XmlType(propOrder = {"id", "codeValue", "uri", "url", "codesUrl", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "externalReferences"})
 @ApiModel(value = "CodeScheme DTO", description = "CodeScheme model that represents data for one single codescheme.")
 public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
@@ -30,7 +30,8 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     private Map<String, String> definition;
     private Map<String, String> description;
     private Map<String, String> changeNote;
-    private Map<String, String> codes;
+    private Set<CodeDTO> codes;
+    private String codesUrl;
     private CodeRegistryDTO codeRegistry;
     private Set<CodeDTO> dataClassifications;
     private Set<ExternalReferenceDTO> externalReferences;
@@ -51,10 +52,17 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     }
 
     @JsonView(Views.Normal.class)
-    public Map<String, String> getCodes() {
-        codes = new HashMap<>();
-        codes.put("url", this.getUrl() + "codes/");
+    public String getCodesUrl() {
+        return this.getUrl() + "codes/";
+    }
+
+    @JsonView(Views.Normal.class)
+    public Set<CodeDTO> getCodes() {
         return codes;
+    }
+
+    public void setCodes(final Set<CodeDTO> codes) {
+        this.codes = codes;
     }
 
     @JsonView(Views.Normal.class)

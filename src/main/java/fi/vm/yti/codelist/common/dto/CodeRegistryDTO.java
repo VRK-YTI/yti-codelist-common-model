@@ -16,7 +16,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeRegistry")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "uri", "url", "prefLabel", "definition", "modified", "codeSchemes", "organizations"})
+@XmlType(propOrder = {"id", "codeValue", "uri", "url", "prefLabel", "definition", "modified", "codeSchemesUrl", "codeSchemes", "organizations"})
 @ApiModel(value = "CodeRegistry", description = "CodeRegistry model that represents data for one single registry.")
 public class CodeRegistryDTO extends AbstractCommonCodeDTO implements Serializable {
 
@@ -24,14 +24,22 @@ public class CodeRegistryDTO extends AbstractCommonCodeDTO implements Serializab
 
     private Map<String, String> prefLabel;
     private Map<String, String> definition;
-    private Map<String, String> codeSchemes;
+    private Set<CodeSchemeDTO> codeSchemes;
+    private String codeSchemesUrl;
     private Set<OrganizationDTO> organizations;
 
     @JsonView(Views.Normal.class)
-    public Map<String, String> getCodeSchemes() {
-        codeSchemes = new HashMap<>();
-        codeSchemes.put("url", this.getUrl() + "codeschemes/");
+    public String getCodeSchemesUrl() {
+        return this.getUrl() + "codeschemes/";
+    }
+
+    @JsonView(Views.Normal.class)
+    public Set<CodeSchemeDTO> getCodeSchemes() {
         return codeSchemes;
+    }
+
+    public void setCodeSchemes(final Set<CodeSchemeDTO> codeSchemes) {
+        this.codeSchemes = codeSchemes;
     }
 
     @JsonView(Views.Normal.class)

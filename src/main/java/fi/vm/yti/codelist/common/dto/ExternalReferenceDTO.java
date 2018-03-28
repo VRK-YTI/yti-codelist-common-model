@@ -23,7 +23,6 @@ public class ExternalReferenceDTO extends AbstractBaseCodeDTO implements Seriali
 
     private static final long serialVersionUID = 1L;
 
-    private String url;
     private Map<String, String> title;
     private Map<String, String> description;
     private Set<CodeSchemeDTO> codeSchemes;
@@ -31,15 +30,6 @@ public class ExternalReferenceDTO extends AbstractBaseCodeDTO implements Seriali
     private PropertyTypeDTO propertyType;
     private CodeSchemeDTO parentCodeScheme;
     private Boolean global;
-
-    @Column(name = "url")
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(final String url) {
-        this.url = url;
-    }
 
     @Column(name = "global")
     public Boolean getGlobal() {

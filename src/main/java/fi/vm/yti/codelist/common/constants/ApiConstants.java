@@ -2,6 +2,9 @@ package fi.vm.yti.codelist.common.constants;
 
 public class ApiConstants {
 
+    private ApiConstants() {
+    }
+
     public static final String METHOD_GET = "GET";
     public static final String METHOD_POST = "POST";
     public static final String METHOD_PUT = "PUT";

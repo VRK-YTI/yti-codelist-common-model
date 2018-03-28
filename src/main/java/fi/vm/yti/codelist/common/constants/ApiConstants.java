@@ -2,9 +2,6 @@ package fi.vm.yti.codelist.common.constants;
 
 public class ApiConstants {
 
-    private ApiConstants() {
-    }
-
     public static final String METHOD_GET = "GET";
     public static final String METHOD_POST = "POST";
     public static final String METHOD_PUT = "PUT";
@@ -124,4 +121,7 @@ public class ApiConstants {
     public static final String GROUPMANAGEMENT_API_REQUEST = "/request";
     public static final String GROUPMANAGEMENT_API_REQUESTS = "/requests";
     public static final String GROUPMANAGEMENT_API_ORGANIZATIONS = "/organizations";
+
+    private ApiConstants() {
+    }
 }

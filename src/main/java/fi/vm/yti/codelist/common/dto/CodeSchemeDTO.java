@@ -53,7 +53,7 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
 
     @JsonView(Views.Normal.class)
     public String getCodesUrl() {
-        return this.getUrl() + "codes/";
+        return this.getUrl() + "/codes/";
     }
 
     @JsonView(Views.Normal.class)

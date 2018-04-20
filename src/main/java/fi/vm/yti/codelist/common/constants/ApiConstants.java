@@ -65,6 +65,7 @@ public class ApiConstants {
 
     public static final String API_PATH_TERMINOLOGY = "/terminology";
     public static final String API_PATH_VOCABULARIES = "/vocabularies";
+    public static final String API_PATH_CONCEPTS = "/searchconcept";
     public static final String TERMINOLOGY_API_CONTEXT_PATH = "/publicapi";
 
     public static final String DEFAULT_CODEREGISTRY_NAME_PREFIX = "testregistry";

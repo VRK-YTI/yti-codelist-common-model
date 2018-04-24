@@ -17,7 +17,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("code")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "uri", "url", "status", "flatOrder", "childOrder", "hierarchyLevel", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCodeId"})
+@XmlType(propOrder = {"id", "codeValue", "uri", "url", "status", "hierarchyLevel", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCodeId", "order"})
 @ApiModel(value = "Code", description = "Code model that represents data for one single code.")
 public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
@@ -31,8 +31,7 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
     private Map<String, String> definition;
     private Set<ExternalReferenceDTO> externalReferences;
     private UUID broaderCodeId;
-    private Integer flatOrder;
-    private Integer childOrder;
+    private Integer order;
 
     @JsonView(Views.Normal.class)
     public UUID getBroaderCodeId() {
@@ -164,21 +163,12 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
     }
 
     @JsonView(Views.Normal.class)
-    public Integer getFlatOrder() {
-        return flatOrder;
+    public Integer getOrder() {
+        return order;
     }
 
-    public void setFlatOrder(final Integer flatOrder) {
-        this.flatOrder = flatOrder;
-    }
-
-    @JsonView(Views.Normal.class)
-    public Integer getChildOrder() {
-        return childOrder;
-    }
-
-    public void setChildOrder(final Integer childOrder) {
-        this.childOrder = childOrder;
+    public void setOrder(final Integer order) {
+        this.order = order;
     }
 
     @JsonView(Views.ExtendedCode.class)

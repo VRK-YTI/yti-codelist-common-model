@@ -102,8 +102,7 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_ENDDATE = "ENDDATE";
     public static final String CONTENT_HEADER_PARENTCODESCHEMEID = "PARENTCODESCHEMEID";
     public static final String CONTENT_HEADER_ORGANIZATION = "ORGANIZATION";
-    public static final String CONTENT_HEADER_FLATORDER = "FLATORDER";
-    public static final String CONTENT_HEADER_CHILDORDER = "CHILDORDER";
+    public static final String CONTENT_HEADER_ORDER = "ORDER";
 
 
     public static final String FORMAT_JSON = "json";

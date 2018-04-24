@@ -17,7 +17,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("code")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "uri", "url", "status", "hierarchyLevel", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCodeId", "order"})
+@XmlType(propOrder = {"id", "codeValue", "uri", "url", "status", "order", "hierarchyLevel", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCodeId", "conceptUriInVocabularies"})
 @ApiModel(value = "Code", description = "Code model that represents data for one single code.")
 public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
@@ -32,6 +32,7 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
     private Set<ExternalReferenceDTO> externalReferences;
     private UUID broaderCodeId;
     private Integer order;
+    private String conceptUriInVocabularies;
 
     @JsonView(Views.Normal.class)
     public UUID getBroaderCodeId() {
@@ -178,5 +179,14 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
     public void setExternalReferences(final Set<ExternalReferenceDTO> externalReferences) {
         this.externalReferences = externalReferences;
+    }
+
+    @JsonView(Views.Normal.class)
+    public String getConceptUriInVocabularies() {
+        return conceptUriInVocabularies;
+    }
+
+    public void setConceptUriInVocabularies(String conceptUriInVocabularies) {
+        this.conceptUriInVocabularies = conceptUriInVocabularies;
     }
 }

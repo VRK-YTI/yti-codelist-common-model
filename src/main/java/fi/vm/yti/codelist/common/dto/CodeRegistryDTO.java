@@ -33,7 +33,7 @@ public class CodeRegistryDTO extends AbstractCommonCodeDTO implements Serializab
         return this.getUrl() + "/codeschemes/";
     }
 
-    @JsonView(Views.Normal.class)
+    @JsonView(Views.ExtendedCodeRegistry.class)
     public Set<CodeSchemeDTO> getCodeSchemes() {
         return codeSchemes;
     }

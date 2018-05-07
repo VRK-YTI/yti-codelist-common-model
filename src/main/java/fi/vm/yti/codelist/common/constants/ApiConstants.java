@@ -22,6 +22,8 @@ public class ApiConstants {
     public static final String FILTER_NAME_EXTERNALREFERENCE = "externalReference";
     public static final String FILTER_NAME_DATACLASSIFICATION = "dataClassification";
     public static final String FILTER_NAME_ORGANIZATION = "organization";
+    public static final String FILTER_NAME_EXTENSIONSCHEME = "extensionScheme";
+    public static final String FILTER_NAME_EXTENSION = "extension";
 
     public static final String FIELD_NAME_URI = "uri";
     public static final String FIELD_NAME_URL = "url";
@@ -32,11 +34,15 @@ public class ApiConstants {
     public static final String ELASTIC_INDEX_CODE = "code";
     public static final String ELASTIC_INDEX_PROPERTYTYPE = "propertytype";
     public static final String ELASTIC_INDEX_EXTERNALREFERENCE = "externalreference";
+    public static final String ELASTIC_INDEX_EXTENSIONSCHEME = "extensionscheme";
+    public static final String ELASTIC_INDEX_EXTENSION = "extension";
     public static final String ELASTIC_TYPE_CODEREGISTRY = "coderegistry";
     public static final String ELASTIC_TYPE_CODESCHEME = "codescheme";
     public static final String ELASTIC_TYPE_CODE = "code";
     public static final String ELASTIC_TYPE_PROPERTYTYPE = "propertytype";
     public static final String ELASTIC_TYPE_EXTERNALREFERENCE = "externalreference";
+    public static final String ELASTIC_TYPE_EXTENSIONSCHEME = "extensionscheme";
+    public static final String ELASTIC_TYPE_EXTENSION = "extension";
 
     public static final String API_VERSION = "v1";
     public static final String API_CONTEXT_PATH_INTAKE = "/codelist-intake";
@@ -55,6 +61,8 @@ public class ApiConstants {
     public static final String API_PATH_GROUPMANAGEMENT = "/groupmanagement";
     public static final String API_PATH_REQUEST = "/request";
     public static final String API_PATH_REQUESTS = "/requests";
+    public static final String API_PATH_EXTENSIONSCHEMES = "/extensionschemes";
+    public static final String API_PATH_EXTENSIONS = "/extensions";
 
     public static final String API_PATH_PROPERTYTYPES = "/propertytypes";
     public static final String API_PATH_ORGANIZATIONS = "/organizations";

@@ -20,4 +20,8 @@ public class Views {
     public static class ExtendedCodeRegistry extends Normal{};
 
     public static class ExtendedOrganization extends Normal{};
+
+    public static class ExtendedExtension extends Normal{};
+
+    public static class ExtendedExtensionScheme extends Normal{};
 }

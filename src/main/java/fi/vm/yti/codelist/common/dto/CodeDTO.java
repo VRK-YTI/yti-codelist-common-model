@@ -17,7 +17,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("code")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "uri", "url", "status", "order", "hierarchyLevel", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCodeId", "conceptUriInVocabularies"})
+@XmlType(propOrder = {"id", "codeValue", "uri", "url", "status", "order", "hierarchyLevel", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCodeId", "extensionsUrl", "extensions", "conceptUriInVocabularies"})
 @ApiModel(value = "Code", description = "Code model that represents data for one single code.")
 public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
@@ -33,6 +33,8 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
     private UUID broaderCodeId;
     private Integer order;
     private String conceptUriInVocabularies;
+    private String extensionsUrl;
+    private Set<ExtensionDTO> extensions;
 
     @JsonView(Views.Normal.class)
     public UUID getBroaderCodeId() {
@@ -41,6 +43,11 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
     public void setBroaderCodeId(final UUID broaderCodeId) {
         this.broaderCodeId = broaderCodeId;
+    }
+
+    @JsonView(Views.Normal.class)
+    public String getExtensionsUrl() {
+        return this.getUrl() + "/extensions/";
     }
 
     @JsonView(Views.ExtendedCode.class)
@@ -87,7 +94,8 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
         return prefLabelValue;
     }
 
-    public void setPrefLabel(final String language, final String value) {
+    public void setPrefLabel(final String language,
+                             final String value) {
         if (this.prefLabel == null) {
             this.prefLabel = new HashMap<>();
         }
@@ -119,7 +127,8 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
         return definitionValue;
     }
 
-    public void setDefinition(final String language, final String value) {
+    public void setDefinition(final String language,
+                              final String value) {
         if (this.definition == null) {
             this.definition = new HashMap<>();
         }
@@ -151,7 +160,8 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
         return descriptionValue;
     }
 
-    public void setDescription(final String language, final String value) {
+    public void setDescription(final String language,
+                               final String value) {
         if (this.description == null) {
             this.description = new HashMap<>();
         }
@@ -189,4 +199,14 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
     public void setConceptUriInVocabularies(String conceptUriInVocabularies) {
         this.conceptUriInVocabularies = conceptUriInVocabularies;
     }
+
+    @JsonView(Views.ExtendedCode.class)
+    public Set<ExtensionDTO> getExtensions() {
+        return extensions;
+    }
+
+    public void setExtensions(final Set<ExtensionDTO> extensions) {
+        this.extensions = extensions;
+    }
+
 }

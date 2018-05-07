@@ -23,7 +23,7 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private CodeSchemeDTO codeSheme;
+    private CodeSchemeDTO codeScheme;
     private String shortName;
     private Integer hierarchyLevel;
     private Map<String, String> prefLabel;
@@ -45,11 +45,11 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
     @JsonView(Views.ExtendedCode.class)
     public CodeSchemeDTO getCodeScheme() {
-        return codeSheme;
+        return codeScheme;
     }
 
     public void setCodeScheme(final CodeSchemeDTO codeScheme) {
-        this.codeSheme = codeScheme;
+        this.codeScheme = codeScheme;
     }
 
     @JsonView(Views.Normal.class)

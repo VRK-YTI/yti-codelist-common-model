@@ -35,7 +35,6 @@ public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Seri
     private Map<String, String> prefLabel;
     private Map<String, String> definition;
 
-
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
     @Temporal(TemporalType.TIMESTAMP)

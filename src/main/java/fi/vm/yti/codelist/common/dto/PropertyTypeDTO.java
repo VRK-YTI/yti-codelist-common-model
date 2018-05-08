@@ -15,13 +15,13 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("propertyType")
 @XmlRootElement
-@XmlType(propOrder = {"id", "uri", "context", "propertyUri", "localName", "type", "prefLabel", "definition"})
+@XmlType(propOrder = {"id", "url", "context", "propertyUri", "localName", "type", "prefLabel", "definition"})
 @ApiModel(value = "PropertyType", description = "PropertyType model for data relation typing.")
 public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String uri;
+    private String url;
     private String propertyUri;
     private String localName;
     private String context;
@@ -57,12 +57,12 @@ public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Seri
     }
 
     @JsonView(Views.Normal.class)
-    public String getUri() {
-        return uri;
+    public String getUrl() {
+        return url;
     }
 
-    public void setUri(final String uri) {
-        this.uri = uri;
+    public void setUrl(final String url) {
+        this.url = url;
     }
 
     @JsonView(Views.Normal.class)

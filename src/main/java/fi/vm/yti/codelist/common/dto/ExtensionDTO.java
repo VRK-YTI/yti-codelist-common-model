@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @JsonFilter("extension")
 @XmlRootElement
-@XmlType(propOrder = {"id", "code", "modified", "extensionValue", "extensionOrder", "extensionScheme", "extension"})
+@XmlType(propOrder = {"id", "url", "code", "modified", "extensionValue", "extensionOrder", "extensionScheme", "extension"})
 @ApiModel(value = "Extension", description = "Extension model that represents data for one extension element.")
 public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
@@ -29,6 +29,16 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
     private ExtensionSchemeDTO extensionScheme;
     private ExtensionDTO extension;
     private Date modified;
+    private String url;
+
+    @JsonView(Views.Normal.class)
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(final String url) {
+        this.url = url;
+    }
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")

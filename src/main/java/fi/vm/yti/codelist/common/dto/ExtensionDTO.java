@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @JsonFilter("extension")
 @XmlRootElement
-@XmlType(propOrder = {"id", "code", "modified", "codeScheme", "extensionValue", "extensionOrder", "extensionScheme", "extension"})
+@XmlType(propOrder = {"id", "code", "modified", "extensionValue", "extensionOrder", "extensionScheme", "extension"})
 @ApiModel(value = "Extension", description = "Extension model that represents data for one extension element.")
 public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
@@ -26,7 +26,6 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
     private String extensionValue;
     private Integer extensionOrder;
     private CodeDTO code;
-    private CodeSchemeDTO codeScheme;
     private ExtensionSchemeDTO extensionScheme;
     private ExtensionDTO extension;
     private Date modified;
@@ -75,15 +74,6 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
 
     public void setCode(final CodeDTO code) {
         this.code = code;
-    }
-
-    @JsonView(Views.ExtendedExtension.class)
-    public CodeSchemeDTO getCodeScheme() {
-        return codeScheme;
-    }
-
-    public void setCodeScheme(final CodeSchemeDTO codeScheme) {
-        this.codeScheme = codeScheme;
     }
 
     @JsonView(Views.ExtendedExtension.class)

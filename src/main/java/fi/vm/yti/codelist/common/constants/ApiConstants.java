@@ -87,6 +87,7 @@ public class ApiConstants {
 
     public static final String CONTENT_HEADER_ID = "ID";
     public static final String CONTENT_HEADER_URL = "URL";
+    public static final String CONTENT_HEADER_HREF = "HREF";
     public static final String CONTENT_HEADER_CODEVALUE = "CODEVALUE";
     public static final String CONTENT_HEADER_STATUS = "STATUS";
     public static final String CONTENT_HEADER_BROADER = "BROADER";

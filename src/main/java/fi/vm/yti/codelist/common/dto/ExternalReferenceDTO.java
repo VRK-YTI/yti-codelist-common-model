@@ -17,7 +17,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("externalReference")
 @XmlRootElement
-@XmlType(propOrder = {"id", "uri", "url", "global", "title", "description", "parentCodeScheme"})
+@XmlType(propOrder = {"id", "uri", "url", "referenceUrl", "global", "title", "description", "parentCodeScheme"})
 @ApiModel(value = "ExternalReference", description = "ExternalReference model that represents data for either CodeScheme or Code related external link.")
 public class ExternalReferenceDTO extends AbstractBaseCodeDTO implements Serializable {
 
@@ -30,6 +30,7 @@ public class ExternalReferenceDTO extends AbstractBaseCodeDTO implements Seriali
     private PropertyTypeDTO propertyType;
     private CodeSchemeDTO parentCodeScheme;
     private Boolean global;
+    private String referenceUrl;
 
     @Column(name = "global")
     public Boolean getGlobal() {
@@ -138,5 +139,14 @@ public class ExternalReferenceDTO extends AbstractBaseCodeDTO implements Seriali
 
     public void setParentCodeScheme(final CodeSchemeDTO codeScheme) {
         this.parentCodeScheme = codeScheme;
+    }
+
+    public String getReferenceUrl() {
+        return referenceUrl;
+    }
+
+    @JsonView(Views.Normal.class)
+    public void setReferenceUrl(final String referenceUrl) {
+        this.referenceUrl = referenceUrl;
     }
 }

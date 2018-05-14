@@ -16,8 +16,8 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeRegistry")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "uri", "url", "prefLabel", "definition", "modified", "codeSchemesUrl", "codeSchemes", "organizations"})
-@ApiModel(value = "CodeRegistry", description = "CodeRegistry model that represents data for one single registry.")
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "prefLabel", "definition", "modified", "codeSchemesUrl", "codeSchemes", "organizations" })
+@ApiModel(value = "CodeRegistry", description = "CodeRegistry DTO that represents data for one single registry.")
 public class CodeRegistryDTO extends AbstractCommonCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -62,7 +62,8 @@ public class CodeRegistryDTO extends AbstractCommonCodeDTO implements Serializab
         return prefLabelValue;
     }
 
-    public void setPrefLabel(final String language, final String value) {
+    public void setPrefLabel(final String language,
+                             final String value) {
         if (prefLabel == null) {
             prefLabel = new HashMap<>();
         }
@@ -94,7 +95,8 @@ public class CodeRegistryDTO extends AbstractCommonCodeDTO implements Serializab
         return definitionValue;
     }
 
-    public void setDefinition(final String language, final String value) {
+    public void setDefinition(final String language,
+                              final String value) {
         if (definition == null) {
             definition = new HashMap<>();
         }

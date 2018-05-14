@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 
 import io.swagger.annotations.ApiModel;
 
-@XmlType(propOrder = {"code", "message", "pageSize", "from", "resultCount", "totalResults", "after", "afterResourceUrl", "nextPage"})
+@XmlType(propOrder = { "code", "message", "pageSize", "from", "resultCount", "totalResults", "after", "afterResourceUrl", "nextPage" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ApiModel(value = "Meta", description = "Meta information model for API responses.")
 public class Meta {

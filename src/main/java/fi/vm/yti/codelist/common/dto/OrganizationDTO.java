@@ -14,8 +14,8 @@ import io.swagger.annotations.ApiModel;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("organization")
-@XmlType(propOrder = {"id", "url", "prefLabel", "description", "codeRegistries", "removed"})
-@ApiModel(value = "Organization", description = "Organization model that represents data for one single organization.")
+@XmlType(propOrder = { "id", "url", "prefLabel", "description", "codeRegistries", "removed" })
+@ApiModel(value = "Organization", description = "Organization DTO that represents data for one single organization.")
 public class OrganizationDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,7 +61,8 @@ public class OrganizationDTO extends AbstractIdentifyableCodeDTO implements Seri
         return prefLabelValue;
     }
 
-    public void setPrefLabel(final String language, final String value) {
+    public void setPrefLabel(final String language,
+                             final String value) {
         if (this.prefLabel == null) {
             this.prefLabel = new HashMap<>();
         }
@@ -93,7 +94,8 @@ public class OrganizationDTO extends AbstractIdentifyableCodeDTO implements Seri
         return descriptionValue;
     }
 
-    public void setDescription(final String language, final String value) {
+    public void setDescription(final String language,
+                               final String value) {
         if (this.description == null) {
             this.description = new HashMap<>();
         }

@@ -28,17 +28,17 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
-@JsonFilter("extensionscheme")
+@JsonFilter("extensionScheme")
 @XmlRootElement
-@XmlType(propOrder = {"id", "url", "codeValue", "status", "startDate", "endDate", "modified", "prefLabel", "codeSchemes", "extensions"})
-@ApiModel(value = "ExtensionScheme", description = "ExtensionScheme model that represents data for one extension scheme element.")
+@XmlType(propOrder = { "id", "url", "codeValue", "status", "startDate", "endDate", "modified", "prefLabel", "codeScheme", "extensions" })
+@ApiModel(value = "ExtensionScheme", description = "ExtensionScheme DTO that represents data for one extension scheme element.")
 public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithStatusDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private Map<String, String> prefLabel;
     private PropertyTypeDTO propertyType;
-    private Set<CodeSchemeDTO> codeSchemes;
+    private CodeSchemeDTO codeScheme;
     private Set<ExtensionDTO> extensions;
     private String codeValue;
     private Date modified;
@@ -118,12 +118,12 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
     }
 
     @JsonView(Views.ExtendedExtensionScheme.class)
-    public Set<CodeSchemeDTO> getCodeSchemes() {
-        return codeSchemes;
+    public CodeSchemeDTO getCodeScheme() {
+        return codeScheme;
     }
 
-    public void setCodeSchemes(final Set<CodeSchemeDTO> codeSchemes) {
-        this.codeSchemes = codeSchemes;
+    public void setCodeScheme(final CodeSchemeDTO codeScheme) {
+        this.codeScheme = codeScheme;
     }
 
     @JsonView(Views.Normal.class)

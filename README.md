@@ -3,12 +3,12 @@
 This code library is part of the [Joint metadata and information management programme](https://wiki.julkict.fi/julkict/yti).
 
 ## Description
-Common model classes for CLS (Code List Service) services.
+Common DTO classes for YTI CodeList services.
 
 ## Modules
 
 ##### Model
-Shared Models used by CLS IN / OUT services.
+Shared Models used by YTI CodeList IN / OUT services.
 
 ## Prerequisites
 

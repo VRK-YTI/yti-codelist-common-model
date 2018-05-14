@@ -20,8 +20,8 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("propertyType")
 @XmlRootElement
-@XmlType(propOrder = {"id", "url", "modified", "context", "propertyUri", "localName", "type", "prefLabel", "definition"})
-@ApiModel(value = "PropertyType", description = "PropertyType model for data relation typing.")
+@XmlType(propOrder = { "id", "url", "modified", "context", "propertyUri", "localName", "type", "prefLabel", "definition" })
+@ApiModel(value = "PropertyType", description = "PropertyType DTO for data relation typing.")
 public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -119,7 +119,8 @@ public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Seri
         return prefLabelValue;
     }
 
-    public void setPrefLabel(final String language, final String value) {
+    public void setPrefLabel(final String language,
+                             final String value) {
         if (prefLabel == null) {
             prefLabel = new HashMap<>();
         }
@@ -151,7 +152,8 @@ public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Seri
         return definitionValue;
     }
 
-    public void setDefinition(final String language, final String value) {
+    public void setDefinition(final String language,
+                              final String value) {
         if (definition == null) {
             definition = new HashMap<>();
         }

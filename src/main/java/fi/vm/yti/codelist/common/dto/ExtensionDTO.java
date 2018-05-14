@@ -17,8 +17,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 @JsonFilter("extension")
 @XmlRootElement
-@XmlType(propOrder = {"id", "url", "code", "modified", "extensionValue", "extensionOrder", "extensionScheme", "extension"})
-@ApiModel(value = "Extension", description = "Extension model that represents data for one extension element.")
+@XmlType(propOrder = { "id", "url", "code", "modified", "extensionValue", "extensionOrder", "extensionScheme", "extension" })
+@ApiModel(value = "Extension", description = "Extension DTO that represents data for one extension element.")
 public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;

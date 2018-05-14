@@ -22,8 +22,8 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("externalReference")
 @XmlRootElement
-@XmlType(propOrder = {"id", "url", "modified", "href", "global", "title", "description", "parentCodeScheme"})
-@ApiModel(value = "ExternalReference", description = "ExternalReference model that represents data for either CodeScheme or Code related external link.")
+@XmlType(propOrder = { "id", "url", "modified", "href", "global", "title", "description", "parentCodeScheme" })
+@ApiModel(value = "ExternalReference", description = "ExternalReference DTO that represents data for either CodeScheme or Code related external link.")
 public class ExternalReferenceDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -67,7 +67,6 @@ public class ExternalReferenceDTO extends AbstractIdentifyableCodeDTO implements
         this.url = url;
     }
 
-
     @Column(name = "global")
     public Boolean getGlobal() {
         return global;
@@ -97,7 +96,8 @@ public class ExternalReferenceDTO extends AbstractIdentifyableCodeDTO implements
         return value;
     }
 
-    public void setTitle(final String language, final String value) {
+    public void setTitle(final String language,
+                         final String value) {
         if (title == null) {
             title = new HashMap<>();
         }
@@ -129,7 +129,8 @@ public class ExternalReferenceDTO extends AbstractIdentifyableCodeDTO implements
         return value;
     }
 
-    public void setDescription(final String language, final String value) {
+    public void setDescription(final String language,
+                               final String value) {
         if (description == null) {
             description = new HashMap<>();
         }

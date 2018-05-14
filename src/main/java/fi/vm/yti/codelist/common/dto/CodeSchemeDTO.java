@@ -16,8 +16,8 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeScheme")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "uri", "url", "codesUrl", "extensionsSchemesUrl", "extensionSchemes", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "externalReferences", "conceptUriInVocabularies"})
-@ApiModel(value = "CodeScheme DTO", description = "CodeScheme model that represents data for one single codescheme.")
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionsSchemesUrl", "extensionSchemes", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "externalReferences", "conceptUriInVocabularies" })
+@ApiModel(value = "CodeScheme DTO", description = "CodeScheme DTO that represents data for one single codescheme.")
 public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -136,7 +136,8 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
         return prefLabelValue;
     }
 
-    public void setPrefLabel(final String language, final String value) {
+    public void setPrefLabel(final String language,
+                             final String value) {
         if (this.prefLabel == null) {
             this.prefLabel = new HashMap<>();
         }
@@ -168,7 +169,8 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
         return definitionValue;
     }
 
-    public void setDefinition(final String language, final String value) {
+    public void setDefinition(final String language,
+                              final String value) {
         if (this.definition == null) {
             this.definition = new HashMap<>();
         }
@@ -200,7 +202,8 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
         return descriptionValue;
     }
 
-    public void setDescription(final String language, final String value) {
+    public void setDescription(final String language,
+                               final String value) {
         if (this.description == null) {
             this.description = new HashMap<>();
         }
@@ -232,7 +235,8 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
         return changeNoteValue;
     }
 
-    public void setChangeNote(final String language, final String value) {
+    public void setChangeNote(final String language,
+                              final String value) {
         if (this.changeNote == null) {
             this.changeNote = new HashMap<>();
         }

@@ -17,8 +17,8 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("code")
 @XmlRootElement
-@XmlType(propOrder = {"id", "codeValue", "uri", "url", "status", "order", "hierarchyLevel", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCodeId", "extensionsUrl", "extensions", "conceptUriInVocabularies"})
-@ApiModel(value = "Code", description = "Code model that represents data for one single code.")
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "status", "order", "hierarchyLevel", "startDate", "endDate", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCodeId", "extensionsUrl", "extensions", "conceptUriInVocabularies" })
+@ApiModel(value = "Code", description = "Code DTO that represents data for one single code.")
 public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;

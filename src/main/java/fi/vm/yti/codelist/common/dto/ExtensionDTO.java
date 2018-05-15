@@ -73,7 +73,7 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
         return order;
     }
 
-    public void setOrder(final Integer extensionOrder) {
+    public void setOrder(final Integer order) {
         this.order = order;
     }
 

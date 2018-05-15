@@ -17,14 +17,14 @@ import io.swagger.annotations.ApiModelProperty;
 
 @JsonFilter("extension")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "code", "modified", "extensionValue", "extensionOrder", "extensionScheme", "extension" })
+@XmlType(propOrder = { "id", "url", "code", "modified", "extensionValue", "order", "extensionScheme", "extension" })
 @ApiModel(value = "Extension", description = "Extension DTO that represents data for one extension element.")
 public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private String extensionValue;
-    private Integer extensionOrder;
+    private Integer order;
     private CodeDTO code;
     private ExtensionSchemeDTO extensionScheme;
     private ExtensionDTO extension;
@@ -69,12 +69,12 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
     }
 
     @JsonView(Views.Normal.class)
-    public Integer getExtensionOrder() {
-        return extensionOrder;
+    public Integer getOrder() {
+        return order;
     }
 
-    public void setExtensionOrder(final Integer extensionOrder) {
-        this.extensionOrder = extensionOrder;
+    public void setOrder(final Integer extensionOrder) {
+        this.order = order;
     }
 
     @JsonView(Views.ExtendedExtension.class)

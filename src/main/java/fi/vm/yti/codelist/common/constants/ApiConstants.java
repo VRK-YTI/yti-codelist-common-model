@@ -115,9 +115,8 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_PARENTCODESCHEMEID = "PARENTCODESCHEMEID";
     public static final String CONTENT_HEADER_ORGANIZATION = "ORGANIZATION";
     public static final String CONTENT_HEADER_ORDER = "ORDER";
-    public static final String CONTENT_HEADER_EXTENSIONORDER = "EXTENSIONORDER";
     public static final String CONTENT_HEADER_EXTENSIONVALUE = "EXTENSIONVALUE";
-    public static final String CONTENT_HEADER_EXTENSIONID = "EXTENSIONID";
+    public static final String CONTENT_HEADER_RELATION = "RELATION";
     public static final String CONTENT_HEADER_CODE = "CODE";
 
     public static final String FORMAT_JSON = "json";

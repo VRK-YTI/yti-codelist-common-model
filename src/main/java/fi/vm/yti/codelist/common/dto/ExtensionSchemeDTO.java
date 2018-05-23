@@ -30,7 +30,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("extensionScheme")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "extensionsUrl", "extensions", "codeValue", "status", "startDate", "endDate", "modified", "prefLabel", "codeScheme" })
+@XmlType(propOrder = { "id", "url", "extensionsUrl", "extensions", "codeValue", "status", "startDate", "endDate", "modified", "prefLabel", "parentCodeScheme", "codeSchemes" })
 @ApiModel(value = "ExtensionScheme", description = "ExtensionScheme DTO that represents data for one extension scheme element.")
 public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithStatusDTO implements Serializable {
 
@@ -38,7 +38,8 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
 
     private Map<String, String> prefLabel;
     private PropertyTypeDTO propertyType;
-    private CodeSchemeDTO codeScheme;
+    private CodeSchemeDTO parentCodeScheme;
+    private Set<CodeSchemeDTO> codeSchemes;
     private Set<ExtensionDTO> extensions;
     private String extensionsUrl;
     private String codeValue;
@@ -125,12 +126,12 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
     }
 
     @JsonView(Views.ExtendedExtensionScheme.class)
-    public CodeSchemeDTO getCodeScheme() {
-        return codeScheme;
+    public Set<CodeSchemeDTO> getCodeSchemes() {
+        return codeSchemes;
     }
 
-    public void setCodeScheme(final CodeSchemeDTO codeScheme) {
-        this.codeScheme = codeScheme;
+    public void setCodeSchemes(final Set<CodeSchemeDTO> codeSchemes) {
+        this.codeSchemes = codeSchemes;
     }
 
     @JsonView(Views.Normal.class)
@@ -150,5 +151,14 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
 
     public void setExtensions(final Set<ExtensionDTO> extensions) {
         this.extensions = extensions;
+    }
+
+    @JsonView(Views.Normal.class)
+    public CodeSchemeDTO getParentCodeScheme() {
+        return parentCodeScheme;
+    }
+
+    public void setParentCodeScheme(final CodeSchemeDTO parentCodeScheme) {
+        this.parentCodeScheme = parentCodeScheme;
     }
 }

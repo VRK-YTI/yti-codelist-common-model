@@ -113,11 +113,17 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_STARTDATE = "STARTDATE";
     public static final String CONTENT_HEADER_ENDDATE = "ENDDATE";
     public static final String CONTENT_HEADER_PARENTCODESCHEMEID = "PARENTCODESCHEMEID";
+    public static final String CONTENT_HEADER_PARENTCODESCHEME = "PARENTCODESCHEME";
+    public static final String CONTENT_HEADER_CODESCHEMES = "CODESCHEMES";
     public static final String CONTENT_HEADER_ORGANIZATION = "ORGANIZATION";
     public static final String CONTENT_HEADER_ORDER = "ORDER";
     public static final String CONTENT_HEADER_EXTENSIONVALUE = "EXTENSIONVALUE";
     public static final String CONTENT_HEADER_RELATION = "RELATION";
     public static final String CONTENT_HEADER_CODE = "CODE";
+    public static final String CONTENT_HEADER_CODESCHEMESSHEET = "CODESCHEMESSHEET";
+    public static final String CONTENT_HEADER_EXTENSIONSCHEMESSHEET = "EXTENSIONSCHEMESSHEET";
+    public static final String CONTENT_HEADER_EXTENSIONSSHEET = "EXTENSIONSSHEET";
+    public static final String CONTENT_HEADER_CODESSHEET = "CODESSHEET";
 
     public static final String FORMAT_JSON = "json";
     public static final String FORMAT_CSV = "csv";

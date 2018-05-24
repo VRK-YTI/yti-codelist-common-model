@@ -30,7 +30,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("extensionScheme")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "extensionsUrl", "extensions", "codeValue", "status", "startDate", "endDate", "modified", "prefLabel", "parentCodeScheme", "codeSchemes" })
+@XmlType(propOrder = { "id", "url", "extensionsUrl", "extensions", "codeValue", "status", "startDate", "endDate", "created", "modified", "prefLabel", "parentCodeScheme", "codeSchemes" })
 @ApiModel(value = "ExtensionScheme", description = "ExtensionScheme DTO that represents data for one extension scheme element.")
 public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithStatusDTO implements Serializable {
 
@@ -43,6 +43,7 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
     private Set<ExtensionDTO> extensions;
     private String extensionsUrl;
     private String codeValue;
+    private Date created;
     private Date modified;
     private String url;
 
@@ -65,10 +66,28 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
         this.codeValue = codeValue;
     }
 
-
     @JsonView(Views.Normal.class)
     public String getExtensionsUrl() {
         return this.getUrl() + "/extensions/";
+    }
+
+    @ApiModelProperty(dataType = "dateTime")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonView(Views.Normal.class)
+    public Date getCreated() {
+        if (created != null) {
+            return new Date(created.getTime());
+        }
+        return null;
+    }
+
+    public void setCreated(final Date created) {
+        if (created != null) {
+            this.created = new Date(created.getTime());
+        } else {
+            this.created = null;
+        }
     }
 
     @ApiModelProperty(dataType = "dateTime")
@@ -153,7 +172,7 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
         this.extensions = extensions;
     }
 
-    @JsonView(Views.Normal.class)
+    @JsonView(Views.ExtendedExtensionScheme.class)
     public CodeSchemeDTO getParentCodeScheme() {
         return parentCodeScheme;
     }

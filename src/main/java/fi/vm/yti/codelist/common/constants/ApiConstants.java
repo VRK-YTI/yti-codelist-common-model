@@ -124,6 +124,8 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_EXTENSIONSCHEMESSHEET = "EXTENSIONSCHEMESSHEET";
     public static final String CONTENT_HEADER_EXTENSIONSSHEET = "EXTENSIONSSHEET";
     public static final String CONTENT_HEADER_CODESSHEET = "CODESSHEET";
+    public static final String CONTENT_HEADER_CREATED = "CREATED";
+    public static final String CONTENT_HEADER_MODIFIED = "MODIFIED";
 
     public static final String FORMAT_JSON = "json";
     public static final String FORMAT_CSV = "csv";

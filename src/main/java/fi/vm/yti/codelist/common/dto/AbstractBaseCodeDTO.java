@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 @MappedSuperclass
 public class AbstractBaseCodeDTO extends AbstractIdentifyableCodeDTO {
 
+    private Date created;
     private Date modified;
     private String uri;
     private String url;
@@ -34,6 +35,25 @@ public class AbstractBaseCodeDTO extends AbstractIdentifyableCodeDTO {
             this.modified = new Date(modified.getTime());
         } else {
             this.modified = null;
+        }
+    }
+
+    @ApiModelProperty(dataType = "dateTime")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonView(Views.Normal.class)
+    public Date getCreated() {
+        if (created != null) {
+            return new Date(created.getTime());
+        }
+        return null;
+    }
+
+    public void setCreated(final Date created) {
+        if (created != null) {
+            this.created = new Date(created.getTime());
+        } else {
+            this.created = null;
         }
     }
 

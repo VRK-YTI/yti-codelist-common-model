@@ -20,13 +20,14 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("propertyType")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "modified", "context", "propertyUri", "localName", "type", "prefLabel", "definition" })
+@XmlType(propOrder = { "id", "url", "created", "modified", "context", "propertyUri", "localName", "type", "prefLabel", "definition" })
 @ApiModel(value = "PropertyType", description = "PropertyType DTO for data relation typing.")
 public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private String url;
+    private Date created;
     private Date modified;
     private String propertyUri;
     private String localName;
@@ -34,6 +35,25 @@ public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Seri
     private String type;
     private Map<String, String> prefLabel;
     private Map<String, String> definition;
+
+    @ApiModelProperty(dataType = "dateTime")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonView(Views.Normal.class)
+    public Date getCreated() {
+        if (created != null) {
+            return new Date(created.getTime());
+        }
+        return null;
+    }
+
+    public void setCreated(final Date created) {
+        if (created != null) {
+            this.created = new Date(created.getTime());
+        } else {
+            this.created = null;
+        }
+    }
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")

@@ -22,7 +22,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("externalReference")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "modified", "href", "global", "title", "description", "parentCodeScheme" })
+@XmlType(propOrder = { "id", "url", "created", "modified", "href", "global", "title", "description", "parentCodeScheme" })
 @ApiModel(value = "ExternalReference", description = "ExternalReference DTO that represents data for either CodeScheme or Code related external link.")
 public class ExternalReferenceDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
@@ -36,8 +36,28 @@ public class ExternalReferenceDTO extends AbstractIdentifyableCodeDTO implements
     private CodeSchemeDTO parentCodeScheme;
     private Boolean global;
     private String href;
+    private Date created;
     private Date modified;
     private String url;
+
+    @ApiModelProperty(dataType = "dateTime")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonView(Views.Normal.class)
+    public Date getCreated() {
+        if (created != null) {
+            return new Date(created.getTime());
+        }
+        return null;
+    }
+
+    public void setCreated(final Date created) {
+        if (created != null) {
+            this.created = new Date(created.getTime());
+        } else {
+            this.created = null;
+        }
+    }
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")

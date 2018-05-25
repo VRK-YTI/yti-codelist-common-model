@@ -16,7 +16,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeScheme")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionSchemesUrl", "extensionSchemes", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "externalReferences", "conceptUriInVocabularies" })
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionSchemesUrl", "extensionSchemes", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "defaultCode", "externalReferences", "conceptUriInVocabularies" })
 @ApiModel(value = "CodeScheme DTO", description = "CodeScheme DTO that represents data for one single codescheme.")
 public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
@@ -37,6 +37,7 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     private CodeRegistryDTO codeRegistry;
     private Set<CodeDTO> dataClassifications;
     private Set<ExternalReferenceDTO> externalReferences;
+    private CodeDTO defaultCode;
 
     private String conceptUriInVocabularies;
 
@@ -117,6 +118,15 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
 
     public void setCodeRegistry(final CodeRegistryDTO codeRegistry) {
         this.codeRegistry = codeRegistry;
+    }
+
+    @JsonView(Views.Normal.class)
+    public CodeDTO getDefaultCode() {
+        return defaultCode;
+    }
+
+    public void setDefaultCode(final CodeDTO defaultCode) {
+        this.defaultCode = defaultCode;
     }
 
     @JsonView(Views.Normal.class)

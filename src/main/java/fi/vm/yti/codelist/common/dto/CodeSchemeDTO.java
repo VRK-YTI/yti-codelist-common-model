@@ -43,6 +43,9 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
 
     public CodeSchemeDTO() {
         prefLabel = new HashMap<>();
+        definition = new HashMap<>();
+        description = new HashMap<>();
+        changeNote = new HashMap<>();
     }
 
     public CodeSchemeDTO(final String codeValue,

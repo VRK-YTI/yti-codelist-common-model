@@ -36,6 +36,12 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
     private String extensionsUrl;
     private Set<ExtensionDTO> extensions;
 
+    public CodeDTO() {
+        prefLabel = new HashMap<>();
+        description = new HashMap<>();
+        definition = new HashMap<>();
+    }
+
     @JsonView(Views.Normal.class)
     public UUID getBroaderCodeId() {
         return broaderCodeId;

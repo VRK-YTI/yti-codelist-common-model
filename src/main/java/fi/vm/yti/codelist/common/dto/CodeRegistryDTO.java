@@ -28,6 +28,11 @@ public class CodeRegistryDTO extends AbstractCommonCodeDTO implements Serializab
     private String codeSchemesUrl;
     private Set<OrganizationDTO> organizations;
 
+    public CodeRegistryDTO() {
+        prefLabel = new HashMap<>();
+        definition = new HashMap<>();
+    }
+
     @JsonView(Views.Normal.class)
     public String getCodeSchemesUrl() {
         return this.getUrl() + "/codeschemes/";

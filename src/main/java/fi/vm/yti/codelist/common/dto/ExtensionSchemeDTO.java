@@ -172,7 +172,7 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
         this.extensions = extensions;
     }
 
-    @JsonView(Views.ExtendedExtensionScheme.class)
+    @JsonView({ Views.ExtendedExtensionScheme.class, Views.ExtendedExtension.class })
     public CodeSchemeDTO getParentCodeScheme() {
         return parentCodeScheme;
     }

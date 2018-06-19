@@ -42,7 +42,7 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
     }
 
     @ApiModelProperty(dataType = "dateTime")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @Temporal(TemporalType.TIMESTAMP)
     @JsonView(Views.Normal.class)
     public Date getModified() {
@@ -61,7 +61,7 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
     }
 
     @ApiModelProperty(dataType = "dateTime")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @Temporal(TemporalType.TIMESTAMP)
     @JsonView(Views.Normal.class)
     public Date getCreated() {

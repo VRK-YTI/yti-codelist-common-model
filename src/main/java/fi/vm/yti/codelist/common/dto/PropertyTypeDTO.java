@@ -37,7 +37,7 @@ public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Seri
     private Map<String, String> definition;
 
     @ApiModelProperty(dataType = "dateTime")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @Temporal(TemporalType.TIMESTAMP)
     @JsonView(Views.Normal.class)
     public Date getCreated() {
@@ -56,7 +56,7 @@ public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Seri
     }
 
     @ApiModelProperty(dataType = "dateTime")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @Temporal(TemporalType.TIMESTAMP)
     @JsonView(Views.Normal.class)
     public Date getModified() {

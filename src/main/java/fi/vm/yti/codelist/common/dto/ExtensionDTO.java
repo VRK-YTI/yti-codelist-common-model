@@ -2,6 +2,8 @@ package fi.vm.yti.codelist.common.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -14,10 +16,11 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("extension")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "code", "created", "modified", "extensionValue", "order", "extensionScheme", "extension" })
+@XmlType(propOrder = { "id", "url", "code", "prefLabel", "created", "modified", "extensionValue", "order", "extensionScheme", "extension" })
 @ApiModel(value = "Extension", description = "Extension DTO that represents data for one extension element.")
 public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
@@ -31,6 +34,7 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
     private Date created;
     private Date modified;
     private String url;
+    private Map<String, String> prefLabel;
 
     @JsonView(Views.Normal.class)
     public String getUrl() {
@@ -122,5 +126,35 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
 
     public void setExtension(final ExtensionDTO extension) {
         this.extension = extension;
+    }
+
+    @JsonView(Views.Normal.class)
+    public Map<String, String> getPrefLabel() {
+        return prefLabel;
+    }
+
+    public void setPrefLabel(final Map<String, String> prefLabel) {
+        this.prefLabel = prefLabel;
+    }
+
+    public String getPrefLabel(final String language) {
+        String prefLabelValue = this.prefLabel.get(language);
+        if (prefLabelValue == null) {
+            prefLabelValue = this.prefLabel.get(LANGUAGE_CODE_EN);
+        }
+        return prefLabelValue;
+    }
+
+    public void setPrefLabel(final String language,
+                             final String value) {
+        if (this.prefLabel == null) {
+            this.prefLabel = new HashMap<>();
+        }
+        if (language != null && value != null && !value.isEmpty()) {
+            this.prefLabel.put(language, value);
+        } else if (language != null) {
+            this.prefLabel.remove(language);
+        }
+        setPrefLabel(this.prefLabel);
     }
 }

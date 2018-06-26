@@ -7,14 +7,9 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -109,11 +104,6 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
         }
     }
 
-    @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "extensionscheme_preflabel", joinColumns = @JoinColumn(name = "extensionscheme_id", referencedColumnName = "id"))
-    @MapKeyColumn(name = "language")
-    @Column(name = "preflabel")
-    @OrderColumn
     @JsonView(Views.Normal.class)
     public Map<String, String> getPrefLabel() {
         return prefLabel;

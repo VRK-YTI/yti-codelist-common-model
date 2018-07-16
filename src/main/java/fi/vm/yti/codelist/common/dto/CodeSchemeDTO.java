@@ -33,6 +33,8 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     private Map<String, String> description;
     private Map<String, String> changeNote;
     private Set<CodeDTO> codes;
+    private String codesUrl;
+    private String extensionSchemesUrl;
     private Set<ExtensionSchemeDTO> extensionSchemes;
     private CodeRegistryDTO codeRegistry;
     private Set<CodeDTO> dataClassifications;

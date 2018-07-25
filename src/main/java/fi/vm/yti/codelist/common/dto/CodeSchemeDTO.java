@@ -1,10 +1,7 @@
 package fi.vm.yti.codelist.common.dto;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -12,13 +9,13 @@ import javax.xml.bind.annotation.XmlType;
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import fi.vm.yti.codelist.common.model.Variant;
+import fi.vm.yti.codelist.common.model.CodeSchemeListItem;
 import io.swagger.annotations.ApiModel;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeScheme")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionSchemesUrl", "extensionSchemes", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "defaultCode", "externalReferences", "conceptUriInVocabularies", "variantCodeschemeId", "motherOfThisVariant", "otherVariantsFromTheSameMother" })
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionSchemesUrl", "extensionSchemes", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "defaultCode", "externalReferences", "conceptUriInVocabularies", "variantCodeschemeId", "motherOfThisVariant", "variantsOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions" })
 @ApiModel(value = "CodeScheme DTO", description = "CodeScheme DTO that represents data for one single codescheme.")
 public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
@@ -43,8 +40,12 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
 
     private String conceptUriInVocabularies;
     private UUID variantCodeschemeId;
-    private Variant motherOfThisVariant; //if this codescheme is a variant, mother is the original codescheme from which this one was copied
-    private Set<Variant> otherVariantsFromTheSameMother;
+    private CodeSchemeListItem motherOfThisVariant; //if this codescheme is a variant, mother is the original codescheme from which this one was copied
+    private LinkedHashSet<CodeSchemeListItem> variantsOfThisCodeScheme;
+    private UUID nextCodeschemeId;
+    private UUID prevCodeschemeId;
+    private UUID lastCodeschemeId;
+    private LinkedHashSet<CodeSchemeListItem> allVersions;
 
     public CodeSchemeDTO() {
         prefLabel = new HashMap<>();
@@ -312,20 +313,56 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     }
 
     @JsonView(Views.Normal.class)
-    public Variant getMotherOfThisVariant() {
+    public CodeSchemeListItem getMotherOfThisVariant() {
         return motherOfThisVariant;
     }
 
-    public void setMotherOfThisVariant(final Variant motherOfThisVariant) {
+    public void setMotherOfThisVariant(final CodeSchemeListItem motherOfThisVariant) {
         this.motherOfThisVariant = motherOfThisVariant;
     }
 
     @JsonView(Views.Normal.class)
-    public Set<Variant> getOtherVariantsFromTheSameMother() {
-        return otherVariantsFromTheSameMother;
+    public LinkedHashSet<CodeSchemeListItem> getVariantsOfThisCodeScheme() {
+        return variantsOfThisCodeScheme;
     }
 
-    public void setOtherVariantsFromTheSameMother(final Set<Variant> otherVariantsFromTheSameMother) {
-        this.otherVariantsFromTheSameMother = otherVariantsFromTheSameMother;
+    public void setVariantsOfThisCodeScheme(final LinkedHashSet<CodeSchemeListItem> variantsOfThisCodeScheme) {
+        this.variantsOfThisCodeScheme = variantsOfThisCodeScheme;
+    }
+
+    @JsonView(Views.Normal.class)
+    public UUID getNextCodeschemeId() {
+        return nextCodeschemeId;
+    }
+
+    public void setNextCodeschemeId(final UUID nextCodeschemeId) {
+        this.nextCodeschemeId = nextCodeschemeId;
+    }
+
+    @JsonView(Views.Normal.class)
+    public UUID getPrevCodeschemeId() {
+        return prevCodeschemeId;
+    }
+
+    public void setPrevCodeschemeId(final UUID prevCodeschemeId) {
+        this.prevCodeschemeId = prevCodeschemeId;
+    }
+
+    @JsonView(Views.Normal.class)
+    public UUID getLastCodeschemeId() {
+        return lastCodeschemeId;
+    }
+
+    public void setLastCodeschemeId(final UUID lastCodeschemeId) {
+        this.lastCodeschemeId = lastCodeschemeId;
+    }
+
+    @JsonView(Views.Normal.class)
+    public LinkedHashSet<CodeSchemeListItem> getAllVersions() {
+        return allVersions;
+    }
+
+    public void setAllVersions(final LinkedHashSet<CodeSchemeListItem> allVersions) {
+        this.allVersions = allVersions;
     }
 }

@@ -3,13 +3,17 @@ package fi.vm.yti.codelist.common.model;
 import java.io.Serializable;
 import java.util.Map;
 
-public class Variant implements Serializable {
+/**
+ * This class exists only for the needs of the front-end.
+ * It always represents a codescheme but it could be a variant or a version.
+ */
+public class CodeSchemeListItem implements Serializable {
     private Map<String, String> prefLabel;
     private String uri;
 
-    public Variant () {}
+    public CodeSchemeListItem() {}
 
-    public Variant (Map<String, String> prefLabel, String uri) {
+    public CodeSchemeListItem(Map<String, String> prefLabel, String uri) {
         this.prefLabel = prefLabel;
         this.uri = uri;
     }

@@ -3,12 +3,14 @@ package fi.vm.yti.codelist.common.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * This class exists only for the needs of the front-end.
  * It always represents a codescheme but it could be a variant or a version.
  */
 public class CodeSchemeListItem implements Serializable {
+    private UUID id;
     private Map<String, String> prefLabel;
     private String uri;
     private Date startDate;
@@ -17,12 +19,21 @@ public class CodeSchemeListItem implements Serializable {
 
     public CodeSchemeListItem() {}
 
-    public CodeSchemeListItem(Map<String, String> prefLabel, String uri, Date startDate, Date endDate, String status) {
+    public CodeSchemeListItem(UUID id,Map<String, String> prefLabel, String uri, Date startDate, Date endDate, String status) {
+        this.id = id;
         this.prefLabel = prefLabel;
         this.uri = uri;
         this.startDate = startDate;
         this.endDate = endDate;
         this.status = status;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(final UUID id) {
+        this.id = id;
     }
 
     public Map<String, String> getPrefLabel() {

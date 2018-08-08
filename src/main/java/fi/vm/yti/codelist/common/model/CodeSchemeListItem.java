@@ -1,5 +1,12 @@
 package fi.vm.yti.codelist.common.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
+import fi.vm.yti.codelist.common.dto.Views;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
@@ -52,20 +59,52 @@ public class CodeSchemeListItem implements Serializable {
         this.uri = uri;
     }
 
+    @ApiModelProperty(
+            dataType = "dateTime"
+    )
+    @JsonFormat(
+            shape = JsonFormat.Shape.STRING,
+            pattern = "yyyy-MM-dd"
+    )
+    @Temporal(TemporalType.DATE)
+    @JsonView({Views.Normal.class})
     public Date getStartDate() {
-        return startDate;
+        if (startDate != null) {
+            return new Date(startDate.getTime());
+        }
+        return null;
     }
 
     public void setStartDate(final Date startDate) {
-        this.startDate = startDate;
+        if (startDate != null) {
+            this.startDate = new Date(startDate.getTime());
+        } else {
+            this.startDate = null;
+        }
     }
 
+    @ApiModelProperty(
+            dataType = "dateTime"
+    )
+    @JsonFormat(
+            shape = JsonFormat.Shape.STRING,
+            pattern = "yyyy-MM-dd"
+    )
+    @Temporal(TemporalType.DATE)
+    @JsonView({Views.Normal.class})
     public Date getEndDate() {
-        return endDate;
+        if (endDate != null) {
+            return new Date(endDate.getTime());
+        }
+        return null;
     }
 
     public void setEndDate(final Date endDate) {
-        this.endDate = endDate;
+        if (endDate != null) {
+            this.endDate = new Date(endDate.getTime());
+        } else {
+            this.endDate = null;
+        }
     }
 
     public String getStatus() {

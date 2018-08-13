@@ -7,7 +7,7 @@ package fi.vm.yti.codelist.common.model;
  */
 public enum Status {
 
-    UNFINISHED,
+    INCOMPLETE,
     DRAFT,
     SUBMITTED,
     SUGGESTED,

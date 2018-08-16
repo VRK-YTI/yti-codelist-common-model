@@ -41,11 +41,11 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     private String conceptUriInVocabularies;
     private UUID variantCodeschemeId;
     private CodeSchemeListItem motherOfThisVariant; //if this codescheme is a variant, mother is the original codescheme from which this one was copied
-    private LinkedHashSet<CodeSchemeListItem> variantsOfThisCodeScheme;
+    private LinkedHashSet<CodeSchemeListItem> variantsOfThisCodeScheme = new LinkedHashSet<>();
     private UUID nextCodeschemeId;
     private UUID prevCodeschemeId;
     private UUID lastCodeschemeId;
-    private LinkedHashSet<CodeSchemeListItem> allVersions;
+    private LinkedHashSet<CodeSchemeListItem> allVersions  = new LinkedHashSet<>();;
 
     public CodeSchemeDTO() {
         prefLabel = new HashMap<>();

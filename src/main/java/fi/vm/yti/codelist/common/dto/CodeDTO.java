@@ -58,7 +58,7 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
         return this.getUrl() + "/extensions/";
     }
 
-    @JsonView(Views.ExtendedCode.class)
+    @JsonView({Views.ExtendedCode.class, Views.ExtendedExtension.class})
     public CodeSchemeDTO getCodeScheme() {
         return codeScheme;
     }

@@ -134,7 +134,7 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
         setPrefLabel(this.prefLabel);
     }
 
-    @JsonView(Views.ExtendedExtensionScheme.class)
+    @JsonView({Views.ExtendedExtensionScheme.class, Views.ExtendedExtension.class})
     public Set<CodeSchemeDTO> getCodeSchemes() {
         return codeSchemes;
     }

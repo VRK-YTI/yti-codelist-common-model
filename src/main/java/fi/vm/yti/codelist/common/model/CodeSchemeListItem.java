@@ -10,6 +10,7 @@ import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -21,6 +22,22 @@ public class CodeSchemeListItem implements Serializable {
     private Map<String, String> prefLabel;
     private String uri;
     private Date startDate;
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        final CodeSchemeListItem listItem = (CodeSchemeListItem) o;
+        return Objects.equals(id,
+                listItem.id);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id);
+    }
+
     private Date endDate;
     private String status;
 

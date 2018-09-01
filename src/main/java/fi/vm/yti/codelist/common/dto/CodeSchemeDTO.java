@@ -38,9 +38,7 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     private CodeDTO defaultCode;
 
     private String conceptUriInVocabularies;
-    private Set<CodeSchemeDTO> variants = new LinkedHashSet();
-    private Set<CodeSchemeDTO> variantMothers = new LinkedHashSet();
-    private CodeSchemeListItem motherOfThisVariant; //if this codescheme is a variant, mother is the original codescheme from which this one was copied
+    private CodeSchemeListItem motherOfThisVariant; // TODO this can probably be removed as part of cleanup for yti-979
     private LinkedHashSet<CodeSchemeListItem> variantsOfThisCodeScheme = new LinkedHashSet<>();
     private LinkedHashSet<CodeSchemeListItem> variantMothersOfThisCodeScheme = new LinkedHashSet<>();
     private UUID nextCodeschemeId;
@@ -365,23 +363,5 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
 
     public void setAllVersions(final LinkedHashSet<CodeSchemeListItem> allVersions) {
         this.allVersions = allVersions;
-    }
-
-    @JsonIgnore //TODO this annoation probably redundant, test and remove
-    public Set<CodeSchemeDTO> getVariants() {
-        return variants;
-    }
-
-    public void setVariants(final Set<CodeSchemeDTO> variants) {
-        this.variants = variants;
-    }
-
-    @JsonIgnore //TODO this annoation probably redundant, test and remove
-    public Set<CodeSchemeDTO> getVariantMothers() {
-        return variantMothers;
-    }
-
-    public void setVariantMothers(final Set<CodeSchemeDTO> variantMothers) {
-        this.variantMothers = variantMothers;
     }
 }

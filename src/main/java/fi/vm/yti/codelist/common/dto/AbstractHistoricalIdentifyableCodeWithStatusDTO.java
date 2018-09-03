@@ -4,8 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -21,7 +19,6 @@ public class AbstractHistoricalIdentifyableCodeWithStatusDTO extends AbstractIde
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
     @JsonView(Views.Normal.class)
     public Date getStartDate() {
         if (startDate != null) {
@@ -40,7 +37,6 @@ public class AbstractHistoricalIdentifyableCodeWithStatusDTO extends AbstractIde
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
     @JsonView(Views.Normal.class)
     public Date getEndDate() {
         if (endDate != null) {

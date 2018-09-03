@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -20,7 +18,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("extension")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "code", "prefLabel", "created", "modified", "extensionValue", "order", "extensionScheme", "extension" })
+@XmlType(propOrder = { "id", "url", "code", "prefLabel", "created", "modified", "startDate", "endDate", "extensionValue", "order", "extensionScheme", "extension" })
 @ApiModel(value = "Extension", description = "Extension DTO that represents data for one extension element.")
 public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
@@ -35,6 +33,8 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
     private Date modified;
     private String url;
     private Map<String, String> prefLabel;
+    private Date startDate;
+    private Date endDate;
 
     @JsonView(Views.Normal.class)
     public String getUrl() {
@@ -47,7 +47,6 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
-    @Temporal(TemporalType.TIMESTAMP)
     @JsonView(Views.Normal.class)
     public Date getModified() {
         if (modified != null) {
@@ -66,7 +65,6 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
-    @Temporal(TemporalType.TIMESTAMP)
     @JsonView(Views.Normal.class)
     public Date getCreated() {
         if (created != null) {
@@ -156,5 +154,41 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
             this.prefLabel.remove(language);
         }
         setPrefLabel(this.prefLabel);
+    }
+
+    @ApiModelProperty(dataType = "dateTime")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonView(Views.Normal.class)
+    public Date getStartDate() {
+        if (startDate != null) {
+            return new Date(startDate.getTime());
+        }
+        return null;
+    }
+
+    public void setStartDate(final Date startDate) {
+        if (startDate != null) {
+            this.startDate = new Date(startDate.getTime());
+        } else {
+            this.startDate = null;
+        }
+    }
+
+    @ApiModelProperty(dataType = "dateTime")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonView(Views.Normal.class)
+    public Date getEndDate() {
+        if (endDate != null) {
+            return new Date(endDate.getTime());
+        }
+        return null;
+    }
+
+    public void setEndDate(final Date endDate) {
+        if (endDate != null) {
+            this.endDate = new Date(endDate.getTime());
+        } else {
+            this.endDate = null;
+        }
     }
 }

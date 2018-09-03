@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -38,7 +36,6 @@ public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Seri
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
-    @Temporal(TemporalType.TIMESTAMP)
     @JsonView(Views.Normal.class)
     public Date getCreated() {
         if (created != null) {
@@ -57,7 +54,6 @@ public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Seri
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
-    @Temporal(TemporalType.TIMESTAMP)
     @JsonView(Views.Normal.class)
     public Date getModified() {
         if (modified != null) {

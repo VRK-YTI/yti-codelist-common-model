@@ -10,8 +10,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -68,7 +66,6 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
-    @Temporal(TemporalType.TIMESTAMP)
     @JsonView(Views.Normal.class)
     public Date getCreated() {
         if (created != null) {
@@ -87,7 +84,6 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
-    @Temporal(TemporalType.TIMESTAMP)
     @JsonView(Views.Normal.class)
     public Date getModified() {
         if (modified != null) {
@@ -134,7 +130,7 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
         setPrefLabel(this.prefLabel);
     }
 
-    @JsonView({Views.ExtendedExtensionScheme.class, Views.ExtendedExtension.class})
+    @JsonView({ Views.ExtendedExtensionScheme.class, Views.ExtendedExtension.class })
     public Set<CodeSchemeDTO> getCodeSchemes() {
         return codeSchemes;
     }

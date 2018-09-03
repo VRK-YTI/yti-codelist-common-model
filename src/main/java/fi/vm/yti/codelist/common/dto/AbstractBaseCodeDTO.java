@@ -3,8 +3,6 @@ package fi.vm.yti.codelist.common.dto;
 import java.util.Date;
 
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -21,7 +19,6 @@ public class AbstractBaseCodeDTO extends AbstractIdentifyableCodeDTO {
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
-    @Temporal(TemporalType.TIMESTAMP)
     @JsonView(Views.Normal.class)
     public Date getModified() {
         if (modified != null) {
@@ -40,7 +37,6 @@ public class AbstractBaseCodeDTO extends AbstractIdentifyableCodeDTO {
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
-    @Temporal(TemporalType.TIMESTAMP)
     @JsonView(Views.Normal.class)
     public Date getCreated() {
         if (created != null) {

@@ -7,9 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import fi.vm.yti.codelist.common.util.Identifiable;
 
 @MappedSuperclass
-public class AbstractIdentifyableCodeDTO {
+public class AbstractIdentifyableCodeDTO implements Identifiable {
 
     private UUID id;
 

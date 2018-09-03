@@ -1,48 +1,32 @@
 package fi.vm.yti.codelist.common.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
+import fi.vm.yti.codelist.common.dto.Views;
+import fi.vm.yti.codelist.common.util.Identifiable;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonView;
-
-import fi.vm.yti.codelist.common.dto.Views;
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * This class exists only for the needs of the front-end.
  * It always represents a codescheme but it could be a variant or a version.
  */
-public class CodeSchemeListItem implements Serializable {
-
+public class CodeSchemeListItem implements Serializable, Identifiable {
     private UUID id;
     private Map<String, String> prefLabel;
     private String uri;
     private Date startDate;
 
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        final CodeSchemeListItem listItem = (CodeSchemeListItem) o;
-        return Objects.equals(id,
-                listItem.id);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id);
-    }
-
     private Date endDate;
     private String status;
 
-    public CodeSchemeListItem() {
-    }
+    public CodeSchemeListItem() {}
 
     public CodeSchemeListItem(UUID id,
                               Map<String, String> prefLabel,
@@ -83,13 +67,14 @@ public class CodeSchemeListItem implements Serializable {
     }
 
     @ApiModelProperty(
-        dataType = "dateTime"
+            dataType = "dateTime"
     )
     @JsonFormat(
-        shape = JsonFormat.Shape.STRING,
-        pattern = "yyyy-MM-dd"
+            shape = JsonFormat.Shape.STRING,
+            pattern = "yyyy-MM-dd"
     )
-    @JsonView({ Views.Normal.class })
+    @Temporal(TemporalType.DATE)
+    @JsonView({Views.Normal.class})
     public Date getStartDate() {
         if (startDate != null) {
             return new Date(startDate.getTime());
@@ -106,13 +91,14 @@ public class CodeSchemeListItem implements Serializable {
     }
 
     @ApiModelProperty(
-        dataType = "dateTime"
+            dataType = "dateTime"
     )
     @JsonFormat(
-        shape = JsonFormat.Shape.STRING,
-        pattern = "yyyy-MM-dd"
+            shape = JsonFormat.Shape.STRING,
+            pattern = "yyyy-MM-dd"
     )
-    @JsonView({ Views.Normal.class })
+    @Temporal(TemporalType.DATE)
+    @JsonView({Views.Normal.class})
     public Date getEndDate() {
         if (endDate != null) {
             return new Date(endDate.getTime());

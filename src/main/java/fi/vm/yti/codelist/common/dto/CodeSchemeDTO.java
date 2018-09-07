@@ -14,7 +14,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeScheme")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionSchemesUrl", "extensionSchemes", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "defaultCode", "externalReferences", "conceptUriInVocabularies", "motherOfThisVariant", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions" })
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionSchemesUrl", "extensionSchemes", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "motherOfThisVariant", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions" })
 @ApiModel(value = "CodeScheme DTO", description = "CodeScheme DTO that represents data for one single codescheme.")
 public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
@@ -34,6 +34,7 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     private Set<ExtensionSchemeDTO> extensionSchemes;
     private CodeRegistryDTO codeRegistry;
     private Set<CodeDTO> dataClassifications;
+    private Set<CodeDTO> languageCodes;
     private Set<ExternalReferenceDTO> externalReferences;
     private CodeDTO defaultCode;
 
@@ -282,6 +283,15 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
 
     public void setDataClassifications(final Set<CodeDTO> dataClassifications) {
         this.dataClassifications = dataClassifications;
+    }
+
+    @JsonView(Views.Normal.class)
+    public Set<CodeDTO> getLanguageCodes() {
+        return languageCodes;
+    }
+
+    public void setLanguageCodes(final Set<CodeDTO> languageCodes) {
+        this.languageCodes = languageCodes;
     }
 
     @JsonView(Views.Normal.class)

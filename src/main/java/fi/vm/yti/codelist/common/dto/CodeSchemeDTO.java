@@ -1,12 +1,17 @@
 package fi.vm.yti.codelist.common.dto;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import fi.vm.yti.codelist.common.model.CodeSchemeListItem;
 import io.swagger.annotations.ApiModel;
@@ -14,7 +19,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeScheme")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionSchemesUrl", "extensionSchemes", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "motherOfThisVariant", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions", "organizations"})
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionSchemesUrl", "extensionSchemes", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "motherOfThisVariant", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions", "organizations" })
 @ApiModel(value = "CodeScheme DTO", description = "CodeScheme DTO that represents data for one single codescheme.")
 public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
@@ -41,12 +46,12 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
 
     private String conceptUriInVocabularies;
     private CodeSchemeListItem motherOfThisVariant; // TODO this can probably be removed as part of cleanup for yti-979
-    private LinkedHashSet<CodeSchemeListItem> variantsOfThisCodeScheme = new LinkedHashSet<>();
-    private LinkedHashSet<CodeSchemeListItem> variantMothersOfThisCodeScheme = new LinkedHashSet<>();
+    private Set<CodeSchemeListItem> variantsOfThisCodeScheme = new LinkedHashSet<>();
+    private Set<CodeSchemeListItem> variantMothersOfThisCodeScheme = new LinkedHashSet<>();
     private UUID nextCodeschemeId;
     private UUID prevCodeschemeId;
     private UUID lastCodeschemeId;
-    private LinkedHashSet<CodeSchemeListItem> allVersions  = new LinkedHashSet<>();
+    private Set<CodeSchemeListItem> allVersions = new LinkedHashSet<>();
 
     public CodeSchemeDTO() {
         prefLabel = new HashMap<>();
@@ -323,20 +328,20 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     }
 
     @JsonView(Views.Normal.class)
-    public LinkedHashSet<CodeSchemeListItem> getVariantsOfThisCodeScheme() {
+    public Set<CodeSchemeListItem> getVariantsOfThisCodeScheme() {
         return variantsOfThisCodeScheme;
     }
 
-    public void setVariantsOfThisCodeScheme(final LinkedHashSet<CodeSchemeListItem> variantsOfThisCodeScheme) {
+    public void setVariantsOfThisCodeScheme(final Set<CodeSchemeListItem> variantsOfThisCodeScheme) {
         this.variantsOfThisCodeScheme = variantsOfThisCodeScheme;
     }
 
     @JsonView(Views.Normal.class)
-    public LinkedHashSet<CodeSchemeListItem> getVariantMothersOfThisCodeScheme() {
+    public Set<CodeSchemeListItem> getVariantMothersOfThisCodeScheme() {
         return variantMothersOfThisCodeScheme;
     }
 
-    public void setVariantMothersOfThisCodeScheme (final LinkedHashSet<CodeSchemeListItem> variantMothersOfThisCodeScheme) {
+    public void setVariantMothersOfThisCodeScheme(final Set<CodeSchemeListItem> variantMothersOfThisCodeScheme) {
         this.variantMothersOfThisCodeScheme = variantMothersOfThisCodeScheme;
     }
 
@@ -368,11 +373,11 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     }
 
     @JsonView(Views.Normal.class)
-    public LinkedHashSet<CodeSchemeListItem> getAllVersions() {
+    public Set<CodeSchemeListItem> getAllVersions() {
         return allVersions;
     }
 
-    public void setAllVersions(final LinkedHashSet<CodeSchemeListItem> allVersions) {
+    public void setAllVersions(final Set<CodeSchemeListItem> allVersions) {
         this.allVersions = allVersions;
     }
 

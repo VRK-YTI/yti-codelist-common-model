@@ -14,7 +14,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeScheme")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionSchemesUrl", "extensionSchemes", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "motherOfThisVariant", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions" })
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionSchemesUrl", "extensionSchemes", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "motherOfThisVariant", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions", "organizations"})
 @ApiModel(value = "CodeScheme DTO", description = "CodeScheme DTO that represents data for one single codescheme.")
 public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
@@ -37,6 +37,7 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     private Set<CodeDTO> languageCodes;
     private Set<ExternalReferenceDTO> externalReferences;
     private CodeDTO defaultCode;
+    private Set<OrganizationDTO> organizations;
 
     private String conceptUriInVocabularies;
     private CodeSchemeListItem motherOfThisVariant; // TODO this can probably be removed as part of cleanup for yti-979
@@ -373,5 +374,14 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
 
     public void setAllVersions(final LinkedHashSet<CodeSchemeListItem> allVersions) {
         this.allVersions = allVersions;
+    }
+
+    @JsonView(Views.Normal.class)
+    public Set<OrganizationDTO> getOrganizations() {
+        return organizations;
+    }
+
+    public void setOrganizations(final Set<OrganizationDTO> organizations) {
+        this.organizations = organizations;
     }
 }

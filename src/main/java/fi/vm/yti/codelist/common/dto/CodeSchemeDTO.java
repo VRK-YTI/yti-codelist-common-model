@@ -19,7 +19,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeScheme")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionSchemesUrl", "extensionSchemes", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "motherOfThisVariant", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions", "organizations" })
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionSchemesUrl", "extensionSchemes", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions", "organizations" })
 @ApiModel(value = "CodeScheme DTO", description = "CodeScheme DTO that represents data for one single codescheme.")
 public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
@@ -45,7 +45,6 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     private Set<OrganizationDTO> organizations;
 
     private String conceptUriInVocabularies;
-    private CodeSchemeListItem motherOfThisVariant; // TODO this can probably be removed as part of cleanup for yti-979
     private Set<CodeSchemeListItem> variantsOfThisCodeScheme = new LinkedHashSet<>();
     private Set<CodeSchemeListItem> variantMothersOfThisCodeScheme = new LinkedHashSet<>();
     private UUID nextCodeschemeId;
@@ -316,15 +315,6 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
 
     public void setExtensionSchemes(final Set<ExtensionSchemeDTO> extensionSchemes) {
         this.extensionSchemes = extensionSchemes;
-    }
-
-    @JsonView(Views.Normal.class)
-    public CodeSchemeListItem getMotherOfThisVariant() {
-        return motherOfThisVariant;
-    }
-
-    public void setMotherOfThisVariant(final CodeSchemeListItem motherOfThisVariant) {
-        this.motherOfThisVariant = motherOfThisVariant;
     }
 
     @JsonView(Views.Normal.class)

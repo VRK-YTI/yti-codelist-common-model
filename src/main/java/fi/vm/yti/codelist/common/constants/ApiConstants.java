@@ -24,6 +24,7 @@ public class ApiConstants {
     public static final String FILTER_NAME_ORGANIZATION = "organization";
     public static final String FILTER_NAME_EXTENSIONSCHEME = "extensionScheme";
     public static final String FILTER_NAME_EXTENSION = "extension";
+    public static final String FILTER_NAME_RESOURCE = "resource";
 
     public static final String FIELD_NAME_URI = "uri";
     public static final String FIELD_NAME_URL = "url";

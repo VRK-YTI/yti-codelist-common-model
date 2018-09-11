@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -83,7 +82,6 @@ public class ExternalReferenceDTO extends AbstractIdentifyableCodeDTO implements
         this.url = url;
     }
 
-    @Column(name = "global")
     public Boolean getGlobal() {
         return global;
     }

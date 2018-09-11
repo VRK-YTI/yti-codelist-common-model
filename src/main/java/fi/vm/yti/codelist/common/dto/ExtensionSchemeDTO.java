@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -49,7 +48,6 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
         this.url = url;
     }
 
-    @Column(name = "codevalue")
     @JsonView(Views.Normal.class)
     public String getCodeValue() {
         return codeValue;

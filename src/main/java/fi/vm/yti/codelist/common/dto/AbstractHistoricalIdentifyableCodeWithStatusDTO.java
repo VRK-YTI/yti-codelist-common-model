@@ -2,7 +2,6 @@ package fi.vm.yti.codelist.common.dto;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -53,7 +52,6 @@ public class AbstractHistoricalIdentifyableCodeWithStatusDTO extends AbstractIde
         }
     }
 
-    @Column(name = "status")
     public String getStatus() {
         return status;
     }

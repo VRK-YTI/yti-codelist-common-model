@@ -45,12 +45,12 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     private Set<OrganizationDTO> organizations;
 
     private String conceptUriInVocabularies;
-    private Set<CodeSchemeListItem> variantsOfThisCodeScheme = new LinkedHashSet<>();
-    private Set<CodeSchemeListItem> variantMothersOfThisCodeScheme = new LinkedHashSet<>();
+    private LinkedHashSet<CodeSchemeListItem> variantsOfThisCodeScheme = new LinkedHashSet<>();
+    private LinkedHashSet<CodeSchemeListItem> variantMothersOfThisCodeScheme = new LinkedHashSet<>();
     private UUID nextCodeschemeId;
     private UUID prevCodeschemeId;
     private UUID lastCodeschemeId;
-    private Set<CodeSchemeListItem> allVersions = new LinkedHashSet<>();
+    private LinkedHashSet<CodeSchemeListItem> allVersions = new LinkedHashSet<>();
 
     public CodeSchemeDTO() {
         prefLabel = new HashMap<>();
@@ -318,20 +318,20 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     }
 
     @JsonView(Views.Normal.class)
-    public Set<CodeSchemeListItem> getVariantsOfThisCodeScheme() {
+    public LinkedHashSet<CodeSchemeListItem> getVariantsOfThisCodeScheme() {
         return variantsOfThisCodeScheme;
     }
 
-    public void setVariantsOfThisCodeScheme(final Set<CodeSchemeListItem> variantsOfThisCodeScheme) {
+    public void setVariantsOfThisCodeScheme(final LinkedHashSet<CodeSchemeListItem> variantsOfThisCodeScheme) {
         this.variantsOfThisCodeScheme = variantsOfThisCodeScheme;
     }
 
     @JsonView(Views.Normal.class)
-    public Set<CodeSchemeListItem> getVariantMothersOfThisCodeScheme() {
+    public LinkedHashSet<CodeSchemeListItem> getVariantMothersOfThisCodeScheme() {
         return variantMothersOfThisCodeScheme;
     }
 
-    public void setVariantMothersOfThisCodeScheme(final Set<CodeSchemeListItem> variantMothersOfThisCodeScheme) {
+    public void setVariantMothersOfThisCodeScheme(final LinkedHashSet<CodeSchemeListItem> variantMothersOfThisCodeScheme) {
         this.variantMothersOfThisCodeScheme = variantMothersOfThisCodeScheme;
     }
 
@@ -363,11 +363,11 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     }
 
     @JsonView(Views.Normal.class)
-    public Set<CodeSchemeListItem> getAllVersions() {
+    public LinkedHashSet<CodeSchemeListItem> getAllVersions() {
         return allVersions;
     }
 
-    public void setAllVersions(final Set<CodeSchemeListItem> allVersions) {
+    public void setAllVersions(final LinkedHashSet<CodeSchemeListItem> allVersions) {
         this.allVersions = allVersions;
     }
 

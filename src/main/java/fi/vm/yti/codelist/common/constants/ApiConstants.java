@@ -64,6 +64,9 @@ public class ApiConstants {
     public static final String API_PATH_REQUESTS = "/requests";
     public static final String API_PATH_EXTENSIONSCHEMES = "/extensionschemes";
     public static final String API_PATH_EXTENSIONS = "/extensions";
+    public static final String API_PATH_INTEGRATION = "/integration";
+    public static final String API_PATH_CONTAINERS = "/containers";
+    public static final String API_PATH_RESOURCES = "/resources";
 
     public static final String API_PATH_PROPERTYTYPES = "/propertytypes";
     public static final String API_PATH_ORGANIZATIONS = "/organizations";

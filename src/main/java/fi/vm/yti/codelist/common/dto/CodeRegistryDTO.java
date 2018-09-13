@@ -16,21 +16,21 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeRegistry")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "uri", "url", "prefLabel", "definition", "created", "modified", "codeSchemesUrl", "codeSchemes", "organizations" })
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "prefLabel", "description", "created", "modified", "codeSchemesUrl", "codeSchemes", "organizations" })
 @ApiModel(value = "CodeRegistry", description = "CodeRegistry DTO that represents data for one single registry.")
 public class CodeRegistryDTO extends AbstractCommonCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private Map<String, String> prefLabel;
-    private Map<String, String> definition;
+    private Map<String, String> description;
     private Set<CodeSchemeDTO> codeSchemes;
     private String codeSchemesUrl;
     private Set<OrganizationDTO> organizations;
 
     public CodeRegistryDTO() {
         prefLabel = new HashMap<>();
-        definition = new HashMap<>();
+        description = new HashMap<>();
     }
 
     @JsonView(Views.Normal.class)
@@ -81,36 +81,36 @@ public class CodeRegistryDTO extends AbstractCommonCodeDTO implements Serializab
     }
 
     @JsonView(Views.Normal.class)
-    public Map<String, String> getDefinition() {
-        if (definition == null) {
-            definition = new HashMap<>();
+    public Map<String, String> getDescription() {
+        if (description == null) {
+            description = new HashMap<>();
         }
-        return definition;
+        return description;
     }
 
-    public void setDefinition(final Map<String, String> definition) {
-        this.definition = definition;
+    public void setDescription(final Map<String, String> description) {
+        this.description = description;
     }
 
-    public String getDefinition(final String language) {
-        String definitionValue = this.definition.get(language);
-        if (definitionValue == null) {
-            definitionValue = this.definition.get(LANGUAGE_CODE_EN);
+    public String getDescription(final String language) {
+        String descriptionValue = this.description.get(language);
+        if (descriptionValue == null) {
+            descriptionValue = this.description.get(LANGUAGE_CODE_EN);
         }
-        return definitionValue;
+        return descriptionValue;
     }
 
-    public void setDefinition(final String language,
-                              final String value) {
-        if (definition == null) {
-            definition = new HashMap<>();
+    public void setDescription(final String language,
+                               final String value) {
+        if (description == null) {
+            description = new HashMap<>();
         }
         if (language != null && value != null && !value.isEmpty()) {
-            definition.put(language, value);
+            description.put(language, value);
         } else if (language != null) {
-            definition.remove(language);
+            description.remove(language);
         }
-        setDefinition(definition);
+        setDescription(description);
     }
 
     @JsonView(Views.Normal.class)

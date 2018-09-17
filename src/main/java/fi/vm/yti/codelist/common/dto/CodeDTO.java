@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -49,7 +48,7 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
         return this.getUrl() + "/extensions/";
     }
 
-    @JsonView({Views.ExtendedCode.class, Views.ExtendedExtension.class})
+    @JsonView({ Views.ExtendedCode.class, Views.ExtendedExtension.class })
     public CodeSchemeDTO getCodeScheme() {
         return codeScheme;
     }

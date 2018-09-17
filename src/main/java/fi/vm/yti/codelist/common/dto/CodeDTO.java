@@ -18,7 +18,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("code")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "uri", "url", "status", "order", "hierarchyLevel", "startDate", "endDate", "created", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCodeId", "extensionsUrl", "extensions", "conceptUriInVocabularies" })
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "status", "order", "hierarchyLevel", "startDate", "endDate", "created", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCode", "extensionsUrl", "extensions", "conceptUriInVocabularies" })
 @ApiModel(value = "Code", description = "Code DTO that represents data for one single code.")
 @JsonIgnoreProperties(value = { "expanded" })
 public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
@@ -32,7 +32,7 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
     private Map<String, String> description;
     private Map<String, String> definition;
     private Set<ExternalReferenceDTO> externalReferences;
-    private UUID broaderCodeId;
+    private CodeDTO broaderCode;
     private Integer order;
     private String conceptUriInVocabularies;
     private String extensionsUrl;
@@ -42,15 +42,6 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
         prefLabel = new HashMap<>();
         description = new HashMap<>();
         definition = new HashMap<>();
-    }
-
-    @JsonView(Views.Normal.class)
-    public UUID getBroaderCodeId() {
-        return broaderCodeId;
-    }
-
-    public void setBroaderCodeId(final UUID broaderCodeId) {
-        this.broaderCodeId = broaderCodeId;
     }
 
     @JsonView(Views.Normal.class)
@@ -217,4 +208,11 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
         this.extensions = extensions;
     }
 
+    public CodeDTO getBroaderCode() {
+        return broaderCode;
+    }
+
+    public void setBroaderCode(final CodeDTO broaderCode) {
+        this.broaderCode = broaderCode;
+    }
 }

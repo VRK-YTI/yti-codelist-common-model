@@ -18,7 +18,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("member")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "code", "prefLabel", "created", "modified", "startDate", "endDate", "memberValue", "order", "extensionScheme", "broaderMember" })
+@XmlType(propOrder = { "id", "url", "code", "prefLabel", "created", "modified", "startDate", "endDate", "memberValue", "order", "extension", "broaderMember" })
 @ApiModel(value = "Member", description = "Member DTO that represents data for one member element.")
 public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
@@ -27,7 +27,7 @@ public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializab
     private String memberValue;
     private Integer order;
     private CodeDTO code;
-    private ExtensionSchemeDTO extensionScheme;
+    private ExtensionDTO extension;
     private MemberDTO broaderMember;
     private Date created;
     private Date modified;
@@ -109,12 +109,12 @@ public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializab
     }
 
     @JsonView(Views.ExtendedMember.class)
-    public ExtensionSchemeDTO getExtensionScheme() {
-        return extensionScheme;
+    public ExtensionDTO getExtension() {
+        return extension;
     }
 
-    public void setExtensionScheme(final ExtensionSchemeDTO extensionScheme) {
-        this.extensionScheme = extensionScheme;
+    public void setExtension(final ExtensionDTO extension) {
+        this.extension = extension;
     }
 
     @JsonView(Views.ExtendedMember.class)

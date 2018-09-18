@@ -20,11 +20,11 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
-@JsonFilter("extensionScheme")
+@JsonFilter("extension")
 @XmlRootElement
 @XmlType(propOrder = { "id", "url", "membersUrl", "members", "codeValue", "status", "startDate", "endDate", "created", "modified", "prefLabel", "parentCodeScheme", "codeSchemes" })
-@ApiModel(value = "ExtensionScheme", description = "ExtensionScheme DTO that represents data for one extension scheme element.")
-public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithStatusDTO implements Serializable {
+@ApiModel(value = "Extension", description = "Extension DTO that represents data for one extension element.")
+public class ExtensionDTO extends AbstractHistoricalIdentifyableCodeWithStatusDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -128,7 +128,7 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
         setPrefLabel(this.prefLabel);
     }
 
-    @JsonView({ Views.ExtendedExtensionScheme.class, Views.ExtendedMember.class })
+    @JsonView({ Views.ExtendedExtension.class, Views.ExtendedMember.class })
     public Set<CodeSchemeDTO> getCodeSchemes() {
         return codeSchemes;
     }
@@ -146,8 +146,8 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
         this.propertyType = propertyType;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "extensionScheme", cascade = CascadeType.ALL)
-    @JsonView(Views.ExtendedExtensionScheme.class)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "extension", cascade = CascadeType.ALL)
+    @JsonView(Views.ExtendedExtension.class)
     public Set<MemberDTO> getMembers() {
         return members;
     }
@@ -156,7 +156,7 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
         this.members = members;
     }
 
-    @JsonView({ Views.ExtendedExtensionScheme.class, Views.ExtendedMember.class })
+    @JsonView({ Views.ExtendedExtension.class, Views.ExtendedMember.class })
     public CodeSchemeDTO getParentCodeScheme() {
         return parentCodeScheme;
     }

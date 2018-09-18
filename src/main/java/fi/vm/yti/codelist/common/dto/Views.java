@@ -23,5 +23,5 @@ public class Views {
 
     public static class ExtendedMember extends Normal{}
 
-    public static class ExtendedExtensionScheme extends Normal{}
+    public static class ExtendedExtension extends Normal{}
 }

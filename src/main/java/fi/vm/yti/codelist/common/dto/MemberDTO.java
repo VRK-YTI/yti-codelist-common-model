@@ -16,19 +16,19 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
-@JsonFilter("extension")
+@JsonFilter("member")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "code", "prefLabel", "created", "modified", "startDate", "endDate", "extensionValue", "order", "extensionScheme", "extension" })
-@ApiModel(value = "Extension", description = "Extension DTO that represents data for one extension element.")
-public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Serializable {
+@XmlType(propOrder = { "id", "url", "code", "prefLabel", "created", "modified", "startDate", "endDate", "memberValue", "order", "extensionScheme", "broaderMember" })
+@ApiModel(value = "Member", description = "Member DTO that represents data for one member element.")
+public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String extensionValue;
+    private String memberValue;
     private Integer order;
     private CodeDTO code;
     private ExtensionSchemeDTO extensionScheme;
-    private ExtensionDTO extension;
+    private MemberDTO broaderMember;
     private Date created;
     private Date modified;
     private String url;
@@ -82,12 +82,12 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
     }
 
     @JsonView(Views.Normal.class)
-    public String getExtensionValue() {
-        return extensionValue;
+    public String getMemberValue() {
+        return memberValue;
     }
 
-    public void setExtensionValue(final String extensionValue) {
-        this.extensionValue = extensionValue;
+    public void setMemberValue(final String memberValue) {
+        this.memberValue = memberValue;
     }
 
     @JsonView(Views.Normal.class)
@@ -99,7 +99,7 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
         this.order = order;
     }
 
-    @JsonView(Views.ExtendedExtension.class)
+    @JsonView(Views.ExtendedMember.class)
     public CodeDTO getCode() {
         return code;
     }
@@ -108,7 +108,7 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
         this.code = code;
     }
 
-    @JsonView(Views.ExtendedExtension.class)
+    @JsonView(Views.ExtendedMember.class)
     public ExtensionSchemeDTO getExtensionScheme() {
         return extensionScheme;
     }
@@ -117,13 +117,13 @@ public class ExtensionDTO extends AbstractIdentifyableCodeDTO implements Seriali
         this.extensionScheme = extensionScheme;
     }
 
-    @JsonView(Views.ExtendedExtension.class)
-    public ExtensionDTO getExtension() {
-        return extension;
+    @JsonView(Views.ExtendedMember.class)
+    public MemberDTO getBroaderMember() {
+        return broaderMember;
     }
 
-    public void setExtension(final ExtensionDTO extension) {
-        this.extension = extension;
+    public void setBroaderMember(final MemberDTO broaderMember ) {
+        this.broaderMember = broaderMember;
     }
 
     @JsonView(Views.Normal.class)

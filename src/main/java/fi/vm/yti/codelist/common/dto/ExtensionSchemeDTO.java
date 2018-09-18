@@ -22,7 +22,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("extensionScheme")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "extensionsUrl", "extensions", "codeValue", "status", "startDate", "endDate", "created", "modified", "prefLabel", "parentCodeScheme", "codeSchemes" })
+@XmlType(propOrder = { "id", "url", "membersUrl", "members", "codeValue", "status", "startDate", "endDate", "created", "modified", "prefLabel", "parentCodeScheme", "codeSchemes" })
 @ApiModel(value = "ExtensionScheme", description = "ExtensionScheme DTO that represents data for one extension scheme element.")
 public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithStatusDTO implements Serializable {
 
@@ -32,8 +32,8 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
     private PropertyTypeDTO propertyType;
     private CodeSchemeDTO parentCodeScheme;
     private Set<CodeSchemeDTO> codeSchemes;
-    private Set<ExtensionDTO> extensions;
-    private String extensionsUrl;
+    private Set<MemberDTO> members;
+    private String membersUrl;
     private String codeValue;
     private Date created;
     private Date modified;
@@ -58,8 +58,8 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
     }
 
     @JsonView(Views.Normal.class)
-    public String getExtensionsUrl() {
-        return this.getUrl() + "/extensions/";
+    public String getMembersUrl() {
+        return this.getUrl() + "/members/";
     }
 
     @ApiModelProperty(dataType = "dateTime")
@@ -128,7 +128,7 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
         setPrefLabel(this.prefLabel);
     }
 
-    @JsonView({ Views.ExtendedExtensionScheme.class, Views.ExtendedExtension.class })
+    @JsonView({ Views.ExtendedExtensionScheme.class, Views.ExtendedMember.class })
     public Set<CodeSchemeDTO> getCodeSchemes() {
         return codeSchemes;
     }
@@ -148,15 +148,15 @@ public class ExtensionSchemeDTO extends AbstractHistoricalIdentifyableCodeWithSt
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "extensionScheme", cascade = CascadeType.ALL)
     @JsonView(Views.ExtendedExtensionScheme.class)
-    public Set<ExtensionDTO> getExtensions() {
-        return extensions;
+    public Set<MemberDTO> getMembers() {
+        return members;
     }
 
-    public void setExtensions(final Set<ExtensionDTO> extensions) {
-        this.extensions = extensions;
+    public void setMembers(final Set<MemberDTO> members) {
+        this.members = members;
     }
 
-    @JsonView({ Views.ExtendedExtensionScheme.class, Views.ExtendedExtension.class })
+    @JsonView({ Views.ExtendedExtensionScheme.class, Views.ExtendedMember.class })
     public CodeSchemeDTO getParentCodeScheme() {
         return parentCodeScheme;
     }

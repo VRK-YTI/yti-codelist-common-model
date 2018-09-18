@@ -17,7 +17,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("code")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "uri", "url", "status", "order", "hierarchyLevel", "startDate", "endDate", "created", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCode", "extensionsUrl", "extensions", "conceptUriInVocabularies" })
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "status", "order", "hierarchyLevel", "startDate", "endDate", "created", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCode", "membersUrl", "members", "conceptUriInVocabularies" })
 @ApiModel(value = "Code", description = "Code DTO that represents data for one single code.")
 @JsonIgnoreProperties(value = { "expanded" })
 public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
@@ -34,8 +34,8 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
     private CodeDTO broaderCode;
     private Integer order;
     private String conceptUriInVocabularies;
-    private String extensionsUrl;
-    private Set<ExtensionDTO> extensions;
+    private String membersUrl;
+    private Set<MemberDTO> members;
 
     public CodeDTO() {
         prefLabel = new HashMap<>();
@@ -44,11 +44,11 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
     }
 
     @JsonView(Views.Normal.class)
-    public String getExtensionsUrl() {
-        return this.getUrl() + "/extensions/";
+    public String getMembersUrl() {
+        return this.getUrl() + "/members/";
     }
 
-    @JsonView({ Views.ExtendedCode.class, Views.ExtendedExtension.class })
+    @JsonView({ Views.ExtendedCode.class, Views.ExtendedMember.class })
     public CodeSchemeDTO getCodeScheme() {
         return codeScheme;
     }
@@ -199,12 +199,12 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
     }
 
     @JsonView(Views.ExtendedCode.class)
-    public Set<ExtensionDTO> getExtensions() {
-        return extensions;
+    public Set<MemberDTO> getMembers() {
+        return members;
     }
 
-    public void setExtensions(final Set<ExtensionDTO> extensions) {
-        this.extensions = extensions;
+    public void setMembers(final Set<MemberDTO> members) {
+        this.members = members;
     }
 
     public CodeDTO getBroaderCode() {

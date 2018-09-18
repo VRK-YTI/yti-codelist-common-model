@@ -23,7 +23,7 @@ public class ApiConstants {
     public static final String FILTER_NAME_DATACLASSIFICATION = "dataClassification";
     public static final String FILTER_NAME_ORGANIZATION = "organization";
     public static final String FILTER_NAME_EXTENSIONSCHEME = "extensionScheme";
-    public static final String FILTER_NAME_EXTENSION = "extension";
+    public static final String FILTER_NAME_MEMBER = "member";
     public static final String FILTER_NAME_RESOURCE = "resource";
 
     public static final String FIELD_NAME_URI = "uri";
@@ -36,14 +36,14 @@ public class ApiConstants {
     public static final String ELASTIC_INDEX_PROPERTYTYPE = "propertytype";
     public static final String ELASTIC_INDEX_EXTERNALREFERENCE = "externalreference";
     public static final String ELASTIC_INDEX_EXTENSIONSCHEME = "extensionscheme";
-    public static final String ELASTIC_INDEX_EXTENSION = "extension";
+    public static final String ELASTIC_INDEX_MEMBER = "member";
     public static final String ELASTIC_TYPE_CODEREGISTRY = "coderegistry";
     public static final String ELASTIC_TYPE_CODESCHEME = "codescheme";
     public static final String ELASTIC_TYPE_CODE = "code";
     public static final String ELASTIC_TYPE_PROPERTYTYPE = "propertytype";
     public static final String ELASTIC_TYPE_EXTERNALREFERENCE = "externalreference";
     public static final String ELASTIC_TYPE_EXTENSIONSCHEME = "extensionscheme";
-    public static final String ELASTIC_TYPE_EXTENSION = "extension";
+    public static final String ELASTIC_TYPE_MEMBER = "member";
 
     public static final String API_VERSION = "v1";
     public static final String API_CONTEXT_PATH_INTAKE = "/codelist-intake";
@@ -63,7 +63,7 @@ public class ApiConstants {
     public static final String API_PATH_REQUEST = "/request";
     public static final String API_PATH_REQUESTS = "/requests";
     public static final String API_PATH_EXTENSIONSCHEMES = "/extensionschemes";
-    public static final String API_PATH_EXTENSIONS = "/extensions";
+    public static final String API_PATH_MEMBERS = "/members";
     public static final String API_PATH_INTEGRATION = "/integration";
     public static final String API_PATH_CONTAINERS = "/containers";
     public static final String API_PATH_RESOURCES = "/resources";
@@ -89,7 +89,7 @@ public class ApiConstants {
     public static final String EXCEL_SHEET_PROPERTYTYPES = "PropertyTypes";
     public static final String EXCEL_SHEET_EXTERNALREFERENCES = "ExternalReferences";
     public static final String EXCEL_SHEET_EXTENSIONSCHEMES = "ExtensionSchemes";
-    public static final String EXCEL_SHEET_EXTENSIONS = "Extensions";
+    public static final String EXCEL_SHEET_MEMBERS = "Members";
 
     public static final String CONTENT_HEADER_ID = "ID";
     public static final String CONTENT_HEADER_URL = "URL";
@@ -122,12 +122,12 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_CODESCHEMES = "CODESCHEMES";
     public static final String CONTENT_HEADER_ORGANIZATION = "ORGANIZATION";
     public static final String CONTENT_HEADER_ORDER = "ORDER";
-    public static final String CONTENT_HEADER_EXTENSIONVALUE = "EXTENSIONVALUE";
+    public static final String CONTENT_HEADER_MEMBERVALUE = "MEMBERVALUE";
     public static final String CONTENT_HEADER_RELATION = "RELATION";
     public static final String CONTENT_HEADER_CODE = "CODE";
     public static final String CONTENT_HEADER_CODESCHEMESSHEET = "CODESCHEMESSHEET";
     public static final String CONTENT_HEADER_EXTENSIONSCHEMESSHEET = "EXTENSIONSCHEMESSHEET";
-    public static final String CONTENT_HEADER_EXTENSIONSSHEET = "EXTENSIONSSHEET";
+    public static final String CONTENT_HEADER_MEMBERSSHEET = "MEMBERSSHEET";
     public static final String CONTENT_HEADER_CODESSHEET = "CODESSHEET";
     public static final String CONTENT_HEADER_CREATED = "CREATED";
     public static final String CONTENT_HEADER_MODIFIED = "MODIFIED";

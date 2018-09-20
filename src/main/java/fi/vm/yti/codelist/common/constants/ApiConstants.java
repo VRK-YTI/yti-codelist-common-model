@@ -122,7 +122,9 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_CODESCHEMES = "CODESCHEMES";
     public static final String CONTENT_HEADER_ORGANIZATION = "ORGANIZATION";
     public static final String CONTENT_HEADER_ORDER = "ORDER";
-    public static final String CONTENT_HEADER_MEMBERVALUE = "MEMBERVALUE";
+    public static final String CONTENT_HEADER_MEMBERVALUE_1 = "MEMBERVALUE_1";
+    public static final String CONTENT_HEADER_MEMBERVALUE_2 = "MEMBERVALUE_2";
+    public static final String CONTENT_HEADER_MEMBERVALUE_3 = "MEMBERVALUE_3";
     public static final String CONTENT_HEADER_RELATION = "RELATION";
     public static final String CONTENT_HEADER_CODE = "CODE";
     public static final String CONTENT_HEADER_CODESCHEMESSHEET = "CODESCHEMESSHEET";

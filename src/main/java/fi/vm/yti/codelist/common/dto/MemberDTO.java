@@ -18,13 +18,12 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("member")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "code", "prefLabel", "created", "modified", "startDate", "endDate", "memberValue", "order", "extension", "relatedMember" })
+@XmlType(propOrder = { "id", "url", "code", "prefLabel", "created", "modified", "startDate", "endDate", "memberValue_1", "memberValue_2", "memberValue_3", "order", "extension", "relatedMember" })
 @ApiModel(value = "Member", description = "Member DTO that represents data for one member element.")
 public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String memberValue;
     private Integer order;
     private CodeDTO code;
     private ExtensionDTO extension;
@@ -35,6 +34,9 @@ public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializab
     private Map<String, String> prefLabel;
     private Date startDate;
     private Date endDate;
+    private String memberValue_1;
+    private String memberValue_2;
+    private String memberValue_3;
 
     @JsonView(Views.Normal.class)
     public String getUrl() {
@@ -79,15 +81,6 @@ public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializab
         } else {
             this.created = null;
         }
-    }
-
-    @JsonView(Views.Normal.class)
-    public String getMemberValue() {
-        return memberValue;
-    }
-
-    public void setMemberValue(final String memberValue) {
-        this.memberValue = memberValue;
     }
 
     @JsonView(Views.Normal.class)
@@ -190,5 +183,32 @@ public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializab
         } else {
             this.endDate = null;
         }
+    }
+
+    @JsonView(Views.Normal.class)
+    public String getMemberValue_1() {
+        return memberValue_1;
+    }
+
+    public void setMemberValue_1(final String memberValue_1) {
+        this.memberValue_1 = memberValue_1;
+    }
+
+    @JsonView(Views.Normal.class)
+    public String getMemberValue_2() {
+        return memberValue_2;
+    }
+
+    public void setMemberValue_2(final String memberValue_2) {
+        this.memberValue_2 = memberValue_2;
+    }
+
+    @JsonView(Views.Normal.class)
+    public String getMemberValue_3() {
+        return memberValue_3;
+    }
+
+    public void setMemberValue_3(final String memberValue_3) {
+        this.memberValue_3 = memberValue_3;
     }
 }

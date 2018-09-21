@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import io.swagger.annotations.ApiModel;
@@ -20,6 +21,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @XmlRootElement
 @XmlType(propOrder = { "id", "url", "code", "prefLabel", "created", "modified", "startDate", "endDate", "memberValue_1", "memberValue_2", "memberValue_3", "order", "extension", "relatedMember" })
 @ApiModel(value = "Member", description = "Member DTO that represents data for one member element.")
+@JsonIgnoreProperties(value = { "expanded" })
 public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;

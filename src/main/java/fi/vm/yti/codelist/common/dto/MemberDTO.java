@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -19,7 +20,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("member")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "code", "prefLabel", "created", "modified", "startDate", "endDate", "memberValue_1", "memberValue_2", "memberValue_3", "order", "extension", "relatedMember" })
+@XmlType(propOrder = { "id", "url", "code", "prefLabel", "created", "modified", "startDate", "endDate", "memberValues", "order", "extension", "relatedMember" })
 @ApiModel(value = "Member", description = "Member DTO that represents data for one member element.")
 @JsonIgnoreProperties(value = { "expanded" })
 public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializable {
@@ -36,9 +37,7 @@ public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializab
     private Map<String, String> prefLabel;
     private Date startDate;
     private Date endDate;
-    private String memberValue_1;
-    private String memberValue_2;
-    private String memberValue_3;
+    private Set<MemberValueDTO> memberValues;
 
     @JsonView(Views.Normal.class)
     public String getUrl() {
@@ -188,29 +187,22 @@ public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializab
     }
 
     @JsonView(Views.Normal.class)
-    public String getMemberValue_1() {
-        return memberValue_1;
+    public Set<MemberValueDTO> getMemberValues() {
+        return memberValues;
     }
 
-    public void setMemberValue_1(final String memberValue_1) {
-        this.memberValue_1 = memberValue_1;
+    public void setMemberValues(final Set<MemberValueDTO> memberValues) {
+        this.memberValues = memberValues;
     }
 
-    @JsonView(Views.Normal.class)
-    public String getMemberValue_2() {
-        return memberValue_2;
-    }
-
-    public void setMemberValue_2(final String memberValue_2) {
-        this.memberValue_2 = memberValue_2;
-    }
-
-    @JsonView(Views.Normal.class)
-    public String getMemberValue_3() {
-        return memberValue_3;
-    }
-
-    public void setMemberValue_3(final String memberValue_3) {
-        this.memberValue_3 = memberValue_3;
+    public MemberValueDTO getMemberValueWithLocalName(final String localName) {
+        if (memberValues != null && !memberValues.isEmpty()) {
+            for (final MemberValueDTO memberValue : memberValues) {
+                if (memberValue.getValueType().getLocalName().equalsIgnoreCase(localName)) {
+                    return memberValue;
+                }
+            }
+        }
+        return null;
     }
 }

@@ -24,4 +24,6 @@ public class Views {
     public static class ExtendedMember extends Normal{}
 
     public static class ExtendedExtension extends Normal{}
+
+    public static class ExtendedValueType extends Normal{}
 }

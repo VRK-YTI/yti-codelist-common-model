@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -18,7 +19,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("propertyType")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "created", "modified", "context", "propertyUri", "localName", "type", "prefLabel", "definition" })
+@XmlType(propOrder = { "id", "url", "created", "modified", "context", "propertyUri", "localName", "type", "prefLabel", "definition", "valueTypes" })
 @ApiModel(value = "PropertyType", description = "PropertyType DTO for data relation typing.")
 public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
@@ -33,6 +34,7 @@ public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Seri
     private String type;
     private Map<String, String> prefLabel;
     private Map<String, String> definition;
+    private Set<ValueTypeDTO> valueTypes;
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
@@ -179,5 +181,14 @@ public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Seri
             definition.remove(language);
         }
         setDefinition(definition);
+    }
+
+    @JsonView(Views.Normal.class)
+    public Set<ValueTypeDTO> getValueTypes() {
+        return valueTypes;
+    }
+
+    public void setValueTypes(final Set<ValueTypeDTO> valueTypes) {
+        this.valueTypes = valueTypes;
     }
 }

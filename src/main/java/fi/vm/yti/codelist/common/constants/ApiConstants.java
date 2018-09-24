@@ -13,6 +13,7 @@ public class ApiConstants {
     public static final String DATA_CODESCHEMES = "codeschemes";
     public static final String DATA_CODES = "codes";
     public static final String DATA_PROPERTYTYPES = "propertytypes";
+    public static final String DATA_VALUETYPES = "valuetypes";
     public static final String DATA_EXTERNALREFERENCES = "externalreferences";
 
     public static final String FILTER_NAME_CODEREGISTRY = "codeRegistry";
@@ -25,6 +26,8 @@ public class ApiConstants {
     public static final String FILTER_NAME_EXTENSION = "extension";
     public static final String FILTER_NAME_MEMBER = "member";
     public static final String FILTER_NAME_RESOURCE = "resource";
+    public static final String FILTER_NAME_VALUETYPE = "valueType";
+    public static final String FILTER_NAME_MEMBERVALUE = "memberValue";
 
     public static final String FIELD_NAME_URI = "uri";
     public static final String FIELD_NAME_URL = "url";
@@ -37,6 +40,7 @@ public class ApiConstants {
     public static final String ELASTIC_INDEX_EXTERNALREFERENCE = "externalreference";
     public static final String ELASTIC_INDEX_EXTENSION = "extension";
     public static final String ELASTIC_INDEX_MEMBER = "member";
+    public static final String ELASTIC_INDEX_VALUETYPE = "valuetype";
     public static final String ELASTIC_TYPE_CODEREGISTRY = "coderegistry";
     public static final String ELASTIC_TYPE_CODESCHEME = "codescheme";
     public static final String ELASTIC_TYPE_CODE = "code";
@@ -44,6 +48,7 @@ public class ApiConstants {
     public static final String ELASTIC_TYPE_EXTERNALREFERENCE = "externalreference";
     public static final String ELASTIC_TYPE_EXTENSION = "extension";
     public static final String ELASTIC_TYPE_MEMBER = "member";
+    public static final String ELASTIC_TYPE_VALUETYPE = "valuetype";
 
     public static final String API_VERSION = "v1";
     public static final String API_CONTEXT_PATH_INTAKE = "/codelist-intake";
@@ -67,8 +72,8 @@ public class ApiConstants {
     public static final String API_PATH_INTEGRATION = "/integration";
     public static final String API_PATH_CONTAINERS = "/containers";
     public static final String API_PATH_RESOURCES = "/resources";
-
     public static final String API_PATH_PROPERTYTYPES = "/propertytypes";
+    public static final String API_PATH_VALUETYPES = "/valuetypes";
     public static final String API_PATH_ORGANIZATIONS = "/organizations";
     public static final String API_PATH_CODES = "/codes";
     public static final String API_PATH_PING = "/ping";
@@ -90,6 +95,7 @@ public class ApiConstants {
     public static final String EXCEL_SHEET_EXTERNALREFERENCES = "ExternalReferences";
     public static final String EXCEL_SHEET_EXTENSIONS = "Extensions";
     public static final String EXCEL_SHEET_MEMBERS = "Members";
+    public static final String EXCEL_SHEET_VALUETYPES = "ValueTypes";
 
     public static final String CONTENT_HEADER_ID = "ID";
     public static final String CONTENT_HEADER_URL = "URL";
@@ -102,6 +108,12 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_LANGUAGECODE = "LANGUAGECODE";
     public static final String CONTENT_HEADER_LOCALNAME = "LOCALNAME";
     public static final String CONTENT_HEADER_TYPE = "TYPE";
+    public static final String CONTENT_HEADER_VALUETYPE = "VALUETYPE";
+    public static final String CONTENT_HEADER_TYPEURI = "TYPEURI";
+    public static final String CONTENT_HEADER_VALUETYPEURI = "VALUETYPEURI";
+    public static final String CONTENT_HEADER_REQUIRED = "REQUIRED";
+    public static final String CONTENT_HEADER_TYPEVALUE = "TYPEVALUE";
+    public static final String CONTENT_HEADER_REGEXP = "REGEXP";
     public static final String CONTENT_HEADER_PROPERTYURI = "PROPERTYURI";
     public static final String CONTENT_HEADER_PROPERTYTYPE = "PROPERTYTYPE";
     public static final String CONTENT_HEADER_CONTEXT = "CONTEXT";
@@ -122,9 +134,7 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_CODESCHEMES = "CODESCHEMES";
     public static final String CONTENT_HEADER_ORGANIZATION = "ORGANIZATION";
     public static final String CONTENT_HEADER_ORDER = "ORDER";
-    public static final String CONTENT_HEADER_MEMBERVALUE_1 = "MEMBERVALUE_1";
-    public static final String CONTENT_HEADER_MEMBERVALUE_2 = "MEMBERVALUE_2";
-    public static final String CONTENT_HEADER_MEMBERVALUE_3 = "MEMBERVALUE_3";
+    public static final String CONTENT_HEADER_MEMBERVALUE = "MEMBERVALUE";
     public static final String CONTENT_HEADER_RELATION = "RELATION";
     public static final String CONTENT_HEADER_CODE = "CODE";
     public static final String CONTENT_HEADER_CODESCHEMESSHEET = "CODESCHEMESSHEET";

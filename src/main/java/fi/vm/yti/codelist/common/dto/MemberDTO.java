@@ -20,7 +20,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("member")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "code", "prefLabel", "created", "modified", "startDate", "endDate", "memberValues", "order", "extension", "relatedMember" })
+@XmlType(propOrder = { "id", "uri", "url", "code", "prefLabel", "created", "modified", "startDate", "endDate", "memberValues", "order", "extension", "relatedMember" })
 @ApiModel(value = "Member", description = "Member DTO that represents data for one member element.")
 @JsonIgnoreProperties(value = { "expanded" })
 public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializable {
@@ -38,6 +38,16 @@ public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializab
     private Date startDate;
     private Date endDate;
     private Set<MemberValueDTO> memberValues;
+    private String uri;
+
+    @JsonView(Views.Normal.class)
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(final String uri) {
+        this.uri = uri;
+    }
 
     @JsonView(Views.Normal.class)
     public String getUrl() {

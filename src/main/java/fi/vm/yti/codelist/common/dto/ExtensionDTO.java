@@ -22,7 +22,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("extension")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "membersUrl", "members", "codeValue", "status", "startDate", "endDate", "created", "modified", "prefLabel", "parentCodeScheme", "codeSchemes" })
+@XmlType(propOrder = { "id", "uri", "url", "membersUrl", "members", "codeValue", "status", "startDate", "endDate", "created", "modified", "prefLabel", "parentCodeScheme", "codeSchemes" })
 @ApiModel(value = "Extension", description = "Extension DTO that represents data for one extension element.")
 public class ExtensionDTO extends AbstractHistoricalIdentifyableCodeWithStatusDTO implements Serializable {
 
@@ -38,6 +38,16 @@ public class ExtensionDTO extends AbstractHistoricalIdentifyableCodeWithStatusDT
     private Date created;
     private Date modified;
     private String url;
+    private String uri;
+
+    @JsonView(Views.Normal.class)
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(final String uri) {
+        this.uri = uri;
+    }
 
     @JsonView(Views.Normal.class)
     public String getUrl() {

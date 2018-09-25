@@ -107,7 +107,6 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_CLASSIFICATION = "CLASSIFICATION";
     public static final String CONTENT_HEADER_LANGUAGECODE = "LANGUAGECODE";
     public static final String CONTENT_HEADER_LOCALNAME = "LOCALNAME";
-    public static final String CONTENT_HEADER_TYPE = "TYPE";
     public static final String CONTENT_HEADER_VALUETYPE = "VALUETYPE";
     public static final String CONTENT_HEADER_TYPEURI = "TYPEURI";
     public static final String CONTENT_HEADER_VALUETYPEURI = "VALUETYPEURI";

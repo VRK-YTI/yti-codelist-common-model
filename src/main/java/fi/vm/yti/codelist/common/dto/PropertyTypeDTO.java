@@ -19,7 +19,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("propertyType")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "created", "modified", "context", "propertyUri", "localName", "type", "prefLabel", "definition", "valueTypes" })
+@XmlType(propOrder = { "id", "url", "created", "modified", "context", "propertyUri", "localName", "prefLabel", "definition", "valueTypes" })
 @ApiModel(value = "PropertyType", description = "PropertyType DTO for data relation typing.")
 public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
@@ -31,7 +31,6 @@ public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Seri
     private String propertyUri;
     private String localName;
     private String context;
-    private String type;
     private Map<String, String> prefLabel;
     private Map<String, String> definition;
     private Set<ValueTypeDTO> valueTypes;
@@ -88,15 +87,6 @@ public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Seri
 
     public void setContext(final String context) {
         this.context = context;
-    }
-
-    @JsonView(Views.Normal.class)
-    public String getType() {
-        return type;
-    }
-
-    public void setType(final String type) {
-        this.type = type;
     }
 
     @JsonView(Views.Normal.class)

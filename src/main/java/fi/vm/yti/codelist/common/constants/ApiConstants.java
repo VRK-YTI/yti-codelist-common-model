@@ -109,11 +109,10 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_LOCALNAME = "LOCALNAME";
     public static final String CONTENT_HEADER_VALUETYPE = "VALUETYPE";
     public static final String CONTENT_HEADER_TYPEURI = "TYPEURI";
-    public static final String CONTENT_HEADER_VALUETYPEURI = "VALUETYPEURI";
     public static final String CONTENT_HEADER_REQUIRED = "REQUIRED";
     public static final String CONTENT_HEADER_TYPEVALUE = "TYPEVALUE";
     public static final String CONTENT_HEADER_REGEXP = "REGEXP";
-    public static final String CONTENT_HEADER_PROPERTYURI = "PROPERTYURI";
+    public static final String CONTENT_HEADER_URI = "URI";
     public static final String CONTENT_HEADER_PROPERTYTYPE = "PROPERTYTYPE";
     public static final String CONTENT_HEADER_CONTEXT = "CONTEXT";
     public static final String CONTENT_HEADER_LEGALBASE = "LEGALBASE";

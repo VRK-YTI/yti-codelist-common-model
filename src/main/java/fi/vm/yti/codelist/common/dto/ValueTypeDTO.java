@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModel;
 
 @JsonFilter("valueType")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "localName", "typeUri", "valueTypeUri", "prefLabel", "regexp", "required" })
+@XmlType(propOrder = { "id", "url", "localName", "typeUri", "uri", "prefLabel", "regexp", "required" })
 @ApiModel(value = "ValueType", description = "ValueType DTO for value typing.")
 public class ValueTypeDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
@@ -22,7 +22,7 @@ public class ValueTypeDTO extends AbstractIdentifyableCodeDTO implements Seriali
     private String url;
     private String localName;
     private String typeUri;
-    private String valueTypeUri;
+    private String uri;
     private Map<String, String> prefLabel;
     private String regexp;
     private boolean required;
@@ -46,12 +46,12 @@ public class ValueTypeDTO extends AbstractIdentifyableCodeDTO implements Seriali
     }
 
     @JsonView(Views.Normal.class)
-    public String getValueTypeUri() {
-        return valueTypeUri;
+    public String getUri() {
+        return uri;
     }
 
-    public void setValueTypeUri(final String valueTypeUri) {
-        this.valueTypeUri = valueTypeUri;
+    public void setUri(final String uri) {
+        this.uri = uri;
     }
 
     @JsonView(Views.Normal.class)

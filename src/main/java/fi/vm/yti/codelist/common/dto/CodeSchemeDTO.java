@@ -19,7 +19,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeScheme")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionsUrl", "extensions", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "dataClassifications", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions", "organizations" })
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionsUrl", "extensions", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "infoDomains", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions", "organizations" })
 @ApiModel(value = "CodeScheme DTO", description = "CodeScheme DTO that represents data for one single codescheme.")
 public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
@@ -38,7 +38,7 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     private String extensionsUrl;
     private Set<ExtensionDTO> extensions;
     private CodeRegistryDTO codeRegistry;
-    private Set<CodeDTO> dataClassifications;
+    private Set<CodeDTO> infoDomains;
     private Set<CodeDTO> languageCodes;
     private Set<ExternalReferenceDTO> externalReferences;
     private CodeDTO defaultCode;
@@ -282,12 +282,12 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     }
 
     @JsonView(Views.ExtendedCodeScheme.class)
-    public Set<CodeDTO> getDataClassifications() {
-        return dataClassifications;
+    public Set<CodeDTO> getInfoDomains() {
+        return infoDomains;
     }
 
-    public void setDataClassifications(final Set<CodeDTO> dataClassifications) {
-        this.dataClassifications = dataClassifications;
+    public void setInfoDomains(final Set<CodeDTO> infoDomains) {
+        this.infoDomains = infoDomains;
     }
 
     @JsonView(Views.Normal.class)

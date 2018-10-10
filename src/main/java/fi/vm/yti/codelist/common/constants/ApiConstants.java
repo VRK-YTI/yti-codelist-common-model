@@ -21,7 +21,7 @@ public class ApiConstants {
     public static final String FILTER_NAME_CODE = "code";
     public static final String FILTER_NAME_PROPERTYTYPE = "propertyType";
     public static final String FILTER_NAME_EXTERNALREFERENCE = "externalReference";
-    public static final String FILTER_NAME_DATACLASSIFICATION = "dataClassification";
+    public static final String FILTER_NAME_INFODOMAIN = "infoDomain";
     public static final String FILTER_NAME_ORGANIZATION = "organization";
     public static final String FILTER_NAME_EXTENSION = "extension";
     public static final String FILTER_NAME_MEMBER = "member";
@@ -61,7 +61,7 @@ public class ApiConstants {
     public static final String API_PATH_CONFIGURATION = "/configuration";
     public static final String API_PATH_CODEREGISTRIES = "/coderegistries";
     public static final String API_PATH_CODESCHEMES = "/codeschemes";
-    public static final String API_PATH_DATACLASSIFICATIONS = "/dataclassifications";
+    public static final String API_PATH_INFODOMAINS = "/infodomains";
     public static final String API_PATH_EXTERNALREFERENCES = "/externalreferences";
     public static final String API_PATH_IMPERSONABLE_USERS = "/fakeableUsers";
     public static final String API_PATH_GROUPMANAGEMENT = "/groupmanagement";
@@ -105,7 +105,7 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_STATUS = "STATUS";
     public static final String CONTENT_HEADER_BROADER = "BROADER";
     public static final String CONTENT_HEADER_VERSION = "VERSION";
-    public static final String CONTENT_HEADER_CLASSIFICATION = "CLASSIFICATION";
+    public static final String CONTENT_HEADER_INFODOMAIN = "INFODOMAIN";
     public static final String CONTENT_HEADER_LANGUAGECODE = "LANGUAGECODE";
     public static final String CONTENT_HEADER_LOCALNAME = "LOCALNAME";
     public static final String CONTENT_HEADER_VALUETYPE = "VALUETYPE";

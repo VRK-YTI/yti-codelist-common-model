@@ -105,7 +105,7 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_STATUS = "STATUS";
     public static final String CONTENT_HEADER_BROADER = "BROADER";
     public static final String CONTENT_HEADER_VERSION = "VERSION";
-    public static final String CONTENT_HEADER_INFODOMAIN = "INFODOMAIN";
+    public static final String CONTENT_HEADER_INFODOMAIN = "INFORMATIONDOMAIN";
     public static final String CONTENT_HEADER_LANGUAGECODE = "LANGUAGECODE";
     public static final String CONTENT_HEADER_LOCALNAME = "LOCALNAME";
     public static final String CONTENT_HEADER_VALUETYPE = "VALUETYPE";

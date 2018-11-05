@@ -1,6 +1,6 @@
 package fi.vm.yti.codelist.common.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.MappedSuperclass;
 
@@ -12,23 +12,23 @@ import io.swagger.annotations.ApiModelProperty;
 @MappedSuperclass
 public class AbstractHistoricalIdentifyableCodeWithStatusDTO extends AbstractIdentifyableCodeDTO {
 
-    private Date startDate;
-    private Date endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private String status;
 
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonView(Views.Normal.class)
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         if (startDate != null) {
-            return new Date(startDate.getTime());
+            return startDate;
         }
         return null;
     }
 
-    public void setStartDate(final Date startDate) {
+    public void setStartDate(final LocalDate startDate) {
         if (startDate != null) {
-            this.startDate = new Date(startDate.getTime());
+            this.startDate = startDate;
         } else {
             this.startDate = null;
         }
@@ -37,16 +37,16 @@ public class AbstractHistoricalIdentifyableCodeWithStatusDTO extends AbstractIde
     @ApiModelProperty(dataType = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonView(Views.Normal.class)
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         if (endDate != null) {
-            return new Date(endDate.getTime());
+            return endDate;
         }
         return null;
     }
 
-    public void setEndDate(final Date endDate) {
+    public void setEndDate(final LocalDate endDate) {
         if (endDate != null) {
-            this.endDate = new Date(endDate.getTime());
+            this.endDate = endDate;
         } else {
             this.endDate = null;
         }

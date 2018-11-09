@@ -16,7 +16,7 @@ public class AbstractHistoricalIdentifyableCodeWithStatusDTO extends AbstractIde
     private LocalDate endDate;
     private String status;
 
-    @ApiModelProperty(dataType = "dateTime")
+    @ApiModelProperty(dataType = "date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonView(Views.Normal.class)
     public LocalDate getStartDate() {
@@ -34,7 +34,7 @@ public class AbstractHistoricalIdentifyableCodeWithStatusDTO extends AbstractIde
         }
     }
 
-    @ApiModelProperty(dataType = "dateTime")
+    @ApiModelProperty(dataType = "date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonView(Views.Normal.class)
     public LocalDate getEndDate() {

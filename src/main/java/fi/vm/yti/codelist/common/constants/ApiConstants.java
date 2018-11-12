@@ -93,7 +93,7 @@ public class ApiConstants {
     public static final String EXCEL_SHEET_CODESCHEMES = "CodeSchemes";
     public static final String EXCEL_SHEET_CODES = "Codes";
     public static final String EXCEL_SHEET_PROPERTYTYPES = "PropertyTypes";
-    public static final String EXCEL_SHEET_EXTERNALREFERENCES = "ExternalReferences";
+    public static final String EXCEL_SHEET_LINKS = "Links";
     public static final String EXCEL_SHEET_EXTENSIONS = "Extensions";
     public static final String EXCEL_SHEET_MEMBERS = "Members";
     public static final String EXCEL_SHEET_VALUETYPES = "ValueTypes";
@@ -144,7 +144,7 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_MODIFIED = "MODIFIED";
     public static final String CONTENT_HEADER_DEFAULTCODE = "DEFAULTCODE";
     public static final String CONTENT_HEADER_CONCEPTURI = "CONCEPTURI";
-    public static final String CONTENT_HEADER_EXTERNALREFERENCESSHEET = "EXTERNALREFERENCESSHEET";
+    public static final String CONTENT_HEADER_LINKSSHEET = "LINKSSHEET";
 
     public static final String FORMAT_JSON = "json";
     public static final String FORMAT_CSV = "csv";

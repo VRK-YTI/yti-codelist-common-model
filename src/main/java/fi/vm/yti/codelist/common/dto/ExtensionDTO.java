@@ -157,7 +157,7 @@ public class ExtensionDTO extends AbstractHistoricalIdentifyableCodeWithStatusDT
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "extension", cascade = CascadeType.ALL)
-    @JsonView(Views.ExtendedExtension.class)
+    @JsonView({Views.ExtendedExtension.class, Views.ExtendedCode.class})
     public Set<MemberDTO> getMembers() {
         return members;
     }

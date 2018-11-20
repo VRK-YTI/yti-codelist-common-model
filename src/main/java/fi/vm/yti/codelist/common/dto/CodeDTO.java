@@ -17,7 +17,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("code")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "uri", "url", "status", "order", "hierarchyLevel", "startDate", "endDate", "created", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCode", "membersUrl", "members", "conceptUriInVocabularies" })
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "status", "order", "hierarchyLevel", "startDate", "endDate", "created", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCode", "membersUrl", "members", "conceptUriInVocabularies", "inlineExtensions" })
 @ApiModel(value = "Code", description = "Code DTO that represents data for one single code.")
 @JsonIgnoreProperties(value = { "expanded" })
 public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
@@ -36,6 +36,7 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
     private String conceptUriInVocabularies;
     private String membersUrl;
     private Set<MemberDTO> members;
+    private Set<ExtensionDTO> inlineExtensions;
 
     public CodeDTO() {
         prefLabel = new HashMap<>();
@@ -213,5 +214,14 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
     public void setBroaderCode(final CodeDTO broaderCode) {
         this.broaderCode = broaderCode;
+    }
+
+    @JsonView(Views.ExtendedCode.class)
+    public Set<ExtensionDTO> getInlineExtensions() {
+        return inlineExtensions;
+    }
+
+    public void setInlineExtensions(final Set<ExtensionDTO> inlineExtensions) {
+        this.inlineExtensions = inlineExtensions;
     }
 }

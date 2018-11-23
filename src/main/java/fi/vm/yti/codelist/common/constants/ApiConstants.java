@@ -162,7 +162,7 @@ public class ApiConstants {
     public static final String GROUPMANAGEMENT_API_REQUESTS = "/requests";
     public static final String GROUPMANAGEMENT_API_ORGANIZATIONS = "/organizations";
 
-    public static final String INLINE_EXTENSION = "InlineExtension";
+    public static final String CODE_EXTENSION = "CodeExtension";
 
     private ApiConstants() {
     }

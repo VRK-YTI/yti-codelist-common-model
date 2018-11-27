@@ -145,6 +145,8 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_DEFAULTCODE = "DEFAULTCODE";
     public static final String CONTENT_HEADER_CONCEPTURI = "CONCEPTURI";
     public static final String CONTENT_HEADER_LINKSSHEET = "LINKSSHEET";
+    public static final String CONTENT_HEADER_URI1 = "CODE1";
+    public static final String CONTENT_HEADER_URI2 = "CODE2";
 
     public static final String FORMAT_JSON = "json";
     public static final String FORMAT_CSV = "csv";

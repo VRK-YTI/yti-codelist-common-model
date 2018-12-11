@@ -23,6 +23,7 @@ public class CodeSchemeListItem implements Serializable, Identifiable {
 
     private UUID id;
     private Map<String, String> prefLabel;
+    private String codeValue;
     private String uri;
     private LocalDate startDate;
     private LocalDate endDate;
@@ -33,12 +34,14 @@ public class CodeSchemeListItem implements Serializable, Identifiable {
 
     public CodeSchemeListItem(final UUID id,
                               final Map<String, String> prefLabel,
+                              final String codeValue,
                               final String uri,
                               final LocalDate startDate,
                               final LocalDate endDate,
                               final String status) {
         this.id = id;
         this.prefLabel = prefLabel;
+        this.codeValue = codeValue;
         this.uri = uri;
         if (startDate != null) {
             this.startDate = startDate;
@@ -117,5 +120,13 @@ public class CodeSchemeListItem implements Serializable, Identifiable {
 
     public void setStatus(final String status) {
         this.status = status;
+    }
+
+    public String getCodeValue() {
+        return codeValue;
+    }
+
+    public void setCodeValue(final String codeValue) {
+        this.codeValue = codeValue;
     }
 }

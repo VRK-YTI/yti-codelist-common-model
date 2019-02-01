@@ -166,6 +166,7 @@ public class ApiConstants {
     public static final String GROUPMANAGEMENT_API_ORGANIZATIONS = "/organizations";
 
     public static final String CODE_EXTENSION = "CodeExtension";
+    public static final String EXTENSION = "Extension";
 
     private ApiConstants() {
     }

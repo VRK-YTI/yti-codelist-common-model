@@ -26,4 +26,6 @@ public class Views {
     public static class ExtendedExtension extends Normal{}
 
     public static class ExtendedValueType extends Normal{}
+
+    public static class Ignored{}
 }

@@ -28,6 +28,7 @@ public class ApiConstants {
     public static final String FILTER_NAME_RESOURCE = "resource";
     public static final String FILTER_NAME_VALUETYPE = "valueType";
     public static final String FILTER_NAME_MEMBERVALUE = "memberValue";
+    public static final String FILTER_NAME_SEARCHHIT = "searchHit";
 
     public static final String FIELD_NAME_URI = "uri";
     public static final String FIELD_NAME_URL = "url";
@@ -167,6 +168,9 @@ public class ApiConstants {
 
     public static final String CODE_EXTENSION = "CodeExtension";
     public static final String EXTENSION = "Extension";
+
+    public static final String SEARCH_HIT_TYPE_CODE = "code";
+    public static final String SEARCH_HIT_TYPE_EXTENSION = "extension";
 
     private ApiConstants() {
     }

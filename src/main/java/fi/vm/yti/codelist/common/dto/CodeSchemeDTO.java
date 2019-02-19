@@ -1,6 +1,7 @@
 package fi.vm.yti.codelist.common.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -19,7 +20,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeScheme")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionsUrl", "extensions", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "infoDomains", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions", "organizations" })
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionsUrl", "extensions", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "infoDomains", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions", "organizations", "searchHits" })
 @ApiModel(value = "CodeScheme DTO", description = "CodeScheme DTO that represents data for one single codescheme.")
 public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
@@ -51,6 +52,7 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     private UUID prevCodeschemeId;
     private UUID lastCodeschemeId;
     private LinkedHashSet<CodeSchemeListItem> allVersions = new LinkedHashSet<>();
+    private ArrayList<SearchHitDTO> searchHits = new ArrayList<>();
 
     public CodeSchemeDTO() {
         prefLabel = new HashMap<>();
@@ -378,5 +380,14 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
 
     public void setOrganizations(final Set<OrganizationDTO> organizations) {
         this.organizations = organizations;
+    }
+
+    @JsonView(Views.Ignored.class)
+    public ArrayList<SearchHitDTO> getSearchHits() {
+        return searchHits;
+    }
+
+    public void setSearchHits(final ArrayList<SearchHitDTO> searchHits) {
+        this.searchHits = searchHits;
     }
 }

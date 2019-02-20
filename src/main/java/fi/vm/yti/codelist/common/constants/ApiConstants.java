@@ -149,6 +149,7 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_SUBCODESCHEME = "SUBCODESCHEME";
     public static final String CONTENT_HEADER_URI1 = "CODE1";
     public static final String CONTENT_HEADER_URI2 = "CODE2";
+    public static final String CONTENT_HEADER_CUMULATIVE = "CUMULATIVE";
 
     public static final String FORMAT_JSON = "json";
     public static final String FORMAT_CSV = "csv";

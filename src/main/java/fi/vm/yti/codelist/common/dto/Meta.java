@@ -30,6 +30,7 @@ public class Meta {
     private String afterResourceUrl;
     private String nextPage;
     private String entityIdentifier;
+    private String nonTranslatableMessage;
 
     public Meta() {
     }
@@ -54,6 +55,20 @@ public class Meta {
         this.from = from;
         this.after = parseAfterFromString(after);
         this.entityIdentifier = entityIdentifier;
+    }
+
+    public Meta(final Integer code,
+                final Integer pageSize,
+                final Integer from,
+                final String after,
+                final String entityIdentifier,
+                final String nonTranslatableMessage) {
+        this.code = code;
+        this.pageSize = pageSize;
+        this.from = from;
+        this.after = parseAfterFromString(after);
+        this.entityIdentifier = entityIdentifier;
+        this.nonTranslatableMessage = nonTranslatableMessage;
     }
 
     public Integer getCode() {
@@ -153,5 +168,13 @@ public class Meta {
 
     public void setEntityIdentifier(String entityIdentifier) {
         this.entityIdentifier = entityIdentifier;
+    }
+
+    public String getNonTranslatableMessage() {
+        return nonTranslatableMessage;
+    }
+
+    public void setNonTranslatableMessage(final String nonTranslatableMessage) {
+        this.nonTranslatableMessage = nonTranslatableMessage;
     }
 }

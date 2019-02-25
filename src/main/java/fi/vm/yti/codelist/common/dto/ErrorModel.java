@@ -8,8 +8,8 @@ public class ErrorModel implements Serializable {
 
     private int httpStatusCode;
     private String message;
-
     private String entityIdentifier;
+    private String nonTranslatableMessage;
 
     public ErrorModel(final int httpStatusCode,
                       final String message) {
@@ -23,6 +23,16 @@ public class ErrorModel implements Serializable {
         this.httpStatusCode = httpStatusCode;
         this.message = message;
         this.entityIdentifier = entityIdentifier;
+    }
+
+    public ErrorModel(final int httpStatusCode,
+                      final String message,
+                      final String entityIdentifier,
+                      final String nonTranslatableMessage) {
+        this.httpStatusCode = httpStatusCode;
+        this.message = message;
+        this.entityIdentifier = entityIdentifier;
+        this.nonTranslatableMessage = nonTranslatableMessage;
     }
 
     public String getMessage() {
@@ -47,5 +57,13 @@ public class ErrorModel implements Serializable {
 
     public void setEntityIdentifier(final String entityIdentifier) {
         this.entityIdentifier = entityIdentifier;
+    }
+
+    public String getNonTranslatableMessage() {
+        return nonTranslatableMessage;
+    }
+
+    public void setNonTranslatableMessage(final String nonTranslatableMessage) {
+        this.nonTranslatableMessage = nonTranslatableMessage;
     }
 }

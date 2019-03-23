@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModel;
 
 @JsonFilter("searchHit")
 @XmlRootElement
-@XmlType(propOrder = { "type", "prefLabel", "uri" })
+@XmlType(propOrder = { "type", "prefLabel", "uri", "entityCodeValue", "codeSchemeCodeValue", "codeRegistryCodeValue" })
 @ApiModel(value = "Code", description = "Code DTO that represents data for a single search hit.")
 @JsonIgnoreProperties(value = { "expanded" })
 public class SearchHitDTO {
@@ -21,6 +21,9 @@ public class SearchHitDTO {
     private String type;
     private Map<String, String> prefLabel;
     private String uri;
+    private String entityCodeValue; // Code, Extension etc.
+    private String codeSchemeCodeValue;
+    private String codeRegistryCodeValue;
 
     @JsonView(Views.Normal.class)
     public String getType() {
@@ -47,5 +50,32 @@ public class SearchHitDTO {
 
     public void setUri(final String uri) {
         this.uri = uri;
+    }
+
+    @JsonView(Views.Normal.class)
+    public String getCodeSchemeCodeValue() {
+        return codeSchemeCodeValue;
+    }
+
+    public void setCodeSchemeCodeValue(final String codeSchemeCodeValue) {
+        this.codeSchemeCodeValue = codeSchemeCodeValue;
+    }
+
+    @JsonView(Views.Normal.class)
+    public String getCodeRegistryCodeValue() {
+        return codeRegistryCodeValue;
+    }
+
+    public void setCodeRegistryCodeValue(final String codeRegistryCodeValue) {
+        this.codeRegistryCodeValue = codeRegistryCodeValue;
+    }
+
+    @JsonView(Views.Normal.class)
+    public String getEntityCodeValue() {
+        return entityCodeValue;
+    }
+
+    public void setEntityCodeValue(final String entityCodeValue) {
+        this.entityCodeValue = entityCodeValue;
     }
 }

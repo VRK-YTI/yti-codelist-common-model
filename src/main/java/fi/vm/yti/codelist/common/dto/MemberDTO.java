@@ -21,7 +21,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("member")
 @XmlRootElement
-@XmlType(propOrder = { "id", "uri", "url", "code", "prefLabel", "created", "modified", "startDate", "endDate", "memberValues", "order", "extension", "relatedMember" })
+@XmlType(propOrder = { "id", "uri", "url", "code", "prefLabel", "created", "modified", "startDate", "endDate", "memberValues", "order", "extension", "relatedMember", "sequenceId" })
 @ApiModel(value = "Member", description = "Member DTO that represents data for one member element.")
 @JsonIgnoreProperties(value = { "expanded" })
 public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializable {
@@ -40,6 +40,7 @@ public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializab
     private LocalDate endDate;
     private Set<MemberValueDTO> memberValues;
     private String uri;
+    private Integer sequenceId;
 
     @JsonView(Views.Normal.class)
     public String getUri() {
@@ -215,5 +216,14 @@ public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializab
             }
         }
         return null;
+    }
+
+    @JsonView(Views.Normal.class)
+    public Integer getSequenceId() {
+        return sequenceId;
+    }
+
+    public void setSequenceId(final Integer sequenceId) {
+        this.sequenceId = sequenceId;
     }
 }

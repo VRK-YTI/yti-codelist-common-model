@@ -9,7 +9,6 @@ public enum Status {
 
     INCOMPLETE,
     DRAFT,
-    SUBMITTED,
     SUGGESTED,
     VALID,
     SUPERSEDED,

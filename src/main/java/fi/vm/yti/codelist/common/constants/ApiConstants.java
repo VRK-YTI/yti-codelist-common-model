@@ -122,6 +122,7 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_SOURCE = "SOURCE";
     public static final String CONTENT_HEADER_TITLE_PREFIX = "TITLE_";
     public static final String CONTENT_HEADER_PREFLABEL_PREFIX = "PREFLABEL_";
+    public static final String CONTENT_HEADER_CODE_PREFLABEL_PREFIX = "CODE_PREFLABEL_";
     public static final String CONTENT_HEADER_DEFINITION_PREFIX = "DEFINITION_";
     public static final String CONTENT_HEADER_DESCRIPTION_PREFIX = "DESCRIPTION_";
     public static final String CONTENT_HEADER_CHANGENOTE_PREFIX = "CHANGENOTE_";

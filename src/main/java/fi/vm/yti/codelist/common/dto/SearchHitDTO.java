@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import io.swagger.annotations.ApiModel;
@@ -16,6 +17,7 @@ import io.swagger.annotations.ApiModel;
 @XmlType(propOrder = { "type", "prefLabel", "uri", "entityCodeValue", "codeSchemeCodeValue", "codeRegistryCodeValue" })
 @ApiModel(value = "Code", description = "Code DTO that represents data for a single search hit.")
 @JsonIgnoreProperties(value = { "expanded" })
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class SearchHitDTO {
 
     private String type;

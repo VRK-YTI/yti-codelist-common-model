@@ -2,6 +2,9 @@ package fi.vm.yti.codelist.common.dto;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ErrorModel implements Serializable {
 
     private static final long serialVersionUID = 1L;

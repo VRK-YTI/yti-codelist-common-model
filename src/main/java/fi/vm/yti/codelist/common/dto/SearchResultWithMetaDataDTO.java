@@ -6,6 +6,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class SearchResultWithMetaDataDTO {
 
     private Map<String, ArrayList<SearchHitDTO>> searchHitDTOMap = new HashMap<>();

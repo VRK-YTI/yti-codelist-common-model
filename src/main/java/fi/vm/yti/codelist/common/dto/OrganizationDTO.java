@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import io.swagger.annotations.ApiModel;
@@ -16,6 +17,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 @JsonFilter("organization")
 @XmlType(propOrder = { "id", "url", "prefLabel", "description", "codeRegistries", "removed" })
 @ApiModel(value = "Organization", description = "Organization DTO that represents data for one single organization.")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class OrganizationDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;

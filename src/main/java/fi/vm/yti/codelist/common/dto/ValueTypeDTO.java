@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import io.swagger.annotations.ApiModel;
@@ -15,6 +16,7 @@ import io.swagger.annotations.ApiModel;
 @XmlRootElement
 @XmlType(propOrder = { "id", "url", "localName", "typeUri", "uri", "prefLabel", "regexp", "required" })
 @ApiModel(value = "ValueType", description = "ValueType DTO for value typing.")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ValueTypeDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;

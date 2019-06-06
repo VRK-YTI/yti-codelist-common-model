@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -21,7 +22,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeScheme")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionsUrl", "extensions", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "infoDomains", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions", "organizations", "searchHits", "cumulative" })
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionsUrl", "extensions", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "infoDomains", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions", "organizations", "searchHits", "deepSearchHits", "cumulative" })
 @ApiModel(value = "CodeScheme DTO", description = "CodeScheme DTO that represents data for one single codescheme.")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializable {
@@ -55,6 +56,9 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     private UUID lastCodeschemeId;
     private LinkedHashSet<CodeSchemeListItem> allVersions = new LinkedHashSet<>();
     private ArrayList<SearchHitDTO> searchHits = new ArrayList<>();
+    private long totalNrOfSearchHitsCodes = 0;
+    private long totalNrOfSearchHitsExtensions = 0;
+    private Map<String, List<DeepSearchHitListDTO<?>>> deepSearchHits;
     private boolean cumulative;
 
     public CodeSchemeDTO() {
@@ -392,6 +396,33 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
 
     public void setSearchHits(final ArrayList<SearchHitDTO> searchHits) {
         this.searchHits = searchHits;
+    }
+
+    @JsonView(Views.Ignored.class)
+    public long getTotalNrOfSearchHitsCodes() {
+        return totalNrOfSearchHitsCodes;
+    }
+
+    public void setTotalNrOfSearchHitsCodes(final long totalNrOfSearchHitsCodes) {
+        this.totalNrOfSearchHitsCodes = totalNrOfSearchHitsCodes;
+    }
+
+    @JsonView(Views.Ignored.class)
+    public long getTotalNrOfSearchHitsExtensions() {
+        return totalNrOfSearchHitsExtensions;
+    }
+
+    public void setTotalNrOfSearchHitsExtensions(final long totalNrOfSearchHitsExtensions) {
+        this.totalNrOfSearchHitsExtensions = totalNrOfSearchHitsExtensions;
+    }
+
+    @JsonView(Views.Ignored.class)
+    public Map<String, List<DeepSearchHitListDTO<?>>> getDeepSearchHits() {
+        return deepSearchHits;
+    }
+
+    public void setDeepSearchHits(final Map<String, List<DeepSearchHitListDTO<?>>> deepSearchHits) {
+        this.deepSearchHits = deepSearchHits;
     }
 
     @JsonView(Views.Normal.class)

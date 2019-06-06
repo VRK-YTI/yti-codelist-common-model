@@ -13,6 +13,8 @@ public class SearchResultWithMetaDataDTO {
 
     private Map<String, ArrayList<SearchHitDTO>> searchHitDTOMap = new HashMap<>();
     private Set<String> results = new HashSet<>();
+    private Map<String, Long> totalhitsCodesPerCodeSchemeMap = new HashMap<>();
+    private Map<String, Long> totalhitsExtensionsPerCodeSchemeMap = new HashMap<>();
 
     public Map<String, ArrayList<SearchHitDTO>> getSearchHitDTOMap() {
         return searchHitDTOMap;
@@ -28,5 +30,21 @@ public class SearchResultWithMetaDataDTO {
 
     public void setResults(final Set<String> results) {
         this.results = results;
+    }
+
+    public Map<String, Long> getTotalhitsCodesPerCodeSchemeMap() {
+        return totalhitsCodesPerCodeSchemeMap;
+    }
+
+    public void setTotalhitsCodesPerCodeSchemeMap(final Map<String, Long> totalhitsCodesPerCodeSchemeMap) {
+        this.totalhitsCodesPerCodeSchemeMap = totalhitsCodesPerCodeSchemeMap;
+    }
+
+    public Map<String, Long> getTotalhitsExtensionsPerCodeSchemeMap() {
+        return totalhitsExtensionsPerCodeSchemeMap;
+    }
+
+    public void setTotalhitsExtensionsPerCodeSchemeMap(final Map<String, Long> totalhitsExtensionsPerCodeSchemeMap) {
+        this.totalhitsExtensionsPerCodeSchemeMap = totalhitsExtensionsPerCodeSchemeMap;
     }
 }

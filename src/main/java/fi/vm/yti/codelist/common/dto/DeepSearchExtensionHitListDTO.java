@@ -9,7 +9,7 @@ public class DeepSearchExtensionHitListDTO extends DeepSearchHitListDTO<Extensio
     }
 
     public DeepSearchExtensionHitListDTO(long totalCount,
-                                    List<ExtensionDTO> topHits) {
+                                         List<ExtensionDTO> topHits) {
         super(Type.EXTENSION, totalCount, topHits);
     }
 }

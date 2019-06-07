@@ -1,8 +1,8 @@
 package fi.vm.yti.codelist.common.dto;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -144,9 +144,12 @@ public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializab
     }
 
     public String getPrefLabel(final String language) {
-        String prefLabelValue = this.prefLabel.get(language);
-        if (prefLabelValue == null) {
-            prefLabelValue = this.prefLabel.get(LANGUAGE_CODE_EN);
+        String prefLabelValue = null;
+        if (this.prefLabel != null && !this.prefLabel.isEmpty()) {
+            prefLabelValue = this.prefLabel.get(language);
+            if (prefLabelValue == null) {
+                prefLabelValue = this.prefLabel.get(LANGUAGE_CODE_EN);
+            }
         }
         return prefLabelValue;
     }

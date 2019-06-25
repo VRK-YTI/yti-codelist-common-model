@@ -22,7 +22,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeScheme")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionsUrl", "extensions", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "infoDomains", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions", "organizations", "searchHits", "deepSearchHits", "cumulative" })
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionsUrl", "extensions", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "infoDomains", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions", "organizations", "searchHits", "cumulative" })
 @ApiModel(value = "CodeScheme DTO", description = "CodeScheme DTO that represents data for one single codescheme.")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializable {
@@ -58,7 +58,6 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     private ArrayList<SearchHitDTO> searchHits = new ArrayList<>();
     private long totalNrOfSearchHitsCodes = 0;
     private long totalNrOfSearchHitsExtensions = 0;
-    private Map<String, List<DeepSearchHitListDTO<?>>> deepSearchHits;
     private boolean cumulative;
 
     public CodeSchemeDTO() {
@@ -426,15 +425,6 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
 
     public void setTotalNrOfSearchHitsExtensions(final long totalNrOfSearchHitsExtensions) {
         this.totalNrOfSearchHitsExtensions = totalNrOfSearchHitsExtensions;
-    }
-
-    @JsonView(Views.Ignored.class)
-    public Map<String, List<DeepSearchHitListDTO<?>>> getDeepSearchHits() {
-        return deepSearchHits;
-    }
-
-    public void setDeepSearchHits(final Map<String, List<DeepSearchHitListDTO<?>>> deepSearchHits) {
-        this.deepSearchHits = deepSearchHits;
     }
 
     @JsonView(Views.Normal.class)

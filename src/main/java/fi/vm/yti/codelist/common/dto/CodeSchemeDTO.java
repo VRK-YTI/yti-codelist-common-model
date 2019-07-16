@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -47,7 +46,6 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     private Set<ExternalReferenceDTO> externalReferences;
     private CodeDTO defaultCode;
     private Set<OrganizationDTO> organizations;
-
     private String conceptUriInVocabularies;
     private LinkedHashSet<CodeSchemeListItem> variantsOfThisCodeScheme = new LinkedHashSet<>();
     private LinkedHashSet<CodeSchemeListItem> variantMothersOfThisCodeScheme = new LinkedHashSet<>();

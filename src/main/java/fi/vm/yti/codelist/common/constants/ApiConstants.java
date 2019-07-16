@@ -29,6 +29,7 @@ public class ApiConstants {
     public static final String FILTER_NAME_VALUETYPE = "valueType";
     public static final String FILTER_NAME_MEMBERVALUE = "memberValue";
     public static final String FILTER_NAME_SEARCHHIT = "searchHit";
+    public static final String FILTER_NAME_USER = "user";
 
     public static final String FIELD_NAME_URI = "uri";
     public static final String FIELD_NAME_URL = "url";

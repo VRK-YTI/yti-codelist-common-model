@@ -3,7 +3,8 @@ package fi.vm.yti.codelist.common.dto;
 import java.util.List;
 
 public abstract class DeepSearchHitListDTO<T> {
-    public enum Type {CODE, EXTENSION};
+
+    public enum Type {CODE, EXTENSION}
 
     private final Type type;
     private long totalHitCount;

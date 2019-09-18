@@ -153,6 +153,7 @@ public class ApiConstants {
     public static final String CONTENT_HEADER_URI2 = "CODE2";
     public static final String CONTENT_HEADER_CUMULATIVE = "CUMULATIVE";
     public static final String CONTENT_HEADER_MEMBER_ID = "MEMBER_ID";
+    public static final String CONTENT_HEADER_FEEDBACK_CHANNEL_PREFIX = "FEEDBACK_CHANNEL_";
 
     public static final String FORMAT_JSON = "json";
     public static final String FORMAT_CSV = "csv";

@@ -10,12 +10,12 @@ import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @JsonFilter("valueType")
 @XmlRootElement
 @XmlType(propOrder = { "id", "url", "localName", "typeUri", "uri", "prefLabel", "regexp", "required" })
-@ApiModel(value = "ValueType", description = "ValueType DTO for value typing.")
+@Schema(name = "ValueType", description = "ValueType DTO for value typing.")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ValueTypeDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 

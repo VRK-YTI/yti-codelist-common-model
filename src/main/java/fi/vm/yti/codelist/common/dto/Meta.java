@@ -11,10 +11,10 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @XmlType(propOrder = { "code", "message", "pageSize", "from", "resultCount", "totalResults", "after", "afterResourceUrl", "nextPage" })
-@ApiModel(value = "Meta", description = "Meta information model for API responses.")
+@Schema(name = "Meta", description = "Meta information model for API responses.")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Meta {
 
@@ -69,6 +69,18 @@ public class Meta {
         this.after = parseAfterFromString(after);
         this.entityIdentifier = entityIdentifier;
         this.nonTranslatableMessage = nonTranslatableMessage;
+    }
+
+    public static Date parseAfterFromString(final String after) {
+        if (after != null) {
+            final ISO8601DateFormat dateFormat = new ISO8601DateFormat();
+            try {
+                return dateFormat.parse(after);
+            } catch (ParseException e) {
+                LOG.error("Parsing date from string failed: " + e.getMessage());
+            }
+        }
+        return null;
     }
 
     public Integer getCode() {
@@ -148,18 +160,6 @@ public class Meta {
 
     public void setNextPage(final String nextPage) {
         this.nextPage = nextPage;
-    }
-
-    public static Date parseAfterFromString(final String after) {
-        if (after != null) {
-            final ISO8601DateFormat dateFormat = new ISO8601DateFormat();
-            try {
-                return dateFormat.parse(after);
-            } catch (ParseException e) {
-                LOG.error("Parsing date from string failed: " + e.getMessage());
-            }
-        }
-        return null;
     }
 
     public String getEntityIdentifier() {

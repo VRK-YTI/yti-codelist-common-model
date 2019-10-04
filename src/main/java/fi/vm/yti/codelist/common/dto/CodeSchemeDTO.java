@@ -16,13 +16,13 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import fi.vm.yti.codelist.common.model.CodeSchemeListItem;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeScheme")
 @XmlRootElement
 @XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionsUrl", "extensions", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "infoDomains", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions", "organizations", "searchHits", "cumulative", "feedbackChannel" })
-@ApiModel(value = "CodeScheme DTO", description = "CodeScheme DTO that represents data for one single codescheme.")
+@Schema(name = "CodeScheme DTO", description = "CodeScheme DTO that represents data for one single codescheme.")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializable {
 
@@ -57,7 +57,7 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     private long totalNrOfSearchHitsCodes = 0;
     private long totalNrOfSearchHitsExtensions = 0;
     private boolean cumulative;
-    private Map<String, String>  feedbackChannel;
+    private Map<String, String> feedbackChannel;
 
     public CodeSchemeDTO() {
         prefLabel = new HashMap<>();
@@ -458,7 +458,7 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     }
 
     public void setFeedbackChannel(final String language,
-                             final String value) {
+                                   final String value) {
         if (this.feedbackChannel == null) {
             this.feedbackChannel = new HashMap<>();
         }

@@ -16,14 +16,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("member")
 @XmlRootElement
 @XmlType(propOrder = { "id", "uri", "url", "code", "prefLabel", "created", "modified", "startDate", "endDate", "memberValues", "order", "extension", "relatedMember", "sequenceId" })
-@ApiModel(value = "Member", description = "Member DTO that represents data for one member element.")
+@Schema(name = "Member", description = "Member DTO that represents data for one member element.")
 @JsonIgnoreProperties(value = { "expanded" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializable {
@@ -62,7 +61,7 @@ public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializab
         this.url = url;
     }
 
-    @ApiModelProperty(dataType = "dateTime")
+    @Schema(format = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @JsonView(Views.Normal.class)
     public Date getModified() {
@@ -80,7 +79,7 @@ public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializab
         }
     }
 
-    @ApiModelProperty(dataType = "dateTime")
+    @Schema(format = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @JsonView(Views.Normal.class)
     public Date getCreated() {
@@ -167,7 +166,7 @@ public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializab
         setPrefLabel(this.prefLabel);
     }
 
-    @ApiModelProperty(dataType = "date")
+    @Schema(format = "date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonView(Views.Normal.class)
     public LocalDate getStartDate() {
@@ -185,7 +184,7 @@ public class MemberDTO extends AbstractIdentifyableCodeDTO implements Serializab
         }
     }
 
-    @ApiModelProperty(dataType = "date")
+    @Schema(format = "date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonView(Views.Normal.class)
     public LocalDate getEndDate() {

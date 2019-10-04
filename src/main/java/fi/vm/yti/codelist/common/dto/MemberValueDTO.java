@@ -11,13 +11,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @JsonFilter("memberValue")
 @XmlRootElement
 @XmlType(propOrder = { "id", "value", "valueType", "member", "created", "modified" })
-@ApiModel(value = "ValueType", description = "ValueType DTO for value typing.")
+@Schema(name = "ValueType", description = "ValueType DTO for value typing.")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class MemberValueDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
@@ -39,7 +38,7 @@ public class MemberValueDTO extends AbstractIdentifyableCodeDTO implements Seria
         this.value = value;
     }
 
-    @ApiModelProperty(dataType = "dateTime")
+    @Schema(format = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @JsonView(Views.Normal.class)
     public Date getModified() {
@@ -57,7 +56,7 @@ public class MemberValueDTO extends AbstractIdentifyableCodeDTO implements Seria
         }
     }
 
-    @ApiModelProperty(dataType = "dateTime")
+    @Schema(format = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @JsonView(Views.Normal.class)
     public Date getCreated() {

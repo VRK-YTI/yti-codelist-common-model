@@ -14,14 +14,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("externalReference")
 @XmlRootElement
 @XmlType(propOrder = { "id", "url", "created", "modified", "href", "global", "title", "description", "parentCodeScheme" })
-@ApiModel(value = "ExternalReference", description = "ExternalReference DTO that represents data for either CodeScheme or Code related external link.")
+@Schema(name = "ExternalReference", description = "ExternalReference DTO that represents data for either CodeScheme or Code related external link.")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ExternalReferenceDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
@@ -39,7 +38,7 @@ public class ExternalReferenceDTO extends AbstractIdentifyableCodeDTO implements
     private Date modified;
     private String url;
 
-    @ApiModelProperty(dataType = "dateTime")
+    @Schema(format = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @JsonView(Views.Normal.class)
     public Date getCreated() {
@@ -57,7 +56,7 @@ public class ExternalReferenceDTO extends AbstractIdentifyableCodeDTO implements
         }
     }
 
-    @ApiModelProperty(dataType = "dateTime")
+    @Schema(format = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @JsonView(Views.Normal.class)
     public Date getModified() {

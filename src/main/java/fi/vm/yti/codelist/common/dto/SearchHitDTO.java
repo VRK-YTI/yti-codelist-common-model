@@ -1,5 +1,6 @@
 package fi.vm.yti.codelist.common.dto;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -10,15 +11,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @JsonFilter("searchHit")
 @XmlRootElement
 @XmlType(propOrder = { "type", "prefLabel", "uri", "entityCodeValue", "codeSchemeCodeValue", "codeRegistryCodeValue" })
-@ApiModel(value = "Code", description = "Code DTO that represents data for a single search hit.")
+@Schema(name = "Code", description = "Code DTO that represents data for a single search hit.")
 @JsonIgnoreProperties(value = { "expanded" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class SearchHitDTO {
+public class SearchHitDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String type;
     private Map<String, String> prefLabel;

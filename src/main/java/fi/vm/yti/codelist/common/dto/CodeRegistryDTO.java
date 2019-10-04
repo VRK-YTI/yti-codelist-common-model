@@ -12,13 +12,13 @@ import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeRegistry")
 @XmlRootElement
 @XmlType(propOrder = { "id", "codeValue", "uri", "url", "prefLabel", "description", "created", "modified", "codeSchemesUrl", "codeSchemes", "organizations" })
-@ApiModel(value = "CodeRegistry", description = "CodeRegistry DTO that represents data for one single registry.")
+@Schema(name = "CodeRegistry", description = "CodeRegistry DTO that represents data for one single registry.")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CodeRegistryDTO extends AbstractCommonCodeDTO implements Serializable {
 

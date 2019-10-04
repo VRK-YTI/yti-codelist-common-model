@@ -14,14 +14,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("propertyType")
 @XmlRootElement
 @XmlType(propOrder = { "id", "url", "created", "modified", "context", "uri", "localName", "prefLabel", "definition", "valueTypes" })
-@ApiModel(value = "PropertyType", description = "PropertyType DTO for data relation typing.")
+@Schema(name = "PropertyType", description = "PropertyType DTO for data relation typing.")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Serializable {
 
@@ -37,7 +36,7 @@ public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Seri
     private Map<String, String> definition;
     private Set<ValueTypeDTO> valueTypes;
 
-    @ApiModelProperty(dataType = "dateTime")
+    @Schema(format = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @JsonView(Views.Normal.class)
     public Date getCreated() {
@@ -55,7 +54,7 @@ public class PropertyTypeDTO extends AbstractIdentifyableCodeDTO implements Seri
         }
     }
 
-    @ApiModelProperty(dataType = "dateTime")
+    @Schema(format = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @JsonView(Views.Normal.class)
     public Date getModified() {

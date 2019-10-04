@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import fi.vm.yti.codelist.common.dto.Views;
 import fi.vm.yti.codelist.common.util.Identifiable;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * This class exists only for the needs of the front-end.
@@ -76,7 +76,7 @@ public class CodeSchemeListItem implements Serializable, Identifiable {
         this.uri = uri;
     }
 
-    @ApiModelProperty(dataType = "date")
+    @Schema(format = "date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     @JsonView({ Views.Normal.class })
@@ -95,7 +95,7 @@ public class CodeSchemeListItem implements Serializable, Identifiable {
         }
     }
 
-    @ApiModelProperty(dataType = "date")
+    @Schema(format = "date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     @JsonView({ Views.Normal.class })

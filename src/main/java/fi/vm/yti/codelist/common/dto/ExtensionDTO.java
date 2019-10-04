@@ -17,14 +17,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("extension")
 @XmlRootElement
 @XmlType(propOrder = { "id", "uri", "url", "membersUrl", "members", "codeValue", "status", "startDate", "endDate", "created", "modified", "prefLabel", "parentCodeScheme", "codeSchemes" })
-@ApiModel(value = "Extension", description = "Extension DTO that represents data for one extension element.")
+@Schema(name = "Extension", description = "Extension DTO that represents data for one extension element.")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ExtensionDTO extends AbstractHistoricalIdentifyableCodeWithStatusDTO implements Serializable {
 
@@ -74,7 +73,7 @@ public class ExtensionDTO extends AbstractHistoricalIdentifyableCodeWithStatusDT
         return this.getUrl() + "/members/";
     }
 
-    @ApiModelProperty(dataType = "dateTime")
+    @Schema(format = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @JsonView(Views.Normal.class)
     public Date getCreated() {
@@ -92,7 +91,7 @@ public class ExtensionDTO extends AbstractHistoricalIdentifyableCodeWithStatusDT
         }
     }
 
-    @ApiModelProperty(dataType = "dateTime")
+    @Schema(format = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @JsonView(Views.Normal.class)
     public Date getModified() {

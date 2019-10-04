@@ -7,7 +7,7 @@ import javax.persistence.MappedSuperclass;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @MappedSuperclass
 public class AbstractHistoricalIdentifyableCodeWithStatusDTO extends AbstractIdentifyableCodeDTO {
@@ -16,7 +16,7 @@ public class AbstractHistoricalIdentifyableCodeWithStatusDTO extends AbstractIde
     private LocalDate endDate;
     private String status;
 
-    @ApiModelProperty(dataType = "date")
+    @Schema(format = "date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonView(Views.Normal.class)
     public LocalDate getStartDate() {
@@ -34,7 +34,7 @@ public class AbstractHistoricalIdentifyableCodeWithStatusDTO extends AbstractIde
         }
     }
 
-    @ApiModelProperty(dataType = "date")
+    @Schema(format = "date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonView(Views.Normal.class)
     public LocalDate getEndDate() {

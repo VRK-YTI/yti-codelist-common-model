@@ -7,7 +7,7 @@ import javax.persistence.MappedSuperclass;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @MappedSuperclass
 public class AbstractBaseCodeDTO extends AbstractIdentifyableCodeDTO {
@@ -17,7 +17,7 @@ public class AbstractBaseCodeDTO extends AbstractIdentifyableCodeDTO {
     private String uri;
     private String url;
 
-    @ApiModelProperty(dataType = "dateTime")
+    @Schema(format = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @JsonView(Views.Normal.class)
     public Date getModified() {
@@ -35,7 +35,7 @@ public class AbstractBaseCodeDTO extends AbstractIdentifyableCodeDTO {
         }
     }
 
-    @ApiModelProperty(dataType = "dateTime")
+    @Schema(format = "dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @JsonView(Views.Normal.class)
     public Date getCreated() {

@@ -22,7 +22,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("extension")
 @XmlRootElement
-@XmlType(propOrder = { "id", "uri", "url", "membersUrl", "members", "codeValue", "status", "startDate", "endDate", "created", "modified", "prefLabel", "parentCodeScheme", "codeSchemes" })
+@XmlType(propOrder = { "id", "uri", "url", "membersUrl", "members", "codeValue", "status", "startDate", "endDate", "created", "modified", "statusModified", "prefLabel", "parentCodeScheme", "codeSchemes" })
 @Schema(name = "Extension", description = "Extension DTO that represents data for one extension element.")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ExtensionDTO extends AbstractHistoricalIdentifyableCodeWithStatusDTO implements Serializable {
@@ -40,6 +40,25 @@ public class ExtensionDTO extends AbstractHistoricalIdentifyableCodeWithStatusDT
     private Date modified;
     private String url;
     private String uri;
+    private Date statusModified;
+
+    @Schema(format = "dateTime")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
+    @JsonView(Views.Normal.class)
+    public Date getStatusModified() {
+        if (statusModified != null) {
+            return new Date(statusModified.getTime());
+        }
+        return null;
+    }
+
+    public void setStatusModified(final Date statusModified) {
+        if (statusModified != null) {
+            this.statusModified = new Date(statusModified.getTime());
+        } else {
+            this.statusModified = null;
+        }
+    }
 
     @JsonView(Views.Normal.class)
     public String getUri() {

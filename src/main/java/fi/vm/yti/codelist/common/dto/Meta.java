@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-@XmlType(propOrder = { "code", "message", "pageSize", "from", "resultCount", "totalResults", "after", "afterResourceUrl", "nextPage" })
+@XmlType(propOrder = { "code", "message", "pageSize", "from", "resultCount", "totalResults", "after", "before", "afterResourceUrl", "nextPage" })
 @Schema(name = "Meta", description = "Meta information model for API responses.")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Meta {
@@ -27,6 +27,7 @@ public class Meta {
     private Integer resultCount;
     private Integer totalResults;
     private Date after;
+    private Date before;
     private String afterResourceUrl;
     private String nextPage;
     private String entityIdentifier;
@@ -38,22 +39,26 @@ public class Meta {
     public Meta(final Integer code,
                 final Integer pageSize,
                 final Integer from,
-                final String after) {
+                final String after,
+                final String before) {
         this.code = code;
         this.pageSize = pageSize;
         this.from = from;
-        this.after = parseAfterFromString(after);
+        this.after = parseDateFromString(after);
+        this.before = parseDateFromString(before);
     }
 
     public Meta(final Integer code,
                 final Integer pageSize,
                 final Integer from,
                 final String after,
+                final String before,
                 final String entityIdentifier) {
         this.code = code;
         this.pageSize = pageSize;
         this.from = from;
-        this.after = parseAfterFromString(after);
+        this.after = parseDateFromString(after);
+        this.before = parseDateFromString(before);
         this.entityIdentifier = entityIdentifier;
     }
 
@@ -61,21 +66,23 @@ public class Meta {
                 final Integer pageSize,
                 final Integer from,
                 final String after,
+                final String before,
                 final String entityIdentifier,
                 final String nonTranslatableMessage) {
         this.code = code;
         this.pageSize = pageSize;
         this.from = from;
-        this.after = parseAfterFromString(after);
+        this.after = parseDateFromString(after);
+        this.before = parseDateFromString(before);
         this.entityIdentifier = entityIdentifier;
         this.nonTranslatableMessage = nonTranslatableMessage;
     }
 
-    public static Date parseAfterFromString(final String after) {
-        if (after != null) {
+    public static Date parseDateFromString(final String dateString) {
+        if (dateString != null) {
             final ISO8601DateFormat dateFormat = new ISO8601DateFormat();
             try {
-                return dateFormat.parse(after);
+                return dateFormat.parse(dateString);
             } catch (ParseException e) {
                 LOG.error("Parsing date from string failed: " + e.getMessage());
             }
@@ -143,6 +150,21 @@ public class Meta {
             this.after = new Date(after.getTime());
         } else {
             this.after = null;
+        }
+    }
+
+    public Date getBefore() {
+        if (before != null) {
+            return new Date(before.getTime());
+        }
+        return null;
+    }
+
+    public void setBefore(final Date before) {
+        if (before != null) {
+            this.before = new Date(before.getTime());
+        } else {
+            this.before = null;
         }
     }
 

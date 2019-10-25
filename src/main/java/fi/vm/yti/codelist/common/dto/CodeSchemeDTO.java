@@ -2,6 +2,7 @@ package fi.vm.yti.codelist.common.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -12,6 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -21,7 +23,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("codeScheme")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionsUrl", "extensions", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "status", "version", "source", "legalBase", "governancePolicy", "infoDomains", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions", "organizations", "searchHits", "cumulative", "feedbackChannel" })
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "codesUrl", "extensionsUrl", "extensions", "codes", "prefLabel", "definition", "description", "changeNote", "startDate", "endDate", "created", "modified", "contentModified", "statusModified", "status", "version", "source", "legalBase", "governancePolicy", "infoDomains", "languageCodes", "defaultCode", "externalReferences", "conceptUriInVocabularies", "variantsOfThisCodeScheme", "variantMothersOfThisCodeScheme", "nextCodeschemeId", "prevCodeschemeId", "lastCodeschemeId", "allVersions", "organizations", "searchHits", "cumulative", "feedbackChannel" })
 @Schema(name = "CodeScheme DTO", description = "CodeScheme DTO that represents data for one single codescheme.")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializable {
@@ -58,6 +60,8 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
     private long totalNrOfSearchHitsExtensions = 0;
     private boolean cumulative;
     private Map<String, String> feedbackChannel;
+    private Date contentModified;
+    private Date statusModified;
 
     public CodeSchemeDTO() {
         prefLabel = new HashMap<>();
@@ -77,6 +81,42 @@ public class CodeSchemeDTO extends AbstractHistoricalCodeDTO implements Serializ
         this.version = version;
         prefLabel = new HashMap<>();
         feedbackChannel = new HashMap<>();
+    }
+
+    @Schema(format = "dateTime")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
+    @JsonView(Views.Normal.class)
+    public Date getContentModified() {
+        if (contentModified != null) {
+            return new Date(contentModified.getTime());
+        }
+        return null;
+    }
+
+    public void setContentModified(final Date contentModified) {
+        if (contentModified != null) {
+            this.contentModified = new Date(contentModified.getTime());
+        } else {
+            this.contentModified = null;
+        }
+    }
+
+    @Schema(format = "dateTime")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
+    @JsonView(Views.Normal.class)
+    public Date getStatusModified() {
+        if (statusModified != null) {
+            return new Date(statusModified.getTime());
+        }
+        return null;
+    }
+
+    public void setStatusModified(final Date statusModified) {
+        if (statusModified != null) {
+            this.statusModified = new Date(statusModified.getTime());
+        } else {
+            this.statusModified = null;
+        }
     }
 
     @JsonView(Views.Normal.class)

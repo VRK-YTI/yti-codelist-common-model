@@ -1,6 +1,7 @@
 package fi.vm.yti.codelist.common.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -9,6 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -18,7 +20,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("code")
 @XmlRootElement
-@XmlType(propOrder = { "id", "codeValue", "uri", "url", "status", "order", "hierarchyLevel", "startDate", "endDate", "created", "modified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCode", "membersUrl", "members", "conceptUriInVocabularies", "codeExtensions", "subCodeScheme" })
+@XmlType(propOrder = { "id", "codeValue", "uri", "url", "status", "order", "hierarchyLevel", "startDate", "endDate", "created", "modified", "statusModified", "prefLabel", "description", "definition", "codeScheme", "shortName", "externalReferences", "broaderCode", "membersUrl", "members", "conceptUriInVocabularies", "codeExtensions", "subCodeScheme" })
 @Schema(name = "Code", description = "Code DTO that represents data for one single code.")
 @JsonIgnoreProperties(value = { "expanded" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -40,11 +42,30 @@ public class CodeDTO extends AbstractHistoricalCodeDTO implements Serializable {
     private Set<MemberDTO> members;
     private Set<ExtensionDTO> codeExtensions;
     private CodeSchemeDTO subCodeScheme;
+    private Date statusModified;
 
     public CodeDTO() {
         prefLabel = new HashMap<>();
         description = new HashMap<>();
         definition = new HashMap<>();
+    }
+
+    @Schema(format = "dateTime")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
+    @JsonView(Views.Normal.class)
+    public Date getStatusModified() {
+        if (statusModified != null) {
+            return new Date(statusModified.getTime());
+        }
+        return null;
+    }
+
+    public void setStatusModified(final Date statusModified) {
+        if (statusModified != null) {
+            this.statusModified = new Date(statusModified.getTime());
+        } else {
+            this.statusModified = null;
+        }
     }
 
     @JsonView(Views.Normal.class)

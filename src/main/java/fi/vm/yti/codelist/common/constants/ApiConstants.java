@@ -85,8 +85,8 @@ public class ApiConstants {
     public static final String API_PATH_TERMINOLOGY = "/terminology";
     public static final String API_PATH_VOCABULARIES = "/vocabularies";
     public static final String API_PATH_CONCEPTS = "/searchconcept";
-    public static final String TERMINOLOGY_API_CONTEXT_PATH = "/integration";
-    public static final String TERMINOLOGY_API_CONCEPT_SUGGESTION_CONTEXT_PATH = "/integration";
+    public static final String TERMINOLOGY_API_BASE_PATH = "/terminology/api";
+    public static final String TERMINOLOGY_API_CONCEPT_SUGGESTION_PATH = "/terminology/conceptSuggestion";
 
     public static final String DEFAULT_CODEREGISTRY_NAME_PREFIX = "testregistry";
     public static final String DEFAULT_CODESCHEME_NAME = "testscheme";

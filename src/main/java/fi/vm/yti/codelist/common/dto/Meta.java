@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-@XmlType(propOrder = { "code", "message", "pageSize", "from", "resultCount", "totalResults", "after", "before", "afterResourceUrl", "nextPage" })
+@XmlType(propOrder = { "code", "message", "pageSize", "from", "resultCount", "totalResults", "after", "before", "afterResourceUrl", "nextPage", "entityIdentifier", "nonTranslatableMessage" })
 @Schema(name = "Meta", description = "Meta information model for API responses.")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Meta {

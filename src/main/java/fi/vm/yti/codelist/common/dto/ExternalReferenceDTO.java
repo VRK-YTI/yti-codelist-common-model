@@ -19,7 +19,7 @@ import static fi.vm.yti.codelist.common.constants.ApiConstants.LANGUAGE_CODE_EN;
 
 @JsonFilter("externalReference")
 @XmlRootElement
-@XmlType(propOrder = { "id", "url", "created", "modified", "href", "global", "title", "description", "parentCodeScheme" })
+@XmlType(propOrder = { "id", "url", "created", "modified", "href", "global", "title", "description", "parentCodeScheme", "codes", "codeSchemes" })
 @Schema(name = "ExternalReference", description = "ExternalReference DTO that represents data for either CodeScheme or Code related external link.")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ExternalReferenceDTO extends AbstractIdentifyableCodeDTO implements Serializable {

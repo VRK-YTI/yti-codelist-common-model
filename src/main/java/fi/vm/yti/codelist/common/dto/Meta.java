@@ -1,15 +1,10 @@
 package fi.vm.yti.codelist.common.dto;
 
-import java.text.ParseException;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlType;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
@@ -17,8 +12,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(name = "Meta", description = "Meta information model for API responses.")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Meta {
-
-    private static final Logger LOG = LoggerFactory.getLogger(Meta.class);
 
     private Integer code;
     private String message;
@@ -39,55 +32,43 @@ public class Meta {
     public Meta(final Integer code,
                 final Integer pageSize,
                 final Integer from,
-                final String after,
-                final String before) {
+                final Date after,
+                final Date before) {
         this.code = code;
         this.pageSize = pageSize;
         this.from = from;
-        this.after = parseDateFromString(after);
-        this.before = parseDateFromString(before);
+        this.after = after;
+        this.before = before;
     }
 
     public Meta(final Integer code,
                 final Integer pageSize,
                 final Integer from,
-                final String after,
-                final String before,
+                final Date after,
+                final Date before,
                 final String entityIdentifier) {
         this.code = code;
         this.pageSize = pageSize;
         this.from = from;
-        this.after = parseDateFromString(after);
-        this.before = parseDateFromString(before);
+        this.after = after;
+        this.before = before;
         this.entityIdentifier = entityIdentifier;
     }
 
     public Meta(final Integer code,
                 final Integer pageSize,
                 final Integer from,
-                final String after,
-                final String before,
+                final Date after,
+                final Date before,
                 final String entityIdentifier,
                 final String nonTranslatableMessage) {
         this.code = code;
         this.pageSize = pageSize;
         this.from = from;
-        this.after = parseDateFromString(after);
-        this.before = parseDateFromString(before);
+        this.after = after;
+        this.before = before;
         this.entityIdentifier = entityIdentifier;
         this.nonTranslatableMessage = nonTranslatableMessage;
-    }
-
-    public static Date parseDateFromString(final String dateString) {
-        if (dateString != null) {
-            final ISO8601DateFormat dateFormat = new ISO8601DateFormat();
-            try {
-                return dateFormat.parse(dateString);
-            } catch (ParseException e) {
-                LOG.error("Parsing date from string failed: " + e.getMessage());
-            }
-        }
-        return null;
     }
 
     public Integer getCode() {

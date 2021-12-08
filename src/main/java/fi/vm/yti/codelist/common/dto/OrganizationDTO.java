@@ -27,6 +27,7 @@ public class OrganizationDTO extends AbstractIdentifyableCodeDTO implements Seri
     private Map<String, String> prefLabel;
     private Map<String, String> description;
     private Set<CodeRegistryDTO> codeRegistries;
+    private OrganizationDTO parent;
 
     @JsonView(Views.Normal.class)
     public String getUrl() {
@@ -122,5 +123,14 @@ public class OrganizationDTO extends AbstractIdentifyableCodeDTO implements Seri
 
     public void setCodeRegistries(final Set<CodeRegistryDTO> codeRegistries) {
         this.codeRegistries = codeRegistries;
+    }
+
+    @JsonView(Views.Normal.class)
+    public OrganizationDTO getParent() {
+        return parent;
+    }
+
+    public void setParent(final OrganizationDTO parent) {
+        this.parent = parent;
     }
 }
